@@ -222,7 +222,7 @@
 
   /* CHARTS */
   .charts-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 18px; }
-  .charts-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 18px; }
+  .charts-grid-2 { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 18px; }
   .chart-card { background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border); padding: 22px; box-shadow: var(--shadow-sm); transition: box-shadow 0.2s; }
   .chart-card:hover { box-shadow: var(--shadow-md); }
   .chart-card-header { margin-bottom: 18px; display: flex; align-items: flex-start; justify-content: space-between; }
@@ -464,7 +464,7 @@
   .page-tab:hover { color:var(--text-primary); }
   .page-tab.active { color:var(--blue); border-bottom-color:var(--blue); font-weight:600; }
   .tab-page { display:none; }
-  .tab-page.active { display:block; }
+  .tab-page.active { display:block; padding-top:24px; }
 
 </style>
 </head>
@@ -496,7 +496,6 @@
   <div class="topbar">
     <div class="topbar-left">
       <h1>People Insights Dashboard</h1>
-      <p>HRBP Overview · Q1 2026</p>
     </div>
     <div class="topbar-right">
       <div class="badge-period"><div class="dot"></div>Live data</div>
@@ -649,7 +648,7 @@
     </div><!-- /tab-hc -->
 
     <!-- TAB: Attrition -->
-    <div id="tab-attrition" class="tab-page" style="padding-top:24px;">
+    <div id="tab-attrition" class="tab-page">
 
     <!-- ATTRITION DETAIL TABLE (source: Drive) -->
     <div class="attr-detail-card" style="margin-bottom:18px;">
@@ -719,13 +718,6 @@
 
     <!-- TAB: Another Analysis -->
     <div id="tab-analysis" class="tab-page">
-<div class="section-divider"></div>
-
-    <!-- OTHERS SECTION -->
-    <div class="section-header">
-      <span class="section-title">Others</span>
-    </div>
-
     <div class="charts-grid-2">
       <!-- GENDER -->
       <div class="chart-card">
@@ -748,14 +740,10 @@
             <div class="legend-item"><div class="legend-dot" style="background:#14b8a6;"></div><div style="flex:1;"><div style="display:flex;justify-content:space-between;"><span class="legend-text">Men</span><span class="legend-pct" id="pct-m">34%</span></div><div class="legend-bar-wrap"><div class="legend-bar" id="bar-m" style="width:34%;background:#14b8a6;"></div></div></div></div>
             <div class="legend-item"><div class="legend-dot" style="background:#8b5cf6;"></div><div style="flex:1;"><div style="display:flex;justify-content:space-between;"><span class="legend-text">Non-binary</span><span class="legend-pct" id="pct-nb">8%</span></div><div class="legend-bar-wrap"><div class="legend-bar" id="bar-nb" style="width:8%;background:#8b5cf6;"></div></div></div></div>
             <div class="legend-item" id="row-ns" style="display:none;"><div class="legend-dot" style="background:#d1d5db;"></div><div style="flex:1;"><div style="display:flex;justify-content:space-between;"><span class="legend-text" style="color:var(--text-muted);">Not specified</span><span class="legend-pct" id="pct-ns" style="color:var(--text-muted);"></span></div></div></div>
-            <div style="margin-top:10px;display:flex;gap:5px;flex-wrap:wrap;">
-              <span class="chip green">↑ +3pp Women YoY</span>
-              <span class="chip blue">Target: 60%</span>
-            </div>
           </div>
         </div>
         <!-- BY LEVEL BREAKDOWN -->
-        <div style="margin-top:18px;padding-top:14px;border-top:1px solid var(--border);">
+        <div style="margin-top:18px;padding-top:14px;">
           <div style="font-size:11px;font-weight:700;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.4px;margin-bottom:10px;">By Level · May 2026</div>
           <div id="gender-by-level-chart"></div>
         </div>
@@ -2355,38 +2343,52 @@ function renderSection2() {
 function renderGenderByLevel() {
   const el = document.getElementById("gender-by-level-chart");
   if (!el) return;
-  const maxTotal = Math.max(...GENDER_BY_LEVEL_MAY26.map(r => r.total));
-  const groupColor = l => {
-    if (['1a','1b','1c'].includes(l)) return '#93c5fd';
-    if (['2a','2b','2c'].includes(l)) return '#3b82f6';
-    if (['3a','3b','3c'].includes(l)) return '#6366f1';
-    if (['4a','4b','4c'].includes(l)) return '#8b5cf6';
-    if (['5a','5b','5c'].includes(l)) return '#a855f7';
-    if (['6a','6b','E'].includes(l))  return '#ec4899';
-    return '#94a3b8';
-  };
-  el.innerHTML = GENDER_BY_LEVEL_MAY26.map(r => {
+  // Aggregate individual levels into groups
+  const groups = [
+    { label:'L1', keys:['1a','1b','1c'], color:'#93c5fd' },
+    { label:'L2', keys:['2a','2b','2c'], color:'#3b82f6' },
+    { label:'L3', keys:['3a','3b','3c'], color:'#6366f1' },
+    { label:'L4', keys:['4a','4b','4c'], color:'#8b5cf6' },
+    { label:'L5', keys:['5a','5b','5c'], color:'#a855f7' },
+    { label:'L6', keys:['6a','6b'],      color:'#ec4899' },
+    { label:'E',  keys:['E'],            color:'#f43f5e' },
+    { label:'Intern', keys:['Intern'],   color:'#94a3b8' },
+  ];
+  const grouped = groups.map(g => {
+    const rows = GENDER_BY_LEVEL_MAY26.filter(r => g.keys.includes(r.label));
+    return {
+      label: g.label,
+      color: g.color,
+      total: rows.reduce((s,r) => s + r.total, 0),
+      f:     rows.reduce((s,r) => s + r.f, 0),
+      m:     rows.reduce((s,r) => s + r.m, 0),
+      nb:    rows.reduce((s,r) => s + r.nb, 0),
+      ns:    rows.reduce((s,r) => s + r.ns, 0),
+    };
+  });
+  const maxTotal = Math.max(...grouped.map(r => r.total));
+  el.innerHTML = grouped.map(r => {
     const barW  = (r.total / maxTotal * 100).toFixed(1);
     const fBarW = (r.f / r.total * 100).toFixed(1);
     const mBarW = (r.m / r.total * 100).toFixed(1);
     const fPct  = Math.round(r.f / r.total * 100);
     const mPct  = Math.round(r.m / r.total * 100);
-    const gc    = groupColor(r.label);
-    // Show text inside segment only if wide enough (>18%)
+    const gc    = r.color;
+    // Show text inside segment only if wide enough (>10%)
     const nbBarW = (r.nb / r.total * 100).toFixed(1);
     const nbPct  = Math.round(r.nb / r.total * 100);
-    const fText  = parseFloat(fBarW) > 18 ? `<span style="font-size:9px;color:#fff;font-weight:600;white-space:nowrap;overflow:hidden;">${r.f} (${fPct}%)</span>` : '';
-    const mText  = parseFloat(mBarW) > 18 ? `<span style="font-size:9px;color:#fff;font-weight:600;white-space:nowrap;overflow:hidden;">${r.m} (${mPct}%)</span>` : '';
+    const fText  = parseFloat(fBarW) > 10 ? `<span style="font-size:10px;color:#fff;font-weight:600;white-space:nowrap;overflow:hidden;">${r.f} (${fPct}%)</span>` : '';
+    const mText  = parseFloat(mBarW) > 10 ? `<span style="font-size:10px;color:#fff;font-weight:600;white-space:nowrap;overflow:hidden;">${r.m} (${mPct}%)</span>` : '';
     const nbLeft = (parseFloat(fBarW) + parseFloat(mBarW)).toFixed(1);
     const nbSeg  = r.nb > 0 ? `<div style="position:absolute;left:${nbLeft}%;top:0;height:100%;width:${nbBarW}%;background:#8b5cf6;display:flex;align-items:center;justify-content:center;overflow:hidden;"></div>` : '';
-    return `<div style="display:grid;grid-template-columns:34px 1fr 30px;align-items:center;gap:6px;margin-bottom:4px;">
-      <span style="font-size:10px;font-weight:700;color:${gc};text-align:right;">${r.label}</span>
-      <div style="position:relative;height:20px;background:#f1f5f9;border-radius:4px;overflow:hidden;width:${barW}%;">
+    return `<div style="display:grid;grid-template-columns:40px 1fr 36px;align-items:center;gap:8px;margin-bottom:5px;">
+      <span style="font-size:11px;font-weight:700;color:${gc};text-align:right;">${r.label}</span>
+      <div style="position:relative;height:22px;background:#f1f5f9;border-radius:5px;overflow:hidden;width:${barW}%;">
         <div style="position:absolute;left:0;top:0;height:100%;width:${fBarW}%;background:#3b82f6;display:flex;align-items:center;justify-content:center;overflow:hidden;">${fText}</div>
         <div style="position:absolute;left:${fBarW}%;top:0;height:100%;width:${mBarW}%;background:#14b8a6;display:flex;align-items:center;justify-content:center;overflow:hidden;">${mText}</div>
         ${nbSeg}
       </div>
-      <span style="font-size:9.5px;font-weight:700;color:var(--text-secondary);">${r.total}</span>
+      <span style="font-size:11px;font-weight:700;color:var(--text-secondary);">${r.total}</span>
     </div>`;
   }).join('') +
   `<div style="margin-top:10px;display:flex;gap:14px;font-size:10px;color:var(--text-muted);">
@@ -2727,13 +2729,13 @@ const ATTRITION_RAW_DATA = [
 // Periods: [0]=Dec25, [1]=Jan26, [2]=Feb26, [3]=Mar26, [4]=Apr26
 // [count, rate%]  — null rate = dept renaming, HC denominator unreliable
 const MONTHLY_BY_DEPT = {
-  "Go To Market":        [[1,0.25],[1,0.24],[5,1.11],[2,0.43],[1,0.20]],
-  "Finance":             [[1,1.47],[0,0.0], [0,0.0], [1,1.41],[2,2.72]],
-  "Financial Products":  [[0,0.0], [0,0.0], [0,0.0], [1,2.0], [2,3.96]],
-  "Product Development": [[2,null],[0,0.0], [0,0.0], [0,0.0], [0,0.0]],
-  "Operations":          [[1,0.53],[1,0.53],[0,0.0], [0,0.0], [0,0.0]],
-  "Counsel":             [[0,0.0], [1,null],[0,0.0], [0,0.0], [1,5.0]],
-  "People":              [[1,3.45],[0,0.0], [0,0.0], [0,0.0], [0,0.0]],
+  "Go To Market":        [[1,0.25],[1,0.24],[5,1.11],[2,0.43],[1,0.20],[4,0.78]],
+  "Finance":             [[1,1.47],[0,0.0], [0,0.0], [1,1.41],[2,2.72],[0,0.0]],
+  "Financial Products":  [[0,0.0], [0,0.0], [0,0.0], [1,2.0], [2,3.96],[0,0.0]],
+  "Product Development": [[2,null],[0,0.0], [0,0.0], [0,0.0], [0,0.0], [0,0.0]],
+  "Operations":          [[1,0.53],[1,0.53],[0,0.0], [0,0.0], [0,0.0], [0,0.0]],
+  "Counsel":             [[0,0.0], [1,null],[0,0.0], [0,0.0], [1,5.0], [0,0.0]],
+  "People":              [[1,3.45],[0,0.0], [0,0.0], [0,0.0], [0,0.0], [0,0.0]],
 };
 
 // null rate = dept was renamed mid-year (Legal→Counsel, Engineering→ProdDev), denominator unreliable
@@ -2765,6 +2767,9 @@ const ATTRITION_BY_COUNTRY = {
     { period:"April 2026", q:"Q2 2026",
       all:{tot:3,reg:0,nr:3,vol:0,inv:3,hc:152.5}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:91.5},
       qVolL2:3,qHcL2:89.8,qAttr:3.34, qRegAll:3,qHcRegAll:143.0,qAttrReg:2.1, qRegL2:3,qHcRegL2:89.8,qAttrRegL2:3.34 },
+    { period:"May 2026", q:"Q2 2026",
+      all:{tot:3,reg:0,nr:3,vol:0,inv:3,hc:156.0}, l2:{tot:2,reg:0,nr:2,vol:0,inv:2,hc:93.5},
+      qVolL2:2,qHcL2:91.5,qAttr:2.18, qRegAll:1,qHcRegAll:150.3,qAttrReg:0.67, qRegL2:1,qHcRegL2:91.3,qAttrRegL2:1.10 },
   ],
   "China": [
     { period:"December 2025", q:"Q4 2025",
@@ -2782,6 +2787,9 @@ const ATTRITION_BY_COUNTRY = {
     { period:"April 2026", q:"Q2 2026",
       all:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:7.0}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:7.0},
       qVolL2:0,qHcL2:6.5,qAttr:0.0, qRegAll:0,qHcRegAll:6.5,qAttrReg:0.0, qRegL2:0,qHcRegL2:6.5,qAttrRegL2:0.0 },
+    { period:"May 2026", q:"Q2 2026",
+      all:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:7.0}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:7.0},
+      qVolL2:0,qHcL2:6.7,qAttr:0.0, qRegAll:0,qHcRegAll:6.7,qAttrReg:0.0, qRegL2:0,qHcRegL2:6.7,qAttrRegL2:0.0 },
   ],
   "Colombia": [
     { period:"December 2025", q:"Q4 2025",
@@ -2799,6 +2807,9 @@ const ATTRITION_BY_COUNTRY = {
     { period:"April 2026", q:"Q2 2026",
       all:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:150.5}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:108.5},
       qVolL2:0,qHcL2:102.2,qAttr:0.0, qRegAll:1,qHcRegAll:145.7,qAttrReg:0.69, qRegL2:0,qHcRegL2:102.2,qAttrRegL2:0.0 },
+    { period:"May 2026", q:"Q2 2026",
+      all:{tot:2,reg:1,nr:1,vol:1,inv:1,hc:156.5}, l2:{tot:1,reg:0,nr:1,vol:0,inv:1,hc:113.0},
+      qVolL2:0,qHcL2:107.9,qAttr:0.0, qRegAll:2,qHcRegAll:150.7,qAttrReg:1.33, qRegL2:0,qHcRegL2:107.3,qAttrRegL2:0.0 },
   ],
   "Ecuador": [
     { period:"December 2025", q:"Q4 2025",
@@ -2816,6 +2827,9 @@ const ATTRITION_BY_COUNTRY = {
     { period:"April 2026", q:"Q2 2026",
       all:{tot:1,reg:0,nr:1,vol:0,inv:1,hc:60.0}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:36.0},
       qVolL2:0,qHcL2:34.5,qAttr:0.0, qRegAll:0,qHcRegAll:59.2,qAttrReg:0.0, qRegL2:0,qHcRegL2:34.5,qAttrRegL2:0.0 },
+    { period:"May 2026", q:"Q2 2026",
+      all:{tot:4,reg:0,nr:4,vol:1,inv:3,hc:58.5}, l2:{tot:2,reg:0,nr:2,vol:1,inv:1,hc:35.0},
+      qVolL2:0,qHcL2:34.8,qAttr:0.0, qRegAll:0,qHcRegAll:59.2,qAttrReg:0.0, qRegL2:0,qHcRegL2:34.8,qAttrRegL2:0.0 },
   ],
   "India": [
     { period:"December 2025", q:"Q4 2025",
@@ -2833,6 +2847,9 @@ const ATTRITION_BY_COUNTRY = {
     { period:"April 2026", q:"Q2 2026",
       all:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:5.0}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:5.0},
       qVolL2:0,qHcL2:4.3,qAttr:0.0, qRegAll:0,qHcRegAll:4.3,qAttrReg:0.0, qRegL2:0,qHcRegL2:4.3,qAttrRegL2:0.0 },
+    { period:"May 2026", q:"Q2 2026",
+      all:{tot:1,reg:0,nr:0,vol:0,inv:1,hc:5.5}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:5.5},
+      qVolL2:0,qHcL2:5.0,qAttr:0.0, qRegAll:0,qHcRegAll:5.0,qAttrReg:0.0, qRegL2:0,qHcRegL2:5.0,qAttrRegL2:0.0 },
   ],
   "Indonesia": [
     { period:"December 2025", q:"Q4 2025",
@@ -2850,6 +2867,9 @@ const ATTRITION_BY_COUNTRY = {
     { period:"April 2026", q:"Q2 2026",
       all:{tot:1,reg:0,nr:1,vol:0,inv:1,hc:9.0}, l2:{tot:1,reg:0,nr:1,vol:0,inv:1,hc:4.5},
       qVolL2:0,qHcL2:4.2,qAttr:0.0, qRegAll:0,qHcRegAll:8.3,qAttrReg:0.0, qRegL2:0,qHcRegL2:4.2,qAttrRegL2:0.0 },
+    { period:"May 2026", q:"Q2 2026",
+      all:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:12.0}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:6.0},
+      qVolL2:0,qHcL2:5.3,qAttr:0.0, qRegAll:0,qHcRegAll:9.7,qAttrReg:0.0, qRegL2:0,qHcRegL2:5.3,qAttrRegL2:0.0 },
   ],
   "Mexico": [
     { period:"December 2025", q:"Q4 2025",
@@ -2867,6 +2887,9 @@ const ATTRITION_BY_COUNTRY = {
     { period:"April 2026", q:"Q2 2026",
       all:{tot:12,reg:5,nr:7,vol:8,inv:4,hc:327.5}, l2:{tot:11,reg:5,nr:6,vol:8,inv:3,hc:243.5},
       qVolL2:11,qHcL2:233.8,qAttr:4.71, qRegAll:8,qHcRegAll:317.0,qAttrReg:2.52, qRegL2:8,qHcRegL2:233.8,qAttrRegL2:3.42 },
+    { period:"May 2026", q:"Q2 2026",
+      all:{tot:2,reg:0,nr:1,vol:0,inv:2,hc:336.0}, l2:{tot:1,reg:0,nr:0,vol:0,inv:1,hc:250.0},
+      qVolL2:9,qHcL2:242.4,qAttr:3.72, qRegAll:7,qHcRegAll:327.0,qAttrReg:2.14, qRegL2:7,qHcRegL2:242.2,qAttrRegL2:2.89 },
   ],
   "Panama": [
     { period:"December 2025", q:"Q4 2025",
@@ -2884,6 +2907,9 @@ const ATTRITION_BY_COUNTRY = {
     { period:"April 2026", q:"Q2 2026",
       all:{tot:2,reg:0,nr:2,vol:1,inv:1,hc:27.5}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:16.0},
       qVolL2:0,qHcL2:15.0,qAttr:0.0, qRegAll:0,qHcRegAll:27.3,qAttrReg:0.0, qRegL2:0,qHcRegL2:15.0,qAttrRegL2:0.0 },
+    { period:"May 2026", q:"Q2 2026",
+      all:{tot:1,reg:0,nr:1,vol:0,inv:1,hc:27.0}, l2:{tot:1,reg:0,nr:1,vol:0,inv:1,hc:16.0},
+      qVolL2:0,qHcL2:15.5,qAttr:0.0, qRegAll:0,qHcRegAll:27.3,qAttrReg:0.0, qRegL2:0,qHcRegL2:15.5,qAttrRegL2:0.0 },
   ],
   "Peru": [
     { period:"December 2025", q:"Q4 2025",
@@ -2901,6 +2927,9 @@ const ATTRITION_BY_COUNTRY = {
     { period:"April 2026", q:"Q2 2026",
       all:{tot:1,reg:1,nr:0,vol:1,inv:0,hc:79.0}, l2:{tot:1,reg:1,nr:0,vol:1,inv:0,hc:45.0},
       qVolL2:1,qHcL2:42.0,qAttr:2.38, qRegAll:1,qHcRegAll:76.5,qAttrReg:1.31, qRegL2:1,qHcRegL2:42.0,qAttrRegL2:2.38 },
+    { period:"May 2026", q:"Q2 2026",
+      all:{tot:3,reg:1,nr:2,vol:1,inv:2,hc:82.0}, l2:{tot:3,reg:1,nr:2,vol:1,inv:2,hc:47.0},
+      qVolL2:1,qHcL2:44.7,qAttr:2.24, qRegAll:2,qHcRegAll:79.2,qAttrReg:2.53, qRegL2:2,qHcRegL2:44.7,qAttrRegL2:4.47 },
   ],
   "Philippines": [
     { period:"December 2025", q:"Q4 2025",
@@ -2918,6 +2947,9 @@ const ATTRITION_BY_COUNTRY = {
     { period:"April 2026", q:"Q2 2026",
       all:{tot:2,reg:0,nr:2,vol:2,inv:0,hc:55.5}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:31.0},
       qVolL2:1,qHcL2:30.0,qAttr:3.33, qRegAll:0,qHcRegAll:51.5,qAttrReg:0.0, qRegL2:0,qHcRegL2:30.0,qAttrRegL2:0.0 },
+    { period:"May 2026", q:"Q2 2026",
+      all:{tot:2,reg:1,nr:1,vol:1,inv:1,hc:61.0}, l2:{tot:1,reg:1,nr:0,vol:1,inv:0,hc:34.0},
+      qVolL2:1,qHcL2:31.7,qAttr:1.64, qRegAll:1,qHcRegAll:55.7,qAttrReg:1.80, qRegL2:1,qHcRegL2:31.7,qAttrRegL2:3.15 },
   ],
   "South Africa": [
     { period:"December 2025", q:"Q4 2025",
@@ -2935,6 +2967,9 @@ const ATTRITION_BY_COUNTRY = {
     { period:"April 2026", q:"Q2 2026",
       all:{tot:1,reg:0,nr:1,vol:0,inv:1,hc:61.5}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:42.5},
       qVolL2:0,qHcL2:42.2,qAttr:0.0, qRegAll:2,qHcRegAll:61.8,qAttrReg:3.24, qRegL2:0,qHcRegL2:42.2,qAttrRegL2:0.0 },
+    { period:"May 2026", q:"Q2 2026",
+      all:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:63.0}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:43.5},
+      qVolL2:0,qHcL2:42.7,qAttr:0.0, qRegAll:2,qHcRegAll:62.0,qAttrReg:3.23, qRegL2:0,qHcRegL2:42.7,qAttrRegL2:0.0 },
   ],
   "United States": [
     { period:"December 2025", q:"Q4 2025",
@@ -2952,6 +2987,9 @@ const ATTRITION_BY_COUNTRY = {
     { period:"April 2026", q:"Q2 2026",
       all:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:86.0}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:86.0},
       qVolL2:0,qHcL2:84.7,qAttr:0.0, qRegAll:0,qHcRegAll:84.7,qAttrReg:0.0, qRegL2:0,qHcRegL2:84.7,qAttrRegL2:0.0 },
+    { period:"May 2026", q:"Q2 2026",
+      all:{tot:2,reg:1,nr:1,vol:1,inv:1,hc:89.5}, l2:{tot:2,reg:1,nr:1,vol:1,inv:1,hc:89.5},
+      qVolL2:1,qHcL2:86.9,qAttr:1.15, qRegAll:1,qHcRegAll:86.7,qAttrReg:1.15, qRegL2:1,qHcRegL2:86.7,qAttrRegL2:1.15 },
   ],
 };
 
@@ -3361,10 +3399,21 @@ const REG_TERM_NAMES = {
       "Go To Market":       ["Israel Gonzalez"],
     }
   },
+  "May 2026": {
+    byCountry: {
+      "Philippines":   ["Karl Francisco"],
+      "Peru":          ["Jair Sandhaus"],
+      "United States": ["Deepak Murthy"],
+      "Colombia":      ["Jose Bedoya"],
+    },
+    byDept: {
+      "Go To Market": ["Karl Francisco","Jair Sandhaus","Deepak Murthy","Jose Bedoya"],
+    }
+  },
 };
 
 // ─── SHARED TABLE HELPERS ─────────────────────────────────────────────────────
-const _PERIODS = ['December 2025','January 2026','February 2026','March 2026','April 2026'];
+const _PERIODS = ['December 2025','January 2026','February 2026','March 2026','April 2026','May 2026'];
 
 function _countBadge(v, names) {
   if (v == null || v === 0) return `<span style="color:#cbd5e1;">—</span>`;
@@ -3403,7 +3452,7 @@ function renderCountryTermsHcChart() {
 
   let tbody = '<tbody>';
   for (let i = _PERIODS.length - 1; i >= 0; i--) {
-    const isLatest = i === 4;
+    const isLatest = i === _PERIODS.length - 1;
     const rowBg = isLatest ? '#f8faff' : 'var(--surface)';
     tbody += `<tr>`;
     tbody += `<td style="font-size:12px;font-weight:${isLatest?'700':'600'};padding:7px 14px;white-space:nowrap;border-bottom:1px solid var(--border);position:sticky;left:0;z-index:1;background:${rowBg};min-width:130px;box-shadow:2px 0 4px rgba(0,0,0,0.06);">${_PERIODS[i]}</td>`;
@@ -3434,7 +3483,7 @@ function renderCountryRateChart() {
 
   let tbody = '<tbody>';
   for (let i = _PERIODS.length - 1; i >= 0; i--) {
-    const isLatest = i === 4;
+    const isLatest = i === _PERIODS.length - 1;
     const rowBg = isLatest ? '#f8faff' : 'var(--surface)';
     tbody += `<tr>`;
     tbody += `<td style="font-size:12px;font-weight:${isLatest?'700':'600'};padding:7px 14px;white-space:nowrap;border-bottom:1px solid var(--border);position:sticky;left:0;z-index:1;background:${rowBg};min-width:130px;box-shadow:2px 0 4px rgba(0,0,0,0.06);">${_PERIODS[i]}</td>`;
@@ -3469,7 +3518,7 @@ function renderDeptTermsHcChart() {
 
   let tbody = '<tbody>';
   for (let i = _PERIODS.length - 1; i >= 0; i--) {
-    const isLatest = i === 4;
+    const isLatest = i === _PERIODS.length - 1;
     const rowBg = isLatest ? '#f8faff' : 'var(--surface)';
     tbody += `<tr>`;
     tbody += `<td style="font-size:12px;font-weight:${isLatest?'700':'600'};padding:7px 14px;white-space:nowrap;border-bottom:1px solid var(--border);position:sticky;left:0;z-index:1;background:${rowBg};min-width:130px;box-shadow:2px 0 4px rgba(0,0,0,0.06);">${_PERIODS[i]}</td>`;
@@ -3499,7 +3548,7 @@ function renderDeptRateChart() {
 
   let tbody = '<tbody>';
   for (let i = _PERIODS.length - 1; i >= 0; i--) {
-    const isLatest = i === 4;
+    const isLatest = i === _PERIODS.length - 1;
     const rowBg = isLatest ? '#f8faff' : 'var(--surface)';
     tbody += `<tr>`;
     tbody += `<td style="font-size:12px;font-weight:${isLatest?'700':'600'};padding:7px 14px;white-space:nowrap;border-bottom:1px solid var(--border);position:sticky;left:0;z-index:1;background:${rowBg};min-width:130px;box-shadow:2px 0 4px rgba(0,0,0,0.06);">${_PERIODS[i]}</td>`;
