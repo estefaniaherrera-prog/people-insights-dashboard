@@ -222,7 +222,7 @@
 
   /* CHARTS */
   .charts-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 18px; }
-  .charts-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 18px; }
+  .charts-grid-2 { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 18px; }
   .chart-card { background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border); padding: 22px; box-shadow: var(--shadow-sm); transition: box-shadow 0.2s; }
   .chart-card:hover { box-shadow: var(--shadow-md); }
   .chart-card-header { margin-bottom: 18px; display: flex; align-items: flex-start; justify-content: space-between; }
@@ -464,7 +464,7 @@
   .page-tab:hover { color:var(--text-primary); }
   .page-tab.active { color:var(--blue); border-bottom-color:var(--blue); font-weight:600; }
   .tab-page { display:none; }
-  .tab-page.active { display:block; }
+  .tab-page.active { display:block; padding-top:24px; }
 
 </style>
 </head>
@@ -496,7 +496,6 @@
   <div class="topbar">
     <div class="topbar-left">
       <h1>People Insights Dashboard</h1>
-      <p>HRBP Overview · Q1 2026</p>
     </div>
     <div class="topbar-right">
       <div class="badge-period"><div class="dot"></div>Live data</div>
@@ -649,7 +648,7 @@
     </div><!-- /tab-hc -->
 
     <!-- TAB: Attrition -->
-    <div id="tab-attrition" class="tab-page" style="padding-top:24px;">
+    <div id="tab-attrition" class="tab-page">
 
     <!-- ATTRITION DETAIL TABLE (source: Drive) -->
     <div class="attr-detail-card" style="margin-bottom:18px;">
@@ -719,13 +718,6 @@
 
     <!-- TAB: Another Analysis -->
     <div id="tab-analysis" class="tab-page">
-<div class="section-divider"></div>
-
-    <!-- OTHERS SECTION -->
-    <div class="section-header">
-      <span class="section-title">Others</span>
-    </div>
-
     <div class="charts-grid-2">
       <!-- GENDER -->
       <div class="chart-card">
@@ -748,14 +740,10 @@
             <div class="legend-item"><div class="legend-dot" style="background:#14b8a6;"></div><div style="flex:1;"><div style="display:flex;justify-content:space-between;"><span class="legend-text">Men</span><span class="legend-pct" id="pct-m">34%</span></div><div class="legend-bar-wrap"><div class="legend-bar" id="bar-m" style="width:34%;background:#14b8a6;"></div></div></div></div>
             <div class="legend-item"><div class="legend-dot" style="background:#8b5cf6;"></div><div style="flex:1;"><div style="display:flex;justify-content:space-between;"><span class="legend-text">Non-binary</span><span class="legend-pct" id="pct-nb">8%</span></div><div class="legend-bar-wrap"><div class="legend-bar" id="bar-nb" style="width:8%;background:#8b5cf6;"></div></div></div></div>
             <div class="legend-item" id="row-ns" style="display:none;"><div class="legend-dot" style="background:#d1d5db;"></div><div style="flex:1;"><div style="display:flex;justify-content:space-between;"><span class="legend-text" style="color:var(--text-muted);">Not specified</span><span class="legend-pct" id="pct-ns" style="color:var(--text-muted);"></span></div></div></div>
-            <div style="margin-top:10px;display:flex;gap:5px;flex-wrap:wrap;">
-              <span class="chip green">↑ +3pp Women YoY</span>
-              <span class="chip blue">Target: 60%</span>
-            </div>
           </div>
         </div>
         <!-- BY LEVEL BREAKDOWN -->
-        <div style="margin-top:18px;padding-top:14px;border-top:1px solid var(--border);">
+        <div style="margin-top:18px;padding-top:14px;">
           <div style="font-size:11px;font-weight:700;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.4px;margin-bottom:10px;">By Level · May 2026</div>
           <div id="gender-by-level-chart"></div>
         </div>
@@ -2355,38 +2343,52 @@ function renderSection2() {
 function renderGenderByLevel() {
   const el = document.getElementById("gender-by-level-chart");
   if (!el) return;
-  const maxTotal = Math.max(...GENDER_BY_LEVEL_MAY26.map(r => r.total));
-  const groupColor = l => {
-    if (['1a','1b','1c'].includes(l)) return '#93c5fd';
-    if (['2a','2b','2c'].includes(l)) return '#3b82f6';
-    if (['3a','3b','3c'].includes(l)) return '#6366f1';
-    if (['4a','4b','4c'].includes(l)) return '#8b5cf6';
-    if (['5a','5b','5c'].includes(l)) return '#a855f7';
-    if (['6a','6b','E'].includes(l))  return '#ec4899';
-    return '#94a3b8';
-  };
-  el.innerHTML = GENDER_BY_LEVEL_MAY26.map(r => {
+  // Aggregate individual levels into groups
+  const groups = [
+    { label:'L1', keys:['1a','1b','1c'], color:'#93c5fd' },
+    { label:'L2', keys:['2a','2b','2c'], color:'#3b82f6' },
+    { label:'L3', keys:['3a','3b','3c'], color:'#6366f1' },
+    { label:'L4', keys:['4a','4b','4c'], color:'#8b5cf6' },
+    { label:'L5', keys:['5a','5b','5c'], color:'#a855f7' },
+    { label:'L6', keys:['6a','6b'],      color:'#ec4899' },
+    { label:'E',  keys:['E'],            color:'#f43f5e' },
+    { label:'Intern', keys:['Intern'],   color:'#94a3b8' },
+  ];
+  const grouped = groups.map(g => {
+    const rows = GENDER_BY_LEVEL_MAY26.filter(r => g.keys.includes(r.label));
+    return {
+      label: g.label,
+      color: g.color,
+      total: rows.reduce((s,r) => s + r.total, 0),
+      f:     rows.reduce((s,r) => s + r.f, 0),
+      m:     rows.reduce((s,r) => s + r.m, 0),
+      nb:    rows.reduce((s,r) => s + r.nb, 0),
+      ns:    rows.reduce((s,r) => s + r.ns, 0),
+    };
+  });
+  const maxTotal = Math.max(...grouped.map(r => r.total));
+  el.innerHTML = grouped.map(r => {
     const barW  = (r.total / maxTotal * 100).toFixed(1);
     const fBarW = (r.f / r.total * 100).toFixed(1);
     const mBarW = (r.m / r.total * 100).toFixed(1);
     const fPct  = Math.round(r.f / r.total * 100);
     const mPct  = Math.round(r.m / r.total * 100);
-    const gc    = groupColor(r.label);
-    // Show text inside segment only if wide enough (>18%)
+    const gc    = r.color;
+    // Show text inside segment only if wide enough (>10%)
     const nbBarW = (r.nb / r.total * 100).toFixed(1);
     const nbPct  = Math.round(r.nb / r.total * 100);
-    const fText  = parseFloat(fBarW) > 18 ? `<span style="font-size:9px;color:#fff;font-weight:600;white-space:nowrap;overflow:hidden;">${r.f} (${fPct}%)</span>` : '';
-    const mText  = parseFloat(mBarW) > 18 ? `<span style="font-size:9px;color:#fff;font-weight:600;white-space:nowrap;overflow:hidden;">${r.m} (${mPct}%)</span>` : '';
+    const fText  = parseFloat(fBarW) > 10 ? `<span style="font-size:10px;color:#fff;font-weight:600;white-space:nowrap;overflow:hidden;">${r.f} (${fPct}%)</span>` : '';
+    const mText  = parseFloat(mBarW) > 10 ? `<span style="font-size:10px;color:#fff;font-weight:600;white-space:nowrap;overflow:hidden;">${r.m} (${mPct}%)</span>` : '';
     const nbLeft = (parseFloat(fBarW) + parseFloat(mBarW)).toFixed(1);
     const nbSeg  = r.nb > 0 ? `<div style="position:absolute;left:${nbLeft}%;top:0;height:100%;width:${nbBarW}%;background:#8b5cf6;display:flex;align-items:center;justify-content:center;overflow:hidden;"></div>` : '';
-    return `<div style="display:grid;grid-template-columns:34px 1fr 30px;align-items:center;gap:6px;margin-bottom:4px;">
-      <span style="font-size:10px;font-weight:700;color:${gc};text-align:right;">${r.label}</span>
-      <div style="position:relative;height:20px;background:#f1f5f9;border-radius:4px;overflow:hidden;width:${barW}%;">
+    return `<div style="display:grid;grid-template-columns:40px 1fr 36px;align-items:center;gap:8px;margin-bottom:5px;">
+      <span style="font-size:11px;font-weight:700;color:${gc};text-align:right;">${r.label}</span>
+      <div style="position:relative;height:22px;background:#f1f5f9;border-radius:5px;overflow:hidden;width:${barW}%;">
         <div style="position:absolute;left:0;top:0;height:100%;width:${fBarW}%;background:#3b82f6;display:flex;align-items:center;justify-content:center;overflow:hidden;">${fText}</div>
         <div style="position:absolute;left:${fBarW}%;top:0;height:100%;width:${mBarW}%;background:#14b8a6;display:flex;align-items:center;justify-content:center;overflow:hidden;">${mText}</div>
         ${nbSeg}
       </div>
-      <span style="font-size:9.5px;font-weight:700;color:var(--text-secondary);">${r.total}</span>
+      <span style="font-size:11px;font-weight:700;color:var(--text-secondary);">${r.total}</span>
     </div>`;
   }).join('') +
   `<div style="margin-top:10px;display:flex;gap:14px;font-size:10px;color:var(--text-muted);">
