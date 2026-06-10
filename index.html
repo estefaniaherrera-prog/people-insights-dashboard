@@ -516,7 +516,9 @@
     <div class="page-tabs">
       <div class="page-tab active" onclick="switchTab('tab-hc')">Headcount</div>
       <div class="page-tab" onclick="switchTab('tab-attrition')">Attrition</div>
-      <div class="page-tab" onclick="switchTab('tab-analysis')">Another Analysis</div>
+      <div class="page-tab" onclick="switchTab('tab-analysis')">Workforce Demographics</div>
+      <div class="page-tab" onclick="switchTab('tab-onboarding')">Onboarding</div>
+      <div class="page-tab" onclick="switchTab('tab-vacations')">Vacations</div>
     </div><!-- /page-tabs -->
 
     <div id="tab-hc" class="tab-page active">
@@ -538,10 +540,10 @@
 
     <!-- HC TOTAL BANNER -->
     <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:14px;">
-      <span style="font-size:38px;font-weight:900;color:var(--text-primary);letter-spacing:-1px;" id="hc-banner-num">1,069</span>
+      <span style="font-size:38px;font-weight:900;color:var(--text-primary);letter-spacing:-1px;" id="hc-banner-num">1,092</span>
       <span style="font-size:14px;font-weight:700;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.4px;">HC Total</span>
-      <span style="font-size:13px;font-weight:600;color:var(--green);background:var(--green-light);padding:2px 10px;border-radius:99px;" id="hc-banner-delta">+30 vs Apr · +2.9%</span>
-      <span style="font-size:12px;color:var(--text-muted);margin-left:4px;" id="hc-banner-period">May 2026</span>
+      <span style="font-size:13px;font-weight:600;color:var(--green);background:var(--green-light);padding:2px 10px;border-radius:99px;" id="hc-banner-delta">+23 vs May · +2.2%</span>
+      <span style="font-size:12px;color:var(--text-muted);margin-left:4px;" id="hc-banner-period">Jun 8, 2026</span>
     </div>
 
     <div class="filter-bar">
@@ -588,6 +590,7 @@
     <div class="chart-card" style="margin-bottom:18px;">
       <div class="chart-card-header">
         <div><h3>HC Trend <span style="font-size:11px;font-weight:400;color:var(--text-muted);">(Active headcount by month: includes FT, PT &amp; Interns)</span></h3><p id="hc-subtitle"></p></div>
+        <div id="hc-filter-badge" style="display:none;background:#eff6ff;color:#2563eb;font-size:11px;font-weight:700;padding:3px 10px;border-radius:99px;border:1px solid #bfdbfe;"></div>
       </div>
       <div class="col-chart" id="chart-hc"></div>
       <div id="hc-mom-strip" style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;"></div>
@@ -604,7 +607,8 @@
             <option value="0">May 25</option><option value="1">Jun 25</option><option value="2">Jul 25</option><option value="3">Aug 25</option>
             <option value="4">Sep 25</option><option value="5">Oct 25</option><option value="6">Nov 25</option><option value="7">Dec 25</option>
             <option value="8">Jan 26</option><option value="9">Feb 26</option><option value="10">Mar 26</option><option value="11">Apr 26</option>
-            <option value="12" selected>May 26</option>
+            <option value="12">May 26</option>
+            <option value="13" selected>Jun 8</option>
           </select>
         </div>
         <div id="hc-country-bars"></div>
@@ -638,7 +642,8 @@
             <option value="5/11/26">May 11</option>
             <option value="5/18/26">May 18</option>
             <option value="5/25/26">May 25</option>
-            <option value="6/1/26" selected>Jun 1</option>
+            <option value="6/1/26">Jun 1</option>
+            <option value="6/8/26" selected>Jun 8</option>
           </select>
         </div>
         <div id="movements-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;"></div>
@@ -667,10 +672,11 @@
 
 
     <!-- BREAKDOWN TABLES — stacked -->
-    <div style="display:flex;flex-direction:column;gap:18px;margin-bottom:18px;">
+    <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:18px;">
+    <hr style="border:none;border-top:1px solid var(--border);margin:0;">
 
-      <!-- BY COUNTRY: 2 tables side by side -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:0;">
+      <!-- BY COUNTRY: stacked full-width -->
+      <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:0;">
         <div class="attr-detail-card" style="margin-bottom:0;overflow-x:auto;">
           <div class="attr-detail-header" style="margin-bottom:14px;">
             <div>
@@ -689,8 +695,11 @@
         </div>
       </div>
 
-      <!-- BY DEPT: 2 tables side by side -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:0;">
+      <!-- DIVIDER -->
+      <hr style="border:none;border-top:1px solid var(--border);margin:0;">
+
+      <!-- BY DEPT: stacked full-width -->
+      <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:0;">
         <div class="attr-detail-card" style="margin-bottom:0;overflow-x:auto;">
           <div class="attr-detail-header" style="margin-bottom:14px;">
             <div>
@@ -716,7 +725,7 @@
     <div id="insights-content" style="display:none"></div>
     </div><!-- /tab-attrition -->
 
-    <!-- TAB: Another Analysis -->
+    <!-- TAB: Workforce Demographics -->
     <div id="tab-analysis" class="tab-page">
     <div class="charts-grid-2">
       <!-- GENDER -->
@@ -761,32 +770,206 @@
     </div>
     </div><!-- /tab-analysis -->
 
+    <!-- TAB: Onboarding -->
+    <div id="tab-onboarding" class="tab-page">
+
+      <!-- KPIs -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;">
+        <div class="chart-card" style="padding:16px 18px;">
+          <p style="font-size:11px;font-weight:600;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.4px;margin-bottom:4px;">Total tracked</p>
+          <p style="font-size:32px;font-weight:900;color:var(--text-primary);letter-spacing:-1px;line-height:1;">35</p>
+          <p style="font-size:11px;color:var(--text-muted);margin-top:3px;">New hires since program launch</p>
+        </div>
+        <div class="chart-card" style="padding:16px 18px;">
+          <p style="font-size:11px;font-weight:600;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.4px;margin-bottom:4px;">Avg. completion</p>
+          <p style="font-size:32px;font-weight:900;color:var(--text-primary);letter-spacing:-1px;line-height:1;">73%</p>
+          <p style="font-size:11px;color:var(--text-muted);margin-top:3px;">Across all tracked employees</p>
+        </div>
+        <div class="chart-card" style="padding:16px 18px;">
+          <p style="font-size:11px;font-weight:600;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.4px;margin-bottom:4px;">At risk (&lt;50%)</p>
+          <p style="font-size:32px;font-weight:900;color:#be123c;letter-spacing:-1px;line-height:1;">8</p>
+          <p style="font-size:11px;color:var(--text-muted);margin-top:3px;">Need follow-up</p>
+        </div>
+        <div class="chart-card" style="padding:16px 18px;">
+          <p style="font-size:11px;font-weight:600;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.4px;margin-bottom:4px;">100% complete</p>
+          <p style="font-size:32px;font-weight:900;color:#166534;letter-spacing:-1px;line-height:1;">13</p>
+          <p style="font-size:11px;color:var(--text-muted);margin-top:3px;">Fully onboarded</p>
+        </div>
+      </div>
+
+      <!-- Charts row: distribution + top tasks -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px;">
+
+        <!-- Completion distribution -->
+        <div class="chart-card">
+          <div class="chart-card-header" style="margin-bottom:14px;">
+            <div><h3>Completion distribution</h3></div>
+          </div>
+          <div id="ob-dist-bars" style="display:flex;flex-direction:column;gap:12px;"></div>
+        </div>
+
+        <!-- Top skipped tasks -->
+        <div class="chart-card">
+          <div class="chart-card-header" style="margin-bottom:14px;">
+            <div><h3>Most skipped tasks</h3><p style="font-size:11px;color:var(--text-muted);">By number of people with task pending</p></div>
+          </div>
+          <div id="ob-top-skipped" style="display:flex;flex-direction:column;gap:9px;"></div>
+        </div>
+      </div>
+
+      <!-- Individual tracker -->
+      <div class="chart-card">
+        <div class="chart-card-header" style="margin-bottom:14px;">
+          <div><h3>Individual tracker</h3><p style="font-size:11px;color:var(--text-muted);">Jun 8, 2026 cohort · Click a row to see pending tasks</p></div>
+          <div style="display:flex;gap:8px;">
+            <select id="ob-filter-status" onchange="renderOnboarding()" style="font-size:11px;padding:4px 10px;border:1px solid var(--border);border-radius:6px;background:var(--surface);color:var(--text-primary);height:28px;">
+              <option value="">All statuses</option>
+              <option value="complete">Complete (100%)</option>
+              <option value="progress">In progress (50–99%)</option>
+              <option value="risk">At risk (&lt;50%)</option>
+            </select>
+            <select id="ob-filter-dept" onchange="renderOnboarding()" style="font-size:11px;padding:4px 10px;border:1px solid var(--border);border-radius:6px;background:var(--surface);color:var(--text-primary);height:28px;">
+              <option value="">All departments</option>
+            </select>
+            <select id="ob-filter-country" onchange="renderOnboarding()" style="font-size:11px;padding:4px 10px;border:1px solid var(--border);border-radius:6px;background:var(--surface);color:var(--text-primary);height:28px;">
+              <option value="">All countries</option>
+            </select>
+          </div>
+        </div>
+        <div style="overflow-x:auto;">
+          <table style="width:100%;border-collapse:collapse;font-size:12.5px;" id="ob-table">
+            <thead>
+              <tr>
+                <th style="font-size:11px;font-weight:600;color:var(--text-secondary);padding:6px 10px;text-align:left;border-bottom:2px solid var(--border);white-space:nowrap;">Name</th>
+                <th style="font-size:11px;font-weight:600;color:var(--text-secondary);padding:6px 10px;text-align:left;border-bottom:2px solid var(--border);white-space:nowrap;">Department</th>
+                <th style="font-size:11px;font-weight:600;color:var(--text-secondary);padding:6px 10px;text-align:center;border-bottom:2px solid var(--border);white-space:nowrap;">Country</th>
+                <th style="font-size:11px;font-weight:600;color:var(--text-secondary);padding:6px 10px;text-align:center;border-bottom:2px solid var(--border);white-space:nowrap;">Start date</th>
+                <th style="font-size:11px;font-weight:600;color:var(--text-secondary);padding:6px 10px;text-align:center;border-bottom:2px solid var(--border);white-space:nowrap;">Done</th>
+                <th style="font-size:11px;font-weight:600;color:var(--text-secondary);padding:6px 10px;text-align:center;border-bottom:2px solid var(--border);white-space:nowrap;">Pending</th>
+                <th style="font-size:11px;font-weight:600;color:var(--text-secondary);padding:6px 10px;border-bottom:2px solid var(--border);min-width:180px;">Progress</th>
+                <th style="font-size:11px;font-weight:600;color:var(--text-secondary);padding:6px 10px;text-align:center;border-bottom:2px solid var(--border);">Status</th>
+              </tr>
+            </thead>
+            <tbody id="ob-tbody"></tbody>
+          </table>
+        </div>
+        <div id="ob-pending-detail" style="margin-top:14px;"></div>
+      </div>
+
+    </div><!-- /tab-onboarding -->
+
+    <!-- TAB: Vacations -->
+    <div id="tab-vacations" class="tab-page">
+
+      <!-- KPIs -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;">
+        <div class="chart-card" style="padding:16px 18px;">
+          <p style="font-size:11px;font-weight:600;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.4px;margin-bottom:4px;">Employees tracked</p>
+          <p id="vac-kpi-total" style="font-size:32px;font-weight:900;color:var(--text-primary);letter-spacing:-1px;line-height:1;">1,080</p>
+          <p style="font-size:11px;color:var(--text-muted);margin-top:3px;">Active employees with vacation balance</p>
+        </div>
+        <div class="chart-card" style="padding:16px 18px;">
+          <p style="font-size:11px;font-weight:600;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.4px;margin-bottom:4px;">Avg balance</p>
+          <p id="vac-kpi-avg" style="font-size:32px;font-weight:900;color:var(--text-primary);letter-spacing:-1px;line-height:1;">15.7 <span style="font-size:16px;font-weight:500;color:var(--text-muted);">days</span></p>
+          <p style="font-size:11px;color:var(--text-muted);margin-top:3px;">Unused vacation per person</p>
+        </div>
+        <div class="chart-card" style="padding:16px 18px;">
+          <p style="font-size:11px;font-weight:600;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.4px;margin-bottom:4px;">Avg days taken</p>
+          <p id="vac-kpi-taken" style="font-size:32px;font-weight:900;color:var(--text-primary);letter-spacing:-1px;line-height:1;">28.0 <span style="font-size:16px;font-weight:500;color:var(--text-muted);">days</span></p>
+          <p style="font-size:11px;color:var(--text-muted);margin-top:3px;">Used since policy start</p>
+        </div>
+        <div class="chart-card" style="padding:16px 18px;border-left:3px solid #be123c;">
+          <p style="font-size:11px;font-weight:600;color:#be123c;text-transform:uppercase;letter-spacing:0.4px;margin-bottom:4px;">High balance (≥20 days)</p>
+          <p id="vac-kpi-high" style="font-size:32px;font-weight:900;color:#be123c;letter-spacing:-1px;line-height:1;">348</p>
+          <p style="font-size:11px;color:var(--text-muted);margin-top:3px;">Employees accumulating — need attention</p>
+        </div>
+      </div>
+
+      <!-- Charts row -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px;">
+
+        <!-- Distribution -->
+        <div class="chart-card">
+          <div class="chart-card-header" style="margin-bottom:14px;">
+            <div><h3>Balance distribution</h3><p style="font-size:11px;color:var(--text-muted);">How many unused days per employee</p></div>
+          </div>
+          <div id="vac-dist" style="display:flex;flex-direction:column;gap:10px;"></div>
+        </div>
+
+        <!-- Dept avg -->
+        <div class="chart-card">
+          <div class="chart-card-header" style="margin-bottom:14px;">
+            <div><h3>Avg balance by department</h3><p style="font-size:11px;color:var(--text-muted);">Which teams are accumulating the most</p></div>
+          </div>
+          <div id="vac-dept" style="display:flex;flex-direction:column;gap:8px;"></div>
+        </div>
+      </div>
+
+      <!-- Individual tracker -->
+      <div class="chart-card">
+        <div class="chart-card-header" style="margin-bottom:14px;">
+          <div><h3>Individual tracker</h3><p style="font-size:11px;color:var(--text-muted);">Sorted by balance · click column headers to sort · showing top 50</p></div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <select id="vac-filter-dept" onchange="renderVacations()" style="font-size:11px;padding:4px 10px;border:1px solid var(--border);border-radius:6px;background:var(--surface);color:var(--text-primary);height:28px;">
+              <option value="">All departments</option>
+            </select>
+            <select id="vac-filter-country" onchange="renderVacations()" style="font-size:11px;padding:4px 10px;border:1px solid var(--border);border-radius:6px;background:var(--surface);color:var(--text-primary);height:28px;">
+              <option value="">All countries</option>
+            </select>
+            <select id="vac-filter-status" onchange="renderVacations()" style="font-size:11px;padding:4px 10px;border:1px solid var(--border);border-radius:6px;background:var(--surface);color:var(--text-primary);height:28px;">
+              <option value="">All statuses</option>
+              <option value="critical">Critical (≥30d)</option>
+              <option value="high">High (20–29d)</option>
+              <option value="healthy">Healthy (&lt;20d)</option>
+            </select>
+          </div>
+        </div>
+        <div style="overflow-x:auto;">
+          <table style="width:100%;border-collapse:collapse;font-size:12px;">
+            <thead>
+              <tr>
+                <th style="font-size:11px;font-weight:600;color:var(--text-secondary);padding:6px 10px;text-align:left;border-bottom:2px solid var(--border);">Employee</th>
+                <th style="font-size:11px;font-weight:600;color:var(--text-secondary);padding:6px 10px;text-align:left;border-bottom:2px solid var(--border);">Department</th>
+                <th style="font-size:11px;font-weight:600;color:var(--text-secondary);padding:6px 10px;text-align:left;border-bottom:2px solid var(--border);">Country</th>
+                <th style="font-size:11px;font-weight:600;color:var(--text-secondary);padding:6px 10px;text-align:center;border-bottom:2px solid var(--border);">Days taken</th>
+                <th style="font-size:11px;font-weight:600;color:var(--text-secondary);padding:6px 10px;border-bottom:2px solid var(--border);min-width:160px;">Balance</th>
+                <th style="font-size:11px;font-weight:600;color:var(--text-secondary);padding:6px 10px;text-align:center;border-bottom:2px solid var(--border);">Status</th>
+              </tr>
+            </thead>
+            <tbody id="vac-tbody"></tbody>
+          </table>
+        </div>
+        <div id="vac-row-count" style="font-size:11px;color:var(--text-muted);margin-top:10px;text-align:right;"></div>
+      </div>
+
+    </div><!-- /tab-vacations -->
+
 
   </div>
 </main>
 
 <script>
-// ─── GENDER BY LEVEL (May 2026, from HC Final de mes) ─────────────────────────
+// ─── GENDER BY LEVEL (Jun 8, 2026, from HC snapshot) ─────────────────────────
 const GENDER_BY_LEVEL_MAY26 = [
-  { label:"1a",    total:89,  f:38, m:50, nb:0, ns:1 },
-  { label:"1b",    total:112, f:52, m:59, nb:0, ns:1 },
-  { label:"1c",    total:106, f:53, m:53, nb:0, ns:0 },
-  { label:"2a",    total:87,  f:44, m:43, nb:0, ns:0 },
-  { label:"2b",    total:97,  f:54, m:43, nb:0, ns:0 },
+  { label:"1a",    total:89,  f:39, m:49, nb:0, ns:1 },
+  { label:"1b",    total:115, f:53, m:62, nb:0, ns:0 },
+  { label:"1c",    total:106, f:54, m:52, nb:0, ns:0 },
+  { label:"2a",    total:92,  f:45, m:47, nb:0, ns:0 },
+  { label:"2b",    total:102, f:57, m:45, nb:0, ns:0 },
   { label:"2c",    total:84,  f:41, m:43, nb:0, ns:0 },
-  { label:"3a",    total:89,  f:43, m:46, nb:0, ns:0 },
-  { label:"3b",    total:93,  f:48, m:45, nb:0, ns:0 },
-  { label:"3c",    total:55,  f:26, m:29, nb:0, ns:0 },
-  { label:"4a",    total:59,  f:26, m:33, nb:0, ns:0 },
-  { label:"4b",    total:52,  f:15, m:37, nb:0, ns:0 },
+  { label:"3a",    total:93,  f:47, m:46, nb:0, ns:0 },
+  { label:"3b",    total:94,  f:48, m:46, nb:0, ns:0 },
+  { label:"3c",    total:54,  f:26, m:28, nb:0, ns:0 },
+  { label:"4a",    total:60,  f:26, m:34, nb:0, ns:0 },
+  { label:"4b",    total:54,  f:15, m:39, nb:0, ns:0 },
   { label:"4c",    total:36,  f:8,  m:28, nb:0, ns:0 },
   { label:"5a",    total:31,  f:11, m:20, nb:0, ns:0 },
-  { label:"5b",    total:17,  f:6,  m:11, nb:0, ns:0 },
+  { label:"5b",    total:18,  f:6,  m:12, nb:0, ns:0 },
   { label:"5c",    total:17,  f:4,  m:13, nb:0, ns:0 },
   { label:"6a",    total:13,  f:3,  m:10, nb:0, ns:0 },
   { label:"6b",    total:3,   f:0,  m:3,  nb:0, ns:0 },
   { label:"E",     total:20,  f:3,  m:16, nb:1, ns:0 },
-  { label:"Intern",total:9,   f:5,  m:3,  nb:0, ns:1 },
+  { label:"Intern",total:10,  f:5,  m:4,  nb:0, ns:1 },
 ];
 
 // ─── DATA ─────────────────────────────────────────────────────────────────────
@@ -812,97 +995,97 @@ const DATA = {
   },
   hcByPais: { "Mexico":328,"Brazil":158,"Colombia":156,"United States":89,"Peru":82,"South Africa":62 },
   gender: {
-    default: { f:473, m:583, nb:1, ns:7, total:1064 },
+    default: { f:491, m:598, nb:1, ns:2, total:1092 },
     // By Department (parent)
-    "Corporate Admin":     { f:1,   m:0,   nb:1, total:2   },
-    "Counsel":             { f:11,  m:9,   nb:0, total:20  },
-    "Finance":             { f:42,  m:35,  nb:0, total:77  },
-    "Financial Products":  { f:21,  m:29,  nb:0, total:50  },
-    "Go To Market":        { f:233, m:272, nb:0, ns:4, total:509 },
-    "Operations":          { f:99,  m:99,  nb:0, total:198 },
-    "People":              { f:33,  m:7,   nb:0, total:40  },
-    "Product Development": { f:29,  m:120, nb:0, total:149 },
+    "Corporate Admin":     { f:2,   m:0,   nb:1, ns:0, total:3   },
+    "Counsel":             { f:16,  m:10,  nb:0, ns:0, total:26  },
+    "Finance":             { f:42,  m:36,  nb:0, ns:0, total:78  },
+    "Financial Products":  { f:22,  m:31,  nb:0, ns:0, total:53  },
+    "Go To Market":        { f:246, m:283, nb:0, ns:2, total:531 },
+    "Operations":          { f:98,  m:102, nb:0, ns:0, total:200 },
+    "People":              { f:34,  m:7,   nb:0, ns:0, total:41  },
+    "Product Development": { f:31,  m:129, nb:0, ns:0, total:160 },
     // By Level
     // Level gender — grouped fallbacks (individual levels use default)
-    "Intern": { f:4, m:2, nb:0, total:6 },
+    "Intern": { f:5, m:4, nb:0, ns:1, total:10 },
     // By Country
-    "Brazil":         { f:81,  m:76,  nb:0, ns:1, total:158 },
-    "China":          { f:2,   m:5,   nb:0, total:7   },
-    "Colombia":       { f:76,  m:79,  nb:0, ns:1, total:156 },
-    "Ecuador":        { f:27,  m:34,  nb:0, total:61  },
-    "India":          { f:1,   m:4,   nb:0, total:5   },
-    "Indonesia":      { f:3,   m:9,   nb:0, total:12  },
-    "Mexico":         { f:140, m:188, nb:0, total:328 },
-    "Panama":         { f:14,  m:12,  nb:0, total:26  },
-    "Peru":           { f:35,  m:46,  nb:0, ns:1, total:82  },
-    "Philippines":    { f:26,  m:32,  nb:0, ns:1, total:59  },
-    "South Africa":   { f:39,  m:23,  nb:0, total:62  },
-    "United States":  { f:25,  m:63,  nb:1, total:89  },
+    "Brazil":         { f:84,  m:75,  nb:0, ns:1, total:160 },
+    "China":          { f:2,   m:5,   nb:0, ns:0, total:7   },
+    "Colombia":       { f:81,  m:82,  nb:0, ns:0, total:163 },
+    "Ecuador":        { f:27,  m:31,  nb:0, ns:0, total:58  },
+    "India":          { f:2,   m:4,   nb:0, ns:0, total:6   },
+    "Indonesia":      { f:4,   m:13,  nb:0, ns:0, total:17  },
+    "Mexico":         { f:145, m:200, nb:0, ns:0, total:345 },
+    "Panama":         { f:16,  m:13,  nb:0, ns:0, total:29  },
+    "Peru":           { f:36,  m:48,  nb:0, ns:0, total:84  },
+    "Philippines":    { f:29,  m:35,  nb:0, ns:1, total:65  },
+    "South Africa":   { f:39,  m:25,  nb:0, ns:0, total:64  },
+    "United States":  { f:26,  m:67,  nb:1, ns:0, total:94  },
     // By Employment Type
-    "Salaried, full-time":   { f:464, m:570, nb:1, ns:4, total:1039 },
-    "Salaried, part-time":   { f:1,   m:0,   nb:0, total:1    },
+    "Salaried, full-time":   { f:485, m:596, nb:1, ns:2, total:1084 },
+    "Salaried, part-time":   { f:1,   m:0,   nb:0, ns:0, total:1   },
   },
   tenure: {
     // ── Company default ──────────────────────────────────────────────────────
     default: [
-      { label:"0–6m",  val:259, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
-      { label:"6m–1y", val:170, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
-      { label:"1–2y",  val:214, color:"linear-gradient(180deg,#818cf8,#6366f1)", risk:"medium" },
-      { label:"2–5y",  val:366, color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
-      { label:"5y+",   val:60,  color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
+      { label:"0–6m",  val:251, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
+      { label:"6m–1y", val:166, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
+      { label:"1–2y",  val:236, color:"linear-gradient(180deg,#818cf8,#6366f1)", risk:"medium" },
+      { label:"2–5y",  val:371, color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
+      { label:"5y+",   val:68,  color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
     ],
     // ── By Department ─────────────────────────────────────────────────────────
     "Go To Market": [
-      { label:"0–6m",  val:121, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
-      { label:"6m–1y", val:93,  color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
-      { label:"1–2y",  val:99,  color:"linear-gradient(180deg,#818cf8,#6366f1)", risk:"medium" },
-      { label:"2–5y",  val:181, color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
-      { label:"5y+",   val:15,  color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
+      { label:"0–6m",  val:139, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
+      { label:"6m–1y", val:85,  color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
+      { label:"1–2y",  val:109, color:"linear-gradient(180deg,#818cf8,#6366f1)", risk:"medium" },
+      { label:"2–5y",  val:182, color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
+      { label:"5y+",   val:16,  color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
     ],
     "Operations": [
-      { label:"0–6m",  val:27, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
-      { label:"6m–1y", val:28, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
-      { label:"1–2y",  val:43, color:"linear-gradient(180deg,#818cf8,#6366f1)", risk:"medium" },
+      { label:"0–6m",  val:28, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
+      { label:"6m–1y", val:23, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
+      { label:"1–2y",  val:49, color:"linear-gradient(180deg,#818cf8,#6366f1)", risk:"medium" },
       { label:"2–5y",  val:83, color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
       { label:"5y+",   val:17, color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
     ],
     "Product Development": [
-      { label:"0–6m",  val:23, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
-      { label:"6m–1y", val:16, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
-      { label:"1–2y",  val:31, color:"linear-gradient(180deg,#818cf8,#6366f1)", risk:"medium" },
-      { label:"2–5y",  val:56, color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
-      { label:"5y+",   val:23, color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
+      { label:"0–6m",  val:28, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
+      { label:"6m–1y", val:22, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
+      { label:"1–2y",  val:29, color:"linear-gradient(180deg,#818cf8,#6366f1)", risk:"medium" },
+      { label:"2–5y",  val:57, color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
+      { label:"5y+",   val:24, color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
     ],
     "Finance": [
-      { label:"0–6m",  val:16, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
-      { label:"6m–1y", val:10, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
-      { label:"1–2y",  val:26, color:"linear-gradient(180deg,#818cf8,#6366f1)", risk:"medium" },
+      { label:"0–6m",  val:15, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
+      { label:"6m–1y", val:9,  color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
+      { label:"1–2y",  val:28, color:"linear-gradient(180deg,#818cf8,#6366f1)", risk:"medium" },
       { label:"2–5y",  val:24, color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
-      { label:"5y+",   val:1,  color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
+      { label:"5y+",   val:2,  color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
     ],
     "Financial Products": [
-      { label:"0–6m",  val:14, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
-      { label:"6m–1y", val:9,  color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
-      { label:"1–2y",  val:11, color:"linear-gradient(180deg,#818cf8,#6366f1)", risk:"medium" },
-      { label:"2–5y",  val:10, color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
-      { label:"5y+",   val:6,  color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
+      { label:"0–6m",  val:12, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
+      { label:"6m–1y", val:11, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
+      { label:"1–2y",  val:14, color:"linear-gradient(180deg,#818cf8,#6366f1)", risk:"medium" },
+      { label:"2–5y",  val:9,  color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
+      { label:"5y+",   val:7,  color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
     ],
     "People": [
-      { label:"0–6m",  val:17, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
-      { label:"6m–1y", val:8,  color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
-      { label:"1–2y",  val:4,  color:"linear-gradient(180deg,#818cf8,#6366f1)", risk:"medium" },
-      { label:"2–5y",  val:10, color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
+      { label:"0–6m",  val:16, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
+      { label:"6m–1y", val:10, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
+      { label:"1–2y",  val:3,  color:"linear-gradient(180deg,#818cf8,#6366f1)", risk:"medium" },
+      { label:"2–5y",  val:11, color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
       { label:"5y+",   val:1,  color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
     ],
     "Counsel": [
-      { label:"0–6m",  val:8, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
-      { label:"6m–1y", val:4, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
-      { label:"1–2y",  val:4, color:"linear-gradient(180deg,#818cf8,#6366f1)", risk:"medium" },
-      { label:"2–5y",  val:4, color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
-      { label:"5y+",   val:0, color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
+      { label:"0–6m",  val:12, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
+      { label:"6m–1y", val:6,  color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
+      { label:"1–2y",  val:4,  color:"linear-gradient(180deg,#818cf8,#6366f1)", risk:"medium" },
+      { label:"2–5y",  val:4,  color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
+      { label:"5y+",   val:0,  color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
     ],
     "Corporate Admin": [
-      { label:"0–6m",  val:0, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
+      { label:"0–6m",  val:1, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
       { label:"6m–1y", val:0, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
       { label:"1–2y",  val:0, color:"linear-gradient(180deg,#818cf8,#6366f1)", risk:"medium" },
       { label:"2–5y",  val:1, color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
@@ -911,74 +1094,74 @@ const DATA = {
     // ── By Level ──────────────────────────────────────────────────────────────
     // ── By Country ────────────────────────────────────────────────────────────
     "Mexico": [
-      { label:"0–6m",  val:74,  color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
-      { label:"6m–1y", val:57,  color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
-      { label:"1–2y",  val:60,  color:"linear-gradient(180deg,#818cf8,#6366f1)", risk:"medium" },
+      { label:"0–6m",  val:84,  color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
+      { label:"6m–1y", val:60,  color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
+      { label:"1–2y",  val:62,  color:"linear-gradient(180deg,#818cf8,#6366f1)", risk:"medium" },
       { label:"2–5y",  val:113, color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
-      { label:"5y+",   val:24,  color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
+      { label:"5y+",   val:26,  color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
     ],
     "Brazil": [
-      { label:"0–6m",  val:45, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
-      { label:"6m–1y", val:27, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
-      { label:"1–2y",  val:50, color:"linear-gradient(180deg,#818cf8,#6366f1)", risk:"medium" },
+      { label:"0–6m",  val:46, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
+      { label:"6m–1y", val:23, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
+      { label:"1–2y",  val:55, color:"linear-gradient(180deg,#818cf8,#6366f1)", risk:"medium" },
       { label:"2–5y",  val:34, color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
       { label:"5y+",   val:2,  color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
     ],
     "Colombia": [
-      { label:"0–6m",  val:24, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
-      { label:"6m–1y", val:27, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
-      { label:"1–2y",  val:39, color:"linear-gradient(180deg,#818cf8,#6366f1)", risk:"medium" },
-      { label:"2–5y",  val:60, color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
+      { label:"0–6m",  val:26, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
+      { label:"6m–1y", val:26, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
+      { label:"1–2y",  val:41, color:"linear-gradient(180deg,#818cf8,#6366f1)", risk:"medium" },
+      { label:"2–5y",  val:64, color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
       { label:"5y+",   val:6,  color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
     ],
     "United States": [
-      { label:"0–6m",  val:14, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
-      { label:"6m–1y", val:2,  color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
+      { label:"0–6m",  val:15, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
+      { label:"6m–1y", val:7,  color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
       { label:"1–2y",  val:13, color:"linear-gradient(180deg,#818cf8,#6366f1)", risk:"medium" },
-      { label:"2–5y",  val:36, color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
+      { label:"2–5y",  val:35, color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
       { label:"5y+",   val:24, color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
     ],
     "Peru": [
-      { label:"0–6m",  val:17, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
-      { label:"6m–1y", val:12, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
-      { label:"1–2y",  val:10, color:"linear-gradient(180deg,#818cf8,#6366f1)", risk:"medium" },
+      { label:"0–6m",  val:18, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
+      { label:"6m–1y", val:11, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
+      { label:"1–2y",  val:12, color:"linear-gradient(180deg,#818cf8,#6366f1)", risk:"medium" },
       { label:"2–5y",  val:42, color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
       { label:"5y+",   val:1,  color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
     ],
     "South Africa": [
       { label:"0–6m",  val:6,  color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
-      { label:"6m–1y", val:11, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
-      { label:"1–2y",  val:18, color:"linear-gradient(180deg,#818cf8,#6366f1)", risk:"medium" },
-      { label:"2–5y",  val:26, color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
-      { label:"5y+",   val:1,  color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
+      { label:"6m–1y", val:8,  color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
+      { label:"1–2y",  val:23, color:"linear-gradient(180deg,#818cf8,#6366f1)", risk:"medium" },
+      { label:"2–5y",  val:24, color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
+      { label:"5y+",   val:3,  color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
     ],
     "Ecuador": [
-      { label:"0–6m",  val:9,  color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
-      { label:"6m–1y", val:5,  color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
-      { label:"1–2y",  val:11, color:"linear-gradient(180deg,#818cf8,#6366f1)", risk:"medium" },
-      { label:"2–5y",  val:34, color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
+      { label:"0–6m",  val:8,  color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
+      { label:"6m–1y", val:6,  color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
+      { label:"1–2y",  val:7,  color:"linear-gradient(180deg,#818cf8,#6366f1)", risk:"medium" },
+      { label:"2–5y",  val:35, color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
       { label:"5y+",   val:2,  color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
     ],
     "Philippines": [
-      { label:"0–6m",  val:23, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
-      { label:"6m–1y", val:22, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
-      { label:"1–2y",  val:12, color:"linear-gradient(180deg,#818cf8,#6366f1)", risk:"medium" },
+      { label:"0–6m",  val:26, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
+      { label:"6m–1y", val:19, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
+      { label:"1–2y",  val:18, color:"linear-gradient(180deg,#818cf8,#6366f1)", risk:"medium" },
       { label:"2–5y",  val:2,  color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
       { label:"5y+",   val:0,  color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
     ],
     "Panama": [
-      { label:"0–6m",  val:3, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
-      { label:"6m–1y", val:0, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
-      { label:"1–2y",  val:3, color:"linear-gradient(180deg,#818cf8,#6366f1)", risk:"medium" },
+      { label:"0–6m",  val:6,  color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
+      { label:"6m–1y", val:0,  color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
+      { label:"1–2y",  val:3,  color:"linear-gradient(180deg,#818cf8,#6366f1)", risk:"medium" },
       { label:"2–5y",  val:20, color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
-      { label:"5y+",   val:0, color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
+      { label:"5y+",   val:0,  color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
     ],
     "Indonesia": [
-      { label:"0–6m",  val:8, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
-      { label:"6m–1y", val:3, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
-      { label:"1–2y",  val:0, color:"linear-gradient(180deg,#818cf8,#6366f1)", risk:"medium" },
-      { label:"2–5y",  val:1, color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
-      { label:"5y+",   val:0, color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
+      { label:"0–6m",  val:12, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
+      { label:"6m–1y", val:4,  color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
+      { label:"1–2y",  val:0,  color:"linear-gradient(180deg,#818cf8,#6366f1)", risk:"medium" },
+      { label:"2–5y",  val:1,  color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
+      { label:"5y+",   val:0,  color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
     ],
     "China": [
       { label:"0–6m",  val:1, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
@@ -988,7 +1171,7 @@ const DATA = {
       { label:"5y+",   val:2, color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
     ],
     "India": [
-      { label:"0–6m",  val:2, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
+      { label:"0–6m",  val:3, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
       { label:"6m–1y", val:0, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
       { label:"1–2y",  val:1, color:"linear-gradient(180deg,#818cf8,#6366f1)", risk:"medium" },
       { label:"2–5y",  val:0, color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
@@ -1232,20 +1415,21 @@ const LEVEL_TO_GROUP = {
 };
 
 const HC_BY_COUNTRY = {
-  // May 25–Apr 26: from HC Final de mes files (all emp types)
+  // May 25–May 26: from HC Final de mes files (all emp types)
   // May 26 (index 12): from HC snapshot May 18, 2026
-  "Mexico":         [246,247,245,255,266,284,289,289,302,308,323,331,341],
-  "Brazil":         [108,120,120,121,122,125,124,129,132,136,149,156,156],
-  "Colombia":       [122,133,133,135,141,142,140,143,141,142,148,154,159],
-  "United States":  [77,78,77,79,78,77,84,83,83,84,85,87,92],
-  "Peru":           [63,69,72,73,73,72,73,75,73,75,78,80,84],
-  "South Africa":   [48,55,55,58,60,61,62,62,63,62,61,62,64],
-  "Ecuador":        [56,57,60,61,59,59,60,59,59,58,60,60,57],
-  "Philippines":    [19,31,34,36,40,42,45,44,47,50,51,60,62],
-  "Panama":         [34,33,32,32,31,31,31,28,27,27,28,27,27],
-  "Indonesia":      [0,0,1,1,1,3,4,4,8,8,8,10,14],
-  "China":          [4,5,5,6,6,6,6,6,6,6,7,7,7],
-  "India":          [3,3,3,3,3,3,3,3,3,4,5,5,6],
+  // Jun 8  (index 13): from HC active employees June 8, 2026
+  "Mexico":         [246,247,245,255,266,284,289,289,302,308,323,331,341,345],
+  "Brazil":         [108,120,120,121,122,125,124,129,132,136,149,156,156,160],
+  "Colombia":       [122,133,133,135,141,142,140,143,141,142,148,154,159,163],
+  "United States":  [77,78,77,79,78,77,84,83,83,84,85,87,92,94],
+  "Peru":           [63,69,72,73,73,72,73,75,73,75,78,80,84,84],
+  "South Africa":   [48,55,55,58,60,61,62,62,63,62,61,62,64,64],
+  "Ecuador":        [56,57,60,61,59,59,60,59,59,58,60,60,57,58],
+  "Philippines":    [19,31,34,36,40,42,45,44,47,50,51,60,62,65],
+  "Panama":         [34,33,32,32,31,31,31,28,27,27,28,27,27,29],
+  "Indonesia":      [0,0,1,1,1,3,4,4,8,8,8,10,14,17],
+  "China":          [4,5,5,6,6,6,6,6,6,6,7,7,7,7],
+  "India":          [3,3,3,3,3,3,3,3,3,4,5,5,6,6],
 };
 
 // ─── WEEKLY HC BY COUNTRY ────────────────────────────────────────────────────
@@ -1817,9 +2001,44 @@ const WEEKLY_MOV = {
       { name:"Ferdinand Marpaung",     country:"Indonesia",  title:"Merchant Operations Supervisor",          dept:"Go To Market" },
     ]
   },
+  "6/8/26": {
+    bajas: [
+      { country:"Ecuador",       title:"Merchant Operations Analyst",   dept:"Go To Market", termType:"Involuntary", reason:"Performance Issues", regrettable:"Non-Regrettable" },
+      { country:"Brazil",        title:"Sales Representative",          dept:"Go To Market", termType:"Involuntary", reason:"Did Not Pass Probation", regrettable:"Non-Regrettable" },
+      { country:"Colombia",      title:"Validation Support Representative", dept:"Operations", termType:"Voluntary", reason:"Resignation", regrettable:"Non-Regrettable" },
+      { country:"Brazil",        title:"Sales Representative",          dept:"Go To Market", termType:"Voluntary",   reason:"Resignation", regrettable:"Non-Regrettable" },
+      { country:"United States", title:"VP, Finance Systems",           dept:"Finance",      termType:"Involuntary", reason:"Dismissal",    regrettable:"Non-Regrettable" },
+    ],
+    ingresos: [
+      { name:"Margarita Corona",    country:"Mexico",        title:"Commercial Excellence Analyst",               dept:"Go To Market" },
+      { name:"Rendani Ramunenyiwa", country:"South Africa",  title:"Merchant Operations Representative",          dept:"Go To Market" },
+      { name:"Pietra Iecker",       country:"Brazil",        title:"Sales Enablement Supervisor",                 dept:"Go To Market" },
+      { name:"Ryan Pon",            country:"United States", title:"Staff Software Engineer - Finance Engine",    dept:"Product Development" },
+      { name:"Pedro Aufieri",       country:"Brazil",        title:"Ecommerce Operations Analyst",                dept:"Go To Market" },
+      { name:"Ricardo Castillo",    country:"Mexico",        title:"Senior Software Engineer - Android",          dept:"Product Development" },
+      { name:"Gelo Avelino",        country:"Philippines",   title:"Promoter Manager",                            dept:"Go To Market" },
+      { name:"Rox Mijangos",        country:"Mexico",        title:"Executive Assistant",                         dept:"Corporate Admin" },
+      { name:"Vivian Goncalves",    country:"Panama",        title:"HR Business Partner",                         dept:"People" },
+      { name:"Artie Lee",           country:"United States", title:"Senior Engineering Director - Consumer & Lock",dept:"Product Development" },
+      { name:"Emilia Garcés",       country:"Ecuador",       title:"Promoter Coordinator",                        dept:"Go To Market" },
+      { name:"Abdul Alarcón",       country:"Panama",        title:"Representante de Ventas",                     dept:"Go To Market" },
+      { name:"Tomaz Sant'Anna",     country:"Brazil",        title:"Estagiário Juridíco",                         dept:"Counsel" },
+      { name:"Karla Lima",          country:"Brazil",        title:"Territory Manager",                           dept:"Go To Market" },
+      { name:"Alexandra Torres",    country:"Colombia",      title:"Merchant Operations Representative",          dept:"Go To Market" },
+      { name:"Fernando Martínez",   country:"Colombia",      title:"Representante de Ventas",                     dept:"Go To Market" },
+      { name:"Gabriela Buitrago",   country:"Colombia",      title:"Financial Analyst",                           dept:"Finance" },
+      { name:"Ivan Piramide",       country:"Philippines",   title:"Digital Growth Manager",                      dept:"Go To Market" },
+      { name:"Alejandra Mancipe",   country:"Colombia",      title:"Risk Manager",                                dept:"Financial Products" },
+      { name:"Ana Luísa Quintino",  country:"Brazil",        title:"Sales Representative",                        dept:"Go To Market" },
+      { name:"Carlos Torres",       country:"Mexico",        title:"Senior Portfolio Manager",                    dept:"Financial Products" },
+      { name:"Dario Velez",         country:"Ecuador",       title:"Merchant Operations Representative",          dept:"Go To Market" },
+      { name:"Anvee Naik",           country:"United States", title:"PM Builder Intern, Sales Enablement",          dept:"Product Development" },
+      { name:"Nico Nicolas",        country:"Indonesia",     title:"Sales Trainer",                               dept:"Go To Market" },
+    ]
+  },
 };
 
-let activeWeek = "6/1/26";
+let activeWeek = "6/8/26";
 
 function setWeek(w) {
   activeWeek = w;
@@ -1834,7 +2053,7 @@ const REASON_CLASS = {
   "Personal Reasons":          "reason-voluntary",
   "Personal":                  "reason-voluntary",
   "Better Opportunity":        "reason-voluntary",
-  "No pasa Periodo de Prueba": "reason-voluntary",
+  "Did Not Pass Probation": "reason-voluntary",
   "Position Elimination":      "reason-involuntary",
   "Performance Issues":        "reason-involuntary",
   "Dismissal":                 "reason-involuntary",
@@ -1847,7 +2066,7 @@ const TERM_TYPE = {
   "Personal Reasons":          "Voluntary",
   "Personal":                  "Voluntary",
   "Better Opportunity":        "Voluntary",
-  "No pasa Periodo de Prueba": "Voluntary",
+  "Did Not Pass Probation": "Voluntary",
   "Performance":               "Involuntary",
   "End of Contract":           "Involuntary",
   "Position Elimination":      "Involuntary",
@@ -1915,6 +2134,18 @@ function renderMovements() {
     </div>`;
   }).join("");
 
+  // Regrettable alert
+  const regrettables = data.bajas.filter(b => b.regrettable === "Regrettable");
+  const regrettableAlert = regrettables.length > 0
+    ? `<div style="margin-top:10px;padding:10px 14px;background:#fff1f2;border:1px solid #fecdd3;border-radius:8px;display:flex;align-items:flex-start;gap:10px;">
+        <span style="font-size:16px;line-height:1;">⚠️</span>
+        <div>
+          <div style="font-size:11px;font-weight:700;color:#be123c;margin-bottom:3px;">${regrettables.length} Regrettable termination${regrettables.length > 1 ? 's' : ''} this week</div>
+          ${regrettables.map(r => `<div style="font-size:10.5px;color:#9f1239;">• ${r.title} · ${r.country} · ${r.dept}</div>`).join('')}
+        </div>
+      </div>`
+    : `<div style="margin-top:10px;padding:8px 14px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;font-size:11px;font-weight:600;color:#166534;">✅ No regrettable terminations this week</div>`;
+
   grid.innerHTML = `
     <div>
       <div class="mov-col-header">
@@ -1922,6 +2153,7 @@ function renderMovements() {
         <span class="mov-count bajas">${data.bajas.length}</span>
       </div>
       <div class="mov-list">${bajaItems}</div>
+      ${regrettableAlert}
     </div>
     <div>
       <div class="mov-col-header">
@@ -1983,6 +2215,7 @@ const HC_MONTHLY = [
   { label:"Mar 26",  hc:1003, q:"Q1-2026" },
   { label:"Apr 26",  hc:1039, q:"Q1-2026" },
   { label:"May 26",  hc:1069, q:"Q2-2026" },
+  { label:"Jun 26",  hc:1092, q:"Q2-2026" },
 ];
 let activeHCQ = 'all';
 
@@ -2047,6 +2280,17 @@ function renderHCTrend() {
 function _renderHCTrendWith(depto, nivel, emptype) {
   const c = document.getElementById("chart-hc");
   if (!c) return;
+  // Update filter badge
+  const badge = document.getElementById("hc-filter-badge");
+  if (badge) {
+    const activeFilter = depto || nivel || emptype;
+    if (activeFilter) {
+      badge.textContent = "Filtered: " + activeFilter;
+      badge.style.display = "block";
+    } else {
+      badge.style.display = "none";
+    }
+  }
   const allData = _buildHCTrendData(depto, nivel, emptype);
   const data = activeHCQ === 'all' ? allData : allData.filter(r => r.q === activeHCQ);
   if (!data.length) {
@@ -2085,12 +2329,12 @@ function updateKPIHC() {
   }
   // update visible banner
   if (!depto && !nivel && !emptype) {
-    document.getElementById("kpi-hc").textContent = "1,069";
+    document.getElementById("kpi-hc").textContent = "1,092";
     document.getElementById("kpi-hc-delta-val").textContent = "+14.6%";
     document.getElementById("kpi-hc-note").textContent = "+136 vs Dec 2025";
-    document.getElementById("hc-banner-num").textContent = "1,069";
-    document.getElementById("hc-banner-delta").textContent = "+30 vs Apr · +2.9%";
-    document.getElementById("hc-banner-period").textContent = "May 2026";
+    document.getElementById("hc-banner-num").textContent = "1,092";
+    document.getElementById("hc-banner-delta").textContent = "+23 vs May · +2.2%";
+    document.getElementById("hc-banner-period").textContent = "Jun 8, 2026";
   } else {
     const prevLabel = prev ? prev.label : "";
     const absDelta = prev ? hc - prev.hc : 0;
@@ -2503,13 +2747,14 @@ function applyFilters() {
   filters.depto   = d;
   filters.nivel   = n;
   filters.emptype = e;
-  updateFilterUI();
-  // HC charts — pass values explicitly, no ambiguity
-  _renderHCTrendWith(d, n, e);
-  renderHCCountryBars();
-  updateKPIHC();
-  // Other charts (gender, tenure, insights use filters object which is already set)
-  renderGender(); renderTenure(); renderInsights();
+  try { updateFilterUI(); } catch(err) { console.error("updateFilterUI:", err); }
+  // HC Trend — always runs first, isolated
+  try { _renderHCTrendWith(d, n, e); } catch(err) { console.error("_renderHCTrendWith:", err); }
+  try { renderHCCountryBars(); } catch(err) { console.error("renderHCCountryBars:", err); }
+  try { updateKPIHC(); } catch(err) { console.error("updateKPIHC:", err); }
+  try { renderGender(); } catch(err) { console.error("renderGender:", err); }
+  try { renderTenure(); } catch(err) { console.error("renderTenure:", err); }
+  try { renderInsights(); } catch(err) { console.error("renderInsights:", err); }
 }
 
 function updateFilterUI() {
@@ -3414,13 +3659,16 @@ const REG_TERM_NAMES = {
 
 // ─── SHARED TABLE HELPERS ─────────────────────────────────────────────────────
 const _PERIODS = ['December 2025','January 2026','February 2026','March 2026','April 2026','May 2026'];
+// HC_BY_COUNTRY index that corresponds to each _PERIODS entry (Dec25=7 … May26=12)
+const _PERIOD_HC_IDX = [7, 8, 9, 10, 11, 12];
 
-function _countBadge(v, names) {
+function _countBadge(v, names, hc) {
   if (v == null || v === 0) return `<span style="color:#cbd5e1;">—</span>`;
   const s = v >= 5 ? 'background:#fff1f2;color:#be123c;font-weight:700;'
            : v >= 2 ? 'background:#fffbeb;color:#b45309;font-weight:700;'
            : 'background:#f0fdf4;color:#166534;font-weight:700;';
-  const badge = `<span style="${s}border-radius:6px;padding:2px 9px;font-size:12px;">${v}</span>`;
+  const hcLabel = hc ? `<span style="font-size:10px;font-weight:500;color:#94a3b8;">/${hc}</span>` : '';
+  const badge = `<span style="${s}border-radius:6px;padding:2px 7px;font-size:12px;white-space:nowrap;">${v}${hcLabel}</span>`;
   if (!names || !names.length) return badge;
   const tipLines = names.map(n => `• ${n}`).join('<br>');
   return `<span class="term-tip">${badge}<span class="tip-box">${tipLines}</span></span>`;
@@ -3460,7 +3708,8 @@ function renderCountryTermsHcChart() {
       const r = ATTRITION_BY_COUNTRY[c]?.[i];
       const v = r ? (r.all.reg || 0) : 0;
       const names = REG_TERM_NAMES[_PERIODS[i]]?.byCountry?.[c] || [];
-      tbody += `<td style="text-align:center;padding:6px 8px;border-bottom:1px solid var(--border);${isLatest?'background:#f8faff;':''}">${_countBadge(v, names)}</td>`;
+      const hc = HC_BY_COUNTRY[c]?.[_PERIOD_HC_IDX[i]] || null;
+      tbody += `<td style="text-align:center;padding:6px 8px;border-bottom:1px solid var(--border);${isLatest?'background:#f8faff;':''}">${_countBadge(v, names, hc)}</td>`;
     }
     tbody += `</tr>`;
   }
@@ -3525,7 +3774,8 @@ function renderDeptTermsHcChart() {
     for (const d of _DEPTS) {
       const v = (MONTHLY_BY_DEPT[d]?.[i] || [0])[0];
       const names = REG_TERM_NAMES[_PERIODS[i]]?.byDept?.[d] || [];
-      tbody += `<td style="text-align:center;padding:6px 6px;border-bottom:1px solid var(--border);${isLatest?'background:#f8faff;':''}">${_countBadge(v, names)}</td>`;
+      const hc = HC_BY_DEPT[d]?.[_PERIOD_HC_IDX[i]] || null;
+      tbody += `<td style="text-align:center;padding:6px 6px;border-bottom:1px solid var(--border);${isLatest?'background:#f8faff;':''}">${_countBadge(v, names, hc)}</td>`;
     }
     tbody += `</tr>`;
   }
@@ -3827,11 +4077,1414 @@ function renderDeptMonthlyTable() {
   el.innerHTML = `<table style="width:100%;border-collapse:collapse;font-size:12.5px;">${thead}${tbody}</table>`;
 }
 
+const VACATION_DATA = [
+  {n:"Eduardo Vinas",d:"Merchant Operations",c:"Peru",b:112.5,t:80.0},
+  {n:"Gustavo De Gracia",d:"Lock",c:"Panama",b:88.5,t:20.0},
+  {n:"Julio Sanchez",d:"Sales",c:"Peru",b:77.5,t:91.0},
+  {n:"Bryan Roman",d:"Global Tools and Metrics",c:"Peru",b:76.5,t:39.0},
+  {n:"Israel Medianero",d:"Global Clerk Support",c:"Peru",b:75.5,t:66.0},
+  {n:"Ivan Saavedra",d:"Core Engineering",c:"Panama",b:74.0,t:41.0},
+  {n:"Juan Henriquez",d:"Sales",c:"Peru",b:71.5,t:64.0},
+  {n:"Alonso Velasquez Huaricacha",d:"Sales",c:"Peru",b:70.5,t:44.0},
+  {n:"Sara Quispe Estrenado",d:"Global Clerk Support",c:"Peru",b:70.5,t:72.0},
+  {n:"Erasmo Vizarreta Huamani",d:"Sales",c:"Peru",b:70.5,t:38.0},
+  {n:"William Bautista Martinez",d:"Sales",c:"Peru",b:66.5,t:20.0},
+  {n:"Ivanna Siu",d:"FPA and Treasury",c:"Peru",b:66.5,t:52.0},
+  {n:"Ana Rivera",d:"Merchant Operations",c:"Panama",b:66.4,t:137.0},
+  {n:"Marco Meza",d:"Sales",c:"Peru",b:64.5,t:46.0},
+  {n:"Angel Vargas",d:"Global Tools and Metrics",c:"Peru",b:62.0,t:75.8},
+  {n:"Melissa Checa",d:"Global Clerk Support",c:"Peru",b:61.5,t:107.0},
+  {n:"Nicoli Martins",d:"Marketing",c:"Brazil",b:60.0,t:0.0},
+  {n:"Shey Pitty",d:"Sales",c:"Panama",b:59.6,t:34.0},
+  {n:"Luis Berrocal",d:"Core Engineering",c:"Panama",b:59.5,t:20.0},
+  {n:"Carlos Castaño",d:"Global Clerk Support",c:"Colombia",b:57.3,t:34.5},
+  {n:"Maria Paredes",d:"Technical Support Analysts",c:"Peru",b:56.5,t:94.0},
+  {n:"Miriam Chávez",d:"Sales",c:"Peru",b:54.5,t:54.0},
+  {n:"Leslie Martinez",d:"Merchant Operations",c:"Peru",b:51.5,t:43.0},
+  {n:"Erick Chinchay",d:"Sales",c:"Peru",b:51.5,t:44.0},
+  {n:"Liliana Buitrago",d:"Merchant Operations",c:"Colombia",b:51.1,t:55.5},
+  {n:"Arnold Falcon",d:"Merchant Operations",c:"Peru",b:50.5,t:39.0},
+  {n:"Alejandra Saavedra",d:"Global Clerk Support",c:"Peru",b:48.0,t:211.5},
+  {n:"Argelis Gonzalez",d:"Global Clerk Support",c:"Panama",b:46.5,t:46.0},
+  {n:"Joss Hurtado",d:"Global Clerk Support",c:"Panama",b:46.2,t:59.0},
+  {n:"Daniel Granja",d:"Merchant Operations",c:"Ecuador",b:45.0,t:23.0},
+  {n:"Andres Cobos",d:"Core Engineering",c:"Colombia",b:44.5,t:19.9},
+  {n:"Fresia Altamirano Gimenez",d:"Global Clerk Support",c:"Peru",b:44.5,t:18.0},
+  {n:"Marbin Garcia",d:"Accounting",c:"Peru",b:44.5,t:24.0},
+  {n:"Joaquin Davalos Ponce",d:"Merchant Operations",c:"Ecuador",b:44.2,t:27.0},
+  {n:"Mario Santoyo",d:"Sales",c:"Peru",b:43.5,t:94.5},
+  {n:"Rosa Juarez",d:"Technical Support Analysts",c:"Panama",b:43.0,t:84.0},
+  {n:"Katia Rosas",d:"Sales",c:"Peru",b:42.5,t:71.0},
+  {n:"Miguel Caldas Ruidias",d:"Sales",c:"Peru",b:41.5,t:143.0},
+  {n:"Elio Linarez",d:"Core Engineering",c:"Peru",b:41.5,t:74.0},
+  {n:"Laura Bravo",d:"Global Tools and Metrics",c:"Panama",b:40.2,t:54.0},
+  {n:"Flavio Fernandes",d:"Global Tools and Metrics",c:"Brazil",b:40.0,t:20.0},
+  {n:"Alejandro Quintero Enríquez",d:"Sales",c:"Mexico",b:40.0,t:10.0},
+  {n:"Valeria Merino Negrete",d:"Sales",c:"Ecuador",b:40.0,t:16.0},
+  {n:"Angel Garcia",d:"Fraud Operations",c:"Mexico",b:40.0,t:59.0},
+  {n:"Jacky Courrech",d:"Marketing",c:"Mexico",b:40.0,t:21.0},
+  {n:"Sara Saucedo Gongora",d:"Global Tools and Metrics",c:"Mexico",b:40.0,t:30.0},
+  {n:"Alejandro Arreche",d:"Financial Operations",c:"Mexico",b:40.0,t:35.0},
+  {n:"Luis Eduardo Pineda Rosales",d:"Marketing",c:"Mexico",b:39.9,t:4.0},
+  {n:"Mabe Castro",d:"People Partners",c:"Ecuador",b:39.5,t:19.5},
+  {n:"Fernando Maguiña",d:"Sales",c:"Peru",b:39.5,t:121.0},
+  {n:"David Andres Rojas Gomez",d:"Global Collections",c:"Colombia",b:39.5,t:6.0},
+  {n:"Fernanda Castañon",d:"FPA and Treasury",c:"Mexico",b:39.4,t:6.0},
+  {n:"Gustavo Espinosa Pardo",d:"Sales",c:"Colombia",b:38.4,t:20.1},
+  {n:"Cinthya Pile Leis",d:"Global Tools and Metrics",c:"Panama",b:38.4,t:68.0},
+  {n:"Leonardo Bravo",d:"Sales",c:"Ecuador",b:38.2,t:11.0},
+  {n:"Luis Morantes",d:"Global Tools and Metrics",c:"Colombia",b:38.2,t:51.0},
+  {n:"Lizeth Chavez",d:"Accounting",c:"Mexico",b:38.0,t:20.0},
+  {n:"Jeniffer Castaño",d:"Global Tools and Metrics",c:"Colombia",b:37.8,t:20.0},
+  {n:"Alex Paredes Garcia",d:"Sales",c:"Peru",b:37.5,t:91.0},
+  {n:"Alfredo Cortez",d:"Sales",c:"Peru",b:37.5,t:76.0},
+  {n:"Fabian Chaguaro",d:"Sales",c:"Ecuador",b:36.6,t:18.0},
+  {n:"Víctor Domínguez",d:"Fraud Operations",c:"Ecuador",b:36.5,t:32.0},
+  {n:"Diego Villanueva Vasquez",d:"Merchant Operations",c:"Peru",b:36.5,t:51.0},
+  {n:"Andrea Salazar",d:"Sales",c:"Ecuador",b:36.3,t:29.0},
+  {n:"Gabriel Yudico",d:"FPA and Treasury",c:"Mexico",b:36.0,t:25.0},
+  {n:"Rodrigo Arguelles",d:"Financial Operations",c:"Mexico",b:35.5,t:15.0},
+  {n:"Maritza Tello",d:"Sales",c:"Colombia",b:35.3,t:12.0},
+  {n:"Grace Salazar",d:"Accounting",c:"Ecuador",b:35.3,t:28.0},
+  {n:"Nixon Quezada",d:"Merchant Operations",c:"Ecuador",b:35.1,t:20.0},
+  {n:"Lorena Cuba",d:"Global Tools and Metrics",c:"Mexico",b:35.1,t:28.0},
+  {n:"Alberto Solano Millan",d:"Merchant Operations",c:"Mexico",b:35.0,t:20.0},
+  {n:"Gustavo Ojeda",d:"Product and UX",c:"Mexico",b:35.0,t:29.0},
+  {n:"Alejandro Suarez",d:"Sales",c:"Colombia",b:34.8,t:34.5},
+  {n:"Osmar Salgado",d:"Fraud Operations",c:"Mexico",b:34.8,t:90.0},
+  {n:"Geovanni Lona Martinez",d:"Accounting",c:"Mexico",b:34.7,t:15.0},
+  {n:"Magnus Vanderbilt",d:"Marketing",c:"Colombia",b:34.7,t:26.5},
+  {n:"Ninoska Bazurto",d:"Sales",c:"Ecuador",b:34.6,t:14.0},
+  {n:"Leonardo Figueroa Loyola",d:"Sales",c:"Peru",b:34.5,t:79.0},
+  {n:"Angeles Coveñas",d:"Global Clerk Support",c:"Peru",b:34.5,t:56.0},
+  {n:"Diego Garaicoa Arteta",d:"Sales",c:"Ecuador",b:34.1,t:19.0},
+  {n:"Alexandra Tovar",d:"Product and UX",c:"Mexico",b:34.0,t:30.0},
+  {n:"Rafael Gonzalez",d:"Global Tools and Metrics",c:"Mexico",b:34.0,t:21.0},
+  {n:"Vicky Pionce",d:"Sales",c:"Ecuador",b:33.5,t:24.1},
+  {n:"Luisa Martinez",d:"FPA and Treasury",c:"Colombia",b:33.5,t:37.0},
+  {n:"Alan Espino",d:"Sales",c:"Mexico",b:33.5,t:9.0},
+  {n:"Jeffrey Bernal",d:"Sales",c:"Ecuador",b:33.2,t:17.0},
+  {n:"Zulema Garcia",d:"Sales",c:"Ecuador",b:32.6,t:22.0},
+  {n:"Alejandro Aldana",d:"Financial Platforms",c:"Colombia",b:32.6,t:9.5},
+  {n:"Freddy Luza",d:"Global Clerk Support",c:"Peru",b:32.5,t:64.0},
+  {n:"Manuel Torres",d:"Merchant Operations",c:"Peru",b:32.5,t:30.0},
+  {n:"Juan Romero Monroy",d:"Accounting",c:"Colombia",b:32.4,t:14.0},
+  {n:"Berenice Constantino",d:"Sales",c:"Mexico",b:32.2,t:22.0},
+  {n:"Alessandra Santacoloma",d:"Legal",c:"Panama",b:32.0,t:35.0},
+  {n:"Adriana Garibaldo",d:"Global Clerk Support",c:"Mexico",b:32.0,t:48.0},
+  {n:"Yosly Dominguez",d:"Financial Operations",c:"Mexico",b:32.0,t:20.0},
+  {n:"Oscar Manuel Gonzalez",d:"Merchant Operations",c:"Mexico",b:31.9,t:30.0},
+  {n:"Jonathan Jesus",d:"Financial Operations",c:"Mexico",b:31.9,t:30.0},
+  {n:"Giselle Ferrer",d:"Sales",c:"Colombia",b:31.8,t:44.4},
+  {n:"Alexia Ruiz",d:"Sales",c:"Mexico",b:31.6,t:34.0},
+  {n:"Adrian Alvarez Felix",d:"Global Collections",c:"Mexico",b:31.6,t:15.0},
+  {n:"Daniela Duque Bravo",d:"Merchant Operations",c:"Colombia",b:31.6,t:49.5},
+  {n:"Aristides Melendez Hernandez",d:"Core Engineering",c:"Panama",b:31.5,t:65.4},
+  {n:"Deira Espinoza",d:"Global Clerk Support",c:"Mexico",b:31.5,t:26.0},
+  {n:"Josseth Aparicio",d:"Sales",c:"Mexico",b:31.5,t:32.0},
+  {n:"Felipe Chen",d:"Core Engineering",c:"Panama",b:31.3,t:19.0},
+  {n:"Marco Gonzalez",d:"Merchant Operations",c:"Ecuador",b:31.3,t:34.5},
+  {n:"Lucero Martínez",d:"Global General Support",c:"Mexico",b:31.2,t:29.0},
+  {n:"Rodrigo Maya",d:"Marketing",c:"Mexico",b:31.0,t:23.0},
+  {n:"Gerardo Tello",d:"Sales",c:"Mexico",b:31.0,t:33.0},
+  {n:"Alejandro Castro",d:"Global Tools and Metrics",c:"Mexico",b:30.9,t:5.0},
+  {n:"William Salazar",d:"Financial Platforms",c:"Colombia",b:30.8,t:37.0},
+  {n:"Fiama Leyva",d:"Sales",c:"Peru",b:30.5,t:4.0},
+  {n:"Pedro Sanchez",d:"Merchant Operations",c:"Peru",b:30.5,t:20.0},
+  {n:"Carlos Diego Vergara",d:"Merchant Operations",c:"Ecuador",b:30.4,t:40.5},
+  {n:"Jean Zambrano",d:"Sales",c:"Ecuador",b:30.3,t:20.0},
+  {n:"Jeison Mejia Angarita",d:"Sales",c:"Colombia",b:30.2,t:25.0},
+  {n:"Camila Alarcón",d:"Sales",c:"Ecuador",b:30.1,t:9.0},
+  {n:"Carolina Morales",d:"Sales",c:"Colombia",b:30.1,t:25.5},
+  {n:"Edvanio Cirlo Ferreira",d:"Sales",c:"Brazil",b:30.0,t:19.0},
+  {n:"Maria Medina",d:"Legal",c:"Brazil",b:30.0,t:8.0},
+  {n:"Silvana da Silva",d:"Sales",c:"Brazil",b:30.0,t:2.0},
+  {n:"Joao Rodilha",d:"Core Engineering",c:"Brazil",b:30.0,t:7.0},
+  {n:"Lydia Xie",d:"Lock",c:"China",b:30.0,t:13.0},
+  {n:"Anna Karoliny",d:"Sales",c:"Brazil",b:30.0,t:15.0},
+  {n:"Vanessa Bispo",d:"Sales",c:"Brazil",b:30.0,t:107.0},
+  {n:"Hugh Liu",d:"Lock",c:"China",b:30.0,t:47.5},
+  {n:"Gilson Machado",d:"Sales",c:"Brazil",b:30.0,t:0.0},
+  {n:"Grace Nenhanga",d:"Accounting",c:"South Africa",b:30.0,t:21.0},
+  {n:"Lyuma Ferrari",d:"Marketing",c:"Brazil",b:30.0,t:22.0},
+  {n:"Rhanna Bachmann",d:"Sales",c:"Brazil",b:30.0,t:50.0},
+  {n:"Fábio Freire Da Silva",d:"Sales",c:"Brazil",b:30.0,t:40.0},
+  {n:"Mauricio Araujo",d:"Legal",c:"Brazil",b:30.0,t:15.0},
+  {n:"Ana Roisman",d:"FPA and Treasury",c:"Brazil",b:30.0,t:15.0},
+  {n:"Carlos Mendes",d:"Sales",c:"Brazil",b:30.0,t:35.0},
+  {n:"Corey Crellin",d:"Product and UX",c:"United States",b:30.0,t:19.1},
+  {n:"Estefanio Almeida",d:"Sales",c:"Brazil",b:30.0,t:30.0},
+  {n:"Sailesh Vemuri",d:"Core Engineering",c:"United States",b:30.0,t:24.2},
+  {n:"Bruna Lima",d:"Sales",c:"Brazil",b:30.0,t:18.0},
+  {n:"Joyce Vilela",d:"Sales",c:"Brazil",b:30.0,t:65.0},
+  {n:"Camila Soares De Oliveira Schmitke",d:"Marketing",c:"Brazil",b:30.0,t:205.0},
+  {n:"Taís Ramos",d:"Sales",c:"Brazil",b:30.0,t:22.0},
+  {n:"Vitor Paffile",d:"Global Clerk Support",c:"Brazil",b:30.0,t:37.0},
+  {n:"Oman Moura",d:"Global Tools and Metrics",c:"Brazil",b:30.0,t:18.0},
+  {n:"Wiriquy Marques",d:"Sales",c:"Brazil",b:30.0,t:0.0},
+  {n:"Murilo Correa",d:"Global Tools and Metrics",c:"Brazil",b:30.0,t:6.0},
+  {n:"Leydiane Lima",d:"Marketing",c:"Brazil",b:30.0,t:5.0},
+  {n:"Rubia Mara",d:"Sales",c:"Brazil",b:30.0,t:13.0},
+  {n:"Dingane Ngobeni",d:"Sales",c:"South Africa",b:30.0,t:21.0},
+  {n:"Samira Gaby",d:"Sales",c:"Brazil",b:30.0,t:0.0},
+  {n:"Patrícia Magalhães",d:"Sales",c:"Brazil",b:30.0,t:26.0},
+  {n:"Fabio Schmidt",d:"Sales",c:"Brazil",b:30.0,t:15.0},
+  {n:"Carol Lobato",d:"Sales",c:"Brazil",b:30.0,t:36.0},
+  {n:"Aline Yamada",d:"Marketing",c:"Brazil",b:30.0,t:3.0},
+  {n:"Rafael Jesus",d:"Sales",c:"Brazil",b:30.0,t:16.0},
+  {n:"Jeff Ding",d:"Lock",c:"China",b:30.0,t:15.0},
+  {n:"Monique De Jesus",d:"Product and UX",c:"Brazil",b:30.0,t:10.0},
+  {n:"Denis Smetana",d:"FPA and Treasury",c:"Brazil",b:30.0,t:45.5},
+  {n:"Leandro Gomes",d:"Global Tools and Metrics",c:"Brazil",b:30.0,t:4.0},
+  {n:"Jessica Xisto",d:"Sales",c:"Brazil",b:30.0,t:15.0},
+  {n:"Leticia Lima",d:"Sales",c:"Brazil",b:30.0,t:10.0},
+  {n:"Marcelo Kabbach",d:"Accounting",c:"Brazil",b:30.0,t:27.0},
+  {n:"Andre Molina",d:"Sales",c:"Brazil",b:30.0,t:31.0},
+  {n:"Sarah Zipora Figueiredo do Nascimento",d:"Sales",c:"Brazil",b:30.0,t:20.0},
+  {n:"Hugo Rodrigues",d:"Sales",c:"Brazil",b:30.0,t:0.0},
+  {n:"Leonardo Rodrigues Da Silva",d:"Merchant Operations",c:"Brazil",b:30.0,t:40.0},
+  {n:"Walasy Amorim",d:"Sales",c:"Brazil",b:30.0,t:0.0},
+  {n:"Marjorie Avila Manfredini",d:"Legal",c:"Brazil",b:30.0,t:23.0},
+  {n:"Trevor Bennett",d:"Core Engineering",c:"United States",b:30.0,t:22.0},
+  {n:"Rubyany Silva",d:"Sales",c:"Brazil",b:30.0,t:20.0},
+  {n:"Boris Yanez-Velasco",d:"Core Engineering",c:"United States",b:30.0,t:23.3},
+  {n:"Prenise Perumal",d:"Sales",c:"South Africa",b:29.5,t:16.0},
+  {n:"Angel Villarreal",d:"FPA and Treasury",c:"Mexico",b:29.5,t:14.0},
+  {n:"Steve Rife",d:"Core Engineering",c:"United States",b:29.5,t:66.0},
+  {n:"Omar Miñon",d:"Merchant Operations",c:"Mexico",b:29.4,t:36.0},
+  {n:"Hugo Armijos",d:"Financial Platforms",c:"Ecuador",b:29.3,t:67.5},
+  {n:"Patricia Arteaga",d:"Sales",c:"Colombia",b:29.2,t:46.0},
+  {n:"Nicholas Beshouri",d:"Data Science",c:"United States",b:29.0,t:22.5},
+  {n:"Michael Schultz",d:"Core Engineering",c:"United States",b:29.0,t:30.0},
+  {n:"Daniel Gomez Nuñez",d:"Sales",c:"Peru",b:29.0,t:37.5},
+  {n:"Cristhian López",d:"Sales",c:"Mexico",b:29.0,t:32.0},
+  {n:"Cristian Centeno Rubio",d:"Sales",c:"Mexico",b:28.9,t:18.0},
+  {n:"Jason Hollister",d:"Core Engineering",c:"United States",b:28.7,t:105.5},
+  {n:"Marvin Castillo Felix",d:"Data Science",c:"Mexico",b:28.7,t:24.0},
+  {n:"Ibi Farfan",d:"Global Collections",c:"Peru",b:28.5,t:4.0},
+  {n:"Betsabe Gomez",d:"Global Clerk Support",c:"Peru",b:28.5,t:65.0},
+  {n:"Julian Gil",d:"Merchant Operations",c:"Mexico",b:28.3,t:23.0},
+  {n:"Jose Becerril",d:"Sales",c:"Mexico",b:28.3,t:25.0},
+  {n:"Tom Jahnes",d:"Lock",c:"United States",b:28.2,t:46.9},
+  {n:"Valter Carvalho",d:"Accounting",c:"Brazil",b:28.0,t:15.0},
+  {n:"Alex Garcia",d:"Sales",c:"Mexico",b:28.0,t:26.0},
+  {n:"Shweta Tanwar",d:"Core Engineering",c:"United States",b:27.8,t:23.0},
+  {n:"Artem Shakhov",d:"Core Engineering",c:"United States",b:27.8,t:11.0},
+  {n:"Fredis Contreras",d:"Sales",c:"Colombia",b:27.7,t:23.0},
+  {n:"Amaury García",d:"Global General Support",c:"Mexico",b:27.6,t:19.0},
+  {n:"Jesus Gomez",d:"Product and UX",c:"Mexico",b:27.5,t:30.0},
+  {n:"Paulina Reyes",d:"Global General Support",c:"Mexico",b:27.4,t:32.0},
+  {n:"Efrain De la Rosa",d:"Global Tools and Metrics",c:"Mexico",b:27.4,t:28.0},
+  {n:"Orlando Hernandez",d:"Merchant Operations",c:"Mexico",b:27.4,t:24.0},
+  {n:"Konny Cedeño",d:"Sales",c:"Ecuador",b:27.3,t:37.0},
+  {n:"Nury Velez",d:"Sales",c:"Ecuador",b:27.3,t:31.5},
+  {n:"Christian Camarena",d:"Financial Operations",c:"Mexico",b:27.2,t:22.0},
+  {n:"Patti Franco",d:"People Operations",c:"United States",b:27.2,t:47.9},
+  {n:"Jessica Gambirasi",d:"People Operations",c:"United States",b:27.2,t:43.5},
+  {n:"Ramiro Garcilazo",d:"Core Engineering",c:"Mexico",b:27.2,t:24.1},
+  {n:"Rob Singh",d:"Lock",c:"United States",b:27.0,t:78.8},
+  {n:"Cesar Salazar",d:"Core Engineering",c:"Mexico",b:27.0,t:57.0},
+  {n:"Miguel Gonzalez",d:"Global Clerk Support",c:"Mexico",b:27.0,t:37.0},
+  {n:"Majo Gomez",d:"People Partners",c:"Mexico",b:26.9,t:37.0},
+  {n:"Rafael Ramo",d:"Data Science",c:"Mexico",b:26.9,t:15.0},
+  {n:"Oscar Hernandez Muñoz",d:"Marketing",c:"Mexico",b:26.9,t:27.0},
+  {n:"Mayra Salguero Salazar",d:"Sales",c:"Ecuador",b:26.8,t:37.2},
+  {n:"Leandri Botha",d:"FPA and Treasury",c:"South Africa",b:26.8,t:29.5},
+  {n:"Monica Fuentes Lopez",d:"Sales",c:"Mexico",b:26.7,t:132.0},
+  {n:"Osvaldo Mora",d:"Core Engineering",c:"Mexico",b:26.6,t:16.0},
+  {n:"Julieth Morales Rincon",d:"Sales",c:"Colombia",b:26.5,t:30.9},
+  {n:"Andres Vargas",d:"Sales",c:"Colombia",b:26.5,t:56.5},
+  {n:"Wilfredo Quispe Llancari",d:"Sales",c:"Peru",b:26.5,t:52.0},
+  {n:"Lesego Mosupyoe",d:"Sales",c:"South Africa",b:26.5,t:51.0},
+  {n:"Jennifer Penagorda",d:"Sales",c:"Colombia",b:26.5,t:24.0},
+  {n:"Jess Ocaña",d:"Global General Support",c:"Peru",b:26.5,t:43.0},
+  {n:"Maritza Osorio",d:"Sales",c:"Colombia",b:26.2,t:46.9},
+  {n:"Leyla Vences",d:"Sales",c:"Mexico",b:26.2,t:136.0},
+  {n:"Juan Rodriguez",d:"Financial Operations",c:"Colombia",b:26.2,t:42.0},
+  {n:"Carlos Ruiz",d:"Sales",c:"Panama",b:26.1,t:30.0},
+  {n:"Luis Palomá",d:"Core Engineering",c:"Colombia",b:25.9,t:17.0},
+  {n:"Paola Ayala",d:"Risk Strategy",c:"Colombia",b:25.8,t:30.5},
+  {n:"Rohan Gawade",d:"Data Science",c:"United States",b:25.8,t:84.0},
+  {n:"Asheeqah Parker",d:"Sales",c:"South Africa",b:25.8,t:58.5},
+  {n:"Imanol Gutierrez Santoscoy",d:"Marketing",c:"Mexico",b:25.7,t:62.0},
+  {n:"Twelane Mudaka",d:"Global Tools and Metrics",c:"South Africa",b:25.6,t:5.0},
+  {n:"Juan Rojas",d:"Core Engineering",c:"Peru",b:25.5,t:31.0},
+  {n:"Ana Yancce",d:"Merchant Operations",c:"Peru",b:25.5,t:39.0},
+  {n:"Lisett Laredo",d:"Global Clerk Support",c:"Peru",b:25.5,t:96.0},
+  {n:"Adriana Del Valle",d:"Sales",c:"Peru",b:25.5,t:16.0},
+  {n:"Jorge Cruz",d:"Global General Support",c:"Mexico",b:25.4,t:36.5},
+  {n:"Ramon Alphand",d:"FPA and Treasury",c:"Mexico",b:25.4,t:47.0},
+  {n:"Eric Lopez",d:"Core Engineering",c:"Mexico",b:25.3,t:45.5},
+  {n:"Wilson Martinez",d:"Merchant Operations",c:"Colombia",b:25.3,t:53.1},
+  {n:"Bryan Ibarra",d:"Global Clerk Support",c:"Colombia",b:25.3,t:40.6},
+  {n:"Luis Patino",d:"Sales",c:"Colombia",b:25.2,t:49.1},
+  {n:"Fatima Reyes",d:"Sales",c:"Mexico",b:25.1,t:8.0},
+  {n:"Daniel Sátiro",d:"Core Engineering",c:"Brazil",b:25.0,t:36.0},
+  {n:"Edna Barrios Salcedo",d:"Sales",c:"Colombia",b:25.0,t:18.0},
+  {n:"Carolina Polari",d:"Sales Operations",c:"Brazil",b:25.0,t:39.0},
+  {n:"Eduardo Teixeira",d:"Merchant Operations",c:"Brazil",b:25.0,t:59.0},
+  {n:"Tseleng Matlokotsi",d:"Sales",c:"South Africa",b:24.9,t:0.0},
+  {n:"Strand Mabunda",d:"Sales",c:"South Africa",b:24.9,t:28.5},
+  {n:"Ana Camargo",d:"People Partners",c:"Colombia",b:24.8,t:12.6},
+  {n:"Tom Love",d:"Product and UX",c:"United States",b:24.8,t:53.0},
+  {n:"Lizet Jimenez",d:"Sales",c:"Mexico",b:24.8,t:21.0},
+  {n:"Juan Pablo Torres",d:"Core Engineering",c:"United States",b:24.8,t:48.5},
+  {n:"Wee Ng",d:"Core Engineering",c:"United States",b:24.7,t:15.5},
+  {n:"Karthik Yoganathan",d:"Core Engineering",c:"United States",b:24.7,t:154.6},
+  {n:"Matias Holguin",d:"Merchant Operations",c:"Ecuador",b:24.6,t:35.6},
+  {n:"Viri Olvera Ginez",d:"Merchant Operations",c:"Mexico",b:24.5,t:34.0},
+  {n:"Brenda Alvarado",d:"Global General Support",c:"Mexico",b:24.4,t:23.0},
+  {n:"Melisa Carlos",d:"Product and UX",c:"Mexico",b:24.1,t:33.5},
+  {n:"Ivan Corro",d:"Accounting",c:"Mexico",b:24.1,t:8.0},
+  {n:"Joel Borrero",d:"Core Engineering",c:"Colombia",b:24.1,t:76.0},
+  {n:"Brian Cardona Salazar",d:"Core Engineering",c:"Colombia",b:24.0,t:37.5},
+  {n:"Frank Jimenez",d:"Marketing",c:"Mexico",b:23.9,t:37.0},
+  {n:"Milena Mojica",d:"Global Clerk Support",c:"Colombia",b:23.9,t:52.4},
+  {n:"Saliman Zouaoui Ramirez",d:"Global Clerk Support",c:"Mexico",b:23.8,t:3.0},
+  {n:"Tuo He",d:"Core Engineering",c:"United States",b:23.8,t:71.0},
+  {n:"Christian Rivera",d:"Merchant Operations",c:"Ecuador",b:23.8,t:63.2},
+  {n:"Adahir Cortez Zavala",d:"Sales Operations",c:"Mexico",b:23.8,t:15.0},
+  {n:"Sushma Rayasam",d:"Core Engineering",c:"United States",b:23.8,t:162.3},
+  {n:"Alexandra Perez",d:"Global General Support",c:"Colombia",b:23.6,t:31.1},
+  {n:"Breiner Ujueta",d:"Sales",c:"Colombia",b:23.6,t:24.1},
+  {n:"Jesus Martinez",d:"Merchant Operations",c:"Peru",b:23.5,t:34.0},
+  {n:"Juan Farfan",d:"Sales",c:"Peru",b:23.5,t:82.0},
+  {n:"Jenny Gonzalez",d:"Sales",c:"Colombia",b:23.5,t:22.0},
+  {n:"Martin Ortiz",d:"Product and UX",c:"Mexico",b:23.4,t:30.0},
+  {n:"David Reyes",d:"Sales",c:"Colombia",b:23.4,t:33.0},
+  {n:"Andrew Khanye",d:"Sales",c:"South Africa",b:23.3,t:6.0},
+  {n:"Kutlwano Mokgobola",d:"Global Collections",c:"South Africa",b:23.3,t:66.9},
+  {n:"Trish Pham",d:"Core Engineering",c:"United States",b:23.3,t:48.0},
+  {n:"Jeisson Gomez",d:"Global Clerk Support",c:"Colombia",b:23.1,t:69.6},
+  {n:"Marcella Valle",d:"Product and UX",c:"Brazil",b:23.0,t:9.0},
+  {n:"Julian Rodriguez",d:"Product and UX",c:"Colombia",b:23.0,t:11.0},
+  {n:"Isabelle Matos",d:"Fraud Operations",c:"Brazil",b:23.0,t:30.0},
+  {n:"Tatiane Bernarda",d:"Sales",c:"Brazil",b:23.0,t:70.5},
+  {n:"Sergio Vieyra",d:"Sales",c:"Mexico",b:23.0,t:42.0},
+  {n:"Hamlet Minjares",d:"Core Engineering",c:"Mexico",b:23.0,t:17.0},
+  {n:"Max Cesar",d:"Global Tools and Metrics",c:"Mexico",b:23.0,t:16.0},
+  {n:"Marcela Díaz",d:"Accounting",c:"Colombia",b:22.9,t:26.0},
+  {n:"Sumeet Wadhera",d:"Capital Markets",c:"United States",b:22.8,t:24.5},
+  {n:"Jaideep Mirchandani",d:"Lock",c:"United States",b:22.8,t:111.7},
+  {n:"Felipe Leon",d:"Global General Support",c:"Colombia",b:22.6,t:19.0},
+  {n:"Carolina Gutiérrez Tafur",d:"People Partners",c:"Peru",b:22.5,t:33.0},
+  {n:"Javier Chimbolema",d:"Sales",c:"Ecuador",b:22.5,t:5.0},
+  {n:"Karina Mora",d:"Sales",c:"Ecuador",b:22.5,t:24.0},
+  {n:"Carolina Frías",d:"Financial Operations",c:"Ecuador",b:22.5,t:28.2},
+  {n:"Jorge Campos",d:"Talent Acquisition",c:"Mexico",b:22.5,t:22.0},
+  {n:"Jenyfer Iturri",d:"Sales",c:"Peru",b:22.5,t:98.0},
+  {n:"Liliana Figueroa",d:"Global Clerk Support",c:"Mexico",b:22.4,t:21.0},
+  {n:"Yurani Torres",d:"Merchant Operations",c:"Colombia",b:22.4,t:42.6},
+  {n:"Brian Corte",d:"Fraud Operations",c:"Mexico",b:22.4,t:46.0},
+  {n:"Andrea Lozano Junco",d:"Global General Support",c:"Colombia",b:22.3,t:18.5},
+  {n:"Youmna Mayet",d:"Fraud Operations",c:"South Africa",b:22.3,t:58.0},
+  {n:"Valeria Hinojos",d:"Sales",c:"Mexico",b:22.2,t:42.0},
+  {n:"Daniel Garcia",d:"Sales",c:"Mexico",b:22.1,t:11.0},
+  {n:"Diana Zambrano Martinez",d:"Accounting",c:"Colombia",b:22.1,t:50.0},
+  {n:"Vijay Chinnakannan",d:"Core Engineering",c:"United States",b:22.0,t:30.1},
+  {n:"Robert Cervantes",d:"Sales",c:"Ecuador",b:22.0,t:22.0},
+  {n:"Luiz Victor Santos",d:"Sales",c:"Brazil",b:22.0,t:64.0},
+  {n:"Javier Fuentes Mora",d:"Core Engineering",c:"Mexico",b:22.0,t:66.0},
+  {n:"Adriana Delgado",d:"Global Tools and Metrics",c:"Mexico",b:22.0,t:45.0},
+  {n:"Daniel Castillo",d:"Core Engineering",c:"Mexico",b:21.7,t:44.0},
+  {n:"Dain Schroeder",d:"Core Engineering",c:"United States",b:21.7,t:147.4},
+  {n:"Lawrence Mutisse",d:"Sales",c:"South Africa",b:21.5,t:12.0},
+  {n:"Johan Villanueva",d:"Sales",c:"Peru",b:21.5,t:13.0},
+  {n:"Susana Molina",d:"Global General Support",c:"Mexico",b:21.4,t:23.0},
+  {n:"Gerardo Morales",d:"Sales",c:"Mexico",b:21.4,t:32.0},
+  {n:"Victor Leyva",d:"Sales",c:"Mexico",b:21.3,t:42.0},
+  {n:"Dugly Rojas",d:"Global General Support",c:"Colombia",b:21.3,t:50.5},
+  {n:"Angela Gelves",d:"FPA and Treasury",c:"Colombia",b:21.3,t:59.1},
+  {n:"Cesar Leon",d:"Sales",c:"Mexico",b:21.3,t:37.0},
+  {n:"Gina Posso",d:"Global Clerk Support",c:"Colombia",b:21.2,t:30.5},
+  {n:"Santiago Uran",d:"Risk Strategy",c:"Colombia",b:21.1,t:37.6},
+  {n:"Luisa Torroledo",d:"Accounting",c:"Colombia",b:21.0,t:178.1},
+  {n:"Giulia Horvat",d:"Merchant Operations",c:"Brazil",b:21.0,t:41.0},
+  {n:"Alan Villalobos",d:"Sales",c:"Ecuador",b:21.0,t:37.4},
+  {n:"Marina Murgia",d:"Merchant Operations",c:"Brazil",b:21.0,t:23.0},
+  {n:"Emerson Sousa",d:"Fraud Operations",c:"Brazil",b:21.0,t:32.0},
+  {n:"Oscar Regalado",d:"Sales Operations",c:"Mexico",b:20.9,t:22.0},
+  {n:"Fatima López Bustos",d:"Global Clerk Support",c:"Mexico",b:20.9,t:23.0},
+  {n:"Ana Cris Campos",d:"People Partners",c:"Mexico",b:20.8,t:39.0},
+  {n:"Lili Mayen",d:"Sales",c:"Mexico",b:20.8,t:28.0},
+  {n:"Jose Luis Brito Pérez",d:"Core Engineering",c:"Mexico",b:20.7,t:59.5},
+  {n:"Brandal Draai",d:"Sales",c:"South Africa",b:20.7,t:31.0},
+  {n:"Maricruz Flores",d:"Marketing",c:"Mexico",b:20.7,t:48.5},
+  {n:"Bairon Martinez",d:"Sales",c:"Colombia",b:20.6,t:4.0},
+  {n:"José Zambrano",d:"Legal",c:"Ecuador",b:20.6,t:25.0},
+  {n:"Natalia Osorio Lozada",d:"Technical Support Analysts",c:"Colombia",b:20.6,t:14.5},
+  {n:"Nico Schiaffino",d:"Merchant Operations",c:"Mexico",b:20.5,t:10.0},
+  {n:"Alan Vega",d:"Sales",c:"Mexico",b:20.4,t:38.0},
+  {n:"Ely Reyes",d:"Global Clerk Support",c:"Mexico",b:20.4,t:25.0},
+  {n:"Luis Vite",d:"Global General Support",c:"Mexico",b:20.4,t:36.0},
+  {n:"Harold Ocampo Sandoval",d:"Sales",c:"Colombia",b:20.4,t:13.5},
+  {n:"Janina Juárez",d:"Sales",c:"Panama",b:20.3,t:63.0},
+  {n:"Rafaela Tamayo",d:"Sales",c:"Ecuador",b:20.1,t:27.0},
+  {n:"Doug Ricket",d:"Admin",c:"United States",b:20.0,t:31.5},
+  {n:"Rene Payan",d:"Merchant Operations",c:"United States",b:20.0,t:106.5},
+  {n:"Hameeda Taj",d:"Core Engineering",c:"United States",b:20.0,t:38.6},
+  {n:"Michael Schultz",d:"Core Engineering",c:"United States",b:20.0,t:30.0},
+  {n:"Simon Huynh",d:"Core Engineering",c:"United States",b:20.0,t:82.5},
+  {n:"Carolina Germano",d:"Merchant Operations",c:"Brazil",b:20.0,t:41.0},
+  {n:"Lebogang Mankga",d:"Sales",c:"South Africa",b:19.9,t:12.0},
+  {n:"Manuel Garcia",d:"Sales",c:"Mexico",b:19.9,t:7.0},
+  {n:"Julio Vargas",d:"Global Clerk Support",c:"Panama",b:19.8,t:35.0},
+  {n:"Kreeshna Siagian",d:"Sales",c:"Indonesia",b:19.8,t:39.0},
+  {n:"Cristina Garcia",d:"Risk Strategy",c:"Mexico",b:19.7,t:33.0},
+  {n:"Alonso Trujillo Aragón",d:"Merchant Operations",c:"Peru",b:19.6,t:0.0},
+  {n:"David Mejia Bolaños",d:"Global Clerk Support",c:"Mexico",b:19.6,t:7.0},
+  {n:"Nicolas Camelo",d:"Core Engineering",c:"Colombia",b:19.5,t:108.5},
+  {n:"Enrique Bracamonte",d:"Global General Support",c:"Mexico",b:19.5,t:9.0},
+  {n:"Nadia Ismail",d:"Sales",c:"South Africa",b:19.5,t:26.0},
+  {n:"Priscilla Masias",d:"Sales",c:"Peru",b:19.5,t:97.0},
+  {n:"Jesus Trujillo Sunce",d:"Global Collections",c:"Colombia",b:19.5,t:2.5},
+  {n:"Francisco Ramírez",d:"Financial Operations",c:"Mexico",b:19.4,t:43.0},
+  {n:"Paola Candiani",d:"Global General Support",c:"Mexico",b:19.4,t:41.0},
+  {n:"Ariadna Zavala",d:"Workplace",c:"Mexico",b:19.4,t:39.0},
+  {n:"Leslie Torres",d:"Sales",c:"Mexico",b:19.4,t:27.0},
+  {n:"Vincent Fuseau",d:"Core Engineering",c:"United States",b:19.4,t:44.5},
+  {n:"Warren Balmaceda",d:"Global General Support",c:"Philippines",b:19.3,t:32.0},
+  {n:"Javi Salcedo",d:"Fraud Operations",c:"Mexico",b:19.3,t:105.0},
+  {n:"Paola Benavides",d:"Sales",c:"Colombia",b:19.3,t:29.5},
+  {n:"Diego Vallejo",d:"Financial Operations",c:"Mexico",b:19.3,t:36.0},
+  {n:"Paola Espitia",d:"Sales",c:"Colombia",b:19.2,t:189.5},
+  {n:"Alberto Cruz",d:"Global Collections",c:"Mexico",b:19.2,t:48.0},
+  {n:"Nathasha Dias",d:"Sales",c:"Brazil",b:19.0,t:15.0},
+  {n:"Victoria Torres",d:"Sales",c:"Mexico",b:19.0,t:5.0},
+  {n:"Fernando Cocoletzi",d:"Data Science",c:"Mexico",b:19.0,t:10.0},
+  {n:"Prateek Agarwal",d:"Product and UX",c:"United States",b:18.9,t:41.5},
+  {n:"Dayana Figuereo",d:"Sales",c:"Mexico",b:18.9,t:32.0},
+  {n:"Rene Hernandez Angeles",d:"Sales",c:"Mexico",b:18.9,t:32.0},
+  {n:"Paola Mendoza",d:"Sales",c:"Mexico",b:18.9,t:27.0},
+  {n:"Obrian Campos",d:"Sales",c:"Mexico",b:18.8,t:35.0},
+  {n:"Antonella Zarate",d:"Workplace",c:"Peru",b:18.7,t:3.0},
+  {n:"Maria Paula Saenz",d:"Legal",c:"Colombia",b:18.7,t:186.0},
+  {n:"Angie Gallego",d:"Global Clerk Support",c:"Colombia",b:18.7,t:70.5},
+  {n:"Sunny Dong",d:"Lock",c:"China",b:18.6,t:12.0},
+  {n:"Yukcel Ortiz",d:"Global Clerk Support",c:"Mexico",b:18.6,t:30.0},
+  {n:"Alex Toapanta",d:"Sales",c:"Ecuador",b:18.6,t:32.0},
+  {n:"Sebastian Torres",d:"Sales",c:"Colombia",b:18.5,t:8.0},
+  {n:"Sandra Caramantin",d:"Merchant Operations",c:"Peru",b:18.5,t:195.0},
+  {n:"Silvia Olivares",d:"Marketing",c:"Colombia",b:18.4,t:39.6},
+  {n:"Raul Garcia Prieto",d:"Global General Support",c:"Mexico",b:18.4,t:43.0},
+  {n:"Kearan Kemoetie",d:"Merchant Operations",c:"South Africa",b:18.4,t:39.0},
+  {n:"Jose Luis Aquino Vega",d:"Capital Markets",c:"Mexico",b:18.4,t:11.0},
+  {n:"Ryan Bailey",d:"Core Engineering",c:"United States",b:18.3,t:28.0},
+  {n:"Amit Mathur",d:"Risk Strategy",c:"India",b:18.3,t:5.0},
+  {n:"Adam Struve",d:"Financial Platforms",c:"United States",b:18.2,t:45.0},
+  {n:"Pedro Dimas",d:"Sales",c:"Mexico",b:18.2,t:37.0},
+  {n:"Kike San Martin",d:"Global Clerk Support",c:"Mexico",b:18.2,t:28.0},
+  {n:"Jessy Santillán",d:"Sales",c:"Ecuador",b:18.1,t:24.0},
+  {n:"Francis Vega",d:"Accounting",c:"Ecuador",b:18.1,t:6.5},
+  {n:"Mariana Montoya",d:"FPA and Treasury",c:"Colombia",b:18.1,t:43.4},
+  {n:"David Vega",d:"Accounting",c:"Colombia",b:18.0,t:20.0},
+  {n:"Hector Contreras",d:"Global General Support",c:"Mexico",b:17.9,t:24.0},
+  {n:"Eduardo Despabeladera Jr",d:"Sales",c:"Philippines",b:17.7,t:6.0},
+  {n:"Majo Gutierrez de la Peza",d:"FPA and Treasury",c:"Mexico",b:17.7,t:158.0},
+  {n:"Alexis Piña",d:"Data Science",c:"Mexico",b:17.7,t:13.0},
+  {n:"Isabel Botero",d:"Merchant Operations",c:"Colombia",b:17.6,t:64.1},
+  {n:"Salvador Altamirano",d:"Global Clerk Support",c:"Mexico",b:17.5,t:19.0},
+  {n:"Ramiro Bazan",d:"Product and UX",c:"Mexico",b:17.5,t:15.0},
+  {n:"Jorge Pinto",d:"Sales",c:"Peru",b:17.5,t:19.0},
+  {n:"Vishwas Katti",d:"Sales",c:"India",b:17.5,t:30.3},
+  {n:"Edith Canela",d:"Global Clerk Support",c:"Mexico",b:17.4,t:23.0},
+  {n:"Alejandra Cepeda",d:"Sales",c:"Colombia",b:17.4,t:22.0},
+  {n:"Sandra Cardenas",d:"Sales",c:"Peru",b:17.3,t:0.0},
+  {n:"Joshua Jimenez",d:"Global General Support",c:"Peru",b:17.3,t:10.0},
+  {n:"Daniela Paredes",d:"Sales",c:"Ecuador",b:17.3,t:22.5},
+  {n:"Ivan Santibañez Martinez",d:"Marketing",c:"Mexico",b:17.2,t:30.0},
+  {n:"John Henao",d:"Global Clerk Support",c:"Colombia",b:17.2,t:58.2},
+  {n:"Martin Arango",d:"Core Engineering",c:"United States",b:17.1,t:25.5},
+  {n:"Tatiana Diaz",d:"Global Clerk Support",c:"Colombia",b:17.0,t:90.0},
+  {n:"Andres Jaramillo",d:"Sales",c:"Ecuador",b:16.9,t:3.0},
+  {n:"Sergio Torres",d:"Sales",c:"Mexico",b:16.8,t:8.0},
+  {n:"Pamela Perez",d:"Global General Support",c:"Ecuador",b:16.7,t:40.5},
+  {n:"Katherin Valencia",d:"Global Clerk Support",c:"Colombia",b:16.7,t:50.0},
+  {n:"Daen Tellez",d:"Global Clerk Support",c:"Mexico",b:16.6,t:0.0},
+  {n:"Thabang Mabaso",d:"Sales",c:"South Africa",b:16.6,t:5.0},
+  {n:"Andres Villalba",d:"Core Engineering",c:"Colombia",b:16.6,t:9.0},
+  {n:"Emma Roncancio",d:"Marketing",c:"Colombia",b:16.6,t:20.5},
+  {n:"Henk Van Der Merwe",d:"FPA and Treasury",c:"South Africa",b:16.5,t:53.0},
+  {n:"Uziel Bueno",d:"Core Engineering",c:"Mexico",b:16.5,t:29.0},
+  {n:"Jhoan Cuartas",d:"Core Engineering",c:"Colombia",b:16.5,t:31.5},
+  {n:"Chelis Gonzalez",d:"Merchant Operations",c:"Mexico",b:16.5,t:4.0},
+  {n:"Clau Román",d:"Merchant Operations",c:"Peru",b:16.5,t:86.0},
+  {n:"Pablo Herrera",d:"Merchant Operations",c:"Mexico",b:16.5,t:51.0},
+  {n:"Laura Barrón",d:"Sales",c:"Mexico",b:16.4,t:30.0},
+  {n:"Juan Sebastian Tellez",d:"Sales",c:"Colombia",b:16.4,t:29.1},
+  {n:"Lidia Garcia",d:"Global Clerk Support",c:"Mexico",b:16.4,t:6.0},
+  {n:"Angela Gonzalez",d:"Global Clerk Support",c:"Colombia",b:16.4,t:44.6},
+  {n:"Rolando Lopez",d:"Core Engineering",c:"Mexico",b:16.4,t:41.5},
+  {n:"Michelle Lee",d:"Product and UX",c:"United States",b:16.4,t:10.0},
+  {n:"Tania Aguas",d:"Finance Systems",c:"Colombia",b:16.3,t:15.0},
+  {n:"Doug Ricket",d:"Admin",c:"United States",b:16.3,t:31.5},
+  {n:"Holmes Penafiel",d:"Sales",c:"Ecuador",b:16.3,t:35.0},
+  {n:"Carolina Porras",d:"Global Clerk Support",c:"Colombia",b:16.3,t:62.0},
+  {n:"Weili Dong",d:"Investor Relations",c:"United States",b:16.2,t:104.0},
+  {n:"Diego Urrea",d:"Merchant Operations",c:"Colombia",b:16.2,t:29.6},
+  {n:"Adrian Galvan",d:"Product and UX",c:"Mexico",b:16.1,t:22.0},
+  {n:"Fritz Espinosa",d:"Technical Support Analysts",c:"Philippines",b:16.0,t:14.0},
+  {n:"Ana Beatriz Marcal Vieira",d:"Product and UX",c:"Brazil",b:16.0,t:169.0},
+  {n:"Alejandra Enciso",d:"Global General Support",c:"Colombia",b:15.9,t:36.5},
+  {n:"Juliana Zapata",d:"Merchant Operations",c:"Colombia",b:15.9,t:28.6},
+  {n:"Juliana Herrera",d:"Risk Strategy",c:"Colombia",b:15.8,t:11.5},
+  {n:"Carlos Munoz",d:"Sales",c:"Colombia",b:15.8,t:41.6},
+  {n:"Fernanda Najera",d:"Global Collections",c:"Mexico",b:15.8,t:10.0},
+  {n:"David Van Aken",d:"Core Engineering",c:"United States",b:15.7,t:82.9},
+  {n:"Andres Pinilla",d:"Global Clerk Support",c:"Colombia",b:15.7,t:7.5},
+  {n:"Javier Gutierrez",d:"Core Engineering",c:"Colombia",b:15.7,t:29.0},
+  {n:"Jorge Turcott",d:"FPA and Treasury",c:"Mexico",b:15.7,t:3.0},
+  {n:"Pato De La Mora",d:"Technical Support Analysts",c:"Mexico",b:15.5,t:25.0},
+  {n:"Edgar Ocampo Urdinola",d:"Merchant Operations",c:"Colombia",b:15.5,t:40.0},
+  {n:"Andres Sanchez",d:"Sales",c:"Colombia",b:15.5,t:19.5},
+  {n:"Ernesto Merchant",d:"Finance Systems",c:"Mexico",b:15.5,t:17.0},
+  {n:"Kgodiso Kgoete",d:"Global Clerk Support",c:"South Africa",b:15.5,t:23.0},
+  {n:"Luis Legarreta",d:"Core Engineering",c:"Mexico",b:15.5,t:61.1},
+  {n:"Genestine Foen",d:"Sales",c:"South Africa",b:15.4,t:10.0},
+  {n:"Elizabeth Martinez",d:"Global Clerk Support",c:"Mexico",b:15.4,t:29.0},
+  {n:"Tash Hicks",d:"People Partners",c:"South Africa",b:15.3,t:49.0},
+  {n:"Christyan Galarza",d:"Sales",c:"Peru",b:15.3,t:3.0},
+  {n:"Fernando Jimenez Novo",d:"Core Engineering",c:"Mexico",b:15.2,t:53.0},
+  {n:"Luz Restrepo",d:"Merchant Operations",c:"Colombia",b:15.2,t:36.1},
+  {n:"Andrea Miranda de la Torre",d:"Global General Support",c:"Mexico",b:15.2,t:11.0},
+  {n:"Pau Islas",d:"Legal",c:"Mexico",b:15.1,t:60.0},
+  {n:"Erick Hodgson",d:"Global Tools and Metrics",c:"Colombia",b:15.0,t:9.0},
+  {n:"Yhorman Guevara",d:"Global Clerk Support",c:"Colombia",b:15.0,t:18.0},
+  {n:"Ray Cuellar",d:"Merchant Operations",c:"Mexico",b:15.0,t:4.0},
+  {n:"Jason Patalinghug",d:"Sales",c:"Philippines",b:15.0,t:0.0},
+  {n:"Marcelo Sato",d:"Lock",c:"Brazil",b:15.0,t:22.0},
+  {n:"Rafael Silva",d:"Merchant Operations",c:"Brazil",b:15.0,t:26.0},
+  {n:"Jenssen Barreto",d:"Sales",c:"Brazil",b:15.0,t:15.0},
+  {n:"Dain Schroeder",d:"Core Engineering",c:"United States",b:15.0,t:147.4},
+  {n:"Luciana Palmieri",d:"People Partners",c:"Brazil",b:15.0,t:25.5},
+  {n:"Flavio Oliveira",d:"Sales",c:"Brazil",b:15.0,t:38.0},
+  {n:"Rosana Vega",d:"Merchant Operations",c:"Peru",b:15.0,t:13.0},
+  {n:"Bea Portugal",d:"People Partners",c:"Philippines",b:15.0,t:11.0},
+  {n:"Eduardo Romero",d:"Merchant Operations",c:"Mexico",b:14.9,t:0.0},
+  {n:"Vannesa Plazas",d:"Fraud Operations",c:"Colombia",b:14.9,t:44.6},
+  {n:"Paco Reyes",d:"Product and UX",c:"Mexico",b:14.8,t:36.0},
+  {n:"Ashley Contreras",d:"Global General Support",c:"Mexico",b:14.8,t:13.0},
+  {n:"Angela Motta",d:"FPA and Treasury",c:"Colombia",b:14.8,t:17.0},
+  {n:"Soha Yasrebi",d:"Product and UX",c:"United States",b:14.8,t:101.0},
+  {n:"Tiara Sapan",d:"Sales",c:"Indonesia",b:14.7,t:3.0},
+  {n:"Diana Palazuelos",d:"Merchant Operations",c:"Mexico",b:14.6,t:0.0},
+  {n:"Zuleyma Palomino",d:"Merchant Operations",c:"Mexico",b:14.6,t:12.0},
+  {n:"Karen Osorio",d:"Merchant Operations",c:"Colombia",b:14.6,t:19.5},
+  {n:"Leila El Bahy",d:"Global General Support",c:"Peru",b:14.5,t:18.0},
+  {n:"Margo Moyakhe",d:"Global Tools and Metrics",c:"South Africa",b:14.5,t:41.0},
+  {n:"Juan Andrade",d:"Talent Acquisition",c:"Mexico",b:14.4,t:38.0},
+  {n:"Nick Zakrasek",d:"Core Engineering",c:"United States",b:14.4,t:32.5},
+  {n:"Joanna Cruz",d:"Merchant Operations",c:"Mexico",b:14.4,t:26.0},
+  {n:"Daniel Cruz Zuñiga",d:"Global Clerk Support",c:"Mexico",b:14.4,t:40.0},
+  {n:"Karol Bayeta",d:"Sales",c:"Philippines",b:14.3,t:2.0},
+  {n:"Karen Saavedra",d:"Risk Strategy",c:"Mexico",b:14.3,t:27.0},
+  {n:"Alejandra Galindo",d:"Sales",c:"Colombia",b:14.3,t:44.5},
+  {n:"Otho Chavarria",d:"Sales",c:"Mexico",b:14.2,t:0.0},
+  {n:"Francis Penuela",d:"Sales",c:"Philippines",b:14.2,t:2.0},
+  {n:"Alexis Rizo",d:"Sales",c:"Mexico",b:14.1,t:14.0},
+  {n:"Heidy Palacios",d:"Global General Support",c:"Colombia",b:14.0,t:44.5},
+  {n:"Rene Payan",d:"Merchant Operations",c:"United States",b:14.0,t:106.5},
+  {n:"Camilla Alves",d:"Global Tools and Metrics",c:"Brazil",b:14.0,t:25.0},
+  {n:"Jhonatan González",d:"Sales",c:"Colombia",b:14.0,t:7.0},
+  {n:"Raúl Villarreal Garcia",d:"Sales",c:"Mexico",b:14.0,t:38.0},
+  {n:"Rodrigo Scartezini",d:"FPA and Treasury",c:"Brazil",b:14.0,t:58.0},
+  {n:"Vinicius Lopes",d:"Global Tools and Metrics",c:"Brazil",b:14.0,t:24.0},
+  {n:"Alfonso Arango",d:"Merchant Operations",c:"Colombia",b:14.0,t:46.0},
+  {n:"Charlie Xue",d:"Lock",c:"China",b:14.0,t:1.0},
+  {n:"Francisco Castaneda",d:"Core Engineering",c:"Panama",b:14.0,t:56.7},
+  {n:"Steve Grossman",d:"FPA and Treasury",c:"United States",b:13.9,t:18.0},
+  {n:"Katherin Muñiz",d:"Sales",c:"Peru",b:13.8,t:4.0},
+  {n:"Yazmin Tornado Sarmiento",d:"Sales",c:"Colombia",b:13.8,t:2.0},
+  {n:"Bill Yialamas",d:"Capital Markets",c:"United States",b:13.8,t:30.0},
+  {n:"Yolanda Ferreira",d:"Sales",c:"South Africa",b:13.8,t:7.0},
+  {n:"Carlos Olea",d:"Global Collections",c:"Mexico",b:13.7,t:15.0},
+  {n:"Karla Cuellar",d:"Sales",c:"Mexico",b:13.7,t:3.0},
+  {n:"Juan Gonzalez",d:"Sales",c:"Colombia",b:13.7,t:52.0},
+  {n:"Areli Montoya",d:"Merchant Operations",c:"Mexico",b:13.7,t:3.0},
+  {n:"Linda Chaka",d:"FPA and Treasury",c:"South Africa",b:13.7,t:55.0},
+  {n:"Shri Javadekar",d:"Core Engineering",c:"United States",b:13.6,t:32.0},
+  {n:"Magaly Rodriguez",d:"Legal",c:"Mexico",b:13.6,t:26.0},
+  {n:"Daisy Macre",d:"Sales",c:"Panama",b:13.6,t:43.1},
+  {n:"Nonjabuliso Dlamini",d:"Global Clerk Support",c:"South Africa",b:13.5,t:20.0},
+  {n:"Mario Betetta",d:"Sales",c:"Peru",b:13.5,t:11.0},
+  {n:"Mauricio Castaneda",d:"Core Engineering",c:"United States",b:13.5,t:60.5},
+  {n:"Brad Pennington",d:"Risk Strategy",c:"United States",b:13.4,t:44.5},
+  {n:"Preston Goodyear",d:"Accounting",c:"United States",b:13.4,t:20.0},
+  {n:"Alfredo Hernandez",d:"Global Clerk Support",c:"Mexico",b:13.4,t:35.0},
+  {n:"Michelle Rojas",d:"Workplace",c:"Colombia",b:13.3,t:21.0},
+  {n:"Shaun Durandt",d:"Sales",c:"South Africa",b:13.3,t:27.0},
+  {n:"Riccianny Lara",d:"Sales",c:"Peru",b:13.2,t:14.0},
+  {n:"Ben Reback",d:"Core Engineering",c:"United States",b:13.2,t:32.0},
+  {n:"Hugo Cabrera",d:"Sales",c:"Ecuador",b:13.2,t:0.0},
+  {n:"Karla Buenfil",d:"Marketing",c:"Mexico",b:13.1,t:14.0},
+  {n:"Gabriel Mas",d:"Marketing",c:"Mexico",b:13.1,t:0.0},
+  {n:"Kalpana Thokchom",d:"Merchant Operations",c:"India",b:13.0,t:44.4},
+  {n:"Rubén Vega",d:"Global Clerk Support",c:"Colombia",b:13.0,t:84.1},
+  {n:"Miguel Chavarria",d:"Merchant Operations",c:"Mexico",b:13.0,t:5.0},
+  {n:"Edith Mashiloane",d:"Merchant Operations",c:"South Africa",b:13.0,t:55.0},
+  {n:"Alexis Aymerich",d:"Global Clerk Support",c:"Mexico",b:13.0,t:46.0},
+  {n:"Zaid Rasool",d:"Global Collections",c:"South Africa",b:13.0,t:12.0},
+  {n:"Tania Itzel Garcia",d:"Merchant Operations",c:"Mexico",b:13.0,t:5.0},
+  {n:"Luciano Fernandes",d:"Sales",c:"Brazil",b:13.0,t:31.0},
+  {n:"Ale Gonzalez",d:"Talent Acquisition",c:"Mexico",b:12.9,t:38.0},
+  {n:"Ntombi Xaba",d:"Technical Support Analysts",c:"South Africa",b:12.9,t:44.0},
+  {n:"Renata Navarro Giniger",d:"Portfolio Management",c:"Mexico",b:12.8,t:17.0},
+  {n:"Laurence Durano",d:"Sales",c:"Philippines",b:12.8,t:4.0},
+  {n:"Jessica Ayure",d:"Global General Support",c:"Colombia",b:12.8,t:63.5},
+  {n:"Branly De Leon",d:"Merchant Operations",c:"Mexico",b:12.8,t:3.0},
+  {n:"Daniel Hernandez Giraldo",d:"Core Engineering",c:"Colombia",b:12.7,t:11.0},
+  {n:"Santiago Olvera",d:"Portfolio Management",c:"Mexico",b:12.7,t:13.0},
+  {n:"Esmeralda Jaimes",d:"Merchant Operations",c:"Mexico",b:12.7,t:5.0},
+  {n:"Monica Sarrapy",d:"Financial Platforms",c:"United States",b:12.7,t:84.0},
+  {n:"Petloane Mogajane",d:"Core Engineering",c:"South Africa",b:12.7,t:8.0},
+  {n:"Ana Morales",d:"Sales",c:"Panama",b:12.7,t:48.0},
+  {n:"Shakeera Booysen",d:"Sales",c:"South Africa",b:12.6,t:69.0},
+  {n:"Camila Perez",d:"Portfolio Management",c:"United States",b:12.5,t:50.0},
+  {n:"Jorge Useche",d:"Core Engineering",c:"Colombia",b:12.5,t:21.0},
+  {n:"Andrés Villena",d:"Merchant Operations",c:"Peru",b:12.5,t:64.0},
+  {n:"Andrea Nava",d:"Merchant Operations",c:"Mexico",b:12.5,t:27.0},
+  {n:"Jesse Gabriel",d:"Core Engineering",c:"United States",b:12.5,t:97.0},
+  {n:"Lindokuhle Mdlalose",d:"Global Clerk Support",c:"South Africa",b:12.5,t:23.0},
+  {n:"Mariana Zapata",d:"Capital Markets",c:"Mexico",b:12.4,t:16.0},
+  {n:"Evander Basañez",d:"Sales",c:"Philippines",b:12.4,t:1.0},
+  {n:"Victor Deng",d:"Lock",c:"China",b:12.4,t:4.0},
+  {n:"Brian Maldonado",d:"Merchant Operations",c:"Mexico",b:12.4,t:7.0},
+  {n:"Brayan Avila",d:"Global Clerk Support",c:"Mexico",b:12.4,t:34.0},
+  {n:"Andres Laverde",d:"Sales",c:"Colombia",b:12.3,t:1.0},
+  {n:"Jess Monter",d:"Core Engineering",c:"Mexico",b:12.3,t:14.0},
+  {n:"Alfredo Rivera",d:"Financial Operations",c:"Mexico",b:12.2,t:15.0},
+  {n:"Elena Cardiel",d:"Sales",c:"Mexico",b:12.2,t:26.0},
+  {n:"Marco Perdigón",d:"Merchant Operations",c:"Mexico",b:12.2,t:9.0},
+  {n:"Anderson Cedres",d:"Sales",c:"Ecuador",b:12.1,t:4.0},
+  {n:"Maryann Kongovi",d:"People Partners",c:"United States",b:12.1,t:21.0},
+  {n:"Lucia Villar",d:"Product and UX",c:"Mexico",b:12.0,t:15.5},
+  {n:"Juan Pablo Acosta",d:"Core Engineering",c:"Colombia",b:12.0,t:19.5},
+  {n:"Geovany Rodea",d:"Technical Support Analysts",c:"Mexico",b:11.9,t:3.0},
+  {n:"Angel Castillo",d:"Marketing",c:"Mexico",b:11.9,t:9.0},
+  {n:"Fabián Matías",d:"Sales",c:"Mexico",b:11.8,t:2.0},
+  {n:"Deon Verster",d:"Merchant Operations",c:"South Africa",b:11.8,t:56.0},
+  {n:"Maribel Garcia",d:"Merchant Operations",c:"Mexico",b:11.8,t:4.0},
+  {n:"Yael Hurtado",d:"Core Engineering",c:"Mexico",b:11.8,t:95.0},
+  {n:"Guillermo Gonzalez",d:"Sales",c:"Mexico",b:11.8,t:12.0},
+  {n:"Yumilsan Gonzalez",d:"Merchant Operations",c:"Colombia",b:11.8,t:51.1},
+  {n:"Eduardo Rodríguez",d:"Merchant Operations",c:"Mexico",b:11.7,t:4.0},
+  {n:"Ningsya Syafitri",d:"Fraud Operations",c:"Indonesia",b:11.7,t:2.0},
+  {n:"Jensen Varian",d:"FPA and Treasury",c:"Indonesia",b:11.7,t:3.0},
+  {n:"Robinson Moscoso",d:"Core Engineering",c:"Colombia",b:11.7,t:16.0},
+  {n:"Jorge Ozan",d:"Sales",c:"Colombia",b:11.6,t:38.5},
+  {n:"Maria Fernanda Amaya Mora",d:"Global Tools and Metrics",c:"Colombia",b:11.6,t:193.0},
+  {n:"Roberto Velasco",d:"Global Collections",c:"Mexico",b:11.6,t:6.0},
+  {n:"Veran Maharaj",d:"Lock",c:"South Africa",b:11.6,t:0.0},
+  {n:"Ignacio Lizarraga",d:"Legal",c:"Peru",b:11.6,t:7.0},
+  {n:"Garrett Carver",d:"Core Engineering",c:"United States",b:11.6,t:36.2},
+  {n:"Manuel Rosales",d:"Global Clerk Support",c:"Panama",b:11.5,t:35.0},
+  {n:"Mauricio Ruiz",d:"Global Collections",c:"Mexico",b:11.4,t:15.0},
+  {n:"Toño Aguilera Hernandez",d:"Accounting",c:"Mexico",b:11.4,t:15.0},
+  {n:"Motsabi Makhetha",d:"Sales",c:"South Africa",b:11.4,t:68.0},
+  {n:"Manuel Manzo",d:"Sales",c:"Mexico",b:11.3,t:2.0},
+  {n:"Dani Maldonado",d:"Merchant Operations",c:"Mexico",b:11.3,t:36.0},
+  {n:"Laura Penaranda Albarracin",d:"Financial Operations",c:"Colombia",b:11.3,t:41.0},
+  {n:"Jhony Trujillo",d:"Marketing",c:"Colombia",b:11.3,t:11.0},
+  {n:"Nthabiseng Nkutha",d:"Global Clerk Support",c:"South Africa",b:11.2,t:75.8},
+  {n:"Gib Lopez",d:"Global Tools and Metrics",c:"United States",b:11.2,t:129.0},
+  {n:"Vanessa Arnedo",d:"Sales",c:"Colombia",b:11.1,t:4.0},
+  {n:"Gerold Esparagoza",d:"Sales",c:"Philippines",b:11.1,t:14.0},
+  {n:"Tim Spence",d:"Core Engineering",c:"United States",b:11.1,t:109.9},
+  {n:"Esau Saravia",d:"Core Engineering",c:"Mexico",b:11.1,t:18.0},
+  {n:"Ricardo Olvera",d:"Sales",c:"Mexico",b:11.1,t:21.0},
+  {n:"Thabiso Motloung",d:"Merchant Operations",c:"South Africa",b:11.1,t:60.0},
+  {n:"Oscar Castro",d:"Sales",c:"Colombia",b:11.0,t:7.5},
+  {n:"Nicholas Gooding",d:"Core Engineering",c:"Colombia",b:11.0,t:32.0},
+  {n:"Maria Jose Ruiz Salazar",d:"Global Clerk Support",c:"Colombia",b:11.0,t:44.5},
+  {n:"Rendani Matsea",d:"Fraud Operations",c:"South Africa",b:11.0,t:13.0},
+  {n:"Ivy Bautista",d:"Merchant Operations",c:"Philippines",b:11.0,t:1.0},
+  {n:"Rocio Mendez",d:"Global Clerk Support",c:"Mexico",b:10.9,t:35.0},
+  {n:"Fernando Cuevas",d:"Merchant Operations",c:"Mexico",b:10.9,t:4.0},
+  {n:"Rineke Du Toit",d:"Legal",c:"South Africa",b:10.8,t:10.0},
+  {n:"Johana Ojeda Rodriguez",d:"Global General Support",c:"Mexico",b:10.8,t:27.0},
+  {n:"Blanca Gómez",d:"Merchant Operations",c:"Mexico",b:10.8,t:5.0},
+  {n:"Zoleka Mgqubeni",d:"Risk Strategy",c:"South Africa",b:10.7,t:24.0},
+  {n:"Hugo Flores",d:"Merchant Operations",c:"Mexico",b:10.7,t:3.0},
+  {n:"Jeng Calvo",d:"Sales",c:"Philippines",b:10.6,t:26.0},
+  {n:"Veronica Cruz Amaya",d:"Global General Support",c:"Mexico",b:10.6,t:11.0},
+  {n:"Alan Ortega",d:"Core Engineering",c:"Mexico",b:10.5,t:55.0},
+  {n:"Sebastián Medina",d:"Marketing",c:"Mexico",b:10.4,t:4.0},
+  {n:"Leslie Alvarado Osorio",d:"Global General Support",c:"Mexico",b:10.4,t:47.0},
+  {n:"Mitchell Van Zyl",d:"Merchant Operations",c:"South Africa",b:10.4,t:109.0},
+  {n:"Nancy Mandujano",d:"Sales",c:"Mexico",b:10.4,t:43.0},
+  {n:"Marco Villalobos",d:"Global Clerk Support",c:"Mexico",b:10.4,t:1.0},
+  {n:"Saraí Valdés",d:"Sales Operations",c:"Mexico",b:10.4,t:44.0},
+  {n:"Diego Rodriguez",d:"Core Engineering",c:"Colombia",b:10.4,t:50.1},
+  {n:"Andres Guzman",d:"Merchant Operations",c:"Mexico",b:10.2,t:14.0},
+  {n:"Axel Reyna",d:"Risk Strategy",c:"Mexico",b:10.2,t:1.0},
+  {n:"Gerardo Chagoyan",d:"Marketing",c:"Mexico",b:10.1,t:36.0},
+  {n:"Melody Gwele",d:"Global Clerk Support",c:"South Africa",b:10.1,t:37.9},
+  {n:"Jazmín Lopez Dávalos",d:"Merchant Operations",c:"Mexico",b:10.1,t:4.0},
+  {n:"Mauricio Chavarro",d:"Product and UX",c:"Colombia",b:10.0,t:1.5},
+  {n:"Rachel Alves",d:"Merchant Operations",c:"Brazil",b:10.0,t:236.0},
+  {n:"Alejandro Contreras",d:"Sales",c:"Peru",b:10.0,t:23.5},
+  {n:"Anrian Tamba",d:"Merchant Operations",c:"Indonesia",b:10.0,t:0.0},
+  {n:"Marina Paes",d:"Sales",c:"Brazil",b:10.0,t:30.0},
+  {n:"Gib Lopez",d:"Global Tools and Metrics",c:"United States",b:10.0,t:129.0},
+  {n:"David Van Aken",d:"Core Engineering",c:"United States",b:10.0,t:82.9},
+  {n:"Marcela Ovalle",d:"FPA and Treasury",c:"Colombia",b:10.0,t:7.5},
+  {n:"Jorge Hernández",d:"Fraud Operations",c:"Mexico",b:9.9,t:14.0},
+  {n:"Fernanda Rodríguez",d:"Merchant Operations",c:"Mexico",b:9.9,t:6.0},
+  {n:"Genaro Fernández",d:"Sales",c:"Peru",b:9.9,t:0.0},
+  {n:"Msovo Mabasa",d:"Core Engineering",c:"South Africa",b:9.8,t:20.0},
+  {n:"Abel Murrieta",d:"Core Engineering",c:"Mexico",b:9.7,t:8.0},
+  {n:"Elsa Manzo",d:"Admin",c:"United States",b:9.7,t:40.0},
+  {n:"Priscilla Adam",d:"Global Collections",c:"South Africa",b:9.7,t:27.0},
+  {n:"Diego Schocher",d:"Merchant Operations",c:"Mexico",b:9.6,t:10.0},
+  {n:"Lesedi Ditsi",d:"Merchant Operations",c:"South Africa",b:9.6,t:9.0},
+  {n:"Sandy Amaya",d:"Talent Acquisition",c:"Colombia",b:9.6,t:16.0},
+  {n:"Sanjay Vadlamani",d:"Accounting",c:"United States",b:9.5,t:34.0},
+  {n:"Alondra Velarde",d:"Global Clerk Support",c:"Mexico",b:9.4,t:48.0},
+  {n:"Nicolee Valencia",d:"Merchant Operations",c:"Mexico",b:9.4,t:10.0},
+  {n:"Yoseline Ferrer",d:"Sales",c:"Panama",b:9.4,t:48.0},
+  {n:"Alex Demin",d:"Core Engineering",c:"Mexico",b:9.4,t:5.0},
+  {n:"James Dowd",d:"Risk Strategy",c:"United States",b:9.3,t:41.0},
+  {n:"Sthefanny Castiblanco",d:"Marketing",c:"Colombia",b:9.3,t:17.0},
+  {n:"Paola Figari",d:"Merchant Operations",c:"Ecuador",b:9.2,t:28.0},
+  {n:"Pamela Barona",d:"Marketing",c:"Mexico",b:9.2,t:22.0},
+  {n:"Diana Martinez",d:"Sales",c:"Colombia",b:9.2,t:1.0},
+  {n:"Monica Guerrero",d:"Global Tools and Metrics",c:"Mexico",b:9.0,t:48.0},
+  {n:"Matt Jados",d:"Core Engineering",c:"United States",b:8.9,t:21.0},
+  {n:"Felipe Baigen",d:"Sales",c:"Mexico",b:8.9,t:28.0},
+  {n:"Javier Ortiz",d:"Core Engineering",c:"United States",b:8.9,t:49.3},
+  {n:"Jose Maria Perez Campos",d:"Sales Operations",c:"Mexico",b:8.8,t:8.0},
+  {n:"Carlos Silva",d:"Merchant Operations",c:"Mexico",b:8.7,t:17.0},
+  {n:"William Abril",d:"Core Engineering",c:"Colombia",b:8.7,t:15.5},
+  {n:"Jesse Mothwood",d:"Data Science",c:"United States",b:8.7,t:30.0},
+  {n:"Elias Rojas",d:"Marketing",c:"Mexico",b:8.7,t:33.0},
+  {n:"Maria Velazquez",d:"People Partners",c:"Mexico",b:8.6,t:32.0},
+  {n:"Laura Galicia",d:"Merchant Operations",c:"Mexico",b:8.6,t:25.0},
+  {n:"Keevin Taza",d:"Sales",c:"Peru",b:8.5,t:100.0},
+  {n:"Colombia Perez",d:"Global Clerk Support",c:"Panama",b:8.4,t:50.0},
+  {n:"Ricky Leman",d:"Core Engineering",c:"United States",b:8.4,t:36.1},
+  {n:"Naseema Khan",d:"FPA and Treasury",c:"South Africa",b:8.4,t:68.0},
+  {n:"Sandra Contreras",d:"Global Clerk Support",c:"Mexico",b:8.3,t:46.0},
+  {n:"Sara Escobar",d:"Financial Platforms",c:"Mexico",b:8.3,t:30.0},
+  {n:"Karla Teran",d:"Marketing",c:"Ecuador",b:8.3,t:38.5},
+  {n:"Juliana Bermúdez",d:"Sales",c:"Colombia",b:8.3,t:13.0},
+  {n:"Catalina Mendez",d:"Product and UX",c:"Colombia",b:8.2,t:6.0},
+  {n:"Tania Benítez",d:"Core Engineering",c:"Mexico",b:8.2,t:3.0},
+  {n:"Mille Londoño",d:"Global Clerk Support",c:"Colombia",b:8.1,t:40.9},
+  {n:"Cristian Rey",d:"Merchant Operations",c:"Colombia",b:8.1,t:4.0},
+  {n:"Ricardo Carro",d:"Core Engineering",c:"Mexico",b:8.1,t:2.0},
+  {n:"Harrison Pelaez",d:"Global Clerk Support",c:"Colombia",b:8.1,t:41.1},
+  {n:"Krimi San Pedro",d:"Marketing",c:"Philippines",b:8.0,t:4.0},
+  {n:"Luis Guerrero",d:"Sales",c:"Mexico",b:8.0,t:105.0},
+  {n:"Ann Co",d:"Sales",c:"Philippines",b:8.0,t:4.0},
+  {n:"Paola Canseco",d:"Marketing",c:"Mexico",b:8.0,t:44.0},
+  {n:"Marty Palibroda",d:"Lock",c:"United States",b:8.0,t:39.0},
+  {n:"Wagner Mendonca",d:"Merchant Operations",c:"Brazil",b:8.0,t:40.4},
+  {n:"Alejandra Leal",d:"Risk Strategy",c:"Mexico",b:7.9,t:25.0},
+  {n:"Hans Meza",d:"Global Collections",c:"Ecuador",b:7.8,t:7.0},
+  {n:"Carlos Martinez",d:"Core Engineering",c:"Colombia",b:7.7,t:8.0},
+  {n:"Carol Barrero",d:"Merchant Operations",c:"Colombia",b:7.6,t:34.0},
+  {n:"Marycarmen Gutiérrez Casas",d:"Capital Markets",c:"Mexico",b:7.6,t:55.0},
+  {n:"Teresa Ruiz Rivera",d:"Merchant Operations",c:"Mexico",b:7.6,t:14.0},
+  {n:"Victor Nuñez",d:"Merchant Operations",c:"Mexico",b:7.4,t:0.0},
+  {n:"Anj Quesea",d:"Accounting",c:"Philippines",b:7.4,t:4.0},
+  {n:"Carmen Hernández Elvira",d:"Accounting",c:"Mexico",b:7.4,t:5.0},
+  {n:"Donna Teodoro",d:"Global Collections",c:"Philippines",b:7.4,t:55.5},
+  {n:"Jonathan Soriano",d:"Global Clerk Support",c:"Mexico",b:7.4,t:0.0},
+  {n:"Marco Ramírez",d:"Marketing",c:"Mexico",b:7.4,t:3.0},
+  {n:"Carlos Lobato",d:"Sales",c:"Mexico",b:7.3,t:8.0},
+  {n:"Chris Damayan",d:"Global Clerk Support",c:"Philippines",b:7.3,t:12.0},
+  {n:"Estefania Benalcazar",d:"Sales",c:"Ecuador",b:7.3,t:24.0},
+  {n:"Josh Paz",d:"Sales",c:"Philippines",b:7.3,t:3.0},
+  {n:"Palesa Mavundla",d:"Global General Support",c:"South Africa",b:7.3,t:33.0},
+  {n:"Adriana Cañez",d:"Fraud Operations",c:"Mexico",b:7.3,t:11.0},
+  {n:"Pablo Vega",d:"Core Engineering",c:"Mexico",b:7.2,t:63.0},
+  {n:"Alan Muñoz",d:"Compliance",c:"Mexico",b:7.2,t:16.0},
+  {n:"Christian Heredia",d:"Sales",c:"Ecuador",b:7.2,t:0.0},
+  {n:"Joseph Lim",d:"Merchant Operations",c:"Philippines",b:7.2,t:21.0},
+  {n:"Julian Serrano",d:"Merchant Operations",c:"Ecuador",b:7.2,t:28.6},
+  {n:"Juan Pablo Telleria",d:"FPA and Treasury",c:"Mexico",b:7.1,t:1.0},
+  {n:"Marisa Kemnitz",d:"Core Engineering",c:"United States",b:7.1,t:62.5},
+  {n:"JP Bernardo",d:"Talent Acquisition",c:"Philippines",b:7.0,t:19.0},
+  {n:"Aurora Escalera",d:"Core Engineering",c:"Mexico",b:7.0,t:16.0},
+  {n:"Gisela Hurtado",d:"Merchant Operations",c:"Mexico",b:6.9,t:9.0},
+  {n:"Yeltsin Pérez",d:"Global Clerk Support",c:"Colombia",b:6.9,t:32.0},
+  {n:"Mayte Salazar",d:"Marketing",c:"Peru",b:6.8,t:0.0},
+  {n:"Elisa Davalos",d:"Sales",c:"Ecuador",b:6.8,t:5.0},
+  {n:"Irene Mendez",d:"Global General Support",c:"Mexico",b:6.8,t:25.0},
+  {n:"Nick Benavides",d:"Data Science",c:"United States",b:6.8,t:23.0},
+  {n:"Daniel Urrego",d:"Legal",c:"Panama",b:6.8,t:0.0},
+  {n:"Dicky Hilmi Permana",d:"Global General Support",c:"Indonesia",b:6.7,t:2.0},
+  {n:"Brian Kraus",d:"Marketing",c:"Mexico",b:6.7,t:41.5},
+  {n:"Estefania Villegas",d:"Merchant Operations",c:"Mexico",b:6.7,t:13.0},
+  {n:"Gusti Arya",d:"Global General Support",c:"Indonesia",b:6.7,t:0.0},
+  {n:"Muhammad Hilmy",d:"Global General Support",c:"Indonesia",b:6.7,t:0.0},
+  {n:"Haydee Bueno",d:"Product and UX",c:"Mexico",b:6.6,t:5.0},
+  {n:"Vuyo Tywabi",d:"Sales",c:"South Africa",b:6.6,t:0.0},
+  {n:"Fer Villaseñor",d:"Risk Strategy",c:"Mexico",b:6.6,t:10.0},
+  {n:"Fhernando Zárate",d:"Sales Operations",c:"Mexico",b:6.5,t:0.0},
+  {n:"Omar Rivera",d:"Global Clerk Support",c:"Mexico",b:6.5,t:28.0},
+  {n:"Jonathan Martínez",d:"Marketing",c:"Mexico",b:6.5,t:0.0},
+  {n:"Laura Perez",d:"Global Clerk Support",c:"Colombia",b:6.4,t:37.9},
+  {n:"Clare Andrada",d:"Sales",c:"Philippines",b:6.4,t:18.0},
+  {n:"Edgar Barragán",d:"Merchant Operations",c:"Mexico",b:6.4,t:1.0},
+  {n:"Maykol Mujica",d:"Sales",c:"Peru",b:6.3,t:0.0},
+  {n:"Leo Ramirez",d:"Sales",c:"Panama",b:6.3,t:0.0},
+  {n:"Alex Makings",d:"Merchant Operations",c:"South Africa",b:6.3,t:53.9},
+  {n:"Odette Herrerías",d:"Sales",c:"Mexico",b:6.3,t:24.0},
+  {n:"Shalina Del Villar",d:"Global Tools and Metrics",c:"Philippines",b:6.3,t:22.0},
+  {n:"Jhoseth Alvarez",d:"Merchant Operations",c:"Ecuador",b:6.3,t:7.0},
+  {n:"Siphesihle Hlatshwayo",d:"Workplace",c:"South Africa",b:6.2,t:104.6},
+  {n:"Ricardo Cortes",d:"Global Collections",c:"Mexico",b:6.2,t:0.0},
+  {n:"Valeria Verde",d:"Merchant Operations",c:"Mexico",b:6.2,t:3.0},
+  {n:"Gonzalo Heguille",d:"Sales",c:"Mexico",b:6.1,t:2.0},
+  {n:"Jennyfer Zarate Agudelo",d:"Global General Support",c:"Colombia",b:6.1,t:54.0},
+  {n:"Alejandra Juárez",d:"Data Science",c:"Mexico",b:6.1,t:4.0},
+  {n:"Jio Simon",d:"FPA and Treasury",c:"Philippines",b:6.1,t:28.0},
+  {n:"Khathu Manyuwa",d:"Global Clerk Support",c:"South Africa",b:6.1,t:2.0},
+  {n:"Juliana Rodrigues",d:"Merchant Operations",c:"Brazil",b:6.0,t:52.0},
+  {n:"Miguel DeAvila",d:"Core Engineering",c:"United States",b:6.0,t:66.5},
+  {n:"Roz Mitchell",d:"Sales",c:"South Africa",b:6.0,t:41.0},
+  {n:"Claro Ortiz",d:"Legal",c:"Philippines",b:6.0,t:8.0},
+  {n:"Romina Cornejo Gomero",d:"Workplace",c:"Ecuador",b:6.0,t:16.0},
+  {n:"Ane Messias",d:"Sales",c:"Brazil",b:6.0,t:42.0},
+  {n:"Michelle Wynne",d:"Marketing",c:"South Africa",b:5.9,t:27.0},
+  {n:"Gabz Valderrama",d:"Global General Support",c:"Philippines",b:5.9,t:57.0},
+  {n:"Kath Tomo",d:"Global General Support",c:"Philippines",b:5.9,t:33.9},
+  {n:"Pablo Hendrix",d:"Sales",c:"Mexico",b:5.9,t:23.0},
+  {n:"Victoria Bermudez",d:"Sales",c:"Peru",b:5.8,t:13.0},
+  {n:"Sara Dawes",d:"Product and UX",c:"United States",b:5.8,t:160.5},
+  {n:"Luis Lucero",d:"Legal",c:"Ecuador",b:5.8,t:1.0},
+  {n:"Edgar Mariscal Gallegos",d:"Marketing",c:"Mexico",b:5.7,t:1.0},
+  {n:"Edgar Cruz",d:"Fraud Operations",c:"Mexico",b:5.7,t:0.0},
+  {n:"Héctor Diaz",d:"Core Engineering",c:"Mexico",b:5.7,t:44.0},
+  {n:"Gian Chavez",d:"Sales",c:"Philippines",b:5.7,t:2.0},
+  {n:"Lelo Mthethwa",d:"Lock",c:"South Africa",b:5.6,t:61.3},
+  {n:"Jason Craft",d:"Core Engineering",c:"United States",b:5.6,t:23.0},
+  {n:"Nayeli Ruiz",d:"Marketing",c:"Mexico",b:5.5,t:6.0},
+  {n:"Dulce Vallejo",d:"Global General Support",c:"Mexico",b:5.5,t:1.0},
+  {n:"Mariya Guttoh",d:"Finance Systems",c:"United States",b:5.4,t:68.5},
+  {n:"Irene Dimas",d:"Workplace",c:"Mexico",b:5.4,t:2.0},
+  {n:"Michelle Sainos",d:"Data Science",c:"Mexico",b:5.4,t:12.0},
+  {n:"Jose Luis Carrizales",d:"Global General Support",c:"Mexico",b:5.4,t:41.0},
+  {n:"Rebeca Gomez",d:"Risk Strategy",c:"Mexico",b:5.4,t:24.0},
+  {n:"Camilo González",d:"Global Tools and Metrics",c:"Colombia",b:5.3,t:9.0},
+  {n:"Mpumie Dzingwa",d:"Product and UX",c:"South Africa",b:5.3,t:8.0},
+  {n:"Ajinkya Deshmukh",d:"Core Engineering",c:"United States",b:5.3,t:59.0},
+  {n:"Diego Tellez",d:"Fraud Operations",c:"Mexico",b:5.3,t:0.0},
+  {n:"Luis Reyes",d:"Sales",c:"Mexico",b:5.3,t:35.0},
+  {n:"Talía Montero",d:"Marketing",c:"Peru",b:5.2,t:0.0},
+  {n:"Angiarelly Ivonne",d:"Global Clerk Support",c:"Peru",b:5.2,t:1.0},
+  {n:"Santiago Borgaro",d:"Talent Acquisition",c:"Mexico",b:5.2,t:8.0},
+  {n:"Merrick Yap",d:"Sales",c:"Philippines",b:5.1,t:4.0},
+  {n:"Georgina Ayala",d:"Merchant Operations",c:"Mexico",b:5.1,t:3.0},
+  {n:"Lee Camacan",d:"Financial Operations",c:"Philippines",b:5.1,t:26.0},
+  {n:"Fabrício Vitalino",d:"Global General Support",c:"Brazil",b:5.0,t:31.0},
+  {n:"Jazmin Bojorquez",d:"Sales",c:"Mexico",b:5.0,t:41.0},
+  {n:"Tyrell Fanoo",d:"Global Collections",c:"South Africa",b:5.0,t:219.1},
+  {n:"Vitoria Brasileiro",d:"FPA and Treasury",c:"Brazil",b:5.0,t:31.0},
+  {n:"Raj Vasikarla",d:"Core Engineering",c:"United States",b:5.0,t:10.5},
+  {n:"Suzanné Coetzer",d:"Merchant Operations",c:"South Africa",b:4.9,t:0.0},
+  {n:"Jen Orbillo",d:"Workplace",c:"Philippines",b:4.9,t:0.0},
+  {n:"Ismael Diaz",d:"Data Science",c:"Mexico",b:4.9,t:42.0},
+  {n:"Hugo Martínez",d:"Merchant Operations",c:"Mexico",b:4.9,t:0.0},
+  {n:"Andres Morales",d:"Core Engineering",c:"Colombia",b:4.9,t:7.0},
+  {n:"Carl Pabustan",d:"People Partners",c:"Philippines",b:4.9,t:2.0},
+  {n:"Alexis Tepale",d:"Data Science",c:"Mexico",b:4.9,t:0.0},
+  {n:"Esteban Parra",d:"Sales",c:"Colombia",b:4.9,t:1.0},
+  {n:"Johan Sebastian García",d:"Core Engineering",c:"Colombia",b:4.9,t:1.0},
+  {n:"Amairani Espinosa",d:"Sales",c:"Mexico",b:4.9,t:0.0},
+  {n:"Sumit Lohariwala",d:"FPA and Treasury",c:"India",b:4.8,t:0.0},
+  {n:"Ignacio Salcedo",d:"Core Engineering",c:"Colombia",b:4.8,t:40.1},
+  {n:"Nina Flores",d:"Sales",c:"Mexico",b:4.7,t:17.0},
+  {n:"Pats Patoc",d:"Merchant Operations",c:"Philippines",b:4.7,t:8.0},
+  {n:"Julio Senteno",d:"Accounting",c:"Mexico",b:4.5,t:0.0},
+  {n:"Alin Ramírez",d:"Sales",c:"Mexico",b:4.5,t:0.0},
+  {n:"Amy Pardee",d:"Legal",c:"United States",b:4.5,t:19.0},
+  {n:"Ángel Martinez",d:"Global General Support",c:"Mexico",b:4.5,t:1.0},
+  {n:"Itumeleng Malatji",d:"Sales",c:"South Africa",b:4.5,t:0.0},
+  {n:"Bharath Ramarathinam",d:"Core Engineering",c:"United States",b:4.5,t:64.0},
+  {n:"Rafa Sainz",d:"Product and UX",c:"Mexico",b:4.5,t:0.0},
+  {n:"Ariadna Albarran",d:"Marketing",c:"Mexico",b:4.3,t:2.0},
+  {n:"Danielle Bautista",d:"Merchant Operations",c:"Philippines",b:4.3,t:27.0},
+  {n:"Humberto Peña",d:"Merchant Operations",c:"Mexico",b:4.2,t:0.0},
+  {n:"Hillary Neiel Silva Osorio",d:"Merchant Operations",c:"Mexico",b:4.2,t:0.0},
+  {n:"Atzin Vargas",d:"Talent Acquisition",c:"Mexico",b:4.2,t:1.0},
+  {n:"Eloy Gallegos",d:"Sales",c:"Mexico",b:4.2,t:0.0},
+  {n:"Robespierre Garcia",d:"Global General Support",c:"Mexico",b:4.2,t:0.0},
+  {n:"Jonathan Avila",d:"Merchant Operations",c:"Mexico",b:4.2,t:0.0},
+  {n:"Ivonne Sánchez",d:"Merchant Operations",c:"Mexico",b:4.2,t:2.0},
+  {n:"Juan Carlos C Hajj",d:"Merchant Operations",c:"Mexico",b:4.2,t:0.0},
+  {n:"Rein Ragudos",d:"Merchant Operations",c:"Philippines",b:4.2,t:17.0},
+  {n:"Marcela Esparza",d:"Talent Acquisition",c:"Mexico",b:4.2,t:6.0},
+  {n:"Lizel Smit",d:"FPA and Treasury",c:"South Africa",b:4.1,t:26.0},
+  {n:"Aldrin Moratalla",d:"Sales",c:"Philippines",b:4.0,t:13.0},
+  {n:"Fredi Flores",d:"Global Clerk Support",c:"Peru",b:4.0,t:0.0},
+  {n:"Kelly Casas",d:"Global Clerk Support",c:"Peru",b:4.0,t:0.0},
+  {n:"Carolina Ramirez Verastegui",d:"Sales",c:"Peru",b:3.9,t:11.0},
+  {n:"Cristina Walls",d:"People Partners",c:"Mexico",b:3.9,t:20.0},
+  {n:"Yvette Kwong",d:"Accounting",c:"United States",b:3.9,t:22.0},
+  {n:"Renzo Nuñez",d:"Sales",c:"Philippines",b:3.8,t:10.0},
+  {n:"Andrés Acosta",d:"Sales",c:"Colombia",b:3.8,t:0.0},
+  {n:"Michelle Gutierrez",d:"Sales",c:"Colombia",b:3.8,t:0.0},
+  {n:"Alejandro Arias",d:"People Operations",c:"Mexico",b:3.8,t:0.0},
+  {n:"Yuri Zhao",d:"Lock",c:"China",b:3.8,t:0.0},
+  {n:"Leo Acid",d:"Sales",c:"Philippines",b:3.8,t:0.0},
+  {n:"Estefanía Herrera",d:"People Operations",c:"Mexico",b:3.8,t:0.0},
+  {n:"Jose Madera",d:"Marketing",c:"Colombia",b:3.8,t:6.0},
+  {n:"Maria Emillia Suarez",d:"Sales",c:"Ecuador",b:3.7,t:1.0},
+  {n:"Kate Santivanez",d:"Technical Support Analysts",c:"Mexico",b:3.7,t:0.0},
+  {n:"Psychee Padilla",d:"Global General Support",c:"Philippines",b:3.7,t:22.0},
+  {n:"Johana Enciso",d:"Merchant Operations",c:"Colombia",b:3.7,t:7.5},
+  {n:"Jaeson Coronica",d:"Sales",c:"Philippines",b:3.7,t:4.0},
+  {n:"Evelyn Rodriguez",d:"Marketing",c:"Mexico",b:3.6,t:71.0},
+  {n:"Aurora Bosa",d:"Sales",c:"Ecuador",b:3.5,t:37.0},
+  {n:"Rose Duman-ag",d:"Sales",c:"Philippines",b:3.5,t:12.0},
+  {n:"Tamara Yulindra",d:"People Partners",c:"Indonesia",b:3.4,t:0.0},
+  {n:"Anuj Saraf",d:"Sales",c:"India",b:3.4,t:0.0},
+  {n:"Paola Moreno",d:"Talent Acquisition",c:"Colombia",b:3.4,t:1.5},
+  {n:"Roxana André",d:"Talent Acquisition",c:"Mexico",b:3.4,t:2.0},
+  {n:"Ileana Aldama",d:"Core Engineering",c:"Mexico",b:3.4,t:4.0},
+  {n:"Deny Mendoza",d:"Global Tools and Metrics",c:"Mexico",b:3.4,t:38.0},
+  {n:"Katherine Baranggan",d:"Global General Support",c:"Philippines",b:3.3,t:19.0},
+  {n:"Montse Bulnes",d:"Merchant Operations",c:"Mexico",b:3.3,t:18.0},
+  {n:"Diana Artunduaga",d:"Accounting",c:"Colombia",b:3.2,t:40.0},
+  {n:"Anton Siasat",d:"Sales",c:"Philippines",b:3.2,t:6.0},
+  {n:"Paulina Martínez",d:"Merchant Operations",c:"Mexico",b:3.1,t:5.0},
+  {n:"Iván Canales",d:"Merchant Operations",c:"Mexico",b:3.0,t:1.0},
+  {n:"Kitzia Sevilla",d:"Sales",c:"Mexico",b:3.0,t:20.0},
+  {n:"Enrique Morales",d:"Sales",c:"Mexico",b:3.0,t:1.0},
+  {n:"Sebastian Bautista",d:"Core Engineering",c:"Colombia",b:3.0,t:2.0},
+  {n:"Brandon Avila",d:"Global Collections",c:"Mexico",b:3.0,t:1.0},
+  {n:"Marijo Diaz",d:"Merchant Operations",c:"Mexico",b:2.9,t:45.0},
+  {n:"Adrian Bravo",d:"Sales",c:"Ecuador",b:2.9,t:0.0},
+  {n:"Pablo Oria",d:"Merchant Operations",c:"Mexico",b:2.9,t:5.0},
+  {n:"Guy Barkwill",d:"Accounting",c:"United States",b:2.8,t:41.0},
+  {n:"Anie Adames",d:"Global Collections",c:"Panama",b:2.8,t:0.0},
+  {n:"Billy Cochran",d:"FPA and Treasury",c:"Mexico",b:2.7,t:0.0},
+  {n:"Catherine Corpuz",d:"Sales",c:"Philippines",b:2.7,t:0.0},
+  {n:"Nephi Tejano",d:"Sales",c:"Philippines",b:2.7,t:0.0},
+  {n:"Kwandiwe Jama",d:"Fraud Operations",c:"South Africa",b:2.7,t:0.0},
+  {n:"Laura Mejia",d:"Marketing",c:"Mexico",b:2.7,t:5.0},
+  {n:"Felipe Sánchez",d:"Marketing",c:"Mexico",b:2.7,t:0.0},
+  {n:"Nancy Rojas",d:"Accounting",c:"Mexico",b:2.7,t:0.0},
+  {n:"Diego Sotelo",d:"Technical Support Analysts",c:"Colombia",b:2.7,t:1.0},
+  {n:"Alejandro Buenfil",d:"Merchant Operations",c:"Mexico",b:2.7,t:0.0},
+  {n:"King Alabe",d:"Fraud Operations",c:"Philippines",b:2.7,t:3.0},
+  {n:"Chin Rivera",d:"Sales",c:"Philippines",b:2.7,t:0.0},
+  {n:"Aica Ramilo",d:"Sales",c:"Philippines",b:2.7,t:3.0},
+  {n:"Justine Dave Cameros",d:"Sales",c:"Philippines",b:2.7,t:1.0},
+  {n:"Dex Matocyon1994",d:"Sales",c:"Philippines",b:2.7,t:0.0},
+  {n:"Christopher Malata",d:"Sales",c:"Philippines",b:2.6,t:0.0},
+  {n:"Mae Ocampo",d:"Fraud Operations",c:"Philippines",b:2.5,t:22.0},
+  {n:"Kothai Senthil",d:"Fraud Strategy",c:"United States",b:2.5,t:11.0},
+  {n:"Jann Rangel",d:"Global Clerk Support",c:"Mexico",b:2.4,t:48.0},
+  {n:"Kgopotso Kola",d:"Sales",c:"South Africa",b:2.3,t:0.0},
+  {n:"Daniel Cruz",d:"Core Engineering",c:"Mexico",b:2.3,t:0.0},
+  {n:"Melissa Vargas",d:"Core Engineering",c:"Colombia",b:2.3,t:1.0},
+  {n:"Rubén Sánchez",d:"Global Clerk Support",c:"Mexico",b:2.3,t:0.0},
+  {n:"Julián Peña",d:"Core Engineering",c:"Colombia",b:2.3,t:0.0},
+  {n:"Zhara Sangalang",d:"Sales",c:"Philippines",b:2.3,t:0.0},
+  {n:"Daniel Puente Villaseñor",d:"Risk Strategy",c:"Mexico",b:2.3,t:1.0},
+  {n:"Carolina Gomez",d:"Core Engineering",c:"Colombia",b:2.3,t:0.0},
+  {n:"Javier Oda",d:"Sales",c:"Peru",b:2.2,t:0.0},
+  {n:"Lino Quispe",d:"Sales",c:"Peru",b:2.2,t:0.0},
+  {n:"Diego Garaicoa Arteta",d:"Sales",c:"Ecuador",b:2.1,t:19.0},
+  {n:"Grace Salazar",d:"Accounting",c:"Ecuador",b:2.1,t:28.0},
+  {n:"Daniel Granja",d:"Merchant Operations",c:"Ecuador",b:2.1,t:23.0},
+  {n:"Leonardo Bravo",d:"Sales",c:"Ecuador",b:2.1,t:11.0},
+  {n:"Raemi Gross",d:"FPA and Treasury",c:"United States",b:2.1,t:19.0},
+  {n:"Konny Cedeño",d:"Sales",c:"Ecuador",b:2.1,t:37.0},
+  {n:"Vicky Pionce",d:"Sales",c:"Ecuador",b:2.1,t:24.1},
+  {n:"José Zambrano",d:"Legal",c:"Ecuador",b:2.1,t:25.0},
+  {n:"Carlos Diego Vergara",d:"Merchant Operations",c:"Ecuador",b:2.1,t:40.5},
+  {n:"Moshe Rosenbaum",d:"Capital Markets",c:"United States",b:2.1,t:26.0},
+  {n:"Mabe Castro",d:"People Partners",c:"Ecuador",b:2.1,t:19.5},
+  {n:"Francis Vega",d:"Accounting",c:"Ecuador",b:2.1,t:6.5},
+  {n:"Christian Heredia",d:"Sales",c:"Ecuador",b:2.1,t:0.0},
+  {n:"Víctor Domínguez",d:"Fraud Operations",c:"Ecuador",b:2.1,t:32.0},
+  {n:"Hugo Armijos",d:"Financial Platforms",c:"Ecuador",b:2.1,t:67.5},
+  {n:"Carolina Frías",d:"Financial Operations",c:"Ecuador",b:2.1,t:28.2},
+  {n:"Romina Cornejo Gomero",d:"Workplace",c:"Ecuador",b:2.1,t:16.0},
+  {n:"Nury Velez",d:"Sales",c:"Ecuador",b:2.1,t:31.5},
+  {n:"Ninoska Bazurto",d:"Sales",c:"Ecuador",b:2.1,t:14.0},
+  {n:"Holmes Penafiel",d:"Sales",c:"Ecuador",b:2.1,t:35.0},
+  {n:"Valeria Merino Negrete",d:"Sales",c:"Ecuador",b:2.1,t:16.0},
+  {n:"Matias Holguin",d:"Merchant Operations",c:"Ecuador",b:2.1,t:35.6},
+  {n:"Daniela Paredes",d:"Sales",c:"Ecuador",b:2.1,t:22.5},
+  {n:"Jessy Santillán",d:"Sales",c:"Ecuador",b:2.1,t:24.0},
+  {n:"Estefania Benalcazar",d:"Sales",c:"Ecuador",b:2.1,t:24.0},
+  {n:"Andres Jaramillo",d:"Sales",c:"Ecuador",b:2.1,t:3.0},
+  {n:"Nixon Quezada",d:"Merchant Operations",c:"Ecuador",b:2.1,t:20.0},
+  {n:"Elisa Davalos",d:"Sales",c:"Ecuador",b:2.1,t:5.0},
+  {n:"Jeffrey Bernal",d:"Sales",c:"Ecuador",b:2.1,t:17.0},
+  {n:"Javier Chimbolema",d:"Sales",c:"Ecuador",b:2.1,t:5.0},
+  {n:"Aurora Bosa",d:"Sales",c:"Ecuador",b:2.1,t:37.0},
+  {n:"Alan Villalobos",d:"Sales",c:"Ecuador",b:2.1,t:37.4},
+  {n:"Hans Meza",d:"Global Collections",c:"Ecuador",b:2.1,t:7.0},
+  {n:"Robert Cervantes",d:"Sales",c:"Ecuador",b:2.1,t:22.0},
+  {n:"Jhoseth Alvarez",d:"Merchant Operations",c:"Ecuador",b:2.1,t:7.0},
+  {n:"Pamela Perez",d:"Global General Support",c:"Ecuador",b:2.1,t:40.5},
+  {n:"Zulema Garcia",d:"Sales",c:"Ecuador",b:2.1,t:22.0},
+  {n:"Karina Mora",d:"Sales",c:"Ecuador",b:2.1,t:24.0},
+  {n:"Hugo Cabrera",d:"Sales",c:"Ecuador",b:2.1,t:0.0},
+  {n:"Adrian Duman",d:"Merchant Operations",c:"Ecuador",b:2.0,t:0.0},
+  {n:"Carol Santos",d:"Accounting",c:"Brazil",b:2.0,t:82.0},
+  {n:"Sandy Dominggus",d:"Sales",c:"Indonesia",b:1.9,t:0.0},
+  {n:"Linda Zaragoza",d:"Merchant Operations",c:"Mexico",b:1.9,t:0.0},
+  {n:"Luis Lucero",d:"Legal",c:"Ecuador",b:1.9,t:1.0},
+  {n:"Ana Huerta",d:"Marketing",c:"Mexico",b:1.9,t:26.0},
+  {n:"Zaviear Lue",d:"Talent Acquisition",c:"United States",b:1.9,t:1.5},
+  {n:"Ace Inventor",d:"Global Clerk Support",c:"Philippines",b:1.8,t:31.8},
+  {n:"Rebecca Simbeck",d:"Merchant Operations",c:"Mexico",b:1.8,t:10.0},
+  {n:"Sebastian Montoya",d:"Marketing",c:"Peru",b:1.7,t:0.0},
+  {n:"Tin Arcilla",d:"Sales",c:"Philippines",b:1.7,t:1.0},
+  {n:"Kevin Ramírez",d:"Sales",c:"Peru",b:1.7,t:0.0},
+  {n:"Claudio Cevallos",d:"Merchant Operations",c:"Mexico",b:1.7,t:4.0},
+  {n:"Joaquin Davalos Ponce",d:"Merchant Operations",c:"Ecuador",b:1.7,t:27.0},
+  {n:"Paulo Vilca",d:"Sales",c:"Peru",b:1.7,t:0.0},
+  {n:"Sara Rivas",d:"Compliance",c:"Mexico",b:1.5,t:0.0},
+  {n:"Camilo Bustamante",d:"Merchant Operations",c:"Colombia",b:1.5,t:0.0},
+  {n:"Lady Moreno",d:"Accounting",c:"Colombia",b:1.5,t:0.0},
+  {n:"Sanjay Patil",d:"Core Engineering",c:"United States",b:1.5,t:0.0},
+  {n:"Josh Putra",d:"Merchant Operations",c:"Indonesia",b:1.5,t:0.0},
+  {n:"Reza Siahaan",d:"Sales",c:"Indonesia",b:1.5,t:0.0},
+  {n:"Hector Zapata",d:"Sales",c:"Colombia",b:1.5,t:0.0},
+  {n:"Elisa Trejo",d:"FPA and Treasury",c:"Mexico",b:1.5,t:0.0},
+  {n:"Mauricio Rios",d:"Accounting",c:"Mexico",b:1.5,t:0.0},
+  {n:"Anna San Pablo",d:"Sales",c:"Philippines",b:1.4,t:0.0},
+  {n:"Gab Bartolabac",d:"Sales",c:"Philippines",b:1.4,t:0.0},
+  {n:"Jeona Finella Abundo",d:"Sales",c:"Philippines",b:1.4,t:0.0},
+  {n:"Ray Asghaei",d:"People Operations",c:"United States",b:1.3,t:0.0},
+  {n:"Daniela Carbajal",d:"Merchant Operations",c:"Mexico",b:1.3,t:1.0},
+  {n:"Casey Truong",d:"People Operations",c:"United States",b:1.2,t:108.0},
+  {n:"David Pisoni",d:"Core Engineering",c:"United States",b:1.2,t:15.0},
+  {n:"Maria Emillia Suarez",d:"Sales",c:"Ecuador",b:1.2,t:1.0},
+  {n:"Franco Costales",d:"Sales",c:"Ecuador",b:1.1,t:0.0},
+  {n:"Andres Entiquez",d:"FPA and Treasury",c:"Mexico",b:1.1,t:0.0},
+  {n:"Marco Gonzalez",d:"Merchant Operations",c:"Ecuador",b:1.1,t:34.5},
+  {n:"Neil de la Rey",d:"Merchant Operations",c:"South Africa",b:1.1,t:4.0},
+  {n:"Alejandro Galicia",d:"Global Tools and Metrics",c:"Mexico",b:1.1,t:0.0},
+  {n:"Mariel Labanca",d:"Sales",c:"Mexico",b:1.1,t:1.0},
+  {n:"Animesh Kondiparthy",d:"Product and UX",c:"United States",b:1.1,t:5.0},
+  {n:"Alex Toapanta",d:"Sales",c:"Ecuador",b:1.1,t:32.0},
+  {n:"Jean Zambrano",d:"Sales",c:"Ecuador",b:1.1,t:20.0},
+  {n:"Rafaela Tamayo",d:"Sales",c:"Ecuador",b:1.1,t:27.0},
+  {n:"Leon Miranda Ferrari",d:"Merchant Operations",c:"Mexico",b:1.1,t:0.0},
+  {n:"Christian Rivera",d:"Merchant Operations",c:"Ecuador",b:1.1,t:63.2},
+  {n:"Melisa Sifuentes",d:"Sales",c:"Peru",b:1.1,t:0.0},
+  {n:"Karla Teran",d:"Marketing",c:"Ecuador",b:1.1,t:38.5},
+  {n:"Camila Alarcón",d:"Sales",c:"Ecuador",b:1.1,t:9.0},
+  {n:"Rodrigo Diaz",d:"Lock",c:"Mexico",b:1.1,t:0.0},
+  {n:"Wesley Robinson",d:"Core Engineering",c:"United States",b:1.1,t:0.0},
+  {n:"Paola Figari",d:"Merchant Operations",c:"Ecuador",b:1.1,t:28.0},
+  {n:"Andrea Salazar",d:"Sales",c:"Ecuador",b:1.1,t:29.0},
+  {n:"Julian Serrano",d:"Merchant Operations",c:"Ecuador",b:1.1,t:28.6},
+  {n:"Fabian Chaguaro",d:"Sales",c:"Ecuador",b:1.1,t:18.0},
+  {n:"Anderson Cedres",d:"Sales",c:"Ecuador",b:1.1,t:4.0},
+  {n:"Mayra Salguero Salazar",d:"Sales",c:"Ecuador",b:1.1,t:37.2},
+  {n:"Salma Yassin",d:"Legal",c:"Mexico",b:0.8,t:0.0},
+  {n:"Arantxa Mejia",d:"Product and UX",c:"Mexico",b:0.8,t:0.0},
+  {n:"Charlie de Belloy",d:"Portfolio Management",c:"United States",b:0.8,t:0.0},
+  {n:"Dani Ferrer",d:"Merchant Operations",c:"Philippines",b:0.8,t:35.0},
+  {n:"Juan Pablo Díaz",d:"Sales",c:"Mexico",b:0.8,t:0.0},
+  {n:"Rozak Ismail",d:"Sales",c:"Indonesia",b:0.8,t:0.0},
+  {n:"Abby Wakefield",d:"Legal",c:"United States",b:0.8,t:0.0},
+  {n:"David Bonilla",d:"Global Clerk Support",c:"Mexico",b:0.8,t:0.0},
+  {n:"Claudia Trujillo",d:"Marketing",c:"Mexico",b:0.8,t:0.0},
+  {n:"Vivek Balaguru",d:"Core Engineering",c:"United States",b:0.8,t:0.0},
+  {n:"jhanses Pascual",d:"Sales",c:"Philippines",b:0.7,t:2.0},
+  {n:"Andrew Novacek",d:"Financial Platforms",c:"United States",b:0.7,t:34.0},
+  {n:"Michelle Acosta",d:"Data Science",c:"Mexico",b:0.7,t:15.0},
+  {n:"Adrian Duman",d:"Merchant Operations",c:"Ecuador",b:0.7,t:0.0},
+  {n:"Shreya Sharma",d:"Legal",c:"India",b:0.7,t:0.0},
+  {n:"Thia Angelo",d:"Core Engineering",c:"United States",b:0.6,t:23.0},
+  {n:"Pilar Sanchez Cateriano",d:"Legal",c:"Peru",b:0.6,t:0.0},
+  {n:"Deysireth Pilozo",d:"Sales",c:"Panama",b:0.6,t:0.0},
+  {n:"Franco Costales",d:"Sales",c:"Ecuador",b:0.4,t:0.0},
+  {n:"Javier Maya",d:"Global General Support",c:"Mexico",b:0.4,t:0.0},
+  {n:"Luisa Melo",d:"Global Tools and Metrics",c:"Colombia",b:0.4,t:0.0},
+  {n:"Pablo Onzaga",d:"Accounting",c:"Colombia",b:0.4,t:0.0},
+  {n:"Ferdinand Marpaung",d:"Merchant Operations",c:"Indonesia",b:0.4,t:1.0},
+  {n:"Erika Avila",d:"Marketing",c:"Colombia",b:0.4,t:0.0},
+  {n:"Neal Reiter",d:"Product and UX",c:"United States",b:0.4,t:3.0},
+  {n:"Adan Hernández",d:"Sales",c:"Mexico",b:0.4,t:0.0},
+  {n:"Daniel Lopez",d:"Core Engineering",c:"Mexico",b:0.4,t:0.0},
+  {n:"MAGDA MORENO",d:"Merchant Operations",c:"Colombia",b:0.4,t:0.0},
+  {n:"Yorlady Zapata",d:"Sales",c:"Colombia",b:0.3,t:80.0},
+  {n:"Juan Manuel Prada",d:"Core Engineering",c:"Colombia",b:0.1,t:1.0},
+  {n:"Leonardo De Souza Beltrão",d:"Sales",c:"Brazil",b:0.0,t:0.0},
+  {n:"Mônica Frost",d:"Sales",c:"Brazil",b:0.0,t:6.0},
+  {n:"Math Dias",d:"Global Tools and Metrics",c:"Brazil",b:0.0,t:7.0},
+  {n:"Giovanna Tricerri Andre Niacaris",d:"Legal",c:"Brazil",b:0.0,t:3.0},
+  {n:"Lucas Rocha",d:"Sales",c:"Brazil",b:0.0,t:50.0},
+  {n:"Luigi Ferraz",d:"Sales",c:"Brazil",b:0.0,t:9.0},
+  {n:"Brenda Silva Anacleto",d:"Sales",c:"Brazil",b:0.0,t:14.0},
+  {n:"Marcelo Barreto",d:"Sales",c:"Brazil",b:0.0,t:0.0},
+  {n:"Bruna Fernandes",d:"Talent Acquisition",c:"Brazil",b:0.0,t:24.0},
+  {n:"Julia Arjonas",d:"Workplace",c:"Brazil",b:0.0,t:2.0},
+  {n:"Ravanielle Barreto",d:"Sales",c:"Brazil",b:0.0,t:0.0},
+  {n:"José Bianchin",d:"Sales",c:"Brazil",b:0.0,t:3.0},
+  {n:"Vera Rodrigues",d:"Sales",c:"Brazil",b:0.0,t:15.0},
+  {n:"Thiago Medeiros",d:"Global Clerk Support",c:"Brazil",b:0.0,t:39.0},
+  {n:"Rosimery Prado",d:"Sales",c:"Brazil",b:0.0,t:0.0},
+  {n:"Gustavo Nigri",d:"Sales",c:"Brazil",b:0.0,t:13.0},
+  {n:"Katia Ferreira",d:"Sales",c:"Brazil",b:0.0,t:18.5},
+  {n:"Adrian Bravo",d:"Sales",c:"Ecuador",b:0.0,t:0.0},
+  {n:"Gessivan Costa De Lima",d:"Sales",c:"Brazil",b:0.0,t:39.0},
+  {n:"Francisco Conceicao",d:"Sales",c:"Brazil",b:0.0,t:50.0},
+  {n:"Nadia Lopes",d:"Global Collections",c:"Brazil",b:0.0,t:11.0},
+  {n:"Leonardo Paranhos",d:"Sales",c:"Brazil",b:0.0,t:0.0},
+  {n:"Marcela De Castro",d:"Sales",c:"Brazil",b:0.0,t:15.0},
+  {n:"Robson Jardim",d:"Sales",c:"Brazil",b:0.0,t:0.0},
+  {n:"Matheus Tavares",d:"FPA and Treasury",c:"Brazil",b:0.0,t:11.0},
+  {n:"Jorge Almeida",d:"Accounting",c:"Brazil",b:0.0,t:1.0},
+  {n:"Stephanie Costa",d:"Sales",c:"Brazil",b:0.0,t:45.0},
+  {n:"Claudeci Teixeira de Morais Junior",d:"Sales",c:"Brazil",b:0.0,t:1.0},
+  {n:"Ludmylla Novais",d:"Sales",c:"Brazil",b:0.0,t:13.0},
+  {n:"Rivelino Gama",d:"Sales",c:"Brazil",b:0.0,t:5.0},
+  {n:"Vivian Alves de Mesquita",d:"Sales",c:"Brazil",b:0.0,t:20.0},
+  {n:"João Neves",d:"Sales",c:"Brazil",b:0.0,t:35.0},
+  {n:"Daniel Antonietto",d:"FPA and Treasury",c:"Brazil",b:0.0,t:22.0},
+  {n:"Bruno Pimentel",d:"Lock",c:"Brazil",b:0.0,t:18.0},
+  {n:"Polliane Silva",d:"Sales",c:"Brazil",b:0.0,t:0.0},
+  {n:"Alexandre Gutierres",d:"Sales",c:"Brazil",b:0.0,t:20.0},
+  {n:"Pedro Lopez",d:"Legal",c:"Brazil",b:0.0,t:9.0},
+  {n:"Débora Jesus",d:"FPA and Treasury",c:"Brazil",b:0.0,t:20.0},
+  {n:"Raphael Cauchioli",d:"Merchant Operations",c:"Brazil",b:0.0,t:27.0},
+  {n:"Carter Haughton",d:"FPA and Treasury",c:"Mexico",b:-0.5,t:22.0},
+  {n:"Everlyn Corsiga",d:"Merchant Operations",c:"Philippines",b:-1.0,t:29.0},
+  {n:"Laura Echeverri Torres",d:"FPA and Treasury",c:"Colombia",b:-1.5,t:71.0},
+  {n:"Minal Mehta",d:"Talent Acquisition",c:"United States",b:-1.6,t:12.0},
+  {n:"Mariana Ramirez",d:"Marketing",c:"Mexico",b:-1.9,t:7.0},
+  {n:"Sara Sancliment",d:"Merchant Operations",c:"Mexico",b:-2.8,t:7.0},
+  {n:"Dayanara Bagwasan",d:"Sales",c:"Philippines",b:-3.1,t:25.0}
+];
+
+// ─── ONBOARDING DATA & RENDER ────────────────────────────────────────────────
+const ONBOARDING_DATA = [
+  // ── 100% Complete ────────────────────────────────────────────────────────────
+  {name:"Anvee Naik",dept:"Product and UX",country:"US",start:"2026-06-01",done:21,total:21,pct:100.0,pending:[]},
+  {name:"Artie Lee",dept:"Core Engineering",country:"US",start:"2026-06-01",done:21,total:21,pct:100.0,pending:[]},
+  {name:"Emilia Garcés",dept:"Sales",country:"EC",start:"2026-06-01",done:21,total:21,pct:100.0,pending:[]},
+  {name:"Fernando Martínez",dept:"Sales",country:"CO",start:"2026-06-01",done:21,total:21,pct:100.0,pending:[]},
+  {name:"Gabriela Buitrago",dept:"FPA and Treasury",country:"CO",start:"2026-06-01",done:21,total:21,pct:100.0,pending:[]},
+  {name:"Ivan Piramide",dept:"Sales",country:"PH",start:"2026-06-01",done:22,total:22,pct:100.0,pending:[]},
+  {name:"Jewell Claudio",dept:"—",country:"US",start:"2026-02-02",done:1,total:1,pct:100.0,pending:[]},
+  {name:"Karla Lima",dept:"Sales",country:"BR",start:"2026-06-01",done:21,total:21,pct:100.0,pending:[]},
+  {name:"Margarita Corona",dept:"Sales",country:"MX",start:"2026-06-01",done:21,total:21,pct:100.0,pending:[]},
+  {name:"Nico Nicolas",dept:"Merchant Operations",country:"ID",start:"2026-06-02",done:21,total:21,pct:100.0,pending:[]},
+  {name:"Rendani Ramunenyiwa",dept:"Merchant Operations",country:"ZA",start:"2026-06-01",done:21,total:21,pct:100.0,pending:[]},
+  {name:"Rox Mijangos",dept:"Admin",country:"MX",start:"2026-06-01",done:21,total:21,pct:100.0,pending:[]},
+  {name:"Vivian Goncalves",dept:"People Partners",country:"PA",start:"2026-06-01",done:21,total:21,pct:100.0,pending:[]},
+  // ── In progress ──────────────────────────────────────────────────────────────
+  {name:"Gelo Avelino",dept:"Sales",country:"PH",start:"2026-06-01",done:21,total:22,pct:95.5,pending:["Day 3: New Joiner 30-60-90 Day Check-in Process"]},
+  {name:"Ricardo Castillo",dept:"Core Engineering",country:"MX",start:"2026-06-01",done:20,total:21,pct:95.2,pending:["Day 3: New Joiner 30-60-90 Day Check-in Process"]},
+  {name:"Ryan Pon",dept:"Core Engineering",country:"US",start:"2026-06-01",done:20,total:21,pct:95.2,pending:["Day 3: New Joiner 30-60-90 Day Check-in Process"]},
+  {name:"Ana Luísa Quintino",dept:"Sales",country:"BR",start:"2026-06-01",done:19,total:21,pct:90.5,pending:["Day 1- Save the Date – Cartagena All Hands 2026", "Day 1- Verify Coupa expense account setup"]},
+  {name:"Henry Mantilla",dept:"Financial Operations",country:"MX",start:"2026-06-08",done:15,total:17,pct:88.2,pending:["AML Training (Mexico) — enrollment pending", "Global Data Privacy — enrollment pending"]},
+  {name:"Riki Risdianto",dept:"Global General Support",country:"ID",start:"2026-06-08",done:14,total:16,pct:87.5,pending:["Day 1- Save the Date – Cartagena All Hands 2026", "Day 1- Verify Coupa expense account setup"]},
+  {name:"Ika Rahmawati",dept:"Merchant Operations",country:"ID",start:"2026-06-08",done:13,total:15,pct:86.7,pending:["Day 1- Save the Date – Cartagena All Hands 2026", "Day 1- Verify Coupa expense account setup"]},
+  {name:"Mariel Sada",dept:"Sales",country:"MX",start:"2026-06-08",done:13,total:15,pct:86.7,pending:["Day 1- Verify Coupa expense account setup", "Day 2- Complete Anti Money Laundering Training"]},
+  {name:"Dario Velez",dept:"Merchant Operations",country:"EC",start:"2026-06-01",done:18,total:21,pct:85.7,pending:["Day 1- Save the Date – Cartagena All Hands 2026", "Day 2- Learn about our PayJoy goals", "Day 3: New Joiner 30-60-90 Day Check-in Process"]},
+  {name:"Jesus Flores",dept:"Sales",country:"MX",start:"2026-06-08",done:12,total:15,pct:80.0,pending:["Day 1- Connect with Your PayJoy Pal", "Day 1- Explore learning & development resources", "Day 1- Verify Coupa expense account setup"]},
+  {name:"Pol Uy",dept:"Lock",country:"PH",start:"2026-06-08",done:12,total:16,pct:75.0,pending:["Day 1- Verify Coupa expense account setup", "Day 2- Complete Anti Money Laundering Training", "Day 2- Learn about our PayJoy goals", "Day 2- Read the Employee Handbook"]},
+  {name:"Carlos Torres",dept:"Portfolio Management",country:"MX",start:"2026-06-01",done:13,total:21,pct:61.9,pending:["Day 2- Complete Anti Money Laundering Training", "Day 2- Get to know our principles", "Day 2- Read the Employee Handbook", "Day 3 – Meet Our Customers and Explore Our Website", "Day 3- Learn about PayJoy's mission & products", "Day 3- Learn about our Customer Charter", "Day 3- Read PayJoy Harvard Business Case", "Day 3: New Joiner 30-60-90 Day Check-in Process"]},
+  {name:"Pedro Aufieri",dept:"Sales",country:"BR",start:"2026-06-01",done:12,total:21,pct:57.1,pending:["Day 2- Complete Anti Money Laundering Training", "Day 2- Learn about our PayJoy goals", "Day 2- Read the Employee Handbook", "Day 3 – Meet Our Customers and Explore Our Website", "Day 3- Learn about PayJoy's mission & products", "Day 3- Learn about our Customer Charter", "Day 3- Read PayJoy Harvard Business Case", "Day 3- Review Marketing Templates", "Day 3: New Joiner 30-60-90 Day Check-in Process"]},
+  {name:"Pietra Iecker",dept:"Sales",country:"BR",start:"2026-06-01",done:12,total:21,pct:57.1,pending:["Day 2- Complete Anti Money Laundering Training", "Day 2- Get to know our principles", "Day 2- Learn about our PayJoy goals", "Day 2- Read the Employee Handbook", "Day 3 – Meet Our Customers and Explore Our Website", "Day 3- Learn about PayJoy's mission & products", "Day 3- Read PayJoy Harvard Business Case", "Day 3- Review Marketing Templates", "Day 3: New Joiner 30-60-90 Day Check-in Process"]},
+  // ── At risk ──────────────────────────────────────────────────────────────────
+  {name:"Abdul Alarcón",dept:"Sales",country:"PA",start:"2026-06-01",done:10,total:21,pct:47.6,pending:["Day 1- Explore learning & development resources", "Day 1- Read the Onboarding Document", "Day 1- Setup your email signature", "Day 1- Verify Coupa expense account setup", "Day 2- Complete Anti Money Laundering Training", "Day 3 – Meet Our Customers and Explore Our Website", "Day 3- Learn about PayJoy's mission & products", "Day 3- Learn about our Customer Charter", "Day 3- Read PayJoy Harvard Business Case", "Day 3- Review Marketing Templates", "Day 3: New Joiner 30-60-90 Day Check-in Process"]},
+  {name:"Tomaz Sant\'Anna",dept:"Legal",country:"BR",start:"2026-06-01",done:10,total:21,pct:47.6,pending:["Day 2 – Get to Know PayJoy's Departments and Review the Org Chart in Rippling", "Day 2- Complete Anti Money Laundering Training", "Day 2- Get to know our principles", "Day 2- Learn about our PayJoy goals", "Day 2- Read the Employee Handbook", "Day 3 – Meet Our Customers and Explore Our Website", "Day 3- Learn about PayJoy's mission & products", "Day 3- Learn about our Customer Charter", "Day 3- Read PayJoy Harvard Business Case", "Day 3- Review Marketing Templates", "Day 3: New Joiner 30-60-90 Day Check-in Process"]},
+  {name:"Alexandra Torres",dept:"Portfolio Management",country:"CO",start:"2026-06-01",done:2,total:21,pct:9.5,pending:["Day 1- Add a full face profile picture to your Slack, Rippling and Gmail", "Day 1- Connect with Your PayJoy Pal", "Day 1- Explore learning & development resources", "Day 1- Join HR/IT/Compliance onboarding virtually", "Day 1- Read the Onboarding Document", "Day 1- Review PayJoy's holiday calendar", "Day 1- Save the Date – Cartagena All Hands 2026", "Day 1- Set up 2-factor authentication on PayJoy.com accounts", "Day 1- Setup your email signature", "Day 1- Verify Coupa expense account setup", "Day 2 – Get to Know PayJoy's Departments and Review the Org Chart in Rippling", "Day 2- Complete Anti Money Laundering Training", "Day 2- Get to know our principles", "Day 2- Learn about our PayJoy goals", "Day 2- Read the Employee Handbook", "Day 3 – Meet Our Customers and Explore Our Website", "Day 3- Learn about PayJoy's mission & products", "Day 3- Learn about our Customer Charter", "Day 3- Read PayJoy Harvard Business Case"]},
+  {name:"Diego Bernabe",dept:"Product and UX",country:"MX",start:"2026-06-08",done:0,total:15,pct:0.0,pending:["Day 1- Add a full face profile picture to your Slack, Rippling and Gmail", "Day 1- Connect with Your PayJoy Pal", "Day 1- Explore learning & development resources", "Day 1- Join HR/IT/Compliance onboarding virtually", "Day 1- Read the Onboarding Document", "Day 1- Review PayJoy's holiday calendar", "Day 1- Save the Date – Cartagena All Hands 2026", "Day 1- Set up 2-factor authentication on PayJoy.com accounts", "Day 1- Setup your email signature", "Day 1- Verify Coupa expense account setup", "Day 2 – Get to Know PayJoy's Departments and Review the Org Chart in Rippling", "Day 2- Complete Anti Money Laundering Training", "Day 2- Get to know our principles", "Day 2- Learn about our PayJoy goals", "Day 2- Read the Employee Handbook"]},
+  {name:"Adriana Ruiz",dept:"Sales",country:"CO",start:"2026-06-09",done:0,total:10,pct:0.0,pending:["Day 1- Add a full face profile picture to your Slack, Rippling and Gmail", "Day 1- Connect with Your PayJoy Pal", "Day 1- Explore learning & development resources", "Day 1- Join HR/IT/Compliance onboarding virtually", "Day 1- Read the Onboarding Document", "Day 1- Review PayJoy's holiday calendar", "Day 1- Save the Date – Cartagena All Hands 2026", "Day 1- Set up 2-factor authentication on PayJoy.com accounts", "Day 1- Setup your email signature", "Day 1- Verify Coupa expense account setup"]},
+  {name:"Alejandra Mancipe",dept:"Risk Strategy",country:"CO",start:"2026-06-01",done:0,total:21,pct:0.0,pending:["Day 1- Add a full face profile picture to your Slack, Rippling and Gmail", "Day 1- Connect with Your PayJoy Pal", "Day 1- Explore learning & development resources", "Day 1- Join HR/IT/Compliance onboarding virtually", "Day 1- Read the Onboarding Document", "Day 1- Review PayJoy's holiday calendar", "Day 1- Save the Date – Cartagena All Hands 2026", "Day 1- Set up 2-factor authentication on PayJoy.com accounts", "Day 1- Setup your email signature", "Day 1- Verify Coupa expense account setup", "Day 2 – Get to Know PayJoy's Departments and Review the Org Chart in Rippling", "Day 2- Complete Anti Money Laundering Training", "Day 2- Get to know our principles", "Day 2- Learn about our PayJoy goals", "Day 2- Read the Employee Handbook", "Day 3 – Meet Our Customers and Explore Our Website", "Day 3- Learn about PayJoy's mission & products", "Day 3- Learn about our Customer Charter", "Day 3- Read PayJoy Harvard Business Case", "Day 3- Review Marketing Templates", "Day 3: New Joiner 30-60-90 Day Check-in Process"]},
+  {name:"Hannia Nuñez Guzmán",dept:"Sales",country:"MX",start:"2026-06-08",done:0,total:17,pct:0.0,pending:["Day 1- Add a full face profile picture to your Slack, Rippling and Gmail", "Day 1- Connect with Your PayJoy Pal", "Day 1- Explore learning & development resources", "Day 1- Join HR/IT/Compliance onboarding virtually", "Day 1- Read the Onboarding Document", "Day 1- Review PayJoy's holiday calendar", "Day 1- Save the Date – Cartagena All Hands 2026", "Day 1- Set up 2-factor authentication on PayJoy.com accounts", "Day 1- Setup your email signature", "Day 1- Verify Coupa expense account setup", "Day 2 – Get to Know PayJoy's Departments and Review the Org Chart in Rippling", "Day 2- Complete Anti Money Laundering Training", "Day 2- Get to know our principles", "Day 2- Learn about our PayJoy goals", "Day 2- Read the Employee Handbook", "AML Training (Mexico) — enrollment pending", "Global Data Privacy — enrollment pending"]},
+  {name:"Sergio Bernal",dept:"Core Engineering",country:"MX",start:"2026-06-08",done:0,total:15,pct:0.0,pending:["Day 1- Add a full face profile picture to your Slack, Rippling and Gmail", "Day 1- Connect with Your PayJoy Pal", "Day 1- Explore learning & development resources", "Day 1- Join HR/IT/Compliance onboarding virtually", "Day 1- Read the Onboarding Document", "Day 1- Review PayJoy's holiday calendar", "Day 1- Save the Date – Cartagena All Hands 2026", "Day 1- Set up 2-factor authentication on PayJoy.com accounts", "Day 1- Setup your email signature", "Day 1- Verify Coupa expense account setup", "Day 2 – Get to Know PayJoy's Departments and Review the Org Chart in Rippling", "Day 2- Complete Anti Money Laundering Training", "Day 2- Get to know our principles", "Day 2- Learn about our PayJoy goals", "Day 2- Read the Employee Handbook"]}
+];
+
+const OB_FLAG = {BR:'🇧🇷',CO:'🇨🇴',EC:'🇪🇨',ID:'🇮🇩',MX:'🇲🇽',PA:'🇵🇦',PH:'🇵🇭',US:'🇺🇸',ZA:'🇿🇦'};
+const OB_COUNTRY_NAME = {BR:'Brazil',CO:'Colombia',EC:'Ecuador',ID:'Indonesia',MX:'Mexico',PA:'Panama',PH:'Philippines',US:'United States',ZA:'South Africa'};
+
+function renderOnboarding() {
+  const statusF  = (document.getElementById('ob-filter-status')||{}).value  || '';
+  const deptF    = (document.getElementById('ob-filter-dept')||{}).value    || '';
+  const countryF = (document.getElementById('ob-filter-country')||{}).value || '';
+
+  // Populate dept filter (idempotent)
+  const deptSel = document.getElementById('ob-filter-dept');
+  if (deptSel) {
+    const depts = [...new Set(ONBOARDING_DATA.map(r=>r.dept))].sort();
+    const current = deptSel.value;
+    deptSel.innerHTML = '<option value="">All departments</option>' +
+      depts.map(d=>`<option value="${d}"${d===current?' selected':''}>${d}</option>`).join('');
+  }
+
+  // Populate country filter (idempotent)
+  const countrySel = document.getElementById('ob-filter-country');
+  if (countrySel) {
+    const countries = [...new Set(ONBOARDING_DATA.map(r=>r.country))].sort();
+    const current = countrySel.value;
+    countrySel.innerHTML = '<option value="">All countries</option>' +
+      countries.map(c=>`<option value="${c}"${c===current?' selected':''}>${OB_FLAG[c]||''} ${OB_COUNTRY_NAME[c]||c}</option>`).join('');
+  }
+
+  // Filter
+  const rows = ONBOARDING_DATA.filter(r => {
+    if (statusF === 'complete' && r.pct < 100) return false;
+    if (statusF === 'progress' && (r.pct >= 100 || r.pct < 50)) return false;
+    if (statusF === 'risk' && r.pct >= 50) return false;
+    if (deptF && r.dept !== deptF) return false;
+    if (countryF && r.country !== countryF) return false;
+    return true;
+  });
+
+  const tbody = document.getElementById('ob-tbody');
+  if (!tbody) return;
+
+  if (!rows.length) {
+    tbody.innerHTML = `<tr><td colspan="8" style="text-align:center;color:var(--text-muted);padding:24px;">No records match the current filter.</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = rows.map((r) => {
+    const pctColor = r.pct === 100 ? '#16a34a'
+                   : r.pct >= 50  ? '#ca8a04'
+                   :                '#be123c';
+    const statusPill = r.pct === 100
+      ? `<span style="background:#dcfce7;color:#166534;font-size:10px;font-weight:700;border-radius:20px;padding:2px 8px;">Complete</span>`
+      : r.pct >= 50
+      ? `<span style="background:#fef9c3;color:#854d0e;font-size:10px;font-weight:700;border-radius:20px;padding:2px 8px;">In progress</span>`
+      : `<span style="background:#fee2e2;color:#991b1b;font-size:10px;font-weight:700;border-radius:20px;padding:2px 8px;">At risk</span>`;
+    const globalIdx = ONBOARDING_DATA.indexOf(r);
+    const flag = OB_FLAG[r.country] || '';
+    const cname = OB_COUNTRY_NAME[r.country] || r.country;
+    const startFmt = r.start ? (() => { const d=new Date(r.start+'T00:00:00'); return d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}); })() : '—';
+    return `<tr onclick="showObPending(${globalIdx})" style="cursor:pointer;" class="ob-row">
+      <td style="padding:8px 10px;font-weight:600;font-size:12px;border-bottom:1px solid var(--border);">${r.name}</td>
+      <td style="padding:8px 10px;font-size:11px;color:var(--text-muted);border-bottom:1px solid var(--border);">${r.dept}</td>
+      <td style="padding:8px 10px;text-align:center;font-size:12px;border-bottom:1px solid var(--border);white-space:nowrap;">${flag} <span style="font-size:11px;color:var(--text-muted);">${cname}</span></td>
+      <td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--text-muted);border-bottom:1px solid var(--border);white-space:nowrap;">${startFmt}</td>
+      <td style="padding:8px 10px;text-align:center;font-size:12px;border-bottom:1px solid var(--border);">${r.done}</td>
+      <td style="padding:8px 10px;text-align:center;font-size:12px;border-bottom:1px solid var(--border);">${r.pending.length}</td>
+      <td style="padding:8px 10px;border-bottom:1px solid var(--border);">
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div style="flex:1;background:#e2e8f0;border-radius:4px;height:6px;min-width:80px;">
+            <div style="width:${r.pct}%;background:${pctColor};height:6px;border-radius:4px;"></div>
+          </div>
+          <span style="font-size:12px;font-weight:700;color:${pctColor};width:34px;text-align:right;">${r.pct}%</span>
+        </div>
+      </td>
+      <td style="padding:8px 10px;text-align:center;border-bottom:1px solid var(--border);">${statusPill}</td>
+    </tr>`;
+  }).join('');
+
+  // Clear pending detail on filter change
+  const detailEl = document.getElementById('ob-pending-detail');
+  if (detailEl) detailEl.innerHTML = '';
+}
+
+function showObPending(idx) {
+  const r = ONBOARDING_DATA[idx];
+  const detail = document.getElementById('ob-pending-detail');
+  if (!detail) return;
+  if (!r.pending.length) {
+    detail.innerHTML = `<div style="padding:12px 16px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;font-size:12px;color:#166534;font-weight:600;">
+      ✓ ${r.name} completó todas las tareas (${r.total}/${r.total})
+    </div>`;
+    return;
+  }
+  detail.innerHTML = `<div style="padding:14px 16px;background:var(--surface);border:1px solid var(--border);border-radius:8px;margin-top:8px;">
+    <div style="font-size:12px;font-weight:700;margin-bottom:10px;color:var(--text-primary);">
+      Tareas pendientes — ${r.name} <span style="font-weight:400;color:var(--text-muted);">(${r.pending.length} de ${r.total})</span>
+    </div>
+    <ul style="margin:0;padding-left:16px;display:flex;flex-direction:column;gap:5px;">
+      ${r.pending.map(t=>`<li style="font-size:12px;color:var(--text-secondary);">${t}</li>`).join('')}
+    </ul>
+  </div>`;
+  detail.scrollIntoView({ behavior:'smooth', block:'nearest' });
+}
+
+// Update Onboarding KPI cards dynamically
+function renderOnboardingKPIs() {
+  const total = ONBOARDING_DATA.length;
+  const avgPct = Math.round(ONBOARDING_DATA.reduce((s,r)=>s+r.pct,0)/total);
+  const atRisk = ONBOARDING_DATA.filter(r=>r.pct<50).length;
+  const complete = ONBOARDING_DATA.filter(r=>r.pct===100).length;
+  const ids = ['ob-kpi-total','ob-kpi-avg','ob-kpi-risk','ob-kpi-complete'];
+  const vals = [total, avgPct+'%', atRisk, complete];
+  ids.forEach((id,i)=>{ const el=document.getElementById(id); if(el) el.textContent=vals[i]; });
+}
+
+// Update distribution bars dynamically
+function renderOnboardingDist() {
+  const buckets = [
+    { label:'100%',   min:100, max:100, color:'#16a34a' },
+    { label:'75–99%', min:75,  max:99,  color:'#3b82f6' },
+    { label:'50–74%', min:50,  max:74,  color:'#f59e0b' },
+    { label:'<50%',   min:0,   max:49,  color:'#dc2626' },
+  ];
+  const total = ONBOARDING_DATA.length;
+  const distEl = document.getElementById('ob-dist-bars');
+  if (!distEl) return;
+  distEl.innerHTML = buckets.map(b => {
+    const count = ONBOARDING_DATA.filter(r=>r.pct>=b.min&&r.pct<=b.max).length;
+    const w = total ? Math.round(count/total*100) : 0;
+    return `<div>
+      <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
+        <span style="font-size:12px;font-weight:600;color:${b.color};">${b.label}</span>
+        <span style="font-size:12px;font-weight:700;color:${b.color};">${count} <span style="font-weight:400;color:var(--text-muted);">employees</span></span>
+      </div>
+      <div style="height:8px;background:var(--border);border-radius:99px;overflow:hidden;">
+        <div style="height:100%;width:${w}%;background:${b.color};border-radius:99px;transition:width .4s;"></div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// Update top skipped tasks dynamically
+function renderTopSkipped() {
+  const taskCount = {};
+  ONBOARDING_DATA.forEach(r => r.pending.forEach(t => { taskCount[t] = (taskCount[t]||0)+1; }));
+  const sorted = Object.entries(taskCount).sort((a,b)=>b[1]-a[1]).slice(0,6);
+  const total = ONBOARDING_DATA.length;
+  const el = document.getElementById('ob-top-skipped');
+  if (!el) return;
+  // Clean display name: strip "Day X- " or "Day XX- " prefix
+  const shortName = t => t.replace(/^Day \d+- /, '').replace(/^\[.*?\] /, '');
+  el.innerHTML = sorted.map(([task,cnt])=>{
+    const bgColor = cnt >= 10 ? '#fff1f2' : cnt >= 8 ? '#fffbeb' : '#f0fdf4';
+    const txColor = cnt >= 10 ? '#be123c' : cnt >= 8 ? '#b45309' : '#166534';
+    return `<div style="display:flex;align-items:center;justify-content:space-between;font-size:12px;">
+      <span style="color:var(--text-primary);">${shortName(task)}</span>
+      <span style="background:${bgColor};color:${txColor};font-weight:700;border-radius:6px;padding:2px 9px;font-size:11px;white-space:nowrap;margin-left:8px;">${cnt}</span>
+    </div>`;
+  }).join('');
+}
+
+// ─── VACATIONS RENDER ────────────────────────────────────────────────────────
+function renderVacations() {
+  const deptF    = (document.getElementById('vac-filter-dept')||{}).value    || '';
+  const countryF = (document.getElementById('vac-filter-country')||{}).value || '';
+  const statusF  = (document.getElementById('vac-filter-status')||{}).value  || '';
+
+  const deptSel = document.getElementById('vac-filter-dept');
+  if (deptSel && deptSel.options.length <= 1) {
+    const depts = [...new Set(VACATION_DATA.map(r=>r.d))].sort();
+    deptSel.innerHTML = '<option value="">All departments</option>' +
+      depts.map(d=>`<option value="${d}">${d}</option>`).join('');
+    if (deptF) deptSel.value = deptF;
+  }
+  const ctrySel = document.getElementById('vac-filter-country');
+  if (ctrySel && ctrySel.options.length <= 1) {
+    const countries = [...new Set(VACATION_DATA.map(r=>r.c))].sort();
+    ctrySel.innerHTML = '<option value="">All countries</option>' +
+      countries.map(c=>`<option value="${c}">${c}</option>`).join('');
+    if (countryF) ctrySel.value = countryF;
+  }
+
+  const _status = b => b >= 30 ? 'critical' : b >= 20 ? 'high' : 'healthy';
+
+  const filtered = VACATION_DATA.filter(r => {
+    if (deptF && r.d !== deptF) return false;
+    if (countryF && r.c !== countryF) return false;
+    if (statusF && _status(r.b) !== statusF) return false;
+    return true;
+  });
+
+  // Distribution (full dataset)
+  const distEl = document.getElementById('vac-dist');
+  if (distEl) {
+    const buckets = [
+      {label:'0–5d',   lo:0,  hi:5,    color:'#16a34a'},
+      {label:'5–10d',  lo:5,  hi:10,   color:'#65a30d'},
+      {label:'10–15d', lo:10, hi:15,   color:'#b45309'},
+      {label:'15–20d', lo:15, hi:20,   color:'#d97706'},
+      {label:'20–30d', lo:20, hi:30,   color:'#dc2626'},
+      {label:'30–50d', lo:30, hi:50,   color:'#be123c'},
+      {label:'50d+',   lo:50, hi:9999, color:'#9f1239'},
+    ];
+    const maxCount = Math.max(...buckets.map(bk=>VACATION_DATA.filter(r=>r.b>=bk.lo&&r.b<bk.hi).length));
+    distEl.innerHTML = buckets.map(bk=>{
+      const cnt = VACATION_DATA.filter(r=>r.b>=bk.lo&&r.b<bk.hi).length;
+      const w = maxCount ? Math.round(cnt/maxCount*100) : 0;
+      return `<div style="display:flex;align-items:center;gap:10px;">
+        <span style="width:48px;font-size:11px;color:var(--text-muted);text-align:right;flex-shrink:0;">${bk.label}</span>
+        <div style="flex:1;background:#e2e8f0;border-radius:99px;height:8px;overflow:hidden;">
+          <div style="width:${w}%;background:${bk.color};height:8px;border-radius:99px;"></div>
+        </div>
+        <span style="width:28px;font-size:11px;font-weight:700;color:${bk.color};">${cnt}</span>
+      </div>`;
+    }).join('');
+  }
+
+  // Dept avg (full dataset)
+  const deptEl = document.getElementById('vac-dept');
+  if (deptEl) {
+    const deptMap = {};
+    VACATION_DATA.forEach(r=>{ if(!deptMap[r.d]) deptMap[r.d]=[]; deptMap[r.d].push(r.b); });
+    const deptAvg = Object.entries(deptMap)
+      .map(([d,v])=>({d, avg:Math.round(v.reduce((s,x)=>s+x,0)/v.length*10)/10, n:v.length}))
+      .sort((a,b)=>b.avg-a.avg).slice(0,10);
+    const maxAvg = deptAvg[0]?.avg||1;
+    deptEl.innerHTML = deptAvg.map(({d,avg})=>{
+      const color = avg>=30?'#9f1239':avg>=20?'#be123c':avg>=15?'#d97706':'#16a34a';
+      const w = Math.round(avg/maxAvg*100);
+      return `<div style="display:flex;align-items:center;gap:8px;">
+        <span style="font-size:11px;color:var(--text-primary);width:170px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${d}</span>
+        <div style="flex:1;background:#e2e8f0;border-radius:4px;height:6px;overflow:hidden;">
+          <div style="width:${w}%;background:${color};height:6px;border-radius:4px;"></div>
+        </div>
+        <span style="width:38px;font-size:11px;font-weight:700;color:${color};text-align:right;">${avg}d</span>
+      </div>`;
+    }).join('');
+  }
+
+  // Table
+  const tbody = document.getElementById('vac-tbody');
+  if (!tbody) return;
+  const display = filtered.slice(0, 50);
+  if (!display.length) {
+    tbody.innerHTML = `<tr><td colspan="6" style="text-align:center;color:var(--text-muted);padding:24px;">No records match the filter.</td></tr>`;
+  } else {
+    tbody.innerHTML = display.map(r=>{
+      const color = r.b>=30?'#be123c':r.b>=20?'#dc2626':r.b>=15?'#d97706':'#16a34a';
+      const pill  = r.b>=30
+        ? `<span style="background:#fff1f2;color:#be123c;font-size:10px;font-weight:700;border-radius:20px;padding:2px 8px;">Critical</span>`
+        : r.b>=20
+        ? `<span style="background:#fee2e2;color:#dc2626;font-size:10px;font-weight:700;border-radius:20px;padding:2px 8px;">High</span>`
+        : `<span style="background:#f0fdf4;color:#166534;font-size:10px;font-weight:700;border-radius:20px;padding:2px 8px;">Healthy</span>`;
+      const barW = Math.min(100, Math.round(r.b/120*100));
+      return `<tr>
+        <td style="padding:7px 10px;font-weight:600;font-size:12px;border-bottom:1px solid var(--border);">${r.n}</td>
+        <td style="padding:7px 10px;font-size:11px;color:var(--text-muted);border-bottom:1px solid var(--border);">${r.d}</td>
+        <td style="padding:7px 10px;font-size:11px;color:var(--text-muted);border-bottom:1px solid var(--border);">${r.c}</td>
+        <td style="padding:7px 10px;text-align:center;font-size:12px;border-bottom:1px solid var(--border);">${r.t}</td>
+        <td style="padding:7px 10px;border-bottom:1px solid var(--border);">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div style="flex:1;background:#e2e8f0;border-radius:4px;height:6px;min-width:60px;">
+              <div style="width:${barW}%;background:${color};height:6px;border-radius:4px;"></div>
+            </div>
+            <span style="font-size:12px;font-weight:700;color:${color};width:42px;text-align:right;">${r.b}d</span>
+          </div>
+        </td>
+        <td style="padding:7px 10px;text-align:center;border-bottom:1px solid var(--border);">${pill}</td>
+      </tr>`;
+    }).join('');
+  }
+
+  const countEl = document.getElementById('vac-row-count');
+  if (countEl) countEl.textContent = filtered.length > 50
+    ? `Showing 50 of ${filtered.length} employees — use filters to narrow down`
+    : `${filtered.length} employee${filtered.length===1?'':'s'}`;
+}
+
 // ─── INIT ─────────────────────────────────────────────────────────────────────
 setPeriod('q1'); renderHCSparkline();
 renderSection2(); renderGender(); renderGenderByLevel(); renderTenure(); renderInsights(); renderDriveV2Table();
 renderCountryAttrChart(); renderDeptAttrChart(); renderHCCountryBars(); renderMovements(); renderEarlyAttrBars();
 renderCountryTermsHcChart(); renderCountryRateChart(); renderDeptTermsHcChart(); renderDeptRateChart();
+renderOnboardingKPIs(); renderOnboardingDist(); renderTopSkipped(); renderOnboarding();
+renderVacations();
 
 
 document.querySelectorAll(".nav-item").forEach(item => {
@@ -3846,7 +5499,7 @@ function switchTab(tabId) {
   document.querySelectorAll('.tab-page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.page-tab').forEach(t => t.classList.remove('active'));
   document.getElementById(tabId).classList.add('active');
-  const tabOrder = ['tab-hc','tab-attrition','tab-analysis'];
+  const tabOrder = ['tab-hc','tab-attrition','tab-analysis','tab-onboarding','tab-vacations'];
   const idx = tabOrder.indexOf(tabId);
   if (idx >= 0) document.querySelectorAll('.page-tab')[idx].classList.add('active');
 }
