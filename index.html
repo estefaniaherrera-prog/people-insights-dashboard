@@ -540,10 +540,10 @@
 
     <!-- HC TOTAL BANNER -->
     <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:14px;">
-      <span style="font-size:38px;font-weight:900;color:var(--text-primary);letter-spacing:-1px;" id="hc-banner-num">1,092</span>
+      <span style="font-size:38px;font-weight:900;color:var(--text-primary);letter-spacing:-1px;" id="hc-banner-num">1,103</span>
       <span style="font-size:14px;font-weight:700;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.4px;">HC Total</span>
-      <span style="font-size:13px;font-weight:600;color:var(--green);background:var(--green-light);padding:2px 10px;border-radius:99px;" id="hc-banner-delta">+23 vs May · +2.2%</span>
-      <span style="font-size:12px;color:var(--text-muted);margin-left:4px;" id="hc-banner-period">Jun 8, 2026</span>
+      <span style="font-size:13px;font-weight:600;color:var(--green);background:var(--green-light);padding:2px 10px;border-radius:99px;" id="hc-banner-delta">+34 vs May · +3.2%</span>
+      <span style="font-size:12px;color:var(--text-muted);margin-left:4px;" id="hc-banner-period">Jun 22, 2026</span>
     </div>
 
     <div class="filter-bar">
@@ -608,7 +608,8 @@
             <option value="4">Sep 25</option><option value="5">Oct 25</option><option value="6">Nov 25</option><option value="7">Dec 25</option>
             <option value="8">Jan 26</option><option value="9">Feb 26</option><option value="10">Mar 26</option><option value="11">Apr 26</option>
             <option value="12">May 26</option>
-            <option value="13" selected>Jun 8</option>
+            <option value="13">Jun 8</option>
+            <option value="14" selected>Jun 22</option>
           </select>
         </div>
         <div id="hc-country-bars"></div>
@@ -643,7 +644,9 @@
             <option value="5/18/26">May 18</option>
             <option value="5/25/26">May 25</option>
             <option value="6/1/26">Jun 1</option>
-            <option value="6/8/26" selected>Jun 8</option>
+            <option value="6/8/26">Jun 8</option>
+            <option value="6/15/26">Jun 15</option>
+            <option value="6/22/26" selected>Jun 22</option>
           </select>
         </div>
         <div id="movements-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;"></div>
@@ -949,90 +952,90 @@
 </main>
 
 <script>
-// ─── GENDER BY LEVEL (Jun 8, 2026, from HC snapshot) ─────────────────────────
+// ─── GENDER BY LEVEL (Jun 22, 2026, from HC snapshot) ────────────────────────
 const GENDER_BY_LEVEL_MAY26 = [
-  { label:"1a",    total:89,  f:39, m:49, nb:0, ns:1 },
-  { label:"1b",    total:115, f:53, m:62, nb:0, ns:0 },
-  { label:"1c",    total:106, f:54, m:52, nb:0, ns:0 },
-  { label:"2a",    total:92,  f:45, m:47, nb:0, ns:0 },
-  { label:"2b",    total:102, f:57, m:45, nb:0, ns:0 },
+  { label:"1a",    total:88,  f:39, m:48, nb:0, ns:1 },
+  { label:"1b",    total:114, f:53, m:61, nb:0, ns:0 },
+  { label:"1c",    total:103, f:53, m:50, nb:0, ns:0 },
+  { label:"2a",    total:102, f:47, m:53, nb:0, ns:2 },
+  { label:"2b",    total:106, f:61, m:45, nb:0, ns:0 },
   { label:"2c",    total:84,  f:41, m:43, nb:0, ns:0 },
   { label:"3a",    total:93,  f:47, m:46, nb:0, ns:0 },
-  { label:"3b",    total:94,  f:48, m:46, nb:0, ns:0 },
+  { label:"3b",    total:96,  f:49, m:47, nb:0, ns:0 },
   { label:"3c",    total:54,  f:26, m:28, nb:0, ns:0 },
   { label:"4a",    total:60,  f:26, m:34, nb:0, ns:0 },
-  { label:"4b",    total:54,  f:15, m:39, nb:0, ns:0 },
-  { label:"4c",    total:36,  f:8,  m:28, nb:0, ns:0 },
+  { label:"4b",    total:55,  f:16, m:39, nb:0, ns:0 },
+  { label:"4c",    total:35,  f:7,  m:28, nb:0, ns:0 },
   { label:"5a",    total:31,  f:11, m:20, nb:0, ns:0 },
-  { label:"5b",    total:18,  f:6,  m:12, nb:0, ns:0 },
+  { label:"5b",    total:20,  f:7,  m:13, nb:0, ns:0 },
   { label:"5c",    total:17,  f:4,  m:13, nb:0, ns:0 },
   { label:"6a",    total:13,  f:3,  m:10, nb:0, ns:0 },
   { label:"6b",    total:3,   f:0,  m:3,  nb:0, ns:0 },
   { label:"E",     total:20,  f:3,  m:16, nb:1, ns:0 },
-  { label:"Intern",total:10,  f:5,  m:4,  nb:0, ns:1 },
+  { label:"Intern",total:9,   f:5,  m:3,  nb:0, ns:1 },
 ];
 
 // ─── DATA ─────────────────────────────────────────────────────────────────────
 const DATA = {
   hcByDept: {
-    "Go To Market":        { hc:509, attr:6.8, vol:2.5, invol:4.3 },
-    "Operations":          { hc:198, attr:5.8, vol:1.6, invol:4.2 },
-    "Product Development": { hc:149, attr:5.7, vol:1.4, invol:4.3 },
+    "Go To Market":        { hc:534, attr:6.8, vol:2.5, invol:4.3 },
+    "Operations":          { hc:207, attr:5.8, vol:1.6, invol:4.2 },
+    "Product Development": { hc:160, attr:5.7, vol:1.4, invol:4.3 },
     "Finance":             { hc:77,  attr:1.4, vol:1.4, invol:0.0 },
-    "Financial Products":  { hc:50,  attr:2.1, vol:2.1, invol:0.0 },
-    "People":              { hc:40,  attr:2.8, vol:0.0, invol:2.8 },
-    "Counsel":             { hc:20,  attr:14.6,vol:4.9, invol:9.8 },
-    "Corporate Admin":     { hc:2,   attr:0.0, vol:0.0, invol:0.0 },
+    "Financial Products":  { hc:54,  attr:2.1, vol:2.1, invol:0.0 },
+    "People":              { hc:41,  attr:2.8, vol:0.0, invol:2.8 },
+    "Counsel":             { hc:27,  attr:14.6,vol:4.9, invol:9.8 },
+    "Corporate Admin":     { hc:3,   attr:0.0, vol:0.0, invol:0.0 },
   },
   hcByLevel: {
-    "1a": { hc:89  }, "1b": { hc:113 }, "1c": { hc:104 },
-    "2a": { hc:87  }, "2b": { hc:96  }, "2c": { hc:85  },
-    "3a": { hc:88  }, "3b": { hc:91  }, "3c": { hc:55  },
-    "4a": { hc:56  }, "4b": { hc:50  }, "4c": { hc:36  },
-    "5a": { hc:30  }, "5b": { hc:16  }, "5c": { hc:17  },
-    "6a": { hc:12  }, "6b": { hc:3   }, "E":  { hc:22  },
-    "Intern":         { hc:5   },
+    "1a": { hc:88  }, "1b": { hc:114 }, "1c": { hc:103 },
+    "2a": { hc:102 }, "2b": { hc:106 }, "2c": { hc:84  },
+    "3a": { hc:93  }, "3b": { hc:96  }, "3c": { hc:54  },
+    "4a": { hc:60  }, "4b": { hc:55  }, "4c": { hc:35  },
+    "5a": { hc:31  }, "5b": { hc:20  }, "5c": { hc:17  },
+    "6a": { hc:13  }, "6b": { hc:3   }, "E":  { hc:20  },
+    "Intern":         { hc:9   },
   },
-  hcByPais: { "Mexico":328,"Brazil":158,"Colombia":156,"United States":89,"Peru":82,"South Africa":62 },
+  hcByPais: { "Mexico":355,"Colombia":164,"Brazil":160,"United States":96,"Peru":84,"South Africa":64 },
   gender: {
-    default: { f:491, m:598, nb:1, ns:2, total:1092 },
+    default: { f:498, m:600, nb:0, ns:5, total:1103 },
     // By Department (parent)
-    "Corporate Admin":     { f:2,   m:0,   nb:1, ns:0, total:3   },
-    "Counsel":             { f:16,  m:10,  nb:0, ns:0, total:26  },
-    "Finance":             { f:42,  m:36,  nb:0, ns:0, total:78  },
-    "Financial Products":  { f:22,  m:31,  nb:0, ns:0, total:53  },
-    "Go To Market":        { f:246, m:283, nb:0, ns:2, total:531 },
-    "Operations":          { f:98,  m:102, nb:0, ns:0, total:200 },
+    "Corporate Admin":     { f:2,   m:0,   nb:0, ns:1, total:3   },
+    "Counsel":             { f:17,  m:10,  nb:0, ns:0, total:27  },
+    "Finance":             { f:42,  m:35,  nb:0, ns:0, total:77  },
+    "Financial Products":  { f:22,  m:31,  nb:0, ns:1, total:54  },
+    "Go To Market":        { f:249, m:282, nb:0, ns:3, total:534 },
+    "Operations":          { f:101, m:106, nb:0, ns:0, total:207 },
     "People":              { f:34,  m:7,   nb:0, ns:0, total:41  },
     "Product Development": { f:31,  m:129, nb:0, ns:0, total:160 },
     // By Level
     // Level gender — grouped fallbacks (individual levels use default)
-    "Intern": { f:5, m:4, nb:0, ns:1, total:10 },
+    "Intern": { f:6, m:1, nb:0, ns:0, total:7 },
     // By Country
-    "Brazil":         { f:84,  m:75,  nb:0, ns:1, total:160 },
-    "China":          { f:2,   m:5,   nb:0, ns:0, total:7   },
-    "Colombia":       { f:81,  m:82,  nb:0, ns:0, total:163 },
-    "Ecuador":        { f:27,  m:31,  nb:0, ns:0, total:58  },
+    "Brazil":         { f:85,  m:74,  nb:0, ns:1, total:160 },
+    "China":          { f:2,   m:4,   nb:0, ns:0, total:6   },
+    "Colombia":       { f:82,  m:82,  nb:0, ns:0, total:164 },
+    "Ecuador":        { f:28,  m:31,  nb:0, ns:0, total:59  },
     "India":          { f:2,   m:4,   nb:0, ns:0, total:6   },
-    "Indonesia":      { f:4,   m:13,  nb:0, ns:0, total:17  },
-    "Mexico":         { f:145, m:200, nb:0, ns:0, total:345 },
-    "Panama":         { f:16,  m:13,  nb:0, ns:0, total:29  },
+    "Indonesia":      { f:5,   m:13,  nb:0, ns:0, total:18  },
+    "Mexico":         { f:149, m:206, nb:0, ns:0, total:355 },
+    "Panama":         { f:15,  m:12,  nb:0, ns:0, total:27  },
     "Peru":           { f:36,  m:48,  nb:0, ns:0, total:84  },
-    "Philippines":    { f:29,  m:35,  nb:0, ns:1, total:65  },
-    "South Africa":   { f:39,  m:25,  nb:0, ns:0, total:64  },
-    "United States":  { f:26,  m:67,  nb:1, ns:0, total:94  },
+    "Philippines":    { f:28,  m:35,  nb:0, ns:1, total:64  },
+    "South Africa":   { f:39,  m:24,  nb:0, ns:1, total:64  },
+    "United States":  { f:27,  m:67,  nb:0, ns:2, total:96  },
     // By Employment Type
-    "Salaried, full-time":   { f:485, m:596, nb:1, ns:2, total:1084 },
+    "Salaried, full-time":   { f:491, m:599, nb:0, ns:5, total:1095 },
     "Salaried, part-time":   { f:1,   m:0,   nb:0, ns:0, total:1   },
   },
   tenure: {
     // ── Company default ──────────────────────────────────────────────────────
     default: [
-      { label:"0–6m",  val:251, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
+      { label:"0–6m",  val:261, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
       { label:"6m–1y", val:166, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
-      { label:"1–2y",  val:236, color:"linear-gradient(180deg,#818cf8,#6366f1)", risk:"medium" },
-      { label:"2–5y",  val:371, color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
-      { label:"5y+",   val:68,  color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
+      { label:"1–2y",  val:232, color:"linear-gradient(180deg,#818cf8,#6366f1)", risk:"medium" },
+      { label:"2–5y",  val:372, color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
+      { label:"5y+",   val:72,  color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
     ],
     // ── By Department ─────────────────────────────────────────────────────────
     "Go To Market": [
@@ -1252,43 +1255,43 @@ const DATA = {
     { m:"Feb  26",  exits:17, vol:6,  invol:11, avgHC:950,  pct:1.79, early:4  },
     { m:"Mar  26",  exits:21, vol:9,  invol:12, avgHC:981,  pct:2.14, early:6  },
     { m:"Apr  26",  exits:25, vol:12, invol:13, avgHC:1021, pct:2.45, early:8  },
+    { m:"Jun  26",  exits:18, vol:9,  invol:9,  avgHC:1086, pct:1.66, early:5  },
   ]
 };
 
 // ─── HC MONTHLY BREAKDOWNS ────────────────────────────────────────────────────
 const HC_BY_DEPT = {
-  // Parent departments (May 25 – May 26), index 0=May25 … 12=May26
-  // Computed from HC Final de mes files
-  "Go To Market":        [351,367,385,398,416,435,434,438,445,455,484,504,519],
-  "Operations":          [151,154,161,160,162,164,166,161,165,167,164,167,199],
-  "Product Development": [8,10,8,7,7,9,115,114,119,117,119,124,156],
-  "Finance":             [63,66,62,61,61,60,62,60,62,59,61,64,77],
-  "Financial Products":  [20,21,24,27,28,28,29,27,26,27,28,29,51],
-  "People":              [17,17,17,19,20,21,21,20,21,21,22,22,40],
-  "Counsel":             [14,13,13,15,15,16,17,19,21,17,18,18,25],
-  // Sub-departments (legacy, kept for reference)
-  "Sales":                   [249,260,270,280,292,301,297,298,297,299,320,335,338],
-  "Merchant Operations":     [74,77,80,82,90,99,105,107,114,117,121,122,122],
-  "Core Engineering":        [1,3,1,0,0,0,92,92,92,93,94,98,100],
-  "Global Clerk Support":    [66,66,69,68,67,67,66,66,69,71,71,73,73],
-  "Marketing":               [28,30,35,36,34,35,32,33,34,39,43,47,47],
-  "Global General Support":  [39,40,44,42,42,42,43,41,44,43,42,43,43],
-  "FPA and Treasury":        [23,25,27,28,31,36,36,35,36,33,34,35,35],
-  "Global Tools and Metrics":[27,27,27,28,29,31,31,30,29,29,31,30,30],
-  "Accounting":              [40,41,35,33,30,24,26,25,26,26,27,29,31],
-  "Product and UX":          [7,7,7,7,7,8,23,22,24,24,25,26,27],
-  "Global Collections":      [19,21,21,25,25,25,26,24,23,24,20,21,21],
-  "Legal":                   [14,13,13,15,15,16,17,19,21,17,18,18,17],
+  // Parent departments (May 25 – Jun 22 '26), index 0=May25 … 12=May26, 13=Jun22'26
+  "Go To Market":        [351,367,385,398,416,435,434,438,445,455,484,504,519,534],
+  "Operations":          [151,154,161,160,162,164,166,161,165,167,164,167,199,207],
+  "Product Development": [8,10,8,7,7,9,115,114,119,117,119,124,156,160],
+  "Finance":             [63,66,62,61,61,60,62,60,62,59,61,64,77,77],
+  "Financial Products":  [20,21,24,27,28,28,29,27,26,27,28,29,51,54],
+  "People":              [17,17,17,19,20,21,21,20,21,21,22,22,40,41],
+  "Counsel":             [14,13,13,15,15,16,17,19,21,17,18,18,25,27],
+  // Sub-departments
+  "Sales":                   [249,260,270,280,292,301,297,298,297,299,320,335,338,341],
+  "Merchant Operations":     [74,77,80,82,90,99,105,107,114,117,121,122,122,147],
+  "Core Engineering":        [1,3,1,0,0,0,92,92,92,93,94,98,100,108],
+  "Global Clerk Support":    [66,66,69,68,67,67,66,66,69,71,71,73,73,75],
+  "Marketing":               [28,30,35,36,34,35,32,33,34,39,43,47,47,46],
+  "Global General Support":  [39,40,44,42,42,42,43,41,44,43,42,43,43,50],
+  "FPA and Treasury":        [23,25,27,28,31,36,36,35,36,33,34,35,35,36],
+  "Global Tools and Metrics":[27,27,27,28,29,31,31,30,29,29,31,30,30,32],
+  "Accounting":              [40,41,35,33,30,24,26,25,26,26,27,29,31,31],
+  "Product and UX":          [7,7,7,7,7,8,23,22,24,24,25,26,27,28],
+  "Global Collections":      [19,21,21,25,25,25,26,24,23,24,20,21,21,21],
+  "Legal":                   [14,13,13,15,15,16,17,19,21,17,18,18,17,24],
 };
-// Real exits per dept per month (index 0=May25 … 11=Apr26), from Rippling data
+// Real exits per dept per month (index 0=May25 … 11=Apr26, 12=Jun26), from Rippling data
 const EXITS_BY_DEPT = {
-  "Go To Market":        [10,13,10,8,5,7,11,7,10,11,9,9],
-  "Operations":          [5,6,4,3,5,2,2,5,3,4,4,4],
-  "Product Development": [2,1,1,0,0,1,0,2,3,0,5,1],
-  "Finance":             [0,2,2,3,3,2,1,2,0,0,1,2],
-  "Financial Products":  [1,1,3,3,1,0,1,0,0,0,1,1],
-  "People":              [0,0,1,0,0,3,0,1,0,1,0,0],
-  "Counsel":             [0,1,0,0,1,0,1,0,1,1,1,1],
+  "Go To Market":        [10,13,10,8,5,7,11,7,10,11,9,9,10],
+  "Operations":          [5,6,4,3,5,2,2,5,3,4,4,4,3],
+  "Product Development": [2,1,1,0,0,1,0,2,3,0,5,1,1],
+  "Finance":             [0,2,2,3,3,2,1,2,0,0,1,2,2],
+  "Financial Products":  [1,1,3,3,1,0,1,0,0,0,1,1,1],
+  "People":              [0,0,1,0,0,3,0,1,0,1,0,0,1],
+  "Counsel":             [0,1,0,0,1,0,1,0,1,1,1,1,0],
 };
 // Attrition % per dept per month = exits / ((HC_start+HC_end)/2) * 100
 // Calculated from real Rippling HC inicio/final + terminations files
@@ -1307,7 +1310,7 @@ const ATTR_BY_DEPT_MONTHLY = {
   "Core Engineering":      [ null, null, null, null, null, null,  0.0,  1.09, 1.09, 0.0,  3.21, 1.04],
   "FPA and Treasury":      [ 0.0,  0.0,  0.0,  3.64, 0.0,  0.0,  2.78, 2.78, 0.0,  0.0,  0.0,  2.9 ],
 };
-const ATTR_MON_LABELS = ["May  25","Jun  25","Jul  25","Aug  25","Sep  25","Oct  25","Nov  25","Dec  25","Jan  26","Feb  26","Mar  26","Apr  26"];
+const ATTR_MON_LABELS = ["May  25","Jun  25","Jul  25","Aug  25","Sep  25","Oct  25","Nov  25","Dec  25","Jan  26","Feb  26","Mar  26","Apr  26","Jun  26"];
 let attrMonthIdx = null; // kept for legacy; use attrQuarterIdx for quarterly filtering
 let attrQuarterIdx = null; // null = all quarters
 
@@ -1334,7 +1337,7 @@ const QUARTERLY_ATTR = [
   { q:"Q3 '25", label:"Q3 2025", monthIdxs:[2,3,4],  exits:53, volExits:35, avgHC:850.3, pct:6.23, volPct:4.12, partial:false },
   { q:"Q4 '25", label:"Q4 2025", monthIdxs:[5,6,7],  exits:48, volExits:25, avgHC:910.3, pct:5.27, volPct:2.75, partial:false },
   { q:"Q1 '26", label:"Q1 2026", monthIdxs:[8,9,10], exits:55, volExits:19, avgHC:954.7, pct:5.76, volPct:1.99, partial:false },
-  { q:"Q2 '26", label:"Q2 2026 (partial)", monthIdxs:[11], exits:25, volExits:12, avgHC:1021, pct:2.45, volPct:1.18, partial:true },
+  { q:"Q2 '26", label:"Q2 2026 (partial)", monthIdxs:[11,12], exits:43, volExits:21, avgHC:1054, pct:4.08, volPct:1.99, partial:true },
 ];
 
 // Early attrition (90 days) by cohort — quarterly view
@@ -1418,18 +1421,19 @@ const HC_BY_COUNTRY = {
   // May 25–May 26: from HC Final de mes files (all emp types)
   // May 26 (index 12): from HC snapshot May 18, 2026
   // Jun 8  (index 13): from HC active employees June 8, 2026
-  "Mexico":         [246,247,245,255,266,284,289,289,302,308,323,331,341,345],
-  "Brazil":         [108,120,120,121,122,125,124,129,132,136,149,156,156,160],
-  "Colombia":       [122,133,133,135,141,142,140,143,141,142,148,154,159,163],
-  "United States":  [77,78,77,79,78,77,84,83,83,84,85,87,92,94],
-  "Peru":           [63,69,72,73,73,72,73,75,73,75,78,80,84,84],
-  "South Africa":   [48,55,55,58,60,61,62,62,63,62,61,62,64,64],
-  "Ecuador":        [56,57,60,61,59,59,60,59,59,58,60,60,57,58],
-  "Philippines":    [19,31,34,36,40,42,45,44,47,50,51,60,62,65],
-  "Panama":         [34,33,32,32,31,31,31,28,27,27,28,27,27,29],
-  "Indonesia":      [0,0,1,1,1,3,4,4,8,8,8,10,14,17],
-  "China":          [4,5,5,6,6,6,6,6,6,6,7,7,7,7],
-  "India":          [3,3,3,3,3,3,3,3,3,4,5,5,6,6],
+  // Jun 22 (index 14): from HC active employees June 22, 2026
+  "Mexico":         [246,247,245,255,266,284,289,289,302,308,323,331,341,345,355],
+  "Brazil":         [108,120,120,121,122,125,124,129,132,136,149,156,156,160,160],
+  "Colombia":       [122,133,133,135,141,142,140,143,141,142,148,154,159,163,164],
+  "United States":  [77,78,77,79,78,77,84,83,83,84,85,87,92,94,96],
+  "Peru":           [63,69,72,73,73,72,73,75,73,75,78,80,84,84,84],
+  "South Africa":   [48,55,55,58,60,61,62,62,63,62,61,62,64,64,64],
+  "Ecuador":        [56,57,60,61,59,59,60,59,59,58,60,60,57,58,59],
+  "Philippines":    [19,31,34,36,40,42,45,44,47,50,51,60,62,65,64],
+  "Panama":         [34,33,32,32,31,31,31,28,27,27,28,27,27,29,27],
+  "Indonesia":      [0,0,1,1,1,3,4,4,8,8,8,10,14,17,18],
+  "China":          [4,5,5,6,6,6,6,6,6,6,7,7,7,7,6],
+  "India":          [3,3,3,3,3,3,3,3,3,4,5,5,6,6,6],
 };
 
 // ─── WEEKLY HC BY COUNTRY ────────────────────────────────────────────────────
@@ -1455,6 +1459,8 @@ const HC_WEEKLY_COUNTRY = {
   "5/11/26": { total:1056, rows:[ {country:"Mexico",hc:333},{country:"Brazil",hc:159},{country:"Colombia",hc:157},{country:"United States",hc:90},{country:"Peru",hc:85},{country:"South Africa",hc:62},{country:"Ecuador",hc:61},{country:"Philippines",hc:59},{country:"Panama",hc:26},{country:"Indonesia",hc:12},{country:"China",hc:7},{country:"India",hc:5} ]},
   "5/18/26": { total:1064, rows:[ {country:"Mexico",hc:338},{country:"Brazil",hc:157},{country:"Colombia",hc:156},{country:"United States",hc:93},{country:"Peru",hc:83},{country:"South Africa",hc:63},{country:"Ecuador",hc:60},{country:"Philippines",hc:62},{country:"Panama",hc:26},{country:"Indonesia",hc:13},{country:"China",hc:7},{country:"India",hc:6} ]},
   "5/25/26": { total:1069, rows:[ {country:"Mexico",hc:341},{country:"Brazil",hc:156},{country:"Colombia",hc:159},{country:"United States",hc:92},{country:"Peru",hc:84},{country:"South Africa",hc:64},{country:"Ecuador",hc:57},{country:"Philippines",hc:62},{country:"Panama",hc:27},{country:"Indonesia",hc:14},{country:"China",hc:7},{country:"India",hc:6} ]},
+  "6/15/26": { total:1098, rows:[ {country:"Mexico",hc:353},{country:"Colombia",hc:162},{country:"Brazil",hc:160},{country:"United States",hc:95},{country:"Peru",hc:83},{country:"Philippines",hc:64},{country:"South Africa",hc:64},{country:"Ecuador",hc:58},{country:"Panama",hc:28},{country:"Indonesia",hc:18},{country:"China",hc:7},{country:"India",hc:6} ]},
+  "6/22/26": { total:1103, rows:[ {country:"Mexico",hc:355},{country:"Colombia",hc:164},{country:"Brazil",hc:160},{country:"United States",hc:96},{country:"Peru",hc:84},{country:"South Africa",hc:64},{country:"Philippines",hc:64},{country:"Ecuador",hc:59},{country:"Panama",hc:27},{country:"Indonesia",hc:18},{country:"India",hc:6},{country:"China",hc:6} ]},
 };
 
 const COUNTRY_COLORS = {
@@ -2001,6 +2007,51 @@ const WEEKLY_MOV = {
       { name:"Ferdinand Marpaung",     country:"Indonesia",  title:"Merchant Operations Supervisor",          dept:"Go To Market" },
     ]
   },
+  "6/22/26": {
+    bajas: [
+      { country:"Panama",       title:"Sales Representative",              dept:"Go To Market", termType:"Involuntary", reason:"Did Not Pass Probation", regrettable:"Non-Regrettable" },
+      { country:"South Africa", title:"Clerk Support Representative",      dept:"Operations",   termType:"Involuntary", reason:"Dismissal",              regrettable:"Non-Regrettable" },
+      { country:"Colombia",     title:"Customer Support Representative",   dept:"Operations",   termType:"Voluntary",   reason:"Received a Job Offer",   regrettable:"Regrettable" },
+      { country:"Brazil",       title:"Talent Acquisition Partner",        dept:"People",       termType:"Involuntary", reason:"Performance",            regrettable:"Non-Regrettable" },
+      { country:"Brazil",       title:"Sales Representative",              dept:"Go To Market", termType:"Involuntary", reason:"Performance",            regrettable:"Non-Regrettable" },
+    ],
+    ingresos: [
+      { name:"Tania Natasha",    country:"Indonesia",     title:"Business Development Lead",            dept:"Go To Market" },
+      { name:"Ágata Marquezini", country:"Brazil",        title:"Merchant Operations Analyst",          dept:"Go To Market" },
+      { name:"Shayara Castro",   country:"Brazil",        title:"Promoter Coordinator",                 dept:"Go To Market" },
+      { name:"Yad Calderón",     country:"Mexico",        title:"Strategy and Operations Manager",      dept:"Operations" },
+      { name:"Catharina Jesus",  country:"Brazil",        title:"Legal Analyst",                        dept:"Counsel" },
+      { name:"Michelle Guzmán",  country:"Mexico",        title:"Merchant Operations Representative",   dept:"Go To Market" },
+      { name:"Lore Reyes",       country:"Mexico",        title:"Collection Representative",            dept:"Operations" },
+      { name:"Paco Rosales",     country:"Mexico",        title:"Senior Disputes & Complaints Manager", dept:"Operations" },
+      { name:"Andrea Reggio",    country:"Colombia",      title:"Tech Operations Director",             dept:"Operations" },
+      { name:"Norman Argueta",   country:"Mexico",        title:"Customer Support Representative",      dept:"Operations" },
+    ]
+  },
+  "6/15/26": {
+    bajas: [
+      { country:"Mexico",      title:"Commercial Senior Manager",                 dept:"Go To Market",      termType:"Voluntary",   reason:"Personal Reasons",       regrettable:"Regrettable" },
+      { country:"Colombia",    title:"Fraud Operations Representative",           dept:"Financial Products", termType:"Voluntary",   reason:"Received a Job Offer",   regrettable:"Regrettable" },
+      { country:"Philippines", title:"Sales Representative (Puerto Princesa)",    dept:"Go To Market",      termType:"Voluntary",   reason:"Personal Reasons",       regrettable:"Non-Regrettable" },
+      { country:"Peru",        title:"Sales Representative",                      dept:"Go To Market",      termType:"Voluntary",   reason:"Bad Practices",          regrettable:"Non-Regrettable" },
+      { country:"Panama",      title:"Merchant Operations Supervisor",            dept:"Go To Market",      termType:"Voluntary",   reason:"Received a Job Offer",   regrettable:"Non-Regrettable" },
+      { country:"Brazil",      title:"Sales Representative",                      dept:"Go To Market",      termType:"Involuntary", reason:"Did Not Pass Probation", regrettable:"Non-Regrettable" },
+      { country:"Colombia",    title:"Senior Partnership Development Manager",    dept:"Product Development",termType:"Involuntary", reason:"Performance Issues",     regrettable:"Non-Regrettable" },
+      { country:"Mexico",      title:"Accounting Manager",                        dept:"Finance",           termType:"Voluntary",   reason:"Other Employment",       regrettable:"Non-Regrettable" },
+    ],
+    ingresos: [
+      { name:"Karim Garcia",        country:"Mexico",      title:"Senior IT Specialist",                 dept:"Product Development" },
+      { name:"Hannia Nuñez Guzmán", country:"Mexico",      title:"Market Expansion Manager",             dept:"Go To Market" },
+      { name:"Jesus Flores",        country:"Mexico",      title:"Market Expansion Manager",             dept:"Go To Market" },
+      { name:"Ika Rahmawati",       country:"Indonesia",   title:"Merchant Operations Representative",   dept:"Go To Market" },
+      { name:"Pol Uy",              country:"Philippines", title:"Product Lock Analyst",                 dept:"Product Development" },
+      { name:"Henry Mantilla",      country:"Mexico",      title:"Financial Operations Analyst",         dept:"Operations" },
+      { name:"Riki Risdianto",      country:"Indonesia",   title:"Customer Support Supervisor",          dept:"Operations" },
+      { name:"Diego Bernabe",       country:"Mexico",      title:"Director of Product Design",           dept:"Product Development" },
+      { name:"Mariel Sada",         country:"Mexico",      title:"Senior Manager Business Development",  dept:"Go To Market" },
+      { name:"Adriana Ruiz",        country:"Colombia",    title:"Sales Representative",                 dept:"Go To Market" },
+    ]
+  },
   "6/8/26": {
     bajas: [
       { country:"Ecuador",       title:"Merchant Operations Analyst",   dept:"Go To Market", termType:"Involuntary", reason:"Performance Issues", regrettable:"Non-Regrettable" },
@@ -2038,7 +2089,7 @@ const WEEKLY_MOV = {
   },
 };
 
-let activeWeek = "6/8/26";
+let activeWeek = "6/22/26";
 
 function setWeek(w) {
   activeWeek = w;
@@ -2215,7 +2266,7 @@ const HC_MONTHLY = [
   { label:"Mar 26",  hc:1003, q:"Q1-2026" },
   { label:"Apr 26",  hc:1039, q:"Q1-2026" },
   { label:"May 26",  hc:1069, q:"Q2-2026" },
-  { label:"Jun 26",  hc:1092, q:"Q2-2026" },
+  { label:"Jun 26",  hc:1103, q:"Q2-2026" },
 ];
 let activeHCQ = 'all';
 
@@ -2329,12 +2380,12 @@ function updateKPIHC() {
   }
   // update visible banner
   if (!depto && !nivel && !emptype) {
-    document.getElementById("kpi-hc").textContent = "1,092";
-    document.getElementById("kpi-hc-delta-val").textContent = "+14.6%";
-    document.getElementById("kpi-hc-note").textContent = "+136 vs Dec 2025";
-    document.getElementById("hc-banner-num").textContent = "1,092";
-    document.getElementById("hc-banner-delta").textContent = "+23 vs May · +2.2%";
-    document.getElementById("hc-banner-period").textContent = "Jun 8, 2026";
+    document.getElementById("kpi-hc").textContent = "1,103";
+    document.getElementById("kpi-hc-delta-val").textContent = "+19.5%";
+    document.getElementById("kpi-hc-note").textContent = "+178 vs Dec 2025";
+    document.getElementById("hc-banner-num").textContent = "1,103";
+    document.getElementById("hc-banner-delta").textContent = "+34 vs May · +3.2%";
+    document.getElementById("hc-banner-period").textContent = "Jun 22, 2026";
   } else {
     const prevLabel = prev ? prev.label : "";
     const absDelta = prev ? hc - prev.hc : 0;
