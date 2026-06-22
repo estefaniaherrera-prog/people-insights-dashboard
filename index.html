@@ -2009,11 +2009,11 @@ const WEEKLY_MOV = {
   },
   "6/22/26": {
     bajas: [
-      { country:"Panama",       title:"Sales Representative",              dept:"Go To Market", termType:"Involuntary", reason:"Did Not Pass Probation", regrettable:"Non-Regrettable" },
-      { country:"South Africa", title:"Clerk Support Representative",      dept:"Operations",   termType:"Involuntary", reason:"Dismissal",              regrettable:"Non-Regrettable" },
-      { country:"Colombia",     title:"Customer Support Representative",   dept:"Operations",   termType:"Voluntary",   reason:"Received a Job Offer",   regrettable:"Regrettable" },
-      { country:"Brazil",       title:"Talent Acquisition Partner",        dept:"People",       termType:"Involuntary", reason:"Performance",            regrettable:"Non-Regrettable" },
-      { country:"Brazil",       title:"Sales Representative",              dept:"Go To Market", termType:"Involuntary", reason:"Performance",            regrettable:"Non-Regrettable" },
+      { country:"Panama",       title:"Sales Representative",              dept:"Go To Market", level:"1b", termType:"Involuntary", reason:"Did Not Pass Probation", regrettable:"Non-Regrettable" },
+      { country:"South Africa", title:"Clerk Support Representative",      dept:"Operations",   level:"1a", termType:"Involuntary", reason:"Dismissal",              regrettable:"Non-Regrettable" },
+      { country:"Colombia",     title:"Customer Support Representative",   dept:"Operations",   level:"1b", termType:"Voluntary",   reason:"Received a Job Offer",   regrettable:"Regrettable" },
+      { country:"Brazil",       title:"Talent Acquisition Partner",        dept:"People",       level:"3a", termType:"Involuntary", reason:"Performance",            regrettable:"Non-Regrettable" },
+      { country:"Brazil",       title:"Sales Representative",              dept:"Go To Market", level:"1a", termType:"Involuntary", reason:"Performance",            regrettable:"Non-Regrettable" },
     ],
     ingresos: [
       { name:"Tania Natasha",    country:"Indonesia",     title:"Business Development Lead",            dept:"Go To Market" },
@@ -2030,14 +2030,14 @@ const WEEKLY_MOV = {
   },
   "6/15/26": {
     bajas: [
-      { country:"Mexico",      title:"Commercial Senior Manager",                 dept:"Go To Market",      termType:"Voluntary",   reason:"Personal Reasons",       regrettable:"Regrettable" },
-      { country:"Colombia",    title:"Fraud Operations Representative",           dept:"Financial Products", termType:"Voluntary",   reason:"Received a Job Offer",   regrettable:"Regrettable" },
-      { country:"Philippines", title:"Sales Representative (Puerto Princesa)",    dept:"Go To Market",      termType:"Voluntary",   reason:"Personal Reasons",       regrettable:"Non-Regrettable" },
-      { country:"Peru",        title:"Sales Representative",                      dept:"Go To Market",      termType:"Voluntary",   reason:"Bad Practices",          regrettable:"Non-Regrettable" },
-      { country:"Panama",      title:"Merchant Operations Supervisor",            dept:"Go To Market",      termType:"Voluntary",   reason:"Received a Job Offer",   regrettable:"Non-Regrettable" },
-      { country:"Brazil",      title:"Sales Representative",                      dept:"Go To Market",      termType:"Involuntary", reason:"Did Not Pass Probation", regrettable:"Non-Regrettable" },
-      { country:"Colombia",    title:"Senior Partnership Development Manager",    dept:"Product Development",termType:"Involuntary", reason:"Performance Issues",     regrettable:"Non-Regrettable" },
-      { country:"Mexico",      title:"Accounting Manager",                        dept:"Finance",           termType:"Voluntary",   reason:"Other Employment",       regrettable:"Non-Regrettable" },
+      { country:"Mexico",      title:"Commercial Senior Manager",                 dept:"Go To Market",       level:"4c", termType:"Voluntary",   reason:"Personal Reasons",       regrettable:"Regrettable" },
+      { country:"Colombia",    title:"Fraud Operations Representative",           dept:"Financial Products", level:"1b", termType:"Voluntary",   reason:"Received a Job Offer",   regrettable:"Regrettable" },
+      { country:"Philippines", title:"Sales Representative (Puerto Princesa)",    dept:"Go To Market",       level:"1a", termType:"Voluntary",   reason:"Personal Reasons",       regrettable:"Non-Regrettable" },
+      { country:"Peru",        title:"Sales Representative",                      dept:"Go To Market",       level:"1c", termType:"Voluntary",   reason:"Bad Practices",          regrettable:"Non-Regrettable" },
+      { country:"Panama",      title:"Merchant Operations Supervisor",            dept:"Go To Market",       level:"2b", termType:"Voluntary",   reason:"Received a Job Offer",   regrettable:"Non-Regrettable" },
+      { country:"Brazil",      title:"Sales Representative",                      dept:"Go To Market",       level:"1a", termType:"Involuntary", reason:"Did Not Pass Probation", regrettable:"Non-Regrettable" },
+      { country:"Colombia",    title:"Senior Partnership Development Manager",    dept:"Product Development",level:"4a", termType:"Involuntary", reason:"Performance Issues",     regrettable:"Non-Regrettable" },
+      { country:"Mexico",      title:"Accounting Manager",                        dept:"Finance",            level:"3b", termType:"Voluntary",   reason:"Other Employment",       regrettable:"Non-Regrettable" },
     ],
     ingresos: [
       { name:"Karim Garcia",        country:"Mexico",      title:"Senior IT Specialist",                 dept:"Product Development" },
@@ -2160,11 +2160,13 @@ function renderMovements() {
     const reason = b.reason || "";
     const reasonHtml = reason ? `<span class="mov-item-reason">${reason}</span>` : "";
     const deptHtml = b.dept ? `<div style="font-size:9.5px;color:var(--text-muted);margin-top:1px;">${b.dept}</div>` : "";
+    const levelHtml = b.level ? `<span style="font-size:9px;font-weight:700;color:#6366f1;background:#ede9fe;border-radius:4px;padding:1px 5px;">${b.level.toUpperCase()}</span>` : "";
     const regrettableColor = b.regrettable === "Regrettable" ? "#ef4444" : b.regrettable === "Non-Regrettable" ? "#94a3b8" : "#f59e0b";
     const regrettableHtml = b.regrettable ? `<span style="font-size:8.5px;font-weight:600;color:${regrettableColor};margin-left:auto;">${b.regrettable}</span>` : "";
     return `<div class="mov-item baja" style="border-left-color:${color};">
       <div style="display:flex;align-items:center;gap:4px;">
         <div class="mov-item-country" style="color:${color};">${b.country}</div>
+        ${levelHtml}
         ${regrettableHtml}
       </div>
       ${b.title ? `<div class="mov-item-title">${b.title}</div>` : ""}
@@ -5332,7 +5334,7 @@ function renderOnboarding() {
       <td style="padding:8px 10px;text-align:center;font-size:12px;border-bottom:1px solid var(--border);white-space:nowrap;">${flag} <span style="font-size:11px;color:var(--text-muted);">${cname}</span></td>
       <td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--text-muted);border-bottom:1px solid var(--border);white-space:nowrap;">${startFmt}</td>
       <td style="padding:8px 10px;text-align:center;font-size:12px;border-bottom:1px solid var(--border);">${r.done}</td>
-      <td style="padding:8px 10px;text-align:center;font-size:12px;border-bottom:1px solid var(--border);">${r.pending.length}</td>
+      <td style="padding:8px 10px;text-align:center;font-size:12px;border-bottom:1px solid var(--border);">${r.total - r.done}</td>
       <td style="padding:8px 10px;border-bottom:1px solid var(--border);">
         <div style="display:flex;align-items:center;gap:8px;">
           <div style="flex:1;background:#e2e8f0;border-radius:4px;height:6px;min-width:80px;">
@@ -5354,7 +5356,8 @@ function showObPending(idx) {
   const r = ONBOARDING_DATA[idx];
   const detail = document.getElementById('ob-pending-detail');
   if (!detail) return;
-  if (!r.pending.length) {
+  const pendingCount = r.total - r.done;
+  if (r.pct >= 100 || pendingCount <= 0) {
     detail.innerHTML = `<div style="padding:12px 16px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;font-size:12px;color:#166534;font-weight:600;">
       ✓ ${r.name} completó todas las tareas (${r.total}/${r.total})
     </div>`;
@@ -5362,7 +5365,7 @@ function showObPending(idx) {
   }
   detail.innerHTML = `<div style="padding:14px 16px;background:var(--surface);border:1px solid var(--border);border-radius:8px;margin-top:8px;">
     <div style="font-size:12px;font-weight:700;margin-bottom:10px;color:var(--text-primary);">
-      Tareas pendientes — ${r.name} <span style="font-weight:400;color:var(--text-muted);">(${r.pending.length} de ${r.total})</span>
+      Tareas pendientes — ${r.name} <span style="font-weight:400;color:var(--text-muted);">(${pendingCount} de ${r.total})</span>
     </div>
     <ul style="margin:0;padding-left:16px;display:flex;flex-direction:column;gap:5px;">
       ${r.pending.map(t=>`<li style="font-size:12px;color:var(--text-secondary);">${t}</li>`).join('')}
