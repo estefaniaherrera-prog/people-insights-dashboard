@@ -738,39 +738,35 @@
 
     <!-- TAB: Workforce Demographics -->
     <div id="tab-analysis" class="tab-page">
-    <div class="charts-grid-2">
       <!-- GENDER -->
       <div class="chart-card">
-        <div class="chart-card-header"><div><h3>Gender Diversity</h3><p id="gen-subtitle">% distribution of total headcount</p></div></div>
-        <div class="donut-wrap">
-          <div class="donut-svg-wrap">
-            <svg class="donut-svg" id="donut-svg" width="120" height="120" viewBox="0 0 120 120">
-              <circle cx="60" cy="60" r="44" fill="none" stroke="#f1f5f9" stroke-width="18"/>
-              <circle cx="60" cy="60" r="44" fill="none" stroke="#3b82f6" stroke-width="18" stroke-dasharray="160.8 275.8" stroke-dashoffset="0" stroke-linecap="round"/>
-              <circle cx="60" cy="60" r="44" fill="none" stroke="#8b5cf6" stroke-width="18" stroke-dasharray="22.1 413.5" stroke-dashoffset="-162.8" stroke-linecap="round"/>
-              <circle cx="60" cy="60" r="44" fill="none" stroke="#14b8a6" stroke-width="18" stroke-dasharray="94.2 341.6" stroke-dashoffset="-186.9" stroke-linecap="round"/>
-            </svg>
-            <div class="donut-center">
-              <div class="donut-center-value" id="donut-total">120</div>
-              <div class="donut-center-label">Total</div>
-            </div>
+        <div class="chart-card-header"><div><h3>Gender Diversity</h3><p id="gen-subtitle">Company total</p></div></div>
+        <div style="display:flex;justify-content:center;gap:18px;font-size:11px;color:var(--text-secondary);margin-bottom:8px;">
+          <span><span style="display:inline-block;width:11px;height:11px;background:#4e60c6;border-radius:2px;vertical-align:middle;margin-right:5px;"></span>Female</span>
+          <span><span style="display:inline-block;width:11px;height:11px;background:#85b846;border-radius:2px;vertical-align:middle;margin-right:5px;"></span>Male</span>
+        </div>
+        <div id="gender-overall-bar" style="display:flex;height:30px;border-radius:5px;overflow:hidden;max-width:780px;"></div>
+        <div class="gender-split-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:22px;">
+          <div>
+            <div style="font-size:12px;font-weight:700;color:var(--text-secondary);margin-bottom:14px;">Gender by Department</div>
+            <div id="gender-by-dept-chart"></div>
+            <div style="background:#f1f5f9;border-radius:6px;padding:11px 13px;font-size:11px;color:var(--text-secondary);line-height:1.65;margin-top:14px;"><div style="display:flex;gap:8px;margin-bottom:5px;"><span style="color:var(--text-muted);">•</span><span>Company balance stable</span></div><div style="display:flex;gap:8px;margin-bottom:5px;"><span style="color:var(--text-muted);">•</span><span>Most departments within ±5pp of equal balance (not an explicit goal)</span></div><div style="display:flex;gap:8px;margin-bottom:5px;"><span style="color:var(--text-muted);">•</span><span>Product Development and People teams most imbalanced</span></div></div>
           </div>
-          <div class="donut-legend">
-            <div class="legend-item"><div class="legend-dot" style="background:#3b82f6;"></div><div style="flex:1;"><div style="display:flex;justify-content:space-between;"><span class="legend-text">Women</span><span class="legend-pct" id="pct-f">58%</span></div><div class="legend-bar-wrap"><div class="legend-bar" id="bar-f" style="width:58%;background:#3b82f6;"></div></div></div></div>
-            <div class="legend-item"><div class="legend-dot" style="background:#14b8a6;"></div><div style="flex:1;"><div style="display:flex;justify-content:space-between;"><span class="legend-text">Men</span><span class="legend-pct" id="pct-m">34%</span></div><div class="legend-bar-wrap"><div class="legend-bar" id="bar-m" style="width:34%;background:#14b8a6;"></div></div></div></div>
-            <div class="legend-item"><div class="legend-dot" style="background:#8b5cf6;"></div><div style="flex:1;"><div style="display:flex;justify-content:space-between;"><span class="legend-text">Non-binary</span><span class="legend-pct" id="pct-nb">8%</span></div><div class="legend-bar-wrap"><div class="legend-bar" id="bar-nb" style="width:8%;background:#8b5cf6;"></div></div></div></div>
-            <div class="legend-item" id="row-ns" style="display:none;"><div class="legend-dot" style="background:#d1d5db;"></div><div style="flex:1;"><div style="display:flex;justify-content:space-between;"><span class="legend-text" style="color:var(--text-muted);">Not specified</span><span class="legend-pct" id="pct-ns" style="color:var(--text-muted);"></span></div></div></div>
+          <div>
+            <div style="font-size:12px;font-weight:700;color:var(--text-secondary);margin-bottom:14px;">Gender by Level</div>
+            <div id="gender-by-level-chart"></div>
+            <div style="background:#f1f5f9;border-radius:6px;padding:11px 13px;font-size:11px;color:var(--text-secondary);line-height:1.65;margin-top:14px;"><div style="display:flex;gap:8px;margin-bottom:5px;"><span style="color:var(--text-muted);">•</span><span>Negligible changes in Levels 1–4</span></div><div style="display:flex;gap:8px;margin-bottom:5px;"><span style="color:var(--text-muted);">•</span><span>L5 promotions added 6 women (+11 ppt)</span></div></div>
           </div>
         </div>
-        <!-- BY LEVEL BREAKDOWN -->
-        <div style="margin-top:18px;padding-top:14px;">
-          <div style="font-size:11px;font-weight:700;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.4px;margin-bottom:10px;">By Level · Jul 2026</div>
-          <div id="gender-by-level-chart"></div>
+        <div style="margin-top:22px;padding-top:16px;border-top:1px solid var(--border);max-width:780px;">
+          <div style="font-size:12px;font-weight:700;color:var(--text-secondary);margin-bottom:14px;">Gender by Country</div>
+          <div id="gender-by-country-chart"></div>
+          <div style="background:#f1f5f9;border-radius:6px;padding:11px 13px;font-size:11px;color:var(--text-secondary);line-height:1.65;margin-top:14px;"><div style="display:flex;gap:8px;margin-bottom:5px;"><span style="color:var(--text-muted);">•</span><span>Gender most imbalanced in smaller offices (China, India, Indonesia) and the United States, due to concentration of senior and technical staff.</span></div></div>
         </div>
       </div>
 
       <!-- TENURE -->
-      <div class="chart-card">
+      <div class="chart-card" style="margin-top:16px;">
         <div class="chart-card-header"><div><h3>Tenure Distribution</h3><p id="ten-subtitle">Employees grouped by time at company</p></div></div>
         <div class="col-chart-wrap" id="chart-tenure"></div>
         <div id="tenure-risk-section" style="display:none;">
@@ -778,7 +774,6 @@
           <div id="tenure-risk-labels"></div>
         </div>
       </div>
-    </div>
     </div><!-- /tab-analysis -->
 
     <!-- TAB: Onboarding -->
@@ -2735,99 +2730,77 @@ function renderSection2() {
   updateEarlyAttrBanner();
 }
 
-function renderGenderByLevel() {
-  const el = document.getElementById("gender-by-level-chart");
-  if (!el) return;
-  // Aggregate individual levels into groups
-  const groups = [
-    { label:'L1', keys:['1a','1b','1c'], color:'#93c5fd' },
-    { label:'L2', keys:['2a','2b','2c'], color:'#3b82f6' },
-    { label:'L3', keys:['3a','3b','3c'], color:'#6366f1' },
-    { label:'L4', keys:['4a','4b','4c'], color:'#8b5cf6' },
-    { label:'L5', keys:['5a','5b','5c'], color:'#a855f7' },
-    { label:'L6', keys:['6a','6b'],      color:'#ec4899' },
-    { label:'E',  keys:['E'],            color:'#f43f5e' },
-    { label:'Intern', keys:['Intern'],   color:'#94a3b8' },
-  ];
-  const grouped = groups.map(g => {
-    const rows = GENDER_BY_LEVEL_MAY26.filter(r => g.keys.includes(r.label));
-    return {
-      label: g.label,
-      color: g.color,
-      total: rows.reduce((s,r) => s + r.total, 0),
-      f:     rows.reduce((s,r) => s + r.f, 0),
-      m:     rows.reduce((s,r) => s + r.m, 0),
-      nb:    rows.reduce((s,r) => s + r.nb, 0),
-      ns:    rows.reduce((s,r) => s + r.ns, 0),
-    };
-  });
-  const maxTotal = Math.max(...grouped.map(r => r.total));
-  el.innerHTML = grouped.map(r => {
-    const barW  = (r.total / maxTotal * 100).toFixed(1);
-    const fBarW = (r.f / r.total * 100).toFixed(1);
-    const mBarW = (r.m / r.total * 100).toFixed(1);
-    const fPct  = Math.round(r.f / r.total * 100);
-    const mPct  = Math.round(r.m / r.total * 100);
-    const gc    = r.color;
-    // Show text inside segment only if wide enough (>10%)
-    const nbBarW = (r.nb / r.total * 100).toFixed(1);
-    const nbPct  = Math.round(r.nb / r.total * 100);
-    const fText  = parseFloat(fBarW) > 10 ? `<span style="font-size:10px;color:#fff;font-weight:600;white-space:nowrap;overflow:hidden;">${r.f} (${fPct}%)</span>` : '';
-    const mText  = parseFloat(mBarW) > 10 ? `<span style="font-size:10px;color:#fff;font-weight:600;white-space:nowrap;overflow:hidden;">${r.m} (${mPct}%)</span>` : '';
-    const nbLeft = (parseFloat(fBarW) + parseFloat(mBarW)).toFixed(1);
-    const nbSeg  = r.nb > 0 ? `<div style="position:absolute;left:${nbLeft}%;top:0;height:100%;width:${nbBarW}%;background:#8b5cf6;display:flex;align-items:center;justify-content:center;overflow:hidden;"></div>` : '';
-    return `<div style="display:grid;grid-template-columns:40px 1fr 36px;align-items:center;gap:8px;margin-bottom:5px;">
-      <span style="font-size:11px;font-weight:700;color:${gc};text-align:right;">${r.label}</span>
-      <div style="position:relative;height:22px;background:#f1f5f9;border-radius:5px;overflow:hidden;width:${barW}%;">
-        <div style="position:absolute;left:0;top:0;height:100%;width:${fBarW}%;background:#3b82f6;display:flex;align-items:center;justify-content:center;overflow:hidden;">${fText}</div>
-        <div style="position:absolute;left:${fBarW}%;top:0;height:100%;width:${mBarW}%;background:#14b8a6;display:flex;align-items:center;justify-content:center;overflow:hidden;">${mText}</div>
-        ${nbSeg}
-      </div>
-      <span style="font-size:11px;font-weight:700;color:var(--text-secondary);">${r.total}</span>
-    </div>`;
-  }).join('') +
-  `<div style="margin-top:10px;display:flex;gap:14px;font-size:10px;color:var(--text-muted);">
-    <span><span style="display:inline-block;width:10px;height:10px;background:#3b82f6;border-radius:2px;vertical-align:middle;margin-right:4px;"></span>Women</span>
-    <span><span style="display:inline-block;width:10px;height:10px;background:#14b8a6;border-radius:2px;vertical-align:middle;margin-right:4px;"></span>Men</span>
-    <span><span style="display:inline-block;width:10px;height:10px;background:#8b5cf6;border-radius:2px;vertical-align:middle;margin-right:4px;"></span>Non-binary</span>
+function genderAxis(labelW) {
+  return `<div style="display:grid;grid-template-columns:${labelW}px 1fr 62px;gap:10px;margin-top:5px;">
+    <span></span>
+    <div style="display:flex;justify-content:space-between;font-size:9px;color:var(--text-muted);"><span>0%</span><span>25%</span><span>50%</span><span>75%</span><span>100%</span></div>
+    <span></span>
+  </div>`;
+}
+function genderRow(label, f, m, total, labelW) {
+  labelW = labelW || 78;
+  const fm = f + m;
+  const fPct = fm ? Math.round(f / fm * 100) : 0;
+  const mPct = fm ? 100 - fPct : 0;
+  const seg = (w, color) => `<div style="width:${w}%;background:${color};display:flex;align-items:center;justify-content:center;height:100%;overflow:hidden;">${w >= 9 ? `<span style="font-size:10px;color:#fff;font-weight:700;">${w}%</span>` : ''}</div>`;
+  return `<div style="display:grid;grid-template-columns:${labelW}px 1fr 62px;align-items:center;gap:10px;margin-bottom:9px;">
+    <span style="font-size:11px;font-weight:600;color:var(--text-secondary);text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" title="${label}">${label}</span>
+    <div style="display:flex;height:22px;border-radius:4px;overflow:hidden;">${seg(fPct, '#4e60c6')}${seg(mPct, '#85b846')}</div>
+    <span style="font-size:11px;color:var(--text-muted);white-space:nowrap;">n = ${total.toLocaleString()}</span>
   </div>`;
 }
 
-// ─── SECTION 3 ────────────────────────────────────────────────────────────────
+function renderGenderByLevel() {
+  const el = document.getElementById("gender-by-level-chart");
+  if (!el) return;
+  const groups = [
+    { label:'1', keys:['1a','1b','1c'] },
+    { label:'2', keys:['2a','2b','2c'] },
+    { label:'3', keys:['3a','3b','3c'] },
+    { label:'4', keys:['4a','4b','4c'] },
+    { label:'5', keys:['5a','5b','5c'] },
+    { label:'6', keys:['6a','6b'] },
+    { label:'E', keys:['E'] },
+  ];
+  const rows = groups.map(g => {
+    const rs = GENDER_BY_LEVEL_MAY26.filter(r => g.keys.includes(r.label));
+    return { label:g.label, f: rs.reduce((s,r)=>s+r.f,0), m: rs.reduce((s,r)=>s+r.m,0), total: rs.reduce((s,r)=>s+r.total,0) };
+  }).filter(r => r.total > 0);
+  el.innerHTML = rows.map(r => genderRow(r.label, r.f, r.m, r.total, 24)).join('') + genderAxis(24);
+}
+
+function renderGenderByDept() {
+  const el = document.getElementById("gender-by-dept-chart");
+  if (!el) return;
+  const depts = ['Counsel','Finance','Financial Products','Go To Market','Operations','People','Product Development'];
+  const rows = depts.map(d => DATA.gender[d] ? { label:d, f:DATA.gender[d].f, m:DATA.gender[d].m, total:DATA.gender[d].total } : null).filter(r => r && r.total > 0);
+  el.innerHTML = rows.map(r => genderRow(r.label, r.f, r.m, r.total, 118)).join('') + genderAxis(118);
+}
+
+function renderGenderByCountry() {
+  const el = document.getElementById("gender-by-country-chart");
+  if (!el) return;
+  const countries = ['Brazil','China','Colombia','Ecuador','India','Indonesia','Mexico','Panama','Peru','Philippines','South Africa','United States'];
+  const rows = countries.map(c => DATA.gender[c] ? { label:c, f:DATA.gender[c].f, m:DATA.gender[c].m, total:DATA.gender[c].total } : null).filter(r => r && r.total > 0);
+  el.innerHTML = rows.map(r => genderRow(r.label, r.f, r.m, r.total, 110)).join('') + genderAxis(110);
+}
+
+// ─── SECTION 3 ─────────────────────────────────────────────────
 function renderGender(forceKey) {
   const key = forceKey || filters.depto || filters.nivel || filters.emptype || "default";
   const g = DATA.gender[key] || DATA.gender.default;
-  const ns = g.ns || 0;
-  const fPct  = g.total > 0 ? (g.f  / g.total * 100) : 0;
-  const mPct  = g.total > 0 ? (g.m  / g.total * 100) : 0;
-  const nbPct = g.total > 0 ? (g.nb / g.total * 100) : 0;
-  const nsPct = g.total > 0 ? (ns   / g.total * 100) : 0;
-  document.getElementById("donut-total").textContent = g.total.toLocaleString();
-  document.getElementById("pct-f").textContent  = `${g.f.toLocaleString()} (${fPct.toFixed(1)}%)`;
-  document.getElementById("pct-m").textContent  = `${g.m.toLocaleString()} (${mPct.toFixed(1)}%)`;
-  document.getElementById("pct-nb").textContent = `${g.nb.toLocaleString()} (${nbPct.toFixed(1)}%)`;
-  document.getElementById("bar-f").style.width  = fPct  + "%";
-  document.getElementById("bar-m").style.width  = mPct  + "%";
-  document.getElementById("bar-nb").style.width = Math.max(nbPct, 0.3) + "%";
-  // Not specified row
-  const nsRow = document.getElementById("row-ns");
-  if (ns > 0) {
-    nsRow.style.display = "";
-    document.getElementById("pct-ns").textContent = `${ns} (${nsPct.toFixed(1)}%)`;
-  } else {
-    nsRow.style.display = "none";
+  const el = document.getElementById("gender-overall-bar");
+  if (el) {
+    const fm = g.f + g.m;
+    const fPct = fm ? Math.round(g.f / fm * 100) : 0;
+    const mPct = fm ? 100 - fPct : 0;
+    el.innerHTML =
+      `<div style="width:${fPct}%;background:#4e60c6;display:flex;align-items:center;justify-content:center;height:100%;"><span style="font-size:13px;color:#fff;font-weight:700;">${fPct}%</span></div>` +
+      `<div style="width:${mPct}%;background:#85b846;display:flex;align-items:center;justify-content:center;height:100%;"><span style="font-size:13px;color:#fff;font-weight:700;">${mPct}%</span></div>`;
   }
-  const r=44, circ=2*Math.PI*r;
-  const fL=circ*fPct/100, nbL=circ*nbPct/100, mL=circ*mPct/100;
-  const circles = document.querySelectorAll("#donut-svg circle");
-  circles[1].setAttribute("stroke-dasharray",`${fL.toFixed(1)} ${(circ-fL).toFixed(1)}`);
-  circles[1].setAttribute("stroke-dashoffset","0");
-  circles[2].setAttribute("stroke-dasharray",`${nbL.toFixed(1)} ${(circ-nbL).toFixed(1)}`);
-  circles[2].setAttribute("stroke-dashoffset",`${(-fL-2).toFixed(1)}`);
-  circles[3].setAttribute("stroke-dasharray",`${mL.toFixed(1)} ${(circ-mL).toFixed(1)}`);
-  circles[3].setAttribute("stroke-dashoffset",`${(-fL-nbL-4).toFixed(1)}`);
-  const activeKey = forceKey || filters.depto||filters.nivel||filters.emptype;
-  document.getElementById("gen-subtitle").textContent = activeKey ? "Gender · "+activeKey : "Distribution of total headcount";
+  const activeKey = forceKey || filters.depto || filters.nivel || filters.emptype;
+  const sub = document.getElementById("gen-subtitle");
+  if (sub) sub.textContent = (activeKey ? "Gender · " + activeKey : "Company total") + " · n = " + g.total.toLocaleString();
 }
 
 function renderTenure(forceKey) {
@@ -5367,64 +5340,124 @@ const VACATION_DATA = [
 
 // ─── ONBOARDING DATA & RENDER ────────────────────────────────────────────────
 const ONBOARDING_DATA = [
-  // ── 100% Complete (26) ──────────────────────────────────────────────────────
-  {name:"Alejandra Mancipe",       dept:"Risk Strategy",           country:"CO",start:"2026-06-01",done:22,total:22,pct:100.0,pending:[]},
-  {name:"Alexandra Torres",        dept:"Portfolio Management",    country:"CO",start:"2026-06-01",done:22,total:22,pct:100.0,pending:[]},
-  {name:"Anvee Naik",              dept:"Product and UX",          country:"US",start:"2026-06-01",done:22,total:22,pct:100.0,pending:[]},
-  {name:"Artie Lee",               dept:"Core Engineering",        country:"US",start:"2026-06-01",done:22,total:22,pct:100.0,pending:[]},
-  {name:"Camilo Garcia",           dept:"Global Clerk Support",    country:"CO",start:"2026-06-22",done:12,total:12,pct:100.0,pending:[]},
-  {name:"Carlos Atampilco",        dept:"Sales",                   country:"PE",start:"2026-06-15",done:1, total:1, pct:100.0,pending:[]},
-  {name:"Dario Velez",             dept:"Merchant Operations",     country:"EC",start:"2026-06-01",done:22,total:22,pct:100.0,pending:[]},
-  {name:"Deepak Murthy",           dept:"Go To Market",            country:"US",start:"2026-06-08",done:1, total:1, pct:100.0,pending:[]},
-  {name:"Emilia Garcés",           dept:"Sales",                   country:"EC",start:"2026-06-01",done:22,total:22,pct:100.0,pending:[]},
-  {name:"Fernando Martínez",       dept:"Sales",                   country:"CO",start:"2026-06-01",done:22,total:22,pct:100.0,pending:[]},
-  {name:"Gabriela Buitrago",       dept:"FPA and Treasury",        country:"CO",start:"2026-06-01",done:22,total:22,pct:100.0,pending:[]},
-  {name:"Gelo Avelino",            dept:"Merchant Operations",     country:"PH",start:"2026-06-01",done:22,total:22,pct:100.0,pending:[]},
-  {name:"Hannia Nuñez Guzmán",     dept:"Sales",                   country:"MX",start:"2026-06-08",done:22,total:22,pct:100.0,pending:[]},
-  {name:"Henry Mantilla",          dept:"Financial Operations",    country:"MX",start:"2026-06-08",done:22,total:22,pct:100.0,pending:[]},
-  {name:"Ivan Piramide",           dept:"Sales",                   country:"PH",start:"2026-06-01",done:22,total:22,pct:100.0,pending:[]},
-  {name:"Juan Carlos Rojas Ramos", dept:"Sales",                   country:"PE",start:"2026-06-15",done:1, total:1, pct:100.0,pending:[]},
-  {name:"Karla Lima",              dept:"Sales",                   country:"BR",start:"2026-06-01",done:22,total:22,pct:100.0,pending:[]},
-  {name:"Margarita Corona",        dept:"Sales",                   country:"MX",start:"2026-06-01",done:22,total:22,pct:100.0,pending:[]},
-  {name:"Monique Yusrani",         dept:"Financial Operations",    country:"ID",start:"2026-06-17",done:1, total:1, pct:100.0,pending:[]},
-  {name:"Nico Nicolas",            dept:"Merchant Operations",     country:"ID",start:"2026-06-02",done:22,total:22,pct:100.0,pending:[]},
-  {name:"Rendani Ramunenyiwa",     dept:"Merchant Operations",     country:"ZA",start:"2026-06-01",done:22,total:22,pct:100.0,pending:[]},
-  {name:"Riki Risdianto",          dept:"Global General Support",  country:"ID",start:"2026-06-08",done:22,total:22,pct:100.0,pending:[]},
-  {name:"Rox Mijangos",            dept:"Admin",                   country:"MX",start:"2026-06-01",done:22,total:22,pct:100.0,pending:[]},
-  {name:"Tomaz Sant'Anna",         dept:"Legal",                   country:"BR",start:"2026-06-01",done:22,total:22,pct:100.0,pending:[]},
-  {name:"Vivian Goncalves",        dept:"People Partners",         country:"PA",start:"2026-06-01",done:22,total:22,pct:100.0,pending:[]},
-  {name:"Ágata Marquezini",        dept:"Merchant Operations",     country:"BR",start:"2026-06-15",done:22,total:22,pct:100.0,pending:[]},
-  // ── In progress (50–99%) ──────────────────────────────────────────────────────
-  {name:"Carlos Torres",           dept:"Portfolio Management",    country:"MX",start:"2026-06-01",done:21,total:22,pct:95.5,pending:[]},
-  {name:"Mariel Sada",             dept:"Sales",                   country:"MX",start:"2026-06-08",done:21,total:22,pct:95.5,pending:[]},
-  {name:"Pedro Aufieri",           dept:"Sales",                   country:"BR",start:"2026-06-01",done:21,total:22,pct:95.5,pending:[]},
-  {name:"Pol Uy",                  dept:"Lock",                    country:"PH",start:"2026-06-08",done:21,total:22,pct:95.5,pending:[]},
-  {name:"Ricardo Castillo",        dept:"Core Engineering",        country:"MX",start:"2026-06-01",done:21,total:22,pct:95.5,pending:[]},
-  {name:"Ryan Pon",                dept:"Core Engineering",        country:"US",start:"2026-06-01",done:21,total:22,pct:95.5,pending:[]},
-  {name:"Yad Calderón",            dept:"Global General Support",  country:"MX",start:"2026-06-15",done:21,total:22,pct:95.5,pending:[]},
-  {name:"Ana Luísa Quintino",      dept:"Sales",                   country:"BR",start:"2026-06-01",done:20,total:22,pct:90.9,pending:[]},
-  {name:"Ika Rahmawati",           dept:"Merchant Operations",     country:"ID",start:"2026-06-08",done:20,total:22,pct:90.9,pending:[]},
-  {name:"Jesus Flores",            dept:"Sales",                   country:"MX",start:"2026-06-08",done:20,total:22,pct:90.9,pending:[]},
-  {name:"Karim Garcia",            dept:"Core Engineering",        country:"MX",start:"2026-06-08",done:20,total:22,pct:90.9,pending:[]},
-  {name:"Tania Natasha",           dept:"Sales",                   country:"ID",start:"2026-06-15",done:20,total:22,pct:90.9,pending:[]},
-  {name:"Adriana Ruiz",            dept:"Sales",                   country:"CO",start:"2026-06-09",done:17,total:22,pct:77.3,pending:[]},
-  {name:"Catharina Jesus",         dept:"Legal",                   country:"BR",start:"2026-06-15",done:17,total:22,pct:77.3,pending:[]},
-  {name:"Pietra Iecker",           dept:"Sales",                   country:"BR",start:"2026-06-01",done:14,total:22,pct:63.6,pending:[]},
-  {name:"Shayara Castro",          dept:"Sales",                   country:"BR",start:"2026-06-15",done:14,total:22,pct:63.6,pending:[]},
-  {name:"Abdul Alarcón",           dept:"Sales",                   country:"PA",start:"2026-06-01",done:11,total:22,pct:50.0,pending:[]},
-  // ── At risk (<50%) ────────────────────────────────────────────────────────────
-  {name:"Paco Rosales",            dept:"Global General Support",  country:"MX",start:"2026-06-15",done:10,total:22,pct:45.5,pending:[]},
-  {name:"Andrea Reggio",           dept:"Global Tools and Metrics",country:"CO",start:"2026-06-16",done:7, total:22,pct:31.8,pending:[]},
-  {name:"Andrea Ibarra",           dept:"Global General Support",  country:"EC",start:"2026-06-22",done:1, total:12,pct:8.3, pending:[]},
-  {name:"Cesar Martinez",          dept:"Global Clerk Support",    country:"CO",start:"2026-06-22",done:1, total:12,pct:8.3, pending:[]},
-  {name:"César Jiménez",           dept:"Fraud Strategy",          country:"MX",start:"2026-06-22",done:1, total:12,pct:8.3, pending:[]},
-  {name:"Joaquin Castañon",        dept:"Sales",                   country:"PE",start:"2026-06-22",done:1, total:12,pct:8.3, pending:[]},
-  {name:"Diego Bernabe",           dept:"Product and UX",          country:"MX",start:"2026-06-08",done:1, total:22,pct:4.5, pending:[]},
-  {name:"Sarah Mokhtar",           dept:"Fraud Strategy",          country:"US",start:"2026-06-22",done:0, total:11,pct:0.0, pending:[]},
+  {name:"Abdul Alarcón", dept:"Sales", country:"PA", start:"2026-06-01", done:22, total:22, pct:100.0, pending:[]},
+  {name:"Adriana Mendoza", dept:"Marketing", country:"PE", start:"2026-07-06", done:21, total:21, pct:100.0, pending:[]},
+  {name:"Alejandra Mancipe", dept:"Risk Strategy", country:"CO", start:"2026-06-01", done:22, total:22, pct:100.0, pending:[]},
+  {name:"Alexandra Torres", dept:"Merchant Operations", country:"CO", start:"2026-06-01", done:22, total:22, pct:100.0, pending:[]},
+  {name:"Anvee Naik", dept:"Product and UX", country:"US", start:"2026-06-01", done:22, total:22, pct:100.0, pending:[]},
+  {name:"Artie Lee", dept:"Core Engineering", country:"US", start:"2026-06-01", done:22, total:22, pct:100.0, pending:[]},
+  {name:"Benelli Tuazon", dept:"Financial Operations", country:"PH", start:"2026-07-06", done:21, total:21, pct:100.0, pending:[]},
+  {name:"Camilo Garcia", dept:"Global Clerk Support", country:"CO", start:"2026-06-22", done:21, total:21, pct:100.0, pending:[]},
+  {name:"Carlos Atampilco", dept:"Sales", country:"PE", start:"2026-06-15", done:1, total:1, pct:100.0, pending:[]},
+  {name:"Carlos Romero", dept:"Marketing", country:"MX", start:"2026-06-29", done:21, total:21, pct:100.0, pending:[]},
+  {name:"Carlos Torres", dept:"Portfolio Management", country:"MX", start:"2026-06-01", done:22, total:22, pct:100.0, pending:[]},
+  {name:"Catharina Jesus", dept:"Legal", country:"BR", start:"2026-06-15", done:22, total:22, pct:100.0, pending:[]},
+  {name:"Cesar Aguirre", dept:"Core Engineering", country:"MX", start:"2026-07-13", done:25, total:25, pct:100.0, pending:[]},
+  {name:"Cesar Martinez", dept:"Global Clerk Support", country:"CO", start:"2026-06-22", done:21, total:21, pct:100.0, pending:[]},
+  {name:"César Jiménez", dept:"Fraud Strategy", country:"MX", start:"2026-06-22", done:21, total:21, pct:100.0, pending:[]},
+  {name:"Dario Velez", dept:"Merchant Operations", country:"EC", start:"2026-06-01", done:22, total:22, pct:100.0, pending:[]},
+  {name:"Deepak Murthy", dept:"Go To Market", country:"US", start:"2026-06-08", done:1, total:1, pct:100.0, pending:[]},
+  {name:"Diego Bernabe", dept:"Product and UX", country:"MX", start:"2026-06-08", done:22, total:22, pct:100.0, pending:[]},
+  {name:"Eduardo Fiorenzano", dept:"Marketing", country:"MX", start:"2026-06-29", done:21, total:21, pct:100.0, pending:[]},
+  {name:"Emilia Garcés", dept:"Sales", country:"EC", start:"2026-06-01", done:22, total:22, pct:100.0, pending:[]},
+  {name:"Erika Javier", dept:"Accounting", country:"PH", start:"2026-07-06", done:1, total:1, pct:100.0, pending:[]},
+  {name:"Fauzie Rambe", dept:"Sales", country:"ID", start:"2026-07-06", done:21, total:21, pct:100.0, pending:[]},
+  {name:"Fernando Martínez", dept:"Sales", country:"CO", start:"2026-06-01", done:22, total:22, pct:100.0, pending:[]},
+  {name:"Gabriela Buitrago", dept:"FPA and Treasury", country:"CO", start:"2026-06-01", done:22, total:22, pct:100.0, pending:[]},
+  {name:"Gelo Avelino", dept:"Merchant Operations", country:"PH", start:"2026-06-01", done:22, total:22, pct:100.0, pending:[]},
+  {name:"Guilherme Bocchi", dept:"Sales", country:"BR", start:"2026-07-13", done:25, total:25, pct:100.0, pending:[]},
+  {name:"Hannia Nuñez Guzmán", dept:"Sales", country:"MX", start:"2026-06-08", done:22, total:22, pct:100.0, pending:[]},
+  {name:"Henry Mantilla", dept:"Financial Operations", country:"MX", start:"2026-06-08", done:22, total:22, pct:100.0, pending:[]},
+  {name:"Ivan Piramide", dept:"Sales", country:"PH", start:"2026-06-01", done:22, total:22, pct:100.0, pending:[]},
+  {name:"Jesus Flores", dept:"Sales", country:"MX", start:"2026-06-08", done:22, total:22, pct:100.0, pending:[]},
+  {name:"Joaquin Castañon", dept:"Sales", country:"PE", start:"2026-06-22", done:21, total:21, pct:100.0, pending:[]},
+  {name:"Johnson Cyriac", dept:"Core Engineering", country:"US", start:"2026-07-13", done:25, total:25, pct:100.0, pending:[]},
+  {name:"Jonathan Cerna Valverde", dept:"Sales", country:"PE", start:"2026-07-06", done:21, total:21, pct:100.0, pending:[]},
+  {name:"Jose Lujan", dept:"Sales", country:"CO", start:"2026-07-06", done:21, total:21, pct:100.0, pending:[]},
+  {name:"Juan Carlos Rojas Ramos", dept:"Sales", country:"PE", start:"2026-06-15", done:1, total:1, pct:100.0, pending:[]},
+  {name:"Karla Lima", dept:"Sales", country:"BR", start:"2026-06-01", done:22, total:22, pct:100.0, pending:[]},
+  {name:"Ma Fer Leyva", dept:"Marketing", country:"MX", start:"2026-07-20", done:13, total:13, pct:100.0, pending:[]},
+  {name:"Margarita Corona", dept:"Sales", country:"MX", start:"2026-06-01", done:22, total:22, pct:100.0, pending:[]},
+  {name:"Mariel Sada", dept:"Sales", country:"MX", start:"2026-06-08", done:22, total:22, pct:100.0, pending:[]},
+  {name:"Michael Devine", dept:"Core Engineering", country:"US", start:"2026-07-13", done:25, total:25, pct:100.0, pending:[]},
+  {name:"Moni Caballero", dept:"Merchant Operations", country:"MX", start:"2026-07-20", done:13, total:13, pct:100.0, pending:[]},
+  {name:"Monique Yusrani", dept:"Financial Operations", country:"ID", start:"2026-06-17", done:1, total:1, pct:100.0, pending:[]},
+  {name:"Neal Johnson", dept:"Merchant Operations", country:"ZA", start:"2026-06-29", done:21, total:21, pct:100.0, pending:[]},
+  {name:"Nico Nicolas", dept:"Merchant Operations", country:"ID", start:"2026-06-02", done:22, total:22, pct:100.0, pending:[]},
+  {name:"Pol Uy", dept:"Lock", country:"PH", start:"2026-06-08", done:22, total:22, pct:100.0, pending:[]},
+  {name:"Rendani Ramunenyiwa", dept:"Merchant Operations", country:"ZA", start:"2026-06-01", done:22, total:22, pct:100.0, pending:[]},
+  {name:"Rene De Anda", dept:"Merchant Operations", country:"MX", start:"2026-07-06", done:21, total:21, pct:100.0, pending:[]},
+  {name:"Ricardo Castillo", dept:"Core Engineering", country:"MX", start:"2026-06-01", done:22, total:22, pct:100.0, pending:[]},
+  {name:"Riki Risdianto", dept:"Global General Support", country:"ID", start:"2026-06-08", done:22, total:22, pct:100.0, pending:[]},
+  {name:"Rizaldy Rahman", dept:"Sales", country:"ID", start:"2026-06-29", done:21, total:21, pct:100.0, pending:[]},
+  {name:"Rox Mijangos", dept:"Merchant Operations", country:"MX", start:"2026-06-01", done:22, total:22, pct:100.0, pending:[]},
+  {name:"Ryan Pon", dept:"Core Engineering", country:"US", start:"2026-06-01", done:22, total:22, pct:100.0, pending:[]},
+  {name:"Sebastian Aguedo", dept:"Merchant Operations", country:"PE", start:"2026-07-06", done:21, total:21, pct:100.0, pending:[]},
+  {name:"Sinead Cheung", dept:"Product and UX", country:"US", start:"2026-06-29", done:21, total:21, pct:100.0, pending:[]},
+  {name:"Stephen Makuol", dept:"Core Engineering", country:"US", start:"2026-07-13", done:25, total:25, pct:100.0, pending:[]},
+  {name:"Surya Iskandar", dept:"Sales", country:"ID", start:"2026-07-06", done:21, total:21, pct:100.0, pending:[]},
+  {name:"Tania Natasha", dept:"Sales", country:"ID", start:"2026-06-15", done:22, total:22, pct:100.0, pending:[]},
+  {name:"Vivian Goncalves", dept:"People Partners", country:"PA", start:"2026-06-01", done:22, total:22, pct:100.0, pending:[]},
+  {name:"Yad Calderón", dept:"Global General Support", country:"MX", start:"2026-06-15", done:22, total:22, pct:100.0, pending:[]},
+  {name:"Yunitha Ratnadilla", dept:"Go To Market", country:"ID", start:"2026-07-06", done:21, total:21, pct:100.0, pending:[]},
+  {name:"Ágata Marquezini", dept:"Merchant Operations", country:"BR", start:"2026-06-15", done:22, total:22, pct:100.0, pending:[]},
+  {name:"Dushyanth Chikkarangaiah", dept:"Product and UX", country:"IN", start:"2026-07-13", done:24, total:25, pct:96.0, pending:[]},
+  {name:"Juan Alvarez", dept:"Sales", country:"MX", start:"2026-07-13", done:24, total:25, pct:96.0, pending:[]},
+  {name:"Adriana Ruiz", dept:"Sales", country:"CO", start:"2026-06-09", done:21, total:22, pct:95.5, pending:[]},
+  {name:"Ika Rahmawati", dept:"Merchant Operations", country:"ID", start:"2026-06-08", done:21, total:22, pct:95.5, pending:[]},
+  {name:"Karim Garcia", dept:"Core Engineering", country:"MX", start:"2026-06-08", done:21, total:22, pct:95.5, pending:[]},
+  {name:"Pedro Aufieri", dept:"Sales", country:"BR", start:"2026-06-01", done:21, total:22, pct:95.5, pending:[]},
+  {name:"Tomaz Sant'Anna", dept:"Legal", country:"BR", start:"2026-06-01", done:21, total:22, pct:95.5, pending:[]},
+  {name:"Eugene Tretiak", dept:"Core Engineering", country:"US", start:"2026-06-29", done:20, total:21, pct:95.2, pending:[]},
+  {name:"Mariana Naranjo", dept:"Legal", country:"CO", start:"2026-07-06", done:20, total:21, pct:95.2, pending:[]},
+  {name:"Sebastián Gómez Ramírez", dept:"Merchant Operations", country:"CO", start:"2026-07-06", done:20, total:21, pct:95.2, pending:[]},
+  {name:"Kat Llaque", dept:"Marketing", country:"PE", start:"2026-07-20", done:12, total:13, pct:92.3, pending:[]},
+  {name:"Erick Sánchez", dept:"Global General Support", country:"MX", start:"2026-07-13", done:23, total:25, pct:92.0, pending:[]},
+  {name:"Ana Luísa Quintino", dept:"Sales", country:"BR", start:"2026-06-01", done:20, total:22, pct:90.9, pending:[]},
+  {name:"Agatha Sanabria", dept:"Marketing", country:"BR", start:"2026-07-06", done:19, total:21, pct:90.5, pending:[]},
+  {name:"Andrea Ibarra", dept:"Global General Support", country:"EC", start:"2026-06-22", done:19, total:21, pct:90.5, pending:[]},
+  {name:"Jessica Lumfwa", dept:"Sales", country:"ZA", start:"2026-07-06", done:19, total:21, pct:90.5, pending:[]},
+  {name:"loyiso gulwa", dept:"Sales", country:"ZA", start:"2026-06-29", done:19, total:21, pct:90.5, pending:[]},
+  {name:"Ricardo Illescas", dept:"Marketing", country:"MX", start:"2026-07-13", done:22, total:25, pct:88.0, pending:[]},
+  {name:"Jennie Dal Busco", dept:"Legal", country:"US", start:"2026-07-20", done:10, total:13, pct:76.9, pending:[]},
+  {name:"Sura Immanuel", dept:"Sales", country:"ID", start:"2026-07-20", done:10, total:13, pct:76.9, pending:[]},
+  {name:"Paco Rosales", dept:"Global General Support", country:"MX", start:"2026-06-15", done:16, total:22, pct:72.7, pending:[]},
+  {name:"Pietra Iecker", dept:"Sales", country:"BR", start:"2026-06-01", done:16, total:22, pct:72.7, pending:[]},
+  {name:"Anton Guerrero", dept:"Sales", country:"MX", start:"2026-07-13", done:18, total:25, pct:72.0, pending:[]},
+  {name:"Noe Casas", dept:"Global General Support", country:"MX", start:"2026-07-13", done:18, total:25, pct:72.0, pending:[]},
+  {name:"Andrea Reggio", dept:"Global Tools and Metrics", country:"CO", start:"2026-06-16", done:15, total:23, pct:65.2, pending:[]},
+  {name:"Shayara Castro", dept:"Sales", country:"BR", start:"2026-06-15", done:14, total:22, pct:63.6, pending:[]},
+  {name:"Estefanía Carrera", dept:"Fraud Strategy", country:"MX", start:"2026-07-20", done:8, total:13, pct:61.5, pending:[]},
+  {name:"Bethany Laurente", dept:"Merchant Operations", country:"PH", start:"2026-07-13", done:15, total:25, pct:60.0, pending:[]},
+  {name:"Dafne Damasceno", dept:"Sales", country:"BR", start:"2026-07-20", done:7, total:13, pct:53.8, pending:[]},
+  {name:"Romel Omlero", dept:"Sales", country:"PH", start:"2026-06-29", done:11, total:21, pct:52.4, pending:[]},
+  {name:"Diego Reto", dept:"Fraud Operations", country:"PE", start:"2026-07-20", done:6, total:13, pct:46.2, pending:[]},
+  {name:"Michael Williams II", dept:"Capital Markets", country:"US", start:"2026-07-20", done:3, total:13, pct:23.1, pending:[]},
+  {name:"Diego Rodríguez", dept:"Sales", country:"PE", start:"2026-07-20", done:1, total:13, pct:7.7, pending:[]},
+  {name:"Ana Naranjo", dept:"Sales", country:"EC", start:"2026-07-13", done:1, total:25, pct:4.0, pending:[]},
+  {name:"Sebastian Aldaz", dept:"Merchant Operations", country:"EC", start:"2026-07-13", done:1, total:25, pct:4.0, pending:[]},
+  {name:"Alejandro Borja", dept:"Legal", country:"MX", start:"2026-06-15", done:0, total:0, pct:0.0, pending:[]},
+  {name:"Alexis Gomez Montoya", dept:"Compliance", country:"MX", start:"2026-07-15", done:0, total:0, pct:0.0, pending:[]},
+  {name:"Andrea Estupinan Villamarin", dept:"Accounting", country:"CO", start:"2026-07-08", done:0, total:0, pct:0.0, pending:[]},
+  {name:"Aranzazu Serrano Morales", dept:"Global Clerk Support", country:"MX", start:"2026-06-22", done:0, total:0, pct:0.0, pending:[]},
+  {name:"Arturo Ojeda", dept:"Merchant Operations", country:"MX", start:"2026-07-15", done:0, total:0, pct:0.0, pending:[]},
+  {name:"Cristian Sanchez", dept:"Accounting", country:"CO", start:"2026-07-01", done:0, total:0, pct:0.0, pending:[]},
+  {name:"Darmen Gultom", dept:"Sales", country:"ID", start:"2026-06-18", done:0, total:0, pct:0.0, pending:[]},
+  {name:"Felix Oviedo", dept:"Global Clerk Support", country:"MX", start:"2026-06-22", done:0, total:0, pct:0.0, pending:[]},
+  {name:"Frida Dewi", dept:"Sales", country:"ID", start:"2026-06-18", done:0, total:0, pct:0.0, pending:[]},
+  {name:"Jeronimo Fonseca", dept:"Sales", country:"BR", start:"2026-07-20", done:0, total:12, pct:0.0, pending:[]},
+  {name:"Jessica Ramirez", dept:"Financial Operations", country:"MX", start:"2026-07-06", done:0, total:21, pct:0.0, pending:[]},
+  {name:"Juliano Luz", dept:"Sales", country:"BR", start:"2026-07-20", done:0, total:13, pct:0.0, pending:[]},
+  {name:"Magda Ramirez", dept:"Accounting", country:"CO", start:"2026-07-01", done:0, total:0, pct:0.0, pending:[]},
+  {name:"Patrick Maukar", dept:"Marketing", country:"ID", start:"2026-06-30", done:0, total:0, pct:0.0, pending:[]},
+  {name:"Rainer Emanuel", dept:"Legal", country:"ID", start:"2026-06-15", done:0, total:0, pct:0.0, pending:[]},
+  {name:"Sarah Mokhtar", dept:"Fraud Strategy", country:"US", start:"2026-07-13", done:0, total:20, pct:0.0, pending:[]},
+  {name:"Sergio Padilla", dept:"Legal", country:"MX", start:"2026-06-01", done:0, total:0, pct:0.0, pending:[]},
+  {name:"Valentina Serna", dept:"Merchant Operations", country:"CO", start:"2026-06-16", done:0, total:0, pct:0.0, pending:[]},
 ];
 
-const OB_FLAG = {BR:'🇧🇷',CO:'🇨🇴',EC:'🇪🇨',ID:'🇮🇩',MX:'🇲🇽',PA:'🇵🇦',PH:'🇵🇭',US:'🇺🇸',ZA:'🇿🇦'};
-const OB_COUNTRY_NAME = {BR:'Brazil',CO:'Colombia',EC:'Ecuador',ID:'Indonesia',MX:'Mexico',PA:'Panama',PH:'Philippines',US:'United States',ZA:'South Africa'};
+const OB_FLAG = {BR:'🇧🇷',CO:'🇨🇴',EC:'🇪🇨',ID:'🇮🇩',IN:'🇮🇳',MX:'🇲🇽',PA:'🇵🇦',PE:'🇵🇪',PH:'🇵🇭',US:'🇺🇸',ZA:'🇿🇦'};
+const OB_COUNTRY_NAME = {BR:'Brazil',CO:'Colombia',EC:'Ecuador',ID:'Indonesia',IN:'India',MX:'Mexico',PA:'Panama',PE:'Peru',PH:'Philippines',US:'United States',ZA:'South Africa'};
 
 function renderOnboarding() {
   const statusF  = (document.getElementById('ob-filter-status')||{}).value  || '';
@@ -5702,7 +5735,7 @@ function renderVacations() {
 
 // ─── INIT ─────────────────────────────────────────────────────────────────────
 setPeriod('q1'); renderHCSparkline();
-renderSection2(); renderGender(); renderGenderByLevel(); renderTenure(); renderInsights(); renderDriveV2Table();
+renderSection2(); renderGender(); renderGenderByLevel(); renderGenderByDept(); renderGenderByCountry(); renderTenure(); renderInsights(); renderDriveV2Table();
 renderCountryAttrChart(); renderDeptAttrChart(); renderHCCountryBars(); renderMovements(); renderEarlyAttrBars();
 renderCountryTermsHcChart(); renderCountryRateChart(); renderDeptTermsHcChart(); renderDeptRateChart();
 renderOnboardingKPIs(); renderOnboardingDist(); renderTopSkipped(); renderOnboarding();
