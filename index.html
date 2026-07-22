@@ -1007,10 +1007,10 @@ const DATA = {
     "Counsel":               { f:18, m:8, nb:0, ns:0, total:26 },
     "Finance":               { f:41, m:35, nb:0, ns:0, total:76 },
     "Financial Products":    { f:22, m:32, nb:0, ns:0, total:54 },
-    "Go To Market":          { f:251, m:296, nb:0, ns:2, total:549 },
+    "Go To Market":          { f:253, m:300, nb:0, ns:3, total:556 },
     "Operations":            { f:103, m:108, nb:0, ns:1, total:212 },
     "People":                { f:34, m:7, nb:0, ns:0, total:41 },
-    "Product Development":   { f:32, m:132, nb:0, ns:0, total:164 },
+    "Product Development":   { f:32, m:133, nb:0, ns:0, total:165 },
     // By Level
     "Intern":                { f:5, m:2, nb:0, ns:1, total:8 },
     // By Country
@@ -1040,7 +1040,7 @@ const DATA = {
     ],
     // By Department
     "Go To Market": [
-      { label:"0–6m",   val:152, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
+      { label:"0–6m",   val:159, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
       { label:"6m–1y",  val:80, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
       { label:"1–2y",   val:116, color:"linear-gradient(180deg,#818cf8,#6366f1)", risk:"medium" },
       { label:"2–5y",   val:181, color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
@@ -1054,7 +1054,7 @@ const DATA = {
       { label:"5y+",    val:21, color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
     ],
     "Product Development": [
-      { label:"0–6m",   val:31, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
+      { label:"0–6m",   val:32, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
       { label:"6m–1y",  val:18, color:"linear-gradient(180deg,#93c5fd,#3b82f6)", risk:"high" },
       { label:"1–2y",   val:31, color:"linear-gradient(180deg,#818cf8,#6366f1)", risk:"medium" },
       { label:"2–5y",   val:57, color:"linear-gradient(180deg,#c084fc,#8b5cf6)", risk:"low" },
@@ -1262,9 +1262,9 @@ const DATA = {
 // ─── HC MONTHLY BREAKDOWNS ────────────────────────────────────────────────────
 const HC_BY_DEPT = {
   // Parent departments (May 25 – Jun 22 '26), index 0=May25 … 12=May26, 13=Jun22'26
-  "Go To Market":        [351,367,385,398,416,435,434,438,445,455,484,504,519,534,549],
+  "Go To Market":        [351,367,385,398,416,435,434,438,445,455,484,504,519,534,556],
   "Operations":          [151,154,161,160,162,164,166,161,165,167,164,167,199,207,212],
-  "Product Development": [8,10,8,7,7,9,115,114,119,117,119,124,156,160,164],
+  "Product Development": [8,10,8,7,7,9,115,114,119,117,119,124,156,160,165],
   "Finance":             [63,66,62,61,61,60,62,60,62,59,61,64,77,77,76],
   "Financial Products":  [20,21,24,27,28,28,29,27,26,27,28,29,51,54,54],
   "People":              [17,17,17,19,20,21,21,20,21,21,22,22,40,41,41],
@@ -2800,7 +2800,7 @@ function renderGender(forceKey) {
   }
   const activeKey = forceKey || filters.depto || filters.nivel || filters.emptype;
   const sub = document.getElementById("gen-subtitle");
-  if (sub) sub.textContent = (activeKey ? "Gender · " + activeKey : "Company total") + " · n = " + g.total.toLocaleString();
+  if (sub) sub.textContent = activeKey ? "Gender · " + activeKey : "Distribution of total headcount";
 }
 
 function renderTenure(forceKey) {
