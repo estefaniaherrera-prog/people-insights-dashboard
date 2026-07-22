@@ -745,7 +745,7 @@
           <span><span style="display:inline-block;width:11px;height:11px;background:#4e60c6;border-radius:2px;vertical-align:middle;margin-right:5px;"></span>Female</span>
           <span><span style="display:inline-block;width:11px;height:11px;background:#85b846;border-radius:2px;vertical-align:middle;margin-right:5px;"></span>Male</span>
         </div>
-        <div id="gender-overall-bar" style="display:flex;height:30px;border-radius:5px;overflow:hidden;max-width:780px;"></div>
+        <div style="display:flex;align-items:center;gap:14px;max-width:900px;"><div id="gender-overall-bar" style="display:flex;height:30px;border-radius:5px;overflow:hidden;flex:1;max-width:780px;"></div><span id="gender-overall-n" style="font-size:13px;font-weight:600;color:var(--text-secondary);white-space:nowrap;"></span></div>
         <div class="gender-split-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:22px;">
           <div>
             <div style="font-size:12px;font-weight:700;color:var(--text-secondary);margin-bottom:14px;">Gender by Department</div>
@@ -957,16 +957,16 @@
 <script>
 // ─── GENDER BY LEVEL (Jun 22, 2026, from HC snapshot) ────────────────────────
 const GENDER_BY_LEVEL_MAY26 = [
-  { label:"1a",     total:96, f:38, m:56, nb:0, ns:2 },
+  { label:"1a",     total:96, f:39, m:57, nb:0, ns:0 },
   { label:"1b",     total:110, f:53, m:57, nb:0, ns:0 },
-  { label:"1c",     total:101, f:51, m:50, nb:0, ns:0 },
+  { label:"1c",     total:102, f:51, m:51, nb:0, ns:0 },
   { label:"2a",     total:114, f:54, m:60, nb:0, ns:0 },
   { label:"2b",     total:106, f:61, m:45, nb:0, ns:0 },
   { label:"2c",     total:83, f:41, m:42, nb:0, ns:0 },
   { label:"3a",     total:99, f:48, m:51, nb:0, ns:0 },
   { label:"3b",     total:97, f:49, m:48, nb:0, ns:0 },
   { label:"3c",     total:53, f:25, m:28, nb:0, ns:0 },
-  { label:"4a",     total:66, f:27, m:38, nb:0, ns:1 },
+  { label:"4a",     total:66, f:28, m:38, nb:0, ns:0 },
   { label:"4b",     total:54, f:16, m:38, nb:0, ns:0 },
   { label:"4c",     total:37, f:7, m:30, nb:0, ns:0 },
   { label:"5a",     total:35, f:13, m:22, nb:0, ns:0 },
@@ -975,7 +975,7 @@ const GENDER_BY_LEVEL_MAY26 = [
   { label:"6a",     total:12, f:2, m:10, nb:0, ns:0 },
   { label:"6b",     total:4, f:0, m:4, nb:0, ns:0 },
   { label:"E",      total:20, f:3, m:16, nb:1, ns:0 },
-  { label:"Intern", total:8, f:5, m:2, nb:0, ns:1 },
+  { label:"Intern", total:8, f:6, m:2, nb:0, ns:0 },
 ];
 
 // ─── DATA ─────────────────────────────────────────────────────────────────────
@@ -1001,33 +1001,33 @@ const DATA = {
   },
   hcByPais: { "Mexico":355,"Colombia":164,"Brazil":160,"United States":96,"Peru":84,"South Africa":64 },
   gender: {
-    default: { f:504, m:623, nb:1, ns:4, total:1132 },
+    default: { f:507, m:624, nb:1, ns:0, total:1132 },
     // By Department (parent)
     "Corporate Admin":       { f:1, m:0, nb:1, ns:0, total:2 },
     "Counsel":               { f:18, m:8, nb:0, ns:0, total:26 },
     "Finance":               { f:41, m:35, nb:0, ns:0, total:76 },
     "Financial Products":    { f:22, m:32, nb:0, ns:0, total:54 },
-    "Go To Market":          { f:253, m:300, nb:0, ns:3, total:556 },
-    "Operations":            { f:103, m:108, nb:0, ns:1, total:212 },
+    "Go To Market":          { f:255, m:301, nb:0, ns:0, total:556 },
+    "Operations":            { f:104, m:108, nb:0, ns:0, total:212 },
     "People":                { f:34, m:7, nb:0, ns:0, total:41 },
     "Product Development":   { f:32, m:133, nb:0, ns:0, total:165 },
     // By Level
-    "Intern":                { f:5, m:2, nb:0, ns:1, total:8 },
+    "Intern":                { f:6, m:2, nb:0, ns:0, total:8 },
     // By Country
-    "Brazil":                { f:83, m:73, nb:0, ns:2, total:158 },
+    "Brazil":                { f:84, m:74, nb:0, ns:0, total:158 },
     "China":                 { f:2, m:4, nb:0, ns:0, total:6 },
     "Colombia":              { f:82, m:84, nb:0, ns:0, total:166 },
     "Ecuador":               { f:29, m:32, nb:0, ns:0, total:61 },
     "India":                 { f:2, m:5, nb:0, ns:0, total:7 },
     "Indonesia":             { f:6, m:17, nb:0, ns:0, total:23 },
-    "Mexico":                { f:151, m:213, nb:0, ns:1, total:365 },
+    "Mexico":                { f:152, m:213, nb:0, ns:0, total:365 },
     "Panama":                { f:15, m:12, nb:0, ns:0, total:27 },
     "Peru":                  { f:36, m:51, nb:0, ns:0, total:87 },
-    "Philippines":           { f:30, m:36, nb:0, ns:1, total:67 },
+    "Philippines":           { f:31, m:36, nb:0, ns:0, total:67 },
     "South Africa":          { f:40, m:26, nb:0, ns:0, total:66 },
     "United States":         { f:28, m:70, nb:1, ns:0, total:99 },
     // By Employment Type
-    "Salaried, full-time":   { f:497, m:622, nb:1, ns:4, total:1124 },
+    "Salaried, full-time":   { f:500, m:623, nb:1, ns:0, total:1124 },
     "Salaried, part-time":   { f:1, m:0, nb:0, ns:0, total:1 },
   },
   tenure: {
@@ -1354,7 +1354,7 @@ const HC_BY_LEVEL = {
   // Individual levels from Rippling HC Final de mes files (May 25 – May 26 May 11)
   "1a":     [95,105,111,108,113,114,111,110,114,119,130,88,89,96],
   "1b":     [61,67,67,73,74,75,76,78,80,82,86,108,113,110],
-  "1c":     [89,89,87,87,87,91,90,88,88,88,89,105,104,101],
+  "1c":     [89,89,87,87,87,91,90,88,88,88,89,105,104,102],
   "2a":     [73,79,81,91,92,98,104,103,106,107,112,85,87,114],
   "2b":     [66,74,73,73,73,74,73,73,71,74,77,94,96,106],
   "2c":     [59,60,60,56,60,65,66,67,66,67,66,87,85,83],
@@ -2026,14 +2026,14 @@ const WEEKLY_MOV = {
       { name:"Cesar Aguirre", country:"Mexico", title:"Senior Software Engineer - Android", dept:"Product Development" },
       { name:"Anton Guerrero", country:"Mexico", title:"Key Account Manager (SMB's)", dept:"Go To Market" },
       { name:"Juan Alvarez", country:"Mexico", title:"Retail Manager", dept:"Go To Market" },
-      { name:"Michael Devine", country:"United States", title:"Staff Software Engineer", dept:"" },
+      { name:"Michael Devine", country:"United States", title:"Staff Software Engineer", dept:"Product Development" },
       { name:"Erick Sánchez", country:"Mexico", title:"Validation Support Supervisor", dept:"Operations" },
       { name:"Noe Casas", country:"Mexico", title:"Validation Support Representative", dept:"Operations" },
       { name:"Bethany Laurente", country:"Philippines", title:"Promoter Coordinator", dept:"Go To Market" },
       { name:"Stephen Makuol", country:"United States", title:"Software Engineer", dept:"Product Development" },
       { name:"Guilherme Bocchi", country:"Brazil", title:"Senior Business Development Manager", dept:"Go To Market" },
       { name:"Ana Naranjo", country:"Ecuador", title:"Sales Representative", dept:"Go To Market" },
-      { name:"Sebastian Aldaz", country:"Ecuador", title:"Business Operations Supervisor", dept:"" },
+      { name:"Sebastian Aldaz", country:"Ecuador", title:"Business Operations Supervisor", dept:"Go To Market" },
       { name:"Ricardo Illescas", country:"Mexico", title:"Data Marketing Analyst", dept:"Go To Market" },
       { name:"Dushyanth Chikkarangaiah", country:"India", title:"Staff Program Manager", dept:"Product Development" },
     ]
@@ -2798,6 +2798,8 @@ function renderGender(forceKey) {
       `<div style="width:${fPct}%;background:#4e60c6;display:flex;align-items:center;justify-content:center;height:100%;"><span style="font-size:13px;color:#fff;font-weight:700;">${fPct}%</span></div>` +
       `<div style="width:${mPct}%;background:#85b846;display:flex;align-items:center;justify-content:center;height:100%;"><span style="font-size:13px;color:#fff;font-weight:700;">${mPct}%</span></div>`;
   }
+  const nEl = document.getElementById("gender-overall-n");
+  if (nEl) nEl.textContent = "n = " + g.total.toLocaleString();
   const activeKey = forceKey || filters.depto || filters.nivel || filters.emptype;
   const sub = document.getElementById("gen-subtitle");
   if (sub) sub.textContent = activeKey ? "Gender · " + activeKey : "Distribution of total headcount";
