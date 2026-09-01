@@ -506,7 +506,7 @@
     <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:14px;">
       <span style="font-size:38px;font-weight:900;color:var(--text-primary);letter-spacing:-1px;" id="hc-banner-num">1,169</span>
       <span style="font-size:14px;font-weight:700;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.4px;">HC Total</span>
-      <span style="font-size:13px;font-weight:600;color:var(--green);background:var(--green-light);padding:2px 10px;border-radius:99px;" id="hc-banner-delta">+36 vs Jul · +3.2%</span>
+      <span style="font-size:13px;font-weight:600;color:var(--green);background:var(--green-light);padding:2px 10px;border-radius:99px;" id="hc-banner-delta">+38 vs Jul · +3.4%</span>
       <span style="font-size:12px;color:var(--text-muted);margin-left:4px;" id="hc-banner-period">Aug 31, 2026</span>
     </div>
     <div class="filter-bar">
@@ -1029,7 +1029,7 @@ const DATA = {
     { m:"Mar  26",  exits:21, vol:9,  invol:12, avgHC:981,  pct:2.14, early:6  },
     { m:"Apr  26",  exits:25, vol:12, invol:13, avgHC:1021, pct:2.45, early:8  },
     { m:"Jun  26",  exits:18, vol:9,  invol:9,  avgHC:1086, pct:1.66, early:5  },
-    { m:"Aug  26",  exits:21, vol:8,  invol:13, avgHC:1151, pct:1.82, early:2  }
+    { m:"Aug  26",  exits:21, vol:8,  invol:13, avgHC:1150, pct:1.83, early:2  }
   ]
 };
 // ─── HC MONTHLY BREAKDOWNS ────────────────────────────────────────────────────
@@ -2125,7 +2125,7 @@ const HC_MONTHLY = [
   { label:"Apr 26",  hc:1039, q:"Q1-2026" },
   { label:"May 26",  hc:1069, q:"Q2-2026" },
   { label:"Jun 26",  hc:1106, q:"Q2-2026" },
-  { label:"Jul 26",  hc:1133, q:"Q3-2026" },
+  { label:"Jul 26",  hc:1131, q:"Q3-2026" },
   { label:"Aug 26",  hc:1169, q:"Q3-2026" },
 ];
 let activeHCQ = 'all';
@@ -2236,7 +2236,7 @@ function updateKPIHC() {
     document.getElementById("kpi-hc-delta-val").textContent = "+26.4%";
     document.getElementById("kpi-hc-note").textContent = "+244 vs Dec 2025";
     document.getElementById("hc-banner-num").textContent = "1,169";
-    document.getElementById("hc-banner-delta").textContent = "+36 vs Jul · +3.2%";
+    document.getElementById("hc-banner-delta").textContent = "+38 vs Jul · +3.4%";
     document.getElementById("hc-banner-period").textContent = "Aug 31, 2026";
   } else {
     const prevLabel = prev ? prev.label : "";
@@ -2844,8 +2844,8 @@ const ATTRITION_BY_COUNTRY = {
       all:{tot:7,reg:2,nr:5,vol:3,inv:4,hc:157.5}, l2:{tot:3,reg:1,nr:2,vol:1,inv:2,hc:94.5},
       qVolL2:1,qHcL2:96.5,qAttr:1.0, qRegAll:2,qHcRegAll:157.8,qAttrReg:1.3, qRegL2:1,qHcRegL2:96.5,qAttrRegL2:1.0 },
     { period:"August 2026", q:"Q3 2026",
-      all:{tot:3,reg:0,nr:3,vol:1,inv:2,hc:160.0}, l2:{tot:1,reg:0,nr:1,vol:1,inv:0,hc:102.1},
-      qVolL2:1,qHcL2:102.1,qAttr:1.0, qRegAll:2,qHcRegAll:159.2,qAttrReg:1.3, qRegL2:0,qHcRegL2:102.1,qAttrRegL2:0.0 },
+      all:{tot:3,reg:0,nr:3,vol:1,inv:2,hc:160.0}, l2:{tot:1,reg:0,nr:1,vol:1,inv:0,hc:101.5},
+      qVolL2:4,qHcL2:99.2,qAttr:4.03, qRegAll:2,qHcRegAll:159.2,qAttrReg:1.26, qRegL2:1,qHcRegL2:99.2,qAttrRegL2:1.01 },
   ],
   "China": [
     { period:"December 2025", q:"Q4 2025",
@@ -2874,7 +2874,7 @@ const ATTRITION_BY_COUNTRY = {
       qVolL2:0,qHcL2:6.5,qAttr:0.0, qRegAll:0,qHcRegAll:6.5,qAttrReg:0.0, qRegL2:0,qHcRegL2:6.5,qAttrRegL2:0.0 },
     { period:"August 2026", q:"Q3 2026",
       all:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:6.0}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:6.0},
-      qVolL2:0,qHcL2:6.0,qAttr:0.0, qRegAll:0,qHcRegAll:6.2,qAttrReg:0.0, qRegL2:0,qHcRegL2:6.0,qAttrRegL2:0.0 },
+      qVolL2:1,qHcL2:6.2,qAttr:16.13, qRegAll:0,qHcRegAll:6.2,qAttrReg:0.0, qRegL2:0,qHcRegL2:6.2,qAttrRegL2:0.0 },
   ],
   "Colombia": [
     { period:"December 2025", q:"Q4 2025",
@@ -2902,8 +2902,8 @@ const ATTRITION_BY_COUNTRY = {
       all:{tot:4,reg:0,nr:4,vol:3,inv:1,hc:164.0}, l2:{tot:1,reg:0,nr:1,vol:1,inv:0,hc:125.0},
       qVolL2:1,qHcL2:120.3,qAttr:0.8, qRegAll:3,qHcRegAll:161.3,qAttrReg:1.9, qRegL2:0,qHcRegL2:120.3,qAttrRegL2:0.0 },
     { period:"August 2026", q:"Q3 2026",
-      all:{tot:3,reg:1,nr:2,vol:1,inv:2,hc:167.5}, l2:{tot:3,reg:1,nr:2,vol:1,inv:2,hc:130.3},
-      qVolL2:1,qHcL2:130.3,qAttr:0.8, qRegAll:3,qHcRegAll:165.0,qAttrReg:1.8, qRegL2:1,qHcRegL2:130.3,qAttrRegL2:0.8 },
+      all:{tot:3,reg:1,nr:2,vol:1,inv:2,hc:167.5}, l2:{tot:3,reg:1,nr:2,vol:1,inv:2,hc:130.0},
+      qVolL2:2,qHcL2:126.0,qAttr:1.59, qRegAll:3,qHcRegAll:165.0,qAttrReg:1.82, qRegL2:1,qHcRegL2:126.0,qAttrRegL2:0.79 },
   ],
   "Ecuador": [
     { period:"December 2025", q:"Q4 2025",
@@ -2931,8 +2931,8 @@ const ATTRITION_BY_COUNTRY = {
       all:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:60.0}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:38.5},
       qVolL2:1,qHcL2:36.8,qAttr:2.7, qRegAll:0,qHcRegAll:59.2,qAttrReg:0.0, qRegL2:0,qHcRegL2:36.8,qAttrRegL2:0.0 },
     { period:"August 2026", q:"Q3 2026",
-      all:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:63.0}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:40.7},
-      qVolL2:0,qHcL2:40.7,qAttr:0.0, qRegAll:0,qHcRegAll:60.7,qAttrReg:0.0, qRegL2:0,qHcRegL2:40.7,qAttrRegL2:0.0 },
+      all:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:63.0}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:40.5},
+      qVolL2:1,qHcL2:38.7,qAttr:2.58, qRegAll:0,qHcRegAll:60.7,qAttrReg:0.0, qRegL2:0,qHcRegL2:38.7,qAttrRegL2:0.0 },
   ],
   "India": [
     { period:"December 2025", q:"Q4 2025",
@@ -2960,8 +2960,8 @@ const ATTRITION_BY_COUNTRY = {
       all:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:6.5}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:6.5},
       qVolL2:0,qHcL2:6.0,qAttr:0.0, qRegAll:0,qHcRegAll:6.0,qAttrReg:0.0, qRegL2:0,qHcRegL2:6.0,qAttrRegL2:0.0 },
     { period:"August 2026", q:"Q3 2026",
-      all:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:8.0}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:8.0},
-      qVolL2:0,qHcL2:8.0,qAttr:0.0, qRegAll:0,qHcRegAll:6.8,qAttrReg:0.0, qRegL2:0,qHcRegL2:8.0,qAttrRegL2:0.0 },
+      all:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:8.5}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:8.5},
+      qVolL2:0,qHcL2:7.0,qAttr:0.0, qRegAll:0,qHcRegAll:7.0,qAttrReg:0.0, qRegL2:0,qHcRegL2:7.0,qAttrRegL2:0.0 },
   ],
   "Indonesia": [
     { period:"December 2025", q:"Q4 2025",
@@ -2989,8 +2989,8 @@ const ATTRITION_BY_COUNTRY = {
       all:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:21.0}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:13.5},
       qVolL2:0,qHcL2:10.0,qAttr:0.0, qRegAll:0,qHcRegAll:16.7,qAttrReg:0.0, qRegL2:0,qHcRegL2:10.0,qAttrRegL2:0.0 },
     { period:"August 2026", q:"Q3 2026",
-      all:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:26.5}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:19.4},
-      qVolL2:0,qHcL2:19.4,qAttr:0.0, qRegAll:0,qHcRegAll:21.5,qAttrReg:0.0, qRegL2:0,qHcRegL2:19.4,qAttrRegL2:0.0 },
+      all:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:26.5}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:18.5},
+      qVolL2:0,qHcL2:14.2,qAttr:0.0, qRegAll:0,qHcRegAll:21.5,qAttrReg:0.0, qRegL2:0,qHcRegL2:14.2,qAttrRegL2:0.0 },
   ],
   "Mexico": [
     { period:"December 2025", q:"Q4 2025",
@@ -3018,8 +3018,8 @@ const ATTRITION_BY_COUNTRY = {
       all:{tot:3,reg:0,nr:3,vol:1,inv:2,hc:361.5}, l2:{tot:3,reg:0,nr:3,vol:1,inv:2,hc:276.0},
       qVolL2:6,qHcL2:264.5,qAttr:2.3, qRegAll:2,qHcRegAll:349.0,qAttrReg:0.6, qRegL2:2,qHcRegL2:264.5,qAttrRegL2:0.8 },
     { period:"August 2026", q:"Q3 2026",
-      all:{tot:7,reg:3,nr:4,vol:3,inv:4,hc:372.5}, l2:{tot:6,reg:3,nr:3,vol:3,inv:3,hc:284.3},
-      qVolL2:3,qHcL2:284.3,qAttr:1.1, qRegAll:5,qHcRegAll:361.2,qAttrReg:1.4, qRegL2:3,qHcRegL2:284.3,qAttrRegL2:1.1 },
+      all:{tot:7,reg:3,nr:4,vol:3,inv:4,hc:372.5}, l2:{tot:6,reg:3,nr:3,vol:3,inv:3,hc:284.0},
+      qVolL2:8,qHcL2:275.8,qAttr:2.9, qRegAll:5,qHcRegAll:361.2,qAttrReg:1.38, qRegL2:5,qHcRegL2:275.8,qAttrRegL2:1.81 },
   ],
   "Panama": [
     { period:"December 2025", q:"Q4 2025",
@@ -3047,8 +3047,8 @@ const ATTRITION_BY_COUNTRY = {
       all:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:27.0}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:15.0},
       qVolL2:1,qHcL2:15.5,qAttr:6.5, qRegAll:0,qHcRegAll:27.3,qAttrReg:0.0, qRegL2:0,qHcRegL2:15.5,qAttrRegL2:0.0 },
     { period:"August 2026", q:"Q3 2026",
-      all:{tot:3,reg:1,nr:2,vol:1,inv:2,hc:26.5}, l2:{tot:2,reg:0,nr:2,vol:0,inv:2,hc:15.3},
-      qVolL2:0,qHcL2:15.3,qAttr:0.0, qRegAll:1,qHcRegAll:27.2,qAttrReg:3.7, qRegL2:0,qHcRegL2:15.3,qAttrRegL2:0.0 },
+      all:{tot:3,reg:1,nr:2,vol:1,inv:2,hc:26.5}, l2:{tot:2,reg:0,nr:2,vol:0,inv:2,hc:15.0},
+      qVolL2:0,qHcL2:15.2,qAttr:0.0, qRegAll:1,qHcRegAll:27.2,qAttrReg:3.68, qRegL2:0,qHcRegL2:15.2,qAttrRegL2:0.0 },
   ],
   "Peru": [
     { period:"December 2025", q:"Q4 2025",
@@ -3076,8 +3076,8 @@ const ATTRITION_BY_COUNTRY = {
       all:{tot:4,reg:0,nr:4,vol:3,inv:1,hc:85.0}, l2:{tot:3,reg:0,nr:3,vol:2,inv:1,hc:52.5},
       qVolL2:3,qHcL2:49.3,qAttr:6.1, qRegAll:1,qHcRegAll:83.7,qAttrReg:1.2, qRegL2:1,qHcRegL2:49.3,qAttrRegL2:2.0 },
     { period:"August 2026", q:"Q3 2026",
-      all:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:86.5}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:55.7},
-      qVolL2:0,qHcL2:55.7,qAttr:0.0, qRegAll:0,qHcRegAll:85.2,qAttrReg:0.0, qRegL2:0,qHcRegL2:55.7,qAttrRegL2:0.0 },
+      all:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:86.5}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:55.5},
+      qVolL2:1,qHcL2:52.2,qAttr:1.92, qRegAll:0,qHcRegAll:85.2,qAttrReg:0.0, qRegL2:0,qHcRegL2:52.2,qAttrRegL2:0.0 },
   ],
   "Philippines": [
     { period:"December 2025", q:"Q4 2025",
@@ -3105,8 +3105,8 @@ const ATTRITION_BY_COUNTRY = {
       all:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:67.0}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:36.0},
       qVolL2:1,qHcL2:35.5,qAttr:2.8, qRegAll:1,qHcRegAll:64.2,qAttrReg:1.6, qRegL2:1,qHcRegL2:35.5,qAttrRegL2:2.8 },
     { period:"August 2026", q:"Q3 2026",
-      all:{tot:2,reg:0,nr:2,vol:1,inv:1,hc:69.0}, l2:{tot:1,reg:0,nr:1,vol:1,inv:0,hc:39.0},
-      qVolL2:1,qHcL2:39.0,qAttr:2.6, qRegAll:0,qHcRegAll:66.8,qAttrReg:0.0, qRegL2:0,qHcRegL2:39.0,qAttrRegL2:0.0 },
+      all:{tot:2,reg:0,nr:2,vol:1,inv:1,hc:68.5}, l2:{tot:1,reg:0,nr:1,vol:1,inv:0,hc:38.5},
+      qVolL2:1,qHcL2:37.0,qAttr:2.7, qRegAll:0,qHcRegAll:66.7,qAttrReg:0.0, qRegL2:0,qHcRegL2:37.0,qAttrRegL2:0.0 },
   ],
   "South Africa": [
     { period:"December 2025", q:"Q4 2025",
@@ -3134,8 +3134,8 @@ const ATTRITION_BY_COUNTRY = {
       all:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:65.5}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:45.0},
       qVolL2:0,qHcL2:44.3,qAttr:0.0, qRegAll:0,qHcRegAll:64.3,qAttrReg:0.0, qRegL2:0,qHcRegL2:44.3,qAttrRegL2:0.0 },
     { period:"August 2026", q:"Q3 2026",
-      all:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:67.0}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:45.3},
-      qVolL2:0,qHcL2:45.3,qAttr:0.0, qRegAll:0,qHcRegAll:65.7,qAttrReg:0.0, qRegL2:0,qHcRegL2:45.3,qAttrRegL2:0.0 },
+      all:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:66.5}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:45.5},
+      qVolL2:0,qHcL2:45.0,qAttr:0.0, qRegAll:0,qHcRegAll:65.5,qAttrReg:0.0, qRegL2:0,qHcRegL2:45.0,qAttrRegL2:0.0 },
   ],
   "United States": [
     { period:"December 2025", q:"Q4 2025",
@@ -3163,8 +3163,8 @@ const ATTRITION_BY_COUNTRY = {
       all:{tot:3,reg:1,nr:0,vol:3,inv:0,hc:97.0}, l2:{tot:2,reg:1,nr:0,vol:2,inv:0,hc:96.5},
       qVolL2:4,qHcL2:93.8,qAttr:4.3, qRegAll:3,qHcRegAll:94.0,qAttrReg:3.2, qRegL2:3,qHcRegL2:93.8,qAttrRegL2:3.2 },
     { period:"August 2026", q:"Q3 2026",
-      all:{tot:3,reg:0,nr:2,vol:1,inv:2,hc:98.5}, l2:{tot:3,reg:0,nr:2,vol:1,inv:2,hc:98.5},
-      qVolL2:1,qHcL2:98.5,qAttr:1.0, qRegAll:2,qHcRegAll:97.0,qAttrReg:2.1, qRegL2:0,qHcRegL2:98.5,qAttrRegL2:0.0 },
+      all:{tot:3,reg:0,nr:2,vol:1,inv:2,hc:98.0}, l2:{tot:3,reg:0,nr:2,vol:1,inv:2,hc:98.0},
+      qVolL2:3,qHcL2:96.7,qAttr:3.1, qRegAll:2,qHcRegAll:96.8,qAttrReg:2.07, qRegL2:2,qHcRegL2:96.7,qAttrRegL2:2.07 },
   ],
 };
 function renderRawAttrTable() {
@@ -3313,9 +3313,9 @@ const ATTRITION_DRIVE_V2 = [
     qRegL2:8, qHcRegL2:784.2, qAttrRegL2:1.02,
     qNrAll:52, qAttrNr:4.77, qTotAll:70, qAttrTot:6.43 },
   { period:"August 2026", q:"Q3 2026", hidden:false,
-    all:{tot:21, reg:5, nr:15, vol:8, hc:1151.0}, l2:{tot:16, reg:4, nr:11, vol:7, hc:835.5},
-    qRegAll:13, qHcRegAll:1122.3, qAttrReg:1.16,
-    qRegL2:9, qHcRegL2:813.7, qAttrRegL2:1.11,
+    all:{tot:21, reg:5, nr:15, vol:8, hc:1150.0}, l2:{tot:16, reg:4, nr:11, vol:7, hc:841.5},
+    qRegAll:13, qHcRegAll:1122.0, qAttrReg:1.16,
+    qRegL2:9, qHcRegL2:815.7, qAttrRegL2:1.1,
     qNrAll:53, qAttrNr:4.72, qTotAll:71, qAttrTot:6.33 },
 ];
 function renderDriveV2Table() {
