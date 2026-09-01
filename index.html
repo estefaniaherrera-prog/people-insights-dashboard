@@ -71,7 +71,6 @@
     --radius: 14px; --radius-sm: 8px;
   }
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text-primary); min-height: 100vh; line-height: 1.5; }
-
   /* SIDEBAR */
   .sidebar { position: fixed; top: 0; left: 0; width: 220px; height: 100vh; background: var(--surface); border-right: 1px solid var(--border); display: flex; flex-direction: column; padding: 28px 0; z-index: 100; }
   .sidebar-logo { padding: 0 20px 24px; border-bottom: 1px solid var(--border); margin-bottom: 16px; }
@@ -92,10 +91,8 @@
   .avatar { width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, var(--violet), var(--blue)); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: white; flex-shrink: 0; }
   .user-info .user-name { font-size: 13px; font-weight: 600; }
   .user-info .user-role { font-size: 11px; color: var(--text-muted); }
-
   /* MAIN */
   .main { margin-left: 220px; min-height: 100vh; }
-
   /* HEALTH BANNER */
   .health-banner {
     display: flex; align-items: center; gap: 0;
@@ -127,7 +124,6 @@
     color: var(--amber); padding: 4px 10px; border-radius: 99px;
     font-size: 12.5px; font-weight: 700;
   }
-
   /* TOPBAR */
   .topbar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 16px 36px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 50; }
   .topbar-left h1 { font-size: 19px; font-weight: 700; letter-spacing: -0.5px; }
@@ -141,19 +137,16 @@
   .btn-icon svg { width: 14px; height: 14px; }
   .btn-primary { display: flex; align-items: center; gap: 6px; background: var(--text-primary); color: white; border: none; border-radius: var(--radius-sm); padding: 7px 16px; font-size: 12.5px; font-weight: 600; cursor: pointer; transition: opacity 0.15s; }
   .btn-primary:hover { opacity: 0.85; }
-
   /* CONTENT */
   .content { padding: 26px 36px; max-width: 1440px; }
   .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
   .section-title { font-size: 11.5px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.6px; }
   .tag { font-size: 11px; font-weight: 600; color: var(--text-muted); background: var(--bg); border: 1px solid var(--border); padding: 3px 8px; border-radius: 6px; }
   .section-divider { height: 1px; background: var(--border); margin: 26px 0; }
-
   /* TOGGLE */
   .toggle-group { display: flex; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 3px; gap: 2px; }
   .toggle-btn { font-size: 12px; font-weight: 600; color: var(--text-secondary); background: none; border: none; padding: 5px 12px; border-radius: 6px; cursor: pointer; transition: all 0.15s; white-space: nowrap; }
   .toggle-btn.active { background: var(--surface); color: var(--text-primary); box-shadow: var(--shadow-sm); }
-
   /* KPI CARDS */
   .kpi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 26px; }
   .kpi-card { background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border); padding: 14px 18px; box-shadow: var(--shadow-sm); transition: box-shadow 0.2s, transform 0.2s; position: relative; overflow: hidden; cursor: default; }
@@ -181,7 +174,6 @@
   .spark-bar { flex: 1; border-radius: 3px 3px 0 0; min-height: 3px; position: relative; }
   .spark-bar .spark-lbl { position: absolute; bottom: -13px; left: 50%; transform: translateX(-50%); font-size: 7px; color: var(--text-muted); white-space: nowrap; }
   .kpi-footer { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); font-size: 12px; color: var(--text-muted); display: flex; justify-content: space-between; align-items: center; }
-
   /* PROJECTION + INSIGHTS */
   .pi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 26px; }
   .pi-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow-sm); }
@@ -203,7 +195,6 @@
   .insight-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
   .insight-diamond { width: 8px; height: 8px; flex-shrink: 0; margin-top: 4px; transform: rotate(45deg); border-radius: 2px; }
   .insight-text { font-size: 12.5px; color: var(--text-primary); line-height: 1.45; }
-
   /* FILTER BAR */
   .filter-bar { display: flex; align-items: center; gap: 10px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 18px; margin-bottom: 18px; box-shadow: var(--shadow-sm); flex-wrap: wrap; }
   .filter-label { font-size: 11.5px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; display: flex; align-items: center; gap: 5px; }
@@ -219,7 +210,6 @@
   .filter-pill { display: inline-flex; align-items: center; gap: 4px; background: var(--blue-light); border: 1px solid var(--blue-mid); color: var(--blue); padding: 3px 9px; border-radius: 99px; font-size: 11.5px; font-weight: 600; }
   .filter-pill .pill-x { cursor: pointer; opacity: 0.6; font-size: 14px; line-height: 1; }
   .filter-pill .pill-x:hover { opacity: 1; }
-
   /* CHARTS */
   .charts-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 18px; }
   .charts-grid-2 { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 18px; }
@@ -228,12 +218,10 @@
   .chart-card-header { margin-bottom: 18px; display: flex; align-items: flex-start; justify-content: space-between; }
   .chart-card-header h3 { font-size: 14px; font-weight: 700; color: var(--text-primary); letter-spacing: -0.2px; }
   .chart-card-header p { font-size: 12px; color: var(--text-secondary); margin-top: 3px; }
-
   /* HC QUARTER BUTTONS */
   .hc-q-btn { padding:3px 8px; font-size:11px; font-weight:600; border:1.5px solid var(--border); background:var(--surface); color:var(--text-secondary); border-radius:6px; cursor:pointer; transition:all 0.15s; }
   .hc-q-btn:hover { border-color:var(--blue); color:var(--blue); }
   .hc-q-btn.active { background:var(--blue-light); border-color:var(--blue); color:var(--blue); }
-
   /* COLUMN CHART (HC TREND) */
   .col-chart { display: flex; align-items: flex-end; gap: 5px; height: 130px; padding-bottom: 28px; position: relative; }
   .col-wrap { display: flex; flex-direction: column; align-items: center; flex: 1; height: 100%; justify-content: flex-end; position: relative; }
@@ -243,7 +231,6 @@
   .col-val { font-size: 7px; color: var(--text-secondary); margin-bottom: 2px; font-weight: 600; }
   .col-highlight .col-bar { background: linear-gradient(180deg,#6366f1,#3b82f6) !important; }
   .col-highlight .col-label { color: var(--blue); font-weight: 700; }
-
   /* BAR CHART WITH REFERENCE LINE */
   .bar-chart { display: flex; flex-direction: column; gap: 9px; }
   .bar-row { display: grid; grid-template-columns: minmax(130px, max-content) 1fr 42px; align-items: center; gap: 9px; }
@@ -253,7 +240,6 @@
   .bar-avg-line { position: absolute; top: -4px; bottom: -4px; width: 2px; background: var(--text-muted); border-radius: 2px; opacity: 0.5; z-index: 2; pointer-events: none; }
   .bar-avg-line::after { content: 'avg'; position: absolute; top: -16px; left: 50%; transform: translateX(-50%); font-size: 9px; font-weight: 700; color: var(--text-muted); white-space: nowrap; }
   .bar-value { font-size: 12px; font-weight: 700; color: var(--text-primary); text-align: right; }
-
   /* DONUT */
   .donut-wrap { display: flex; align-items: center; gap: 20px; }
   .donut-svg-wrap { position: relative; flex-shrink: 0; }
@@ -269,7 +255,6 @@
   .legend-pct { font-size: 12.5px; font-weight: 700; color: var(--text-primary); }
   .legend-bar-wrap { width: 100%; height: 3px; background: var(--bg); border-radius: 99px; margin-top: 4px; overflow: hidden; }
   .legend-bar { height: 100%; border-radius: 99px; transition: width 0.5s ease; }
-
   /* COLUMN CHART */
   .col-chart-wrap { display: flex; align-items: flex-end; gap: 10px; height: 160px; padding-top: 8px; }
   .col-group { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 0; height: 100%; }
@@ -278,11 +263,9 @@
   .col-bar:hover { opacity: 0.75; }
   .col-val { font-size: 11px; font-weight: 700; color: var(--text-primary); margin-top: 4px; flex-shrink: 0; }
   .col-lbl { font-size: 10.5px; color: var(--text-muted); text-align: center; width: 100%; white-space: nowrap; margin-top: 2px; flex-shrink: 0; }
-
   /* TENURE RISK SUMMARY */
   .tenure-risk-bar { height: 8px; border-radius: 99px; overflow: hidden; display: flex; margin: 10px 0 6px; gap: 2px; }
   .tenure-risk-bar .trb-seg { border-radius: 99px; transition: width 0.5s ease; }
-
   /* WEEKLY MOVEMENTS */
   .week-btn-group { display:flex; gap:4px; margin-bottom:12px; }
   .week-btn { padding:3px 9px; font-size:11px; font-weight:600; border:1.5px solid var(--border); background:var(--surface); color:var(--text-secondary); border-radius:6px; cursor:pointer; transition:all 0.15s; }
@@ -312,15 +295,12 @@
   .term-type-badge { display:inline-block; font-size:8.5px; font-weight:800; padding:1px 5px; border-radius:99px; text-transform:uppercase; letter-spacing:0.3px; }
   .term-type-vol   { background:#dcfce7; color:#166534; }
   .term-type-invol { background:#fee2e2; color:#991b1b; }
-
-
   /* CHIP */
   .chip { display: inline-flex; align-items: center; gap: 3px; font-size: 10.5px; font-weight: 600; padding: 3px 8px; border-radius: 99px; }
   .chip.green { background: var(--green-light); color: var(--green); }
   .chip.blue { background: var(--blue-light); color: var(--blue); }
   .chip.amber { background: var(--amber-light); color: var(--amber); }
   .chip.rose { background: var(--rose-light); color: var(--rose); }
-
   /* ATTRITION DETAIL TABLE */
   .attr-detail-card { background:var(--surface); border-radius:var(--radius); box-shadow:var(--shadow-sm); border:1px solid var(--border); padding:20px 24px; margin-bottom:18px; }
   .attr-detail-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; }
@@ -353,10 +333,8 @@
   .abadge.badge-blue   { background:#bfdbfe; color:#1e40af; font-size:13px; font-weight:700; }
   .abadge.badge-purple { background:#ddd6fe; color:#5b21b6; font-size:13px; font-weight:700; }
   .attr-formula-note { margin-top:12px; padding:8px 14px; background:var(--blue-light); border-radius:7px; font-size:11.5px; color:var(--blue); border-left:3px solid var(--blue); }
-
   @media (max-width: 768px) { .sidebar{display:none;} .main{margin-left:0;} .topbar,.content{padding-left:20px;padding-right:20px;} .kpi-grid,.charts-grid-3,.pi-grid{grid-template-columns:1fr;} }
   @media (min-width: 769px) and (max-width: 1100px) { .sidebar{display:none;} .main{margin-left:0;} .topbar,.content{padding-left:28px;padding-right:28px;} .charts-grid-3{grid-template-columns:1fr 1fr;} }
-
   /* ── CHATBOT ─────────────────────────────────────────────────────────── */
   .chat-toggle {
     position: fixed; bottom: 28px; right: 28px; z-index: 1000;
@@ -457,7 +435,6 @@
   .typing-dot:nth-child(2) { animation-delay: 0.2s; }
   .typing-dot:nth-child(3) { animation-delay: 0.4s; }
   @keyframes typingBounce { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-5px)} }
-
   /* ── PAGE TABS ──────────────────────────────────────── */
   .page-tabs { display:flex; gap:0; padding:0 24px; border-bottom:2px solid var(--border); background:var(--surface); position:sticky; top:56px; z-index:10; margin-bottom:0; }
   .page-tab { padding:11px 20px; font-size:13px; font-weight:500; color:var(--text-muted); cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-2px; transition:all 0.15s; white-space:nowrap; user-select:none; }
@@ -465,11 +442,9 @@
   .page-tab.active { color:var(--blue); border-bottom-color:var(--blue); font-weight:600; }
   .tab-page { display:none; }
   .tab-page.active { display:block; padding-top:24px; }
-
 </style>
 </head>
 <body>
-
 <!-- SIDEBAR -->
 <aside class="sidebar">
   <div class="sidebar-logo">
@@ -490,7 +465,6 @@
     <div class="nav-item"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>Surveys</div>
   </div>
 </aside>
-
 <main class="main">
   <!-- TOPBAR -->
   <div class="topbar">
@@ -509,22 +483,14 @@
       </button>
     </div>
   </div>
-
-
   <div class="content">
     <!-- PAGE TABS -->
     <div class="page-tabs">
       <div class="page-tab active" onclick="switchTab('tab-hc')">Headcount</div>
       <div class="page-tab" onclick="switchTab('tab-attrition')">Attrition</div>
       <div class="page-tab" onclick="switchTab('tab-analysis')">Workforce Demographics</div>
-      <div class="page-tab" onclick="switchTab('tab-onboarding')">Onboarding</div>
-      <div class="page-tab" onclick="switchTab('tab-vacations')">Vacations</div>
     </div><!-- /page-tabs -->
-
     <div id="tab-hc" class="tab-page active">
-
-
-
     <!-- hidden KPI anchors kept for JS compatibility -->
     <span id="kpi-hc" style="display:none"></span>
     <span id="kpi-hc-delta-val" style="display:none"></span>
@@ -534,18 +500,15 @@
     <span id="kpi-attr-note" style="display:none"></span>
     <span id="kpi-hc-delta" style="display:none"></span>
     <span id="kpi-attr-delta" style="display:none"></span>
-
     <!-- SECTION 2: CHARTS WITH FILTERS -->
     <div class="active-filters" id="active-filters-top"></div>
-
     <!-- HC TOTAL BANNER -->
     <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:14px;">
-      <span style="font-size:38px;font-weight:900;color:var(--text-primary);letter-spacing:-1px;" id="hc-banner-num">1,133</span>
+      <span style="font-size:38px;font-weight:900;color:var(--text-primary);letter-spacing:-1px;" id="hc-banner-num">1,169</span>
       <span style="font-size:14px;font-weight:700;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.4px;">HC Total</span>
-      <span style="font-size:13px;font-weight:600;color:var(--green);background:var(--green-light);padding:2px 10px;border-radius:99px;" id="hc-banner-delta">+27 vs Jun · +2.4%</span>
-      <span style="font-size:12px;color:var(--text-muted);margin-left:4px;" id="hc-banner-period">Jul 27, 2026</span>
+      <span style="font-size:13px;font-weight:600;color:var(--green);background:var(--green-light);padding:2px 10px;border-radius:99px;" id="hc-banner-delta">+36 vs Jul · +3.2%</span>
+      <span style="font-size:12px;color:var(--text-muted);margin-left:4px;" id="hc-banner-period">Aug 31, 2026</span>
     </div>
-
     <div class="filter-bar">
       <span class="filter-label">
         <svg style="width:12px;height:12px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
@@ -585,7 +548,6 @@
         Clear
       </button>
     </div>
-
     <!-- ROW 1: HC Trend full width -->
     <div class="chart-card" style="margin-bottom:18px;">
       <div class="chart-card-header">
@@ -595,10 +557,8 @@
       <div class="col-chart" id="chart-hc"></div>
       <div id="hc-mom-strip" style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;"></div>
     </div>
-
     <!-- ROW 2: HC by Country + Movements -->
     <div style="display:grid; grid-template-columns: 2fr 3fr; gap:16px; margin-bottom:18px; align-items:start;">
-
       <!-- HC by Country bars -->
       <div class="chart-card" style="overflow:hidden;">
         <div class="chart-card-header" style="margin-bottom:10px;">
@@ -614,12 +574,12 @@
             <option value="16">Jul 6</option>
             <option value="17">Jul 13</option>
             <option value="18">Jul 20</option>
-            <option value="19" selected>Jul 27</option>
+            <option value="19">Jul 27</option>
+            <option value="20" selected>Aug 31</option>
           </select>
         </div>
         <div id="hc-country-bars"></div>
       </div>
-
       <!-- Exits & New Hires by week -->
       <div class="chart-card" style="overflow:hidden;">
         <div class="chart-card-header" style="margin-bottom:10px;">
@@ -661,13 +621,10 @@
         </div>
         <div id="movements-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;"></div>
       </div>
-
     </div>
     </div><!-- /tab-hc -->
-
     <!-- TAB: Attrition -->
     <div id="tab-attrition" class="tab-page">
-
     <!-- ATTRITION DETAIL TABLE (source: Drive) -->
     <div class="attr-detail-card" style="margin-bottom:18px;">
       <div class="attr-detail-header">
@@ -682,12 +639,9 @@
         Data sourced directly from Drive: Terminations by month (regrettable classification + level) · HC = (inicio de mes + final de mes) ÷ 2 · Rolling 3M = sum of 3 months exits ÷ avg HC over same window · L2+ excludes levels 1a/1b/1c · Oct–Nov 2025 used as lookback only.
       </div>
     </div>
-
-
     <!-- BREAKDOWN TABLES — stacked -->
     <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:18px;">
     <hr style="border:none;border-top:1px solid var(--border);margin:0;">
-
       <!-- BY COUNTRY: stacked full-width -->
       <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:0;">
         <div class="attr-detail-card" style="margin-bottom:0;overflow-x:auto;">
@@ -707,10 +661,8 @@
           <div id="country-rate-chart"></div>
         </div>
       </div>
-
       <!-- DIVIDER -->
       <hr style="border:none;border-top:1px solid var(--border);margin:0;">
-
       <!-- BY DEPT: stacked full-width -->
       <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:0;">
         <div class="attr-detail-card" style="margin-bottom:0;overflow-x:auto;">
@@ -730,14 +682,11 @@
           <div id="dept-rate-chart"></div>
         </div>
       </div>
-
     </div>
-
     <span id="insights-scope" style="display:none"></span>
     <span id="insights-title" style="display:none"></span>
     <div id="insights-content" style="display:none"></div>
     </div><!-- /tab-attrition -->
-
     <!-- TAB: Workforce Demographics -->
     <div id="tab-analysis" class="tab-page">
       <!-- GENDER -->
@@ -766,7 +715,6 @@
           <div style="background:#f1f5f9;border-radius:6px;padding:11px 13px;font-size:11px;color:var(--text-secondary);line-height:1.65;margin-top:14px;"><div style="display:flex;gap:8px;margin-bottom:5px;"><span style="color:var(--text-muted);">•</span><span>Gender most imbalanced in smaller offices (China, India, Indonesia) and the United States, due to concentration of senior and technical staff.</span></div></div>
         </div>
       </div>
-
       <!-- TENURE -->
       <div class="chart-card" style="margin-top:16px;">
         <div class="chart-card-header"><div><h3>Tenure Distribution</h3><p id="ten-subtitle">Employees grouped by time at company</p></div></div>
@@ -778,431 +726,254 @@
       </div>
     </div><!-- /tab-analysis -->
 
-    <!-- TAB: Onboarding -->
-    <div id="tab-onboarding" class="tab-page">
-
-      <!-- KPIs -->
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;">
-        <div class="chart-card" style="padding:16px 18px;">
-          <p style="font-size:11px;font-weight:600;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.4px;margin-bottom:4px;">Total tracked</p>
-          <p style="font-size:32px;font-weight:900;color:var(--text-primary);letter-spacing:-1px;line-height:1;">35</p>
-          <p style="font-size:11px;color:var(--text-muted);margin-top:3px;">New hires since program launch</p>
-        </div>
-        <div class="chart-card" style="padding:16px 18px;">
-          <p style="font-size:11px;font-weight:600;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.4px;margin-bottom:4px;">Avg. completion</p>
-          <p style="font-size:32px;font-weight:900;color:var(--text-primary);letter-spacing:-1px;line-height:1;">73%</p>
-          <p style="font-size:11px;color:var(--text-muted);margin-top:3px;">Across all tracked employees</p>
-        </div>
-        <div class="chart-card" style="padding:16px 18px;">
-          <p style="font-size:11px;font-weight:600;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.4px;margin-bottom:4px;">At risk (&lt;50%)</p>
-          <p style="font-size:32px;font-weight:900;color:#be123c;letter-spacing:-1px;line-height:1;">8</p>
-          <p style="font-size:11px;color:var(--text-muted);margin-top:3px;">Need follow-up</p>
-        </div>
-        <div class="chart-card" style="padding:16px 18px;">
-          <p style="font-size:11px;font-weight:600;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.4px;margin-bottom:4px;">100% complete</p>
-          <p style="font-size:32px;font-weight:900;color:#166534;letter-spacing:-1px;line-height:1;">13</p>
-          <p style="font-size:11px;color:var(--text-muted);margin-top:3px;">Fully onboarded</p>
-        </div>
-      </div>
-
-      <!-- Charts row: distribution + top tasks -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px;">
-
-        <!-- Completion distribution -->
-        <div class="chart-card">
-          <div class="chart-card-header" style="margin-bottom:14px;">
-            <div><h3>Completion distribution</h3></div>
-          </div>
-          <div id="ob-dist-bars" style="display:flex;flex-direction:column;gap:12px;"></div>
-        </div>
-
-        <!-- Top skipped tasks -->
-        <div class="chart-card">
-          <div class="chart-card-header" style="margin-bottom:14px;">
-            <div><h3>Most skipped tasks</h3><p style="font-size:11px;color:var(--text-muted);">By number of people with task pending</p></div>
-          </div>
-          <div id="ob-top-skipped" style="display:flex;flex-direction:column;gap:9px;"></div>
-        </div>
-      </div>
-
-      <!-- Individual tracker -->
-      <div class="chart-card">
-        <div class="chart-card-header" style="margin-bottom:14px;">
-          <div><h3>Individual tracker</h3><p style="font-size:11px;color:var(--text-muted);">Jun 8, 2026 cohort · Click a row to see pending tasks</p></div>
-          <div style="display:flex;gap:8px;">
-            <select id="ob-filter-status" onchange="renderOnboarding()" style="font-size:11px;padding:4px 10px;border:1px solid var(--border);border-radius:6px;background:var(--surface);color:var(--text-primary);height:28px;">
-              <option value="">All statuses</option>
-              <option value="complete">Complete (100%)</option>
-              <option value="progress">In progress (50–99%)</option>
-              <option value="risk">At risk (&lt;50%)</option>
-            </select>
-            <select id="ob-filter-dept" onchange="renderOnboarding()" style="font-size:11px;padding:4px 10px;border:1px solid var(--border);border-radius:6px;background:var(--surface);color:var(--text-primary);height:28px;">
-              <option value="">All departments</option>
-            </select>
-            <select id="ob-filter-country" onchange="renderOnboarding()" style="font-size:11px;padding:4px 10px;border:1px solid var(--border);border-radius:6px;background:var(--surface);color:var(--text-primary);height:28px;">
-              <option value="">All countries</option>
-            </select>
-          </div>
-        </div>
-        <div style="overflow-x:auto;">
-          <table style="width:100%;border-collapse:collapse;font-size:12.5px;" id="ob-table">
-            <thead>
-              <tr>
-                <th style="font-size:11px;font-weight:600;color:var(--text-secondary);padding:6px 10px;text-align:left;border-bottom:2px solid var(--border);white-space:nowrap;">Name</th>
-                <th style="font-size:11px;font-weight:600;color:var(--text-secondary);padding:6px 10px;text-align:left;border-bottom:2px solid var(--border);white-space:nowrap;">Department</th>
-                <th style="font-size:11px;font-weight:600;color:var(--text-secondary);padding:6px 10px;text-align:center;border-bottom:2px solid var(--border);white-space:nowrap;">Country</th>
-                <th style="font-size:11px;font-weight:600;color:var(--text-secondary);padding:6px 10px;text-align:center;border-bottom:2px solid var(--border);white-space:nowrap;">Start date</th>
-                <th style="font-size:11px;font-weight:600;color:var(--text-secondary);padding:6px 10px;text-align:center;border-bottom:2px solid var(--border);white-space:nowrap;">Done</th>
-                <th style="font-size:11px;font-weight:600;color:var(--text-secondary);padding:6px 10px;text-align:center;border-bottom:2px solid var(--border);white-space:nowrap;">Pending</th>
-                <th style="font-size:11px;font-weight:600;color:var(--text-secondary);padding:6px 10px;border-bottom:2px solid var(--border);min-width:180px;">Progress</th>
-                <th style="font-size:11px;font-weight:600;color:var(--text-secondary);padding:6px 10px;text-align:center;border-bottom:2px solid var(--border);">Status</th>
-              </tr>
-            </thead>
-            <tbody id="ob-tbody"></tbody>
-          </table>
-        </div>
-        <div id="ob-pending-detail" style="margin-top:14px;"></div>
-      </div>
-
-    </div><!-- /tab-onboarding -->
-
-    <!-- TAB: Vacations -->
-    <div id="tab-vacations" class="tab-page">
-
-      <!-- KPIs -->
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;">
-        <div class="chart-card" style="padding:16px 18px;">
-          <p style="font-size:11px;font-weight:600;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.4px;margin-bottom:4px;">Employees tracked</p>
-          <p id="vac-kpi-total" style="font-size:32px;font-weight:900;color:var(--text-primary);letter-spacing:-1px;line-height:1;">1,080</p>
-          <p style="font-size:11px;color:var(--text-muted);margin-top:3px;">Active employees with vacation balance</p>
-        </div>
-        <div class="chart-card" style="padding:16px 18px;">
-          <p style="font-size:11px;font-weight:600;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.4px;margin-bottom:4px;">Avg balance</p>
-          <p id="vac-kpi-avg" style="font-size:32px;font-weight:900;color:var(--text-primary);letter-spacing:-1px;line-height:1;">15.7 <span style="font-size:16px;font-weight:500;color:var(--text-muted);">days</span></p>
-          <p style="font-size:11px;color:var(--text-muted);margin-top:3px;">Unused vacation per person</p>
-        </div>
-        <div class="chart-card" style="padding:16px 18px;">
-          <p style="font-size:11px;font-weight:600;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.4px;margin-bottom:4px;">Avg days taken</p>
-          <p id="vac-kpi-taken" style="font-size:32px;font-weight:900;color:var(--text-primary);letter-spacing:-1px;line-height:1;">28.0 <span style="font-size:16px;font-weight:500;color:var(--text-muted);">days</span></p>
-          <p style="font-size:11px;color:var(--text-muted);margin-top:3px;">Used since policy start</p>
-        </div>
-        <div class="chart-card" style="padding:16px 18px;border-left:3px solid #be123c;">
-          <p style="font-size:11px;font-weight:600;color:#be123c;text-transform:uppercase;letter-spacing:0.4px;margin-bottom:4px;">High balance (≥20 days)</p>
-          <p id="vac-kpi-high" style="font-size:32px;font-weight:900;color:#be123c;letter-spacing:-1px;line-height:1;">348</p>
-          <p style="font-size:11px;color:var(--text-muted);margin-top:3px;">Employees accumulating — need attention</p>
-        </div>
-      </div>
-
-      <!-- Charts row -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px;">
-
-        <!-- Distribution -->
-        <div class="chart-card">
-          <div class="chart-card-header" style="margin-bottom:14px;">
-            <div><h3>Balance distribution</h3><p style="font-size:11px;color:var(--text-muted);">How many unused days per employee</p></div>
-          </div>
-          <div id="vac-dist" style="display:flex;flex-direction:column;gap:10px;"></div>
-        </div>
-
-        <!-- Dept avg -->
-        <div class="chart-card">
-          <div class="chart-card-header" style="margin-bottom:14px;">
-            <div><h3>Avg balance by department</h3><p style="font-size:11px;color:var(--text-muted);">Which teams are accumulating the most</p></div>
-          </div>
-          <div id="vac-dept" style="display:flex;flex-direction:column;gap:8px;"></div>
-        </div>
-      </div>
-
-      <!-- Individual tracker -->
-      <div class="chart-card">
-        <div class="chart-card-header" style="margin-bottom:14px;">
-          <div><h3>Individual tracker</h3><p style="font-size:11px;color:var(--text-muted);">Sorted by balance · click column headers to sort · showing top 50</p></div>
-          <div style="display:flex;gap:8px;flex-wrap:wrap;">
-            <select id="vac-filter-dept" onchange="renderVacations()" style="font-size:11px;padding:4px 10px;border:1px solid var(--border);border-radius:6px;background:var(--surface);color:var(--text-primary);height:28px;">
-              <option value="">All departments</option>
-            </select>
-            <select id="vac-filter-country" onchange="renderVacations()" style="font-size:11px;padding:4px 10px;border:1px solid var(--border);border-radius:6px;background:var(--surface);color:var(--text-primary);height:28px;">
-              <option value="">All countries</option>
-            </select>
-            <select id="vac-filter-status" onchange="renderVacations()" style="font-size:11px;padding:4px 10px;border:1px solid var(--border);border-radius:6px;background:var(--surface);color:var(--text-primary);height:28px;">
-              <option value="">All statuses</option>
-              <option value="critical">Critical (≥30d)</option>
-              <option value="high">High (20–29d)</option>
-              <option value="healthy">Healthy (&lt;20d)</option>
-            </select>
-          </div>
-        </div>
-        <div style="overflow-x:auto;">
-          <table style="width:100%;border-collapse:collapse;font-size:12px;">
-            <thead>
-              <tr>
-                <th style="font-size:11px;font-weight:600;color:var(--text-secondary);padding:6px 10px;text-align:left;border-bottom:2px solid var(--border);">Employee</th>
-                <th style="font-size:11px;font-weight:600;color:var(--text-secondary);padding:6px 10px;text-align:left;border-bottom:2px solid var(--border);">Department</th>
-                <th style="font-size:11px;font-weight:600;color:var(--text-secondary);padding:6px 10px;text-align:left;border-bottom:2px solid var(--border);">Country</th>
-                <th style="font-size:11px;font-weight:600;color:var(--text-secondary);padding:6px 10px;text-align:center;border-bottom:2px solid var(--border);">Days taken</th>
-                <th style="font-size:11px;font-weight:600;color:var(--text-secondary);padding:6px 10px;border-bottom:2px solid var(--border);min-width:160px;">Balance</th>
-                <th style="font-size:11px;font-weight:600;color:var(--text-secondary);padding:6px 10px;text-align:center;border-bottom:2px solid var(--border);">Status</th>
-              </tr>
-            </thead>
-            <tbody id="vac-tbody"></tbody>
-          </table>
-        </div>
-        <div id="vac-row-count" style="font-size:11px;color:var(--text-muted);margin-top:10px;text-align:right;"></div>
-      </div>
-
-    </div><!-- /tab-vacations -->
-
-
   </div>
 </main>
-
 <script>
 // ─── GENDER BY LEVEL (Jun 22, 2026, from HC snapshot) ────────────────────────
 const GENDER_BY_LEVEL_MAY26 = [
-  { label:"1a",     total:97, f:38, m:58, nb:0, ns:1 },
-  { label:"1b",     total:110, f:52, m:58, nb:0, ns:0 },
-  { label:"1c",     total:100, f:50, m:50, nb:0, ns:0 },
-  { label:"2a",     total:113, f:54, m:59, nb:0, ns:0 },
-  { label:"2b",     total:108, f:61, m:47, nb:0, ns:0 },
-  { label:"2c",     total:83, f:41, m:42, nb:0, ns:0 },
-  { label:"3a",     total:99, f:48, m:51, nb:0, ns:0 },
-  { label:"3b",     total:99, f:50, m:49, nb:0, ns:0 },
-  { label:"3c",     total:52, f:25, m:27, nb:0, ns:0 },
-  { label:"4a",     total:65, f:27, m:37, nb:0, ns:1 },
-  { label:"4b",     total:54, f:16, m:38, nb:0, ns:0 },
-  { label:"4c",     total:37, f:7, m:30, nb:0, ns:0 },
-  { label:"5a",     total:35, f:13, m:22, nb:0, ns:0 },
-  { label:"5b",     total:21, f:7, m:14, nb:0, ns:0 },
-  { label:"5c",     total:15, f:4, m:11, nb:0, ns:0 },
-  { label:"6a",     total:12, f:2, m:10, nb:0, ns:0 },
-  { label:"6b",     total:4, f:0, m:4, nb:0, ns:0 },
-  { label:"E",      total:20, f:3, m:16, nb:1, ns:0 },
-  { label:"Intern", total:8, f:6, m:1, nb:0, ns:1 },
+  { label:"1a",    total:102, f:42, m:59, nb:0, ns:1 },
+  { label:"1b",    total:110, f:51, m:59, nb:0, ns:0 },
+  { label:"1c",    total:99, f:50, m:49, nb:0, ns:0 },
+  { label:"2a",    total:117, f:53, m:63, nb:1, ns:0 },
+  { label:"2b",    total:117, f:67, m:50, nb:0, ns:0 },
+  { label:"2c",    total:81, f:39, m:42, nb:0, ns:0 },
+  { label:"3a",    total:97, f:47, m:50, nb:0, ns:0 },
+  { label:"3b",    total:103, f:50, m:52, nb:0, ns:1 },
+  { label:"3c",    total:52, f:25, m:27, nb:0, ns:0 },
+  { label:"4a",    total:70, f:30, m:40, nb:0, ns:0 },
+  { label:"4b",    total:56, f:17, m:39, nb:0, ns:0 },
+  { label:"4c",    total:37, f:7, m:30, nb:0, ns:0 },
+  { label:"5a",    total:35, f:13, m:22, nb:0, ns:0 },
+  { label:"5b",    total:21, f:7, m:14, nb:0, ns:0 },
+  { label:"5c",    total:14, f:4, m:10, nb:0, ns:0 },
+  { label:"6a",    total:14, f:2, m:12, nb:0, ns:0 },
+  { label:"6b",    total:4, f:0, m:4, nb:0, ns:0 },
+  { label:"E",     total:20, f:3, m:16, nb:1, ns:0 },
+  { label:"Intern",total:6, f:6, m:0, nb:0, ns:0 },
 ];
-
 // ─── DATA ─────────────────────────────────────────────────────────────────────
 const DATA = {
   hcByDept: {
-    "Go To Market":        { hc:534, attr:6.8, vol:2.5, invol:4.3 },
-    "Operations":          { hc:207, attr:5.8, vol:1.6, invol:4.2 },
-    "Product Development": { hc:160, attr:5.7, vol:1.4, invol:4.3 },
-    "Finance":             { hc:77,  attr:1.4, vol:1.4, invol:0.0 },
-    "Financial Products":  { hc:54,  attr:2.1, vol:2.1, invol:0.0 },
-    "People":              { hc:41,  attr:2.8, vol:0.0, invol:2.8 },
-    "Counsel":             { hc:27,  attr:14.6,vol:4.9, invol:9.8 },
-    "Corporate Admin":     { hc:3,   attr:0.0, vol:0.0, invol:0.0 },
+    "Go To Market":         { hc:574, attr:1.74, vol:0.52, invol:1.22 },
+    "Operations":           { hc:217, attr:1.38, vol:0.92, invol:0.46 },
+    "Product Development":  { hc:169, attr:1.18, vol:0.59, invol:0.59 },
+    "Finance":              { hc:77,  attr:1.3, vol:1.3, invol:0.0 },
+    "Financial Products":   { hc:59,  attr:5.08, vol:0.0, invol:5.08 },
+    "People":               { hc:45,  attr:2.22, vol:2.22, invol:0.0 },
+    "Counsel":              { hc:26,  attr:3.85, vol:0.0, invol:3.85 },
+    "Corporate Admin":      { hc:2,   attr:0.0, vol:0.0, invol:0.0 },
   },
   hcByLevel: {
-    "1a": { hc:88  }, "1b": { hc:114 }, "1c": { hc:103 },
-    "2a": { hc:102 }, "2b": { hc:106 }, "2c": { hc:84  },
-    "3a": { hc:93  }, "3b": { hc:96  }, "3c": { hc:54  },
-    "4a": { hc:60  }, "4b": { hc:55  }, "4c": { hc:35  },
-    "5a": { hc:31  }, "5b": { hc:20  }, "5c": { hc:17  },
-    "6a": { hc:13  }, "6b": { hc:3   }, "E":  { hc:20  },
-    "Intern":         { hc:9   },
+    "1a": { hc:102}, "1b": { hc:110}, "1c": { hc:99 },
+    "2a": { hc:117}, "2b": { hc:117}, "2c": { hc:81 },
+    "3a": { hc:97 }, "3b": { hc:103}, "3c": { hc:52 },
+    "4a": { hc:70 }, "4b": { hc:56 }, "4c": { hc:37 },
+    "5a": { hc:35 }, "5b": { hc:21 }, "5c": { hc:14 },
+    "6a": { hc:14 }, "6b": { hc:4  }, "E": { hc:20 },
+    "Intern":         { hc:6   },
   },
-  hcByPais: { "Mexico":355,"Colombia":164,"Brazil":160,"United States":96,"Peru":84,"South Africa":64 },
+  hcByPais: { "Mexico":376,"Colombia":171,"Brazil":163,"United States":99,"Peru":87,"South Africa":68 },
   gender: {
-    default: { f:504, m:625, nb:1, ns:3, total:1133 },
+    default: { f:519, m:645, nb:2, ns:3, total:1169 },
     // By Department (parent)
-    "Corporate Admin":       { f:1, m:0, nb:1, ns:0, total:2 },
-    "Counsel":               { f:18, m:8, nb:0, ns:0, total:26 },
-    "Finance":               { f:41, m:35, nb:0, ns:0, total:76 },
-    "Financial Products":    { f:22, m:30, nb:0, ns:0, total:52 },
-    "Go To Market":          { f:251, m:295, nb:0, ns:2, total:548 },
-    "Operations":            { f:101, m:110, nb:0, ns:1, total:212 },
-    "People":                { f:34, m:7, nb:0, ns:0, total:41 },
-    "Product Development":   { f:32, m:131, nb:0, ns:0, total:163 },
+    "Corporate Admin":         { f:1, m:0, nb:1, ns:0, total:2 },
+    "Counsel":                 { f:19, m:7, nb:0, ns:0, total:26 },
+    "Finance":                 { f:42, m:35, nb:0, ns:0, total:77 },
+    "Financial Products":      { f:22, m:37, nb:0, ns:0, total:59 },
+    "Go To Market":            { f:262, m:308, nb:1, ns:3, total:574 },
+    "Operations":              { f:105, m:112, nb:0, ns:0, total:217 },
+    "People":                  { f:37, m:8, nb:0, ns:0, total:45 },
+    "Product Development":     { f:31, m:138, nb:0, ns:0, total:169 },
     // By Level
-    "Intern":                { f:6, m:1, nb:0, ns:1, total:8 },
+    "Intern":                  { f:6, m:0, nb:0, ns:0, total:6 },
     // By Country
-    "Brazil":                { f:83, m:73, nb:0, ns:1, total:157 },
-    "China":                 { f:2, m:4, nb:0, ns:0, total:6 },
-    "Colombia":              { f:80, m:84, nb:0, ns:0, total:164 },
-    "Ecuador":               { f:29, m:32, nb:0, ns:0, total:61 },
-    "India":                 { f:2, m:5, nb:0, ns:0, total:7 },
-    "Indonesia":             { f:6, m:17, nb:0, ns:0, total:23 },
-    "Mexico":                { f:153, m:215, nb:0, ns:1, total:369 },
-    "Panama":                { f:15, m:12, nb:0, ns:0, total:27 },
-    "Peru":                  { f:35, m:51, nb:0, ns:0, total:86 },
-    "Philippines":           { f:31, m:37, nb:0, ns:1, total:69 },
-    "South Africa":          { f:40, m:26, nb:0, ns:0, total:66 },
-    "United States":         { f:28, m:69, nb:1, ns:0, total:98 },
+    "Brazil":                  { f:86, m:76, nb:0, ns:1, total:163 },
+    "China":                   { f:2, m:4, nb:0, ns:0, total:6 },
+    "Colombia":                { f:78, m:93, nb:0, ns:0, total:171 },
+    "Ecuador":                 { f:30, m:35, nb:0, ns:0, total:65 },
+    "India":                   { f:3, m:6, nb:0, ns:0, total:9 },
+    "Indonesia":               { f:9, m:21, nb:0, ns:0, total:30 },
+    "Mexico":                  { f:161, m:215, nb:0, ns:0, total:376 },
+    "Panama":                  { f:15, m:10, nb:0, ns:1, total:26 },
+    "Peru":                    { f:36, m:51, nb:0, ns:0, total:87 },
+    "Philippines":             { f:31, m:37, nb:1, ns:0, total:69 },
+    "South Africa":            { f:41, m:26, nb:0, ns:1, total:68 },
+    "United States":           { f:27, m:71, nb:1, ns:0, total:99 },
     // By Employment Type
-    "Salaried, full-time":   { f:497, m:625, nb:1, ns:3, total:1126 },
-    "Salaried, part-time":   { f:1, m:0, nb:0, ns:0, total:1 },
+    "Salaried, full-time":     { f:513, m:645, nb:2, ns:3, total:1163 },
+    "Salaried, part-time":     { f:1, m:0, nb:0, ns:0, total:1 },
   },
   tenure: {
     default: [
-      { label:"0–6m",   val:280, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"6m–1y",  val:154, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"1–2y",   val:243, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
-      { label:"2–5y",   val:376, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
-      { label:"5y+",    val:80, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"0–6m",  val:282, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"6m–1y", val:159, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"1–2y",  val:263, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
+      { label:"2–5y",  val:383, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"5y+",   val:82, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
     ],
     // By Department
     "Go To Market": [
-      { label:"0–6m",   val:149, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"6m–1y",  val:81, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"1–2y",   val:117, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
-      { label:"2–5y",   val:182, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
-      { label:"5y+",    val:19, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"0–6m",  val:150, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"6m–1y", val:90, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"1–2y",  val:126, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
+      { label:"2–5y",  val:187, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"5y+",   val:21, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
     ],
     "Operations": [
-      { label:"0–6m",   val:40, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"6m–1y",  val:18, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"1–2y",   val:51, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
-      { label:"2–5y",   val:82, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
-      { label:"5y+",    val:21, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"0–6m",  val:44, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"6m–1y", val:20, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"1–2y",  val:51, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
+      { label:"2–5y",  val:82, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"5y+",   val:20, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
     ],
     "Product Development": [
-      { label:"0–6m",   val:31, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"6m–1y",  val:17, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"1–2y",   val:31, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
-      { label:"2–5y",   val:55, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
-      { label:"5y+",    val:29, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"0–6m",  val:37, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"6m–1y", val:13, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"1–2y",  val:34, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
+      { label:"2–5y",  val:56, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"5y+",   val:29, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
     ],
     "Finance": [
-      { label:"0–6m",   val:12, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"6m–1y",  val:10, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"1–2y",   val:24, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
-      { label:"2–5y",   val:28, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
-      { label:"5y+",    val:2, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"0–6m",  val:13, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"6m–1y", val:9, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"1–2y",  val:25, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
+      { label:"2–5y",  val:28, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"5y+",   val:2, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
     ],
     "Financial Products": [
-      { label:"0–6m",   val:11, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"6m–1y",  val:11, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"1–2y",   val:11, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
-      { label:"2–5y",   val:12, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
-      { label:"5y+",    val:7, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"0–6m",  val:14, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"6m–1y", val:12, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"1–2y",  val:13, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
+      { label:"2–5y",  val:13, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"5y+",   val:7, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
     ],
     "People": [
-      { label:"0–6m",   val:13, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"6m–1y",  val:9, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"1–2y",   val:6, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
-      { label:"2–5y",   val:12, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
-      { label:"5y+",    val:1, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"0–6m",  val:14, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"6m–1y", val:9, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"1–2y",  val:8, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
+      { label:"2–5y",  val:13, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"5y+",   val:1, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
     ],
     "Counsel": [
-      { label:"0–6m",   val:11, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"6m–1y",  val:8, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"1–2y",   val:3, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
-      { label:"2–5y",   val:4, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
-      { label:"5y+",    val:0, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"0–6m",  val:10, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"6m–1y", val:6, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"1–2y",  val:6, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
+      { label:"2–5y",  val:3, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"5y+",   val:1, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
     ],
     "Corporate Admin": [
-      { label:"0–6m",   val:0, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"6m–1y",  val:0, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"1–2y",   val:0, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
-      { label:"2–5y",   val:1, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
-      { label:"5y+",    val:1, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"0–6m",  val:0, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"6m–1y", val:0, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"1–2y",  val:0, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
+      { label:"2–5y",  val:1, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"5y+",   val:1, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
     ],
     // By Country
     "Mexico": [
-      { label:"0–6m",   val:98, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"6m–1y",  val:63, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"1–2y",   val:65, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
-      { label:"2–5y",   val:113, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
-      { label:"5y+",    val:30, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"0–6m",  val:91, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"6m–1y", val:65, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"1–2y",  val:72, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
+      { label:"2–5y",  val:118, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"5y+",   val:30, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
     ],
     "Brazil": [
-      { label:"0–6m",   val:42, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"6m–1y",  val:19, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"1–2y",   val:53, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
-      { label:"2–5y",   val:41, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
-      { label:"5y+",    val:2, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"0–6m",  val:36, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"6m–1y", val:26, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"1–2y",  val:53, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
+      { label:"2–5y",  val:46, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"5y+",   val:2, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
     ],
     "Colombia": [
-      { label:"0–6m",   val:31, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"6m–1y",  val:19, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"1–2y",   val:40, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
-      { label:"2–5y",   val:66, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
-      { label:"5y+",    val:8, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"0–6m",  val:37, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"6m–1y", val:16, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"1–2y",  val:44, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
+      { label:"2–5y",  val:65, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"5y+",   val:9, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
     ],
     "United States": [
-      { label:"0–6m",   val:21, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"6m–1y",  val:6, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"1–2y",   val:11, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
-      { label:"2–5y",   val:32, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
-      { label:"5y+",    val:28, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"0–6m",  val:23, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"6m–1y", val:6, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"1–2y",  val:11, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
+      { label:"2–5y",  val:31, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"5y+",   val:28, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
     ],
     "Peru": [
-      { label:"0–6m",   val:21, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"6m–1y",  val:11, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"1–2y",   val:12, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
-      { label:"2–5y",   val:41, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
-      { label:"5y+",    val:1, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"0–6m",  val:20, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"6m–1y", val:10, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"1–2y",  val:15, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
+      { label:"2–5y",  val:41, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"5y+",   val:1, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
     ],
     "South Africa": [
-      { label:"0–6m",   val:8, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"6m–1y",  val:8, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"1–2y",   val:22, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
-      { label:"2–5y",   val:23, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
-      { label:"5y+",    val:5, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"0–6m",  val:7, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"6m–1y", val:7, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"1–2y",  val:26, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
+      { label:"2–5y",  val:22, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"5y+",   val:6, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
     ],
     "Ecuador": [
-      { label:"0–6m",   val:9, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"6m–1y",  val:7, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"1–2y",   val:7, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
-      { label:"2–5y",   val:36, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
-      { label:"5y+",    val:2, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"0–6m",  val:12, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"6m–1y", val:6, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"1–2y",  val:8, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
+      { label:"2–5y",  val:37, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"5y+",   val:2, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
     ],
     "Philippines": [
-      { label:"0–6m",   val:26, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"6m–1y",  val:14, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"1–2y",   val:26, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
-      { label:"2–5y",   val:3, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
-      { label:"5y+",    val:0, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"0–6m",  val:23, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"6m–1y", val:16, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"1–2y",  val:27, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
+      { label:"2–5y",  val:3, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"5y+",   val:0, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
     ],
     "Panama": [
-      { label:"0–6m",   val:5, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"6m–1y",  val:0, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"1–2y",   val:3, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
-      { label:"2–5y",   val:19, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
-      { label:"5y+",    val:0, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"0–6m",  val:6, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"6m–1y", val:0, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"1–2y",  val:2, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
+      { label:"2–5y",  val:18, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"5y+",   val:0, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
     ],
     "Indonesia": [
-      { label:"0–6m",   val:15, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"6m–1y",  val:6, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"1–2y",   val:1, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
-      { label:"2–5y",   val:1, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
-      { label:"5y+",    val:0, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"0–6m",  val:22, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"6m–1y", val:6, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"1–2y",  val:1, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
+      { label:"2–5y",  val:1, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"5y+",   val:0, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
     ],
     "China": [
-      { label:"0–6m",   val:0, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"6m–1y",  val:1, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"1–2y",   val:2, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
-      { label:"2–5y",   val:1, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
-      { label:"5y+",    val:2, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"0–6m",  val:0, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"6m–1y", val:0, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"1–2y",  val:3, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
+      { label:"2–5y",  val:1, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"5y+",   val:2, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
     ],
     "India": [
-      { label:"0–6m",   val:4, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"6m–1y",  val:0, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"1–2y",   val:1, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
-      { label:"2–5y",   val:0, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
-      { label:"5y+",    val:2, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"0–6m",  val:5, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"6m–1y", val:1, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"1–2y",  val:1, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
+      { label:"2–5y",  val:0, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"5y+",   val:2, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
     ],
     // By Employment Type
     "Salaried, full-time": [
-      { label:"0–6m",   val:277, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"6m–1y",  val:152, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"1–2y",   val:242, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
-      { label:"2–5y",   val:375, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
-      { label:"5y+",    val:80, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"0–6m",  val:280, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"6m–1y", val:159, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"1–2y",  val:260, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
+      { label:"2–5y",  val:382, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"5y+",   val:82, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
     ],
     "Salaried, part-time": [
-      { label:"0–6m",   val:0, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"6m–1y",  val:0, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"1–2y",   val:0, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
-      { label:"2–5y",   val:1, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
-      { label:"5y+",    val:0, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"0–6m",  val:0, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"6m–1y", val:0, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"1–2y",  val:0, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
+      { label:"2–5y",  val:1, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"5y+",   val:0, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
     ],
     "Intern": [
-      { label:"0–6m",   val:3, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"6m–1y",  val:2, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"1–2y",   val:1, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
-      { label:"2–5y",   val:0, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
-      { label:"5y+",    val:0, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"0–6m",  val:2, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"6m–1y", val:0, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"1–2y",  val:4, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
+      { label:"2–5y",  val:0, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"5y+",   val:0, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
     ],
   },
   insights: {
@@ -1258,42 +1029,42 @@ const DATA = {
     { m:"Mar  26",  exits:21, vol:9,  invol:12, avgHC:981,  pct:2.14, early:6  },
     { m:"Apr  26",  exits:25, vol:12, invol:13, avgHC:1021, pct:2.45, early:8  },
     { m:"Jun  26",  exits:18, vol:9,  invol:9,  avgHC:1086, pct:1.66, early:5  },
+    { m:"Aug  26",  exits:21, vol:8,  invol:13, avgHC:1151, pct:1.82, early:2  }
   ]
 };
-
 // ─── HC MONTHLY BREAKDOWNS ────────────────────────────────────────────────────
 const HC_BY_DEPT = {
   // Parent departments (May 25 – Jun 22 '26), index 0=May25 … 12=May26, 13=Jun22'26
-  "Go To Market": [351,367,385,398,416,435,434,438,445,455,484,504,519,534,548],
-  "Operations": [151,154,161,160,162,164,166,161,165,167,164,167,199,207,212],
-  "Product Development": [8,10,8,7,7,9,115,114,119,117,119,124,156,160,163],
-  "Finance": [63,66,62,61,61,60,62,60,62,59,61,64,77,77,76],
-  "Financial Products": [20,21,24,27,28,28,29,27,26,27,28,29,51,54,52],
-  "People": [17,17,17,19,20,21,21,20,21,21,22,22,40,41,41],
-  "Counsel": [14,13,13,15,15,16,17,19,21,17,18,18,25,27,26],
+  "Go To Market": [351,367,385,398,416,435,434,438,445,455,484,504,519,534,548,574],
+  "Operations": [151,154,161,160,162,164,166,161,165,167,164,167,199,207,212,217],
+  "Product Development": [8,10,8,7,7,9,115,114,119,117,119,124,156,160,163,169],
+  "Finance": [63,66,62,61,61,60,62,60,62,59,61,64,77,77,76,77],
+  "Financial Products": [20,21,24,27,28,28,29,27,26,27,28,29,51,54,52,59],
+  "People": [17,17,17,19,20,21,21,20,21,21,22,22,40,41,41,45],
+  "Counsel": [14,13,13,15,15,16,17,19,21,17,18,18,25,27,26,26],
   // Sub-departments
-  "Sales": [249,260,270,280,292,301,297,298,297,299,320,335,338,341,348],
-  "Merchant Operations": [74,77,80,82,90,99,105,107,114,117,121,122,122,147,156],
-  "Core Engineering": [1,3,1,0,0,0,92,92,92,93,94,98,100,108,111],
-  "Global Clerk Support": [66,66,69,68,67,67,66,66,69,71,71,73,73,75,72],
-  "Marketing": [28,30,35,36,34,35,32,33,34,39,43,47,47,46,52],
-  "Global General Support": [39,40,44,42,42,42,43,41,44,43,42,43,43,50,57],
-  "FPA and Treasury": [23,25,27,28,31,36,36,35,36,33,34,35,35,36,35],
-  "Global Tools and Metrics": [27,27,27,28,29,31,31,30,29,29,31,30,30,32,31],
-  "Accounting": [40,41,35,33,30,24,26,25,26,26,27,29,31,31,30],
-  "Product and UX": [7,7,7,7,7,8,23,22,24,24,25,26,27,28,29],
-  "Global Collections": [19,21,21,25,25,25,26,24,23,24,20,21,21,21,22],
-  "Legal": [14,13,13,15,15,16,17,19,21,17,18,18,17,24,23],
+  "Sales": [249,260,270,280,292,301,297,298,297,299,320,335,338,341,348,349],
+  "Merchant Operations": [74,77,80,82,90,99,105,107,114,117,121,122,122,147,156,164],
+  "Core Engineering": [1,3,1,0,0,0,92,92,92,93,94,98,100,108,111,118],
+  "Global Clerk Support": [66,66,69,68,67,67,66,66,69,71,71,73,73,75,72,70],
+  "Marketing": [28,30,35,36,34,35,32,33,34,39,43,47,47,46,52,61],
+  "Global General Support": [39,40,44,42,42,42,43,41,44,43,42,43,43,50,57,58],
+  "FPA and Treasury": [23,25,27,28,31,36,36,35,36,33,34,35,35,36,35,36],
+  "Global Tools and Metrics": [27,27,27,28,29,31,31,30,29,29,31,30,30,32,31,35],
+  "Accounting": [40,41,35,33,30,24,26,25,26,26,27,29,31,31,30,30],
+  "Product and UX": [7,7,7,7,7,8,23,22,24,24,25,26,27,28,29,28],
+  "Global Collections": [19,21,21,25,25,25,26,24,23,24,20,21,21,21,22,22],
+  "Legal": [14,13,13,15,15,16,17,19,21,17,18,18,17,24,23,23],
 };
 // Real exits per dept per month (index 0=May25 … 11=Apr26, 12=Jun26), from Rippling data
 const EXITS_BY_DEPT = {
-  "Go To Market":        [10,13,10,8,5,7,11,7,10,11,9,9,10],
-  "Operations":          [5,6,4,3,5,2,2,5,3,4,4,4,3],
-  "Product Development": [2,1,1,0,0,1,0,2,3,0,5,1,1],
-  "Finance":             [0,2,2,3,3,2,1,2,0,0,1,2,2],
-  "Financial Products":  [1,1,3,3,1,0,1,0,0,0,1,1,1],
-  "People":              [0,0,1,0,0,3,0,1,0,1,0,0,1],
-  "Counsel":             [0,1,0,0,1,0,1,0,1,1,1,1,0],
+  "Go To Market":        [10,13,10,8,5,7,11,7,10,11,9,9,10,10],
+  "Operations":          [5,6,4,3,5,2,2,5,3,4,4,4,3,3],
+  "Product Development": [2,1,1,0,0,1,0,2,3,0,5,1,1,2],
+  "Finance":             [0,2,2,3,3,2,1,2,0,0,1,2,2,1],
+  "Financial Products":  [1,1,3,3,1,0,1,0,0,0,1,1,1,3],
+  "People":              [0,0,1,0,0,3,0,1,0,1,0,0,1,1],
+  "Counsel":             [0,1,0,0,1,0,1,0,1,1,1,1,0,1],
 };
 // Attrition % per dept per month = exits / ((HC_start+HC_end)/2) * 100
 // Calculated from real Rippling HC inicio/final + terminations files
@@ -1312,10 +1083,9 @@ const ATTR_BY_DEPT_MONTHLY = {
   "Core Engineering":      [ null, null, null, null, null, null,  0.0,  1.09, 1.09, 0.0,  3.21, 1.04],
   "FPA and Treasury":      [ 0.0,  0.0,  0.0,  3.64, 0.0,  0.0,  2.78, 2.78, 0.0,  0.0,  0.0,  2.9 ],
 };
-const ATTR_MON_LABELS = ["May  25","Jun  25","Jul  25","Aug  25","Sep  25","Oct  25","Nov  25","Dec  25","Jan  26","Feb  26","Mar  26","Apr  26","Jun  26"];
+const ATTR_MON_LABELS = ["May  25","Jun  25","Jul  25","Aug  25","Sep  25","Oct  25","Nov  25","Dec  25","Jan  26","Feb  26","Mar  26","Apr  26","Jun  26","Aug  26"];
 let attrMonthIdx = null; // kept for legacy; use attrQuarterIdx for quarterly filtering
 let attrQuarterIdx = null; // null = all quarters
-
 // Voluntary-only monthly rates by department (vol exits / dept HC × 100)
 const ATTR_VOL_BY_DEPT_MONTHLY = {
   "Global Collections":      [10.53,  0.0,  4.76,  0.0,  0.0,  0.0,  0.0,  0.0,  4.26,  0.0,  0.0,  4.88],
@@ -1331,7 +1101,6 @@ const ATTR_VOL_BY_DEPT_MONTHLY = {
   "Core Engineering":        [ null, null, null, null, null, null,  0.0,  1.09,  0.0,  0.0,  2.14,  0.0],
   "FPA and Treasury":        [  0.0,  0.0,  0.0,  3.64,  0.0,  0.0,  0.0,  2.78,  0.0,  0.0,  0.0,  0.0],
 };
-
 // Quarterly turnover: total exits / avg HC × 100
 // Q2'25=May+Jun only (partial Q), Q2'26=Apr only (partial Q)
 // volExits = voluntary only; volPct = volExits / avgHC × 100
@@ -1341,7 +1110,6 @@ const QUARTERLY_ATTR = [
   { q:"Q1 '26", label:"Q1 2026", monthIdxs:[8,9,10], exits:55, volExits:19, avgHC:954.7, pct:5.76, volPct:1.99, partial:false },
   { q:"Q2 '26", label:"Q2 2026 (partial)", monthIdxs:[11,12], exits:43, volExits:21, avgHC:1054, pct:4.08, volPct:1.99, partial:true },
 ];
-
 // Early attrition (90 days) by cohort — quarterly view
 const EARLY_ATTR_BY_Q = [
   { label:"Q2 2025", hires:74,  early:7,  pct:9.5,  incomplete:false },
@@ -1351,36 +1119,34 @@ const EARLY_ATTR_BY_Q = [
   { label:"Q2 2026", hires:56,  early:1,  pct:1.8,  incomplete:true  },
 ];
 const EARLY_ATTR_OVERALL = 7.4; // 34 early exits / 458 hires (Jun25–Apr26)
-
 const HC_BY_LEVEL = {
   // Individual levels from Rippling HC Final de mes files (May 25 – May 26 May 11)
-  "1a":     [95,105,111,108,113,114,111,110,114,119,130,88,89,96],
-  "1b":     [61,67,67,73,74,75,76,78,80,82,86,108,113,110],
-  "1c":     [89,89,87,87,87,91,90,88,88,88,89,105,104,102],
-  "2a":     [73,79,81,91,92,98,104,103,106,107,112,85,87,114],
-  "2b":     [66,74,73,73,73,74,73,73,71,74,77,94,96,106],
-  "2c":     [59,60,60,56,60,65,66,67,66,67,66,87,85,83],
-  "3a":     [68,76,80,83,85,85,84,86,97,98,110,85,88,99],
-  "3b":     [52,55,54,54,57,60,61,63,62,64,67,87,91,97],
-  "3c":     [48,50,47,48,49,51,49,49,48,49,48,57,55,53],
-  "4a":     [36,36,36,39,41,41,44,46,49,51,54,56,56,66],
-  "4b":     [30,31,34,38,39,40,42,38,39,38,39,48,50,54],
-  "4c":     [31,31,31,32,31,31,32,32,32,32,34,36,36,37],
-  "5a":     [19,21,23,23,24,25,28,29,29,28,26,29,30,35],
-  "5b":     [15,15,14,16,16,16,16,16,17,17,18,16,16,21],
-  "5c":     [13,16,15,15,15,15,15,15,15,15,15,17,17,15],
-  "6a":     [1,1,1,1,1,1,5,5,5,5,5,13,12,12],
-  "6b":     [1,1,1,1,1,1,1,1,1,1,1,2,3,4],
-  "E":      [21,21,21,22,22,22,23,21,21,21,21,22,22,20],
-  "Intern": [0,0,0,0,0,0,0,1,1,1,5,4,5,8],
+  "1a":     [95,105,111,108,113,114,111,110,114,119,130,88,89,96,102],
+  "1b":     [61,67,67,73,74,75,76,78,80,82,86,108,113,110,110],
+  "1c":     [89,89,87,87,87,91,90,88,88,88,89,105,104,102,99],
+  "2a":     [73,79,81,91,92,98,104,103,106,107,112,85,87,114,117],
+  "2b":     [66,74,73,73,73,74,73,73,71,74,77,94,96,106,117],
+  "2c":     [59,60,60,56,60,65,66,67,66,67,66,87,85,83,81],
+  "3a":     [68,76,80,83,85,85,84,86,97,98,110,85,88,99,97],
+  "3b":     [52,55,54,54,57,60,61,63,62,64,67,87,91,97,103],
+  "3c":     [48,50,47,48,49,51,49,49,48,49,48,57,55,53,52],
+  "4a":     [36,36,36,39,41,41,44,46,49,51,54,56,56,66,70],
+  "4b":     [30,31,34,38,39,40,42,38,39,38,39,48,50,54,56],
+  "4c":     [31,31,31,32,31,31,32,32,32,32,34,36,36,37,37],
+  "5a":     [19,21,23,23,24,25,28,29,29,28,26,29,30,35,35],
+  "5b":     [15,15,14,16,16,16,16,16,17,17,18,16,16,21,21],
+  "5c":     [13,16,15,15,15,15,15,15,15,15,15,17,17,15,14],
+  "6a":     [1,1,1,1,1,1,5,5,5,5,5,13,12,12,14],
+  "6b":     [1,1,1,1,1,1,1,1,1,1,1,2,3,4,4],
+  "E":      [21,21,21,22,22,22,23,21,21,21,21,22,22,20,20],
+  "Intern": [0,0,0,0,0,0,0,1,1,1,5,4,5,8,6],
 };
 const HC_BY_EMP_TYPE = {
   // Corrected from Rippling files (May 25 – May 26)
-  "Salaried, full-time": [779,830,836,859,879,904,920,919,939,955,998,1033,1039,1124],
-  "Salaried, part-time": [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-  "Intern":              [0,0,0,0,0,0,0,5,4,4,4,5,5,7],
+  "Salaried, full-time": [779,830,836,859,879,904,920,919,939,955,998,1033,1039,1124,1163],
+  "Salaried, part-time": [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+  "Intern":              [0,0,0,0,0,0,0,5,4,4,4,5,5,7,5],
 };
-
 // ─── MAY 2026 COUNTRY BREAKDOWN BY FILTER (from HC Final de mes May 2026) ─────
 const HC_MAY26_BY_DEPT = {
   "Go To Market":       { "Mexico":149, "Brazil":106, "Colombia":65,  "United States":1,  "Peru":57, "South Africa":32, "Philippines":42, "Ecuador":46, "Panama":10, "Indonesia":8,  "India":3 },
@@ -1391,7 +1157,6 @@ const HC_MAY26_BY_DEPT = {
   "People":             { "Mexico":15,  "Brazil":3,   "Colombia":4,   "United States":7,  "Peru":2,  "South Africa":2,  "Philippines":4, "Ecuador":2, "Indonesia":1 },
   "Counsel":            { "Mexico":5,   "Brazil":8,   "Colombia":1,   "United States":2,  "Peru":2,  "South Africa":1,  "Philippines":1, "Ecuador":2, "Panama":2,  "India":1 },
 };
-
 const HC_MAY26_BY_LEVEL = {
   "L1":    { "Mexico":84, "Brazil":60, "Colombia":40, "Peru":36, "South Africa":20, "Philippines":28, "Ecuador":21, "Panama":12, "Indonesia":6 },
   "L2":    { "Mexico":92, "Brazil":44, "Colombia":47, "Peru":29, "South Africa":15, "Philippines":12, "Ecuador":21, "Panama":5,  "Indonesia":2, "China":1 },
@@ -1401,13 +1166,11 @@ const HC_MAY26_BY_LEVEL = {
   "L6+":   { "Mexico":5,  "Brazil":2,  "Colombia":1,  "United States":25, "Peru":1,  "South Africa":1, "Ecuador":1 },
   "Intern":{ "Brazil":6,  "United States":1, "Philippines":2 },
 };
-
 const HC_MAY26_BY_EMPTYPE = {
   "Salaried, full-time": { "Mexico":341, "Brazil":151, "Colombia":159, "United States":90, "Peru":83, "South Africa":64, "Philippines":62, "Ecuador":57, "Panama":27, "Indonesia":14, "China":7, "India":6 },
   "Salaried, part-time": { "United States":1 },
   "Intern":              { "Brazil":5, "United States":1, "Peru":1 },
 };
-
 // Level individual → group mapping
 const LEVEL_TO_GROUP = {
   "1a":"L1","1b":"L1","1c":"L1",
@@ -1418,7 +1181,6 @@ const LEVEL_TO_GROUP = {
   "6a":"L6+","6b":"L6+","E":"L6+",
   "Intern":"Intern"
 };
-
 const HC_BY_COUNTRY = {
   // May 25–May 26: from HC Final de mes files (all emp types)
   // May 26 (index 12): from HC snapshot May 18, 2026
@@ -1426,20 +1188,19 @@ const HC_BY_COUNTRY = {
   // Jun 22 (index 14): from HC active employees June 22, 2026
   // Jun 29 (index 15): from HC active employees June 29, 2026 (total 1,106)
   // Jul 6/13/20 (index 16/17/18): from HC active employees weekly, July 2026
-  "Mexico":         [246,247,245,255,266,284,289,289,302,308,323,331,341,345,355,354,357,363,365,369],
-  "Brazil":         [108,120,120,121,122,125,124,129,132,136,149,156,156,160,160,160,156,157,158,157],
-  "Colombia":       [122,133,133,135,141,142,140,143,141,142,148,154,159,163,164,164,166,166,166,164],
-  "United States":  [77,78,77,79,78,77,84,83,83,84,85,87,92,94,96,97,96,99,99,98],
-  "Peru":           [63,69,72,73,73,72,73,75,73,75,78,80,84,84,84,84,86,85,87,86],
-  "South Africa":   [48,55,55,58,60,61,62,62,63,62,61,62,64,64,64,65,66,66,66,66],
-  "Ecuador":        [56,57,60,61,59,59,60,59,59,58,60,60,57,58,59,59,59,61,61,61],
-  "Philippines":    [19,31,34,36,40,42,45,44,47,50,51,60,62,65,64,65,66,67,67,69],
-  "Panama":         [34,33,32,32,31,31,31,28,27,27,28,27,27,29,27,27,27,27,27,27],
-  "Indonesia":      [0,0,1,1,1,3,4,4,8,8,8,10,14,17,18,19,22,22,23,23],
-  "China":          [4,5,5,6,6,6,6,6,6,6,7,7,7,7,6,6,6,6,6,6],
-  "India":          [3,3,3,3,3,3,3,3,3,4,5,5,6,6,6,6,6,7,7,7],
+  "Mexico":         [246,247,245,255,266,284,289,289,302,308,323,331,341,345,355,354,357,363,365,369,376],
+  "Brazil":         [108,120,120,121,122,125,124,129,132,136,149,156,156,160,160,160,156,157,158,157,163],
+  "Colombia":       [122,133,133,135,141,142,140,143,141,142,148,154,159,163,164,164,166,166,166,164,171],
+  "United States":  [77,78,77,79,78,77,84,83,83,84,85,87,92,94,96,97,96,99,99,98,99],
+  "Peru":           [63,69,72,73,73,72,73,75,73,75,78,80,84,84,84,84,86,85,87,86,87],
+  "South Africa":   [48,55,55,58,60,61,62,62,63,62,61,62,64,64,64,65,66,66,66,66,68],
+  "Ecuador":        [56,57,60,61,59,59,60,59,59,58,60,60,57,58,59,59,59,61,61,61,65],
+  "Philippines":    [19,31,34,36,40,42,45,44,47,50,51,60,62,65,64,65,66,67,67,69,69],
+  "Panama":         [34,33,32,32,31,31,31,28,27,27,28,27,27,29,27,27,27,27,27,27,26],
+  "Indonesia":      [0,0,1,1,1,3,4,4,8,8,8,10,14,17,18,19,22,22,23,23,30],
+  "China":          [4,5,5,6,6,6,6,6,6,6,7,7,7,7,6,6,6,6,6,6,6],
+  "India":          [3,3,3,3,3,3,3,3,3,4,5,5,6,6,6,6,6,7,7,7,9],
 };
-
 // ─── WEEKLY HC BY COUNTRY ────────────────────────────────────────────────────
 const HC_WEEKLY_COUNTRY = {
   "1/5/26":  { total:943,  rows:[ {country:"Mexico",hc:304},{country:"Colombia",hc:144},{country:"Brazil",hc:127},{country:"United States",hc:83},{country:"Peru",hc:74},{country:"South Africa",hc:63},{country:"Ecuador",hc:59},{country:"Philippines",hc:45},{country:"Panama",hc:28},{country:"Indonesia",hc:7},{country:"China",hc:6},{country:"India",hc:3} ]},
@@ -1466,7 +1227,6 @@ const HC_WEEKLY_COUNTRY = {
   "6/15/26": { total:1098, rows:[ {country:"Mexico",hc:353},{country:"Colombia",hc:162},{country:"Brazil",hc:160},{country:"United States",hc:95},{country:"Peru",hc:83},{country:"Philippines",hc:64},{country:"South Africa",hc:64},{country:"Ecuador",hc:58},{country:"Panama",hc:28},{country:"Indonesia",hc:18},{country:"China",hc:7},{country:"India",hc:6} ]},
   "6/22/26": { total:1103, rows:[ {country:"Mexico",hc:355},{country:"Colombia",hc:164},{country:"Brazil",hc:160},{country:"United States",hc:96},{country:"Peru",hc:84},{country:"South Africa",hc:64},{country:"Philippines",hc:64},{country:"Ecuador",hc:59},{country:"Panama",hc:27},{country:"Indonesia",hc:18},{country:"India",hc:6},{country:"China",hc:6} ]},
 };
-
 const COUNTRY_COLORS = {
   "Mexico":        "#f97316",
   "Brazil":        "#22c55e",
@@ -1481,7 +1241,6 @@ const COUNTRY_COLORS = {
   "China":         "#f59e0b",
   "India":         "#6366f1",
 };
-
 function renderHCCountryBars() {
   const el = document.getElementById("hc-country-bars");
   if (!el) return;
@@ -1491,7 +1250,6 @@ function renderHCCountryBars() {
   const { depto, nivel, emptype } = filters;
   let rows;
   let snapshotNote = "";
-
   if (depto || nivel || emptype) {
     // Use May 2026 snapshot breakdown
     let countryMap = null;
@@ -1501,7 +1259,6 @@ function renderHCCountryBars() {
       if (HC_MAY26_BY_LEVEL[grp]) countryMap = HC_MAY26_BY_LEVEL[grp];
     }
     else if (emptype && HC_MAY26_BY_EMPTYPE[emptype]) countryMap = HC_MAY26_BY_EMPTYPE[emptype];
-
     if (!countryMap) {
       el.innerHTML = `<div style="color:var(--text-muted);font-size:12px;padding:20px 0;">No country data for this filter</div>`;
       return;
@@ -1552,7 +1309,6 @@ function renderHCCountryBars() {
   <div style="margin-top:4px;font-size:10px;color:var(--text-muted);text-align:right;">${isFiltered ? '% of total · May 2026 snapshot' : '% of '+prevLabel+' total ('+prevTotal.toLocaleString()+')'}</div>`;
   document.getElementById("hc-country-subtitle").textContent = "";
 }
-
 // ─── WEEKLY MOVEMENTS (Bajas & Ingresos) ─────────────────────────────────────
 // reason keys: "Resignation" | "Performance" | "End of Contract"
 const WEEKLY_MOV = {
@@ -2065,7 +1821,6 @@ const WEEKLY_MOV = {
   },
   "7/13/26": {
     bajas: [
-
     ],
     ingresos: [
       { name:"Mariana Naranjo", country:"Colombia", title:"Senior Counsel", dept:"Counsel" },
@@ -2205,15 +1960,12 @@ const WEEKLY_MOV = {
     ]
   },
 };
-
 let activeWeek = "7/27/26";
-
 function setWeek(w) {
   activeWeek = w;
   document.querySelectorAll(".week-select").forEach(s => { s.value = w; });
   renderMovements();
 }
-
 const REASON_CLASS = {
   "Resignation":               "reason-resignation",
   "Performance":               "reason-performance",
@@ -2228,7 +1980,6 @@ const REASON_CLASS = {
   "Other Employment":          "reason-involuntary",
   "Unknown":                   "reason-involuntary"
 };
-
 const TERM_TYPE = {
   "Resignation":               "Voluntary",
   "Personal Reasons":          "Voluntary",
@@ -2243,20 +1994,17 @@ const TERM_TYPE = {
   "Other Employment":          "Involuntary",
   "Unknown":                   "Involuntary"
 };
-
 function shortLevel(lv) {
   const m = lv.match(/IC\s+(I{1,3}V?|V?I{0,3})\b/);
   if (!m) return lv;
   const map = {"I":"L1","II":"L2","III":"L3","IV":"L4","V":"L5"};
   return map[m[1]] || lv;
 }
-
 function renderMovements() {
   const grid = document.getElementById("movements-grid");
   if (!grid) return;
   const data = WEEKLY_MOV[activeWeek];
   if (!data) return;
-
   // Sort by HC country order (Mexico first, then Brazil, etc.)
   const sel = document.getElementById("country-month-sel");
   const idx = sel ? parseInt(sel.value) : 12;
@@ -2265,10 +2013,8 @@ function renderMovements() {
     .sort((a, b) => b.hc - a.hc)
     .map(r => r.country);
   const countryRank = c => { const i = countryOrder.indexOf(c); return i === -1 ? 99 : i; };
-
   const sortedBajas    = [...data.bajas].sort((a, b) => countryRank(a.country) - countryRank(b.country));
   const sortedIngresos = [...data.ingresos].sort((a, b) => countryRank(a.country) - countryRank(b.country));
-
   const bajaItems = sortedBajas.map(b => {
     const color = COUNTRY_COLORS[b.country] || "#94a3b8";
     const termType = b.termType || (b.reason ? TERM_TYPE[b.reason] : "");
@@ -2291,7 +2037,6 @@ function renderMovements() {
       <div style="display:flex;align-items:center;gap:3px;flex-wrap:wrap;margin-top:2px;">${typeHtml}${reasonHtml}</div>
     </div>`;
   }).join("");
-
   const ingresoItems = sortedIngresos.map(i => {
     const color = COUNTRY_COLORS[i.country] || "#94a3b8";
     const nameHtml = i.name ? `<div class="mov-item-name">${i.name}</div>` : "";
@@ -2303,7 +2048,6 @@ function renderMovements() {
       ${nameHtml}${titleLine}${deptLine}${managerLine}
     </div>`;
   }).join("");
-
   // Regrettable alert
   const regrettables = data.bajas.filter(b => b.regrettable === "Regrettable");
   const regrettableAlert = regrettables.length > 0
@@ -2315,7 +2059,6 @@ function renderMovements() {
         </div>
       </div>`
     : `<div style="margin-top:10px;padding:8px 14px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;font-size:11px;font-weight:600;color:#166534;">✅ No regrettable terminations this week</div>`;
-
   grid.innerHTML = `
     <div>
       <div class="mov-col-header">
@@ -2333,7 +2076,6 @@ function renderMovements() {
       <div class="mov-list">${ingresoItems}</div>
     </div>`;
 }
-
 // ─── HC MoM STRIP ────────────────────────────────────────────────────────────
 function renderHCMoMStrip() {
   const strip = document.getElementById("hc-mom-strip");
@@ -2355,13 +2097,11 @@ function renderHCMoMStrip() {
       <span style="font-size:10px;color:${color};font-weight:600;">${pct}%</span>
     </div>`;
   }).join('');
-
   // YTD (Jan–Apr 2026)
   const ytdStart = data.find(r => r.label === 'Dec 25');
   const ytdEnd   = data[data.length - 1];
   const ytdDelta = ytdEnd.hc - ytdStart.hc;
   const ytdPct   = ((ytdDelta / ytdStart.hc) * 100).toFixed(1);
-
   strip.innerHTML = pills + `
     <div style="display:flex;flex-direction:column;align-items:center;background:var(--blue-light);border-radius:8px;padding:5px 10px;min-width:60px;border:1px solid #bfdbfe;">
       <span style="font-size:9.5px;color:var(--blue);font-weight:700;text-transform:uppercase;">YTD 2026</span>
@@ -2369,7 +2109,6 @@ function renderHCMoMStrip() {
       <span style="font-size:10px;color:var(--blue);font-weight:600;">+${ytdPct}%</span>
     </div>`;
 }
-
 // ─── HC MONTHLY TREND ────────────────────────────────────────────────────────
 const HC_MONTHLY = [
   { label:"May 25",  hc:780,  q:"Q2-2025" },
@@ -2387,9 +2126,9 @@ const HC_MONTHLY = [
   { label:"May 26",  hc:1069, q:"Q2-2026" },
   { label:"Jun 26",  hc:1106, q:"Q2-2026" },
   { label:"Jul 26",  hc:1133, q:"Q3-2026" },
+  { label:"Aug 26",  hc:1169, q:"Q3-2026" },
 ];
 let activeHCQ = 'all';
-
 function renderHCSparkline() {
   const el = document.getElementById("hc-sparkline");
   if (!el) return;
@@ -2403,7 +2142,6 @@ function renderHCSparkline() {
     </div>`;
   }).join('');
 }
-
 function setHCQuarter(q) {
   activeHCQ = q;
   const sel = document.getElementById("filter-quarter");
@@ -2413,7 +2151,6 @@ function setHCQuarter(q) {
   document.getElementById("hc-subtitle").textContent = label;
   renderHCTrend();
 }
-
 function getFilteredHCData() {
   const { depto, nivel, emptype } = filters;
   // Pick first active filter (priority order)
@@ -2421,13 +2158,11 @@ function getFilteredHCData() {
   if      (depto   && HC_BY_DEPT[depto])         lookup = HC_BY_DEPT[depto];
   else if (nivel   && HC_BY_LEVEL[nivel])         lookup = HC_BY_LEVEL[nivel];
   else if (emptype && HC_BY_EMP_TYPE[emptype])    lookup = HC_BY_EMP_TYPE[emptype];
-
   return HC_MONTHLY.map((r, i) => ({
     label: r.label, q: r.q,
     hc: lookup ? lookup[i] : r.hc
   })).filter(r => r.hc > 0);
 }
-
 // _buildHCTrendData: core data builder, always takes explicit filter values
 function _buildHCTrendData(depto, nivel, emptype) {
   let lookup = null;
@@ -2439,7 +2174,6 @@ function _buildHCTrendData(depto, nivel, emptype) {
     hc: lookup ? (lookup[i] || 0) : r.hc
   })).filter(r => r.hc > 0);
 }
-
 function renderHCTrend() {
   // Always read live from DOM — never rely on closure or global state
   const depto   = document.getElementById("filter-depto")   ? document.getElementById("filter-depto").value   : "";
@@ -2447,7 +2181,6 @@ function renderHCTrend() {
   const emptype = document.getElementById("filter-emptype") ? document.getElementById("filter-emptype").value : "";
   _renderHCTrendWith(depto, nivel, emptype);
 }
-
 function _renderHCTrendWith(depto, nivel, emptype) {
   const c = document.getElementById("chart-hc");
   if (!c) return;
@@ -2482,7 +2215,6 @@ function _renderHCTrendWith(depto, nivel, emptype) {
   }).join('');
   renderHCMoMStrip();
 }
-
 function updateKPIHC() {
   const { depto, nivel, emptype } = filters;
   const allData = getFilteredHCData();
@@ -2500,12 +2232,12 @@ function updateKPIHC() {
   }
   // update visible banner
   if (!depto && !nivel && !emptype) {
-    document.getElementById("kpi-hc").textContent = "1,133";
-    document.getElementById("kpi-hc-delta-val").textContent = "+22.5%";
-    document.getElementById("kpi-hc-note").textContent = "+208 vs Dec 2025";
-    document.getElementById("hc-banner-num").textContent = "1,133";
-    document.getElementById("hc-banner-delta").textContent = "+27 vs Jun · +2.4%";
-    document.getElementById("hc-banner-period").textContent = "Jul 27, 2026";
+    document.getElementById("kpi-hc").textContent = "1,169";
+    document.getElementById("kpi-hc-delta-val").textContent = "+26.4%";
+    document.getElementById("kpi-hc-note").textContent = "+244 vs Dec 2025";
+    document.getElementById("hc-banner-num").textContent = "1,169";
+    document.getElementById("hc-banner-delta").textContent = "+36 vs Jul · +3.2%";
+    document.getElementById("hc-banner-period").textContent = "Aug 31, 2026";
   } else {
     const prevLabel = prev ? prev.label : "";
     const absDelta = prev ? hc - prev.hc : 0;
@@ -2514,12 +2246,10 @@ function updateKPIHC() {
     document.getElementById("hc-banner-period").textContent = latest.label;
   }
 }
-
 // ─── STATE ────────────────────────────────────────────────────────────────────
 let filters = { depto:"", nivel:"", emptype:"" };
 let analysisFilters = { country:"", dept:"", level:"" };
 let activePeriod = "q1";
-
 // ─── PERIOD TOGGLE ────────────────────────────────────────────────────────────
 function setPeriod(p) {
   activePeriod = p;
@@ -2531,7 +2261,6 @@ function setPeriod(p) {
   document.getElementById("kpi-hc-note").textContent   = d.hcNote;
   document.getElementById("kpi-attr-note").textContent = d.attrNote;
 }
-
 // ─── BAR CHART WITH AVG LINE ──────────────────────────────────────────────────
 function renderBarChart(id, rows, maxVal, avgVal) {
   const c = document.getElementById(id);
@@ -2558,7 +2287,6 @@ function renderBarChart(id, rows, maxVal, avgVal) {
       </div>`;
   });
 }
-
 // ─── SECTION 2 ────────────────────────────────────────────────────────────────
 function getHCRows() {
   const { depto, nivel } = filters;
@@ -2570,7 +2298,6 @@ function getAttrRows() {
   const { depto } = filters;
   const DEPTS = ["Global Collections","Global General Support","Accounting","Sales","Legal","Marketing","Global Tools and Metrics","Global Clerk Support","Core Engineering","FPA and Treasury"];
   const deptList = depto ? (DEPTS.includes(depto) ? [depto] : DEPTS) : DEPTS;
-
   return deptList.map(d => {
     let pct;
     if (attrQuarterIdx !== null) {
@@ -2594,7 +2321,6 @@ function getAttrRows() {
     };
   }).filter(Boolean).sort((a,b) => b.val - a.val);
 }
-
 function renderAttrTrend() {
   const el = document.getElementById("chart-attr-trend");
   if (!el) return;
@@ -2608,11 +2334,9 @@ function renderAttrTrend() {
   const n = data.length;
   const barW = Math.floor(cw / n * 0.52);
   const gap  = cw / n;
-
   // Voluntary benchmark: 3.25% quarterly = Mercer 13% annual voluntary tech
   const benchV = 3.25;
   const benchY = yScale(benchV).toFixed(1);
-
   const yTicks = [2, 4, 6, 8];
   let svg = `<svg width="100%" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" style="display:block;">
     <defs>
@@ -2621,19 +2345,16 @@ function renderAttrTrend() {
         <stop offset="100%" stop-color="#93c5fd"/>
       </linearGradient>
     </defs>`;
-
   // Grid lines + y-axis
   yTicks.forEach(v => {
     const y = yScale(v).toFixed(1);
     svg += `<line x1="${pad.l}" y1="${y}" x2="${pad.l+cw}" y2="${y}" stroke="#e8eaed" stroke-width="1"/>`;
     svg += `<text x="${pad.l-6}" y="${parseFloat(y)+3.5}" text-anchor="end" fill="#9ca3af" font-size="9.5" font-family="${ff}">${v}%</text>`;
   });
-
   // Voluntary benchmark line
   svg += `<line x1="${pad.l}" y1="${benchY}" x2="${pad.l+cw}" y2="${benchY}" stroke="#f97316" stroke-width="1.5" stroke-dasharray="6,3" opacity="0.85"/>`;
   svg += `<text x="${pad.l+cw+3}" y="${parseFloat(benchY)+3.5}" fill="#f97316" font-size="8" font-family="${ff}" font-weight="700">3.25%</text>`;
   svg += `<text x="${pad.l+cw+3}" y="${parseFloat(benchY)+12}" fill="#f97316" font-size="7.5" font-family="${ff}" opacity="0.85">mkt vol.</text>`;
-
   // Total bars
   data.forEach((r, i) => {
     const cx  = pad.l + i * gap + gap / 2;
@@ -2647,7 +2368,6 @@ function renderAttrTrend() {
     svg += `<text x="${cx.toFixed(1)}" y="${lblY}" text-anchor="middle" fill="#3b82f6"
       font-size="9.5" font-weight="700" font-family="${ff}">${r.pct.toFixed(2)}%${r.partial?' *':''}</text>`;
   });
-
   // Voluntary line + dots
   const volPts = data.map((r, i) => ({
     x: pad.l + i * gap + gap / 2,
@@ -2663,13 +2383,11 @@ function renderAttrTrend() {
     svg += `<text x="${p.x.toFixed(1)}" y="${lblY}" text-anchor="middle" fill="#f43f5e"
       font-size="9" font-weight="700" font-family="${ff}">${r.volPct.toFixed(2)}%</text>`;
   });
-
   // X-axis labels
   data.forEach((r, i) => {
     const cx = pad.l + i * gap + gap / 2;
     svg += `<text x="${cx.toFixed(1)}" y="${(pad.t+ch+14).toFixed(1)}" text-anchor="middle" fill="#6b7280" font-size="9.5" font-weight="600" font-family="${ff}">${r.q}</text>`;
   });
-
   // Legend
   svg += `<rect x="${pad.l}" y="4" width="11" height="11" fill="url(#totalBarGrad)" rx="2"/>`;
   svg += `<text x="${pad.l+14}" y="13" fill="#3b82f6" font-size="9" font-weight="600" font-family="${ff}">Total turnover</text>`;
@@ -2678,21 +2396,16 @@ function renderAttrTrend() {
   svg += `<text x="${pad.l+103}" y="13" fill="#f43f5e" font-size="9" font-weight="600" font-family="${ff}">Voluntary only</text>`;
   svg += `<line x1="${pad.l+190}" y1="9" x2="${pad.l+202}" y2="9" stroke="#f97316" stroke-width="1.5" stroke-dasharray="4,2"/>`;
   svg += `<text x="${pad.l+205}" y="13" fill="#f97316" font-size="9" font-weight="600" font-family="${ff}">Market benchmark (vol.)</text>`;
-
   // Partial note
   svg += `<text x="${pad.l}" y="${H-2}" fill="#9ca3af" font-size="8" font-family="${ff}">* Partial quarter</text>`;
-
   svg += '</svg>';
   el.innerHTML = svg;
 }
-
-
 function setAttrMonth(val) {
   attrMonthIdx = val === "" ? null : parseInt(val);
   renderBarChart("chart-attrition", getAttrRows(), 15, null);
   updateEarlyAttrBanner();
 }
-
 function setAttrQuarter(val) {
   attrQuarterIdx = val === "" ? null : parseInt(val);
   const sub = document.getElementById("attr-subtitle");
@@ -2702,7 +2415,6 @@ function setAttrQuarter(val) {
   renderBarChart("chart-attrition", getAttrRows(), 15, null);
   updateEarlyAttrBanner();
 }
-
 function updateEarlyAttrBanner() {
   const el = document.getElementById("early-attr");
   const subEl = document.getElementById("early-attr-sub");
@@ -2717,7 +2429,6 @@ function updateEarlyAttrBanner() {
   }
   renderEarlyAttrBars();
 }
-
 function renderEarlyAttrBars() {
   const container = document.getElementById("early-attr-bars");
   if (!container) return;
@@ -2734,7 +2445,6 @@ function renderEarlyAttrBars() {
     </div>`;
   }).join('');
 }
-
 function renderSection2() {
   const { depto, nivel } = filters;
   // hc-subtitle is managed by setHCQuarter
@@ -2742,19 +2452,15 @@ function renderSection2() {
   if (attrSubEl) attrSubEl.textContent = attrQuarterIdx !== null
     ? QUARTERLY_ATTR[attrQuarterIdx].label + " · voluntary turnover rate"
     : (depto ? "Voluntary turnover · "+depto : "voluntary exits / headcount — avg quarterly rate");
-
   const attrRows = getAttrRows();
   // Company avg monthly attrition (all depts, May 2025–Apr 2026)
   const companyAvgAttr = attrMonthIdx !== null ? null :
     (attrRows.length ? Math.round(attrRows.reduce((s,r)=>s+r.val,0)/attrRows.length*10)/10 : null);
-
   renderHCTrend();
   renderAttrTrend();
   if (document.getElementById("chart-attrition")) renderBarChart("chart-attrition", attrRows, 15, companyAvgAttr);
-
   updateEarlyAttrBanner();
 }
-
 function genderAxis(labelW) {
   return `<div style="display:grid;grid-template-columns:${labelW}px 1fr 62px;gap:10px;margin-top:5px;">
     <span></span>
@@ -2774,7 +2480,6 @@ function genderRow(label, f, m, total, labelW) {
     <span style="font-size:11px;color:var(--text-muted);white-space:nowrap;">n = ${total.toLocaleString()}</span>
   </div>`;
 }
-
 function renderGenderByLevel() {
   const el = document.getElementById("gender-by-level-chart");
   if (!el) return;
@@ -2793,7 +2498,6 @@ function renderGenderByLevel() {
   }).filter(r => r.total > 0);
   el.innerHTML = rows.map(r => genderRow(r.label, r.f, r.m, r.total, 24)).join('') + genderAxis(24);
 }
-
 function renderGenderByDept() {
   const el = document.getElementById("gender-by-dept-chart");
   if (!el) return;
@@ -2801,7 +2505,6 @@ function renderGenderByDept() {
   const rows = depts.map(d => DATA.gender[d] ? { label:d, f:DATA.gender[d].f, m:DATA.gender[d].m, total:DATA.gender[d].total } : null).filter(r => r && r.total > 0);
   el.innerHTML = rows.map(r => genderRow(r.label, r.f, r.m, r.total, 118)).join('') + genderAxis(118);
 }
-
 function renderGenderByCountry() {
   const el = document.getElementById("gender-by-country-chart");
   if (!el) return;
@@ -2809,7 +2512,6 @@ function renderGenderByCountry() {
   const rows = countries.map(c => DATA.gender[c] ? { label:c, f:DATA.gender[c].f, m:DATA.gender[c].m, total:DATA.gender[c].total } : null).filter(r => r && r.total > 0);
   el.innerHTML = rows.map(r => genderRow(r.label, r.f, r.m, r.total, 110)).join('') + genderAxis(110);
 }
-
 // ─── SECTION 3 ─────────────────────────────────────────────────
 function renderGender(forceKey) {
   const key = forceKey || filters.depto || filters.nivel || filters.emptype || "default";
@@ -2829,16 +2531,13 @@ function renderGender(forceKey) {
   const sub = document.getElementById("gen-subtitle");
   if (sub) sub.textContent = activeKey ? "Gender · " + activeKey : "Distribution of total headcount";
 }
-
 function renderTenure(forceKey) {
   const activeKey = forceKey || filters.depto || filters.nivel || filters.emptype || "default";
   const rows = DATA.tenure[activeKey] || DATA.tenure.default;
   const max = Math.max(...rows.map(r=>r.val));
   const total = rows.reduce((s,r)=>s+r.val,0);
-
   // guard against all-zero data (e.g. tiny groups)
   const safeMax = max > 0 ? max : 1;
-
   document.getElementById("chart-tenure").innerHTML = rows.map(r=>
     `<div class="col-group">
       <div class="col-bar-wrap"><div class="col-bar" style="height:${Math.max(r.val>0?6:0, r.val/safeMax*100)}px;background:${r.color};" title="${r.label}: ${r.val}"></div></div>
@@ -2846,50 +2545,40 @@ function renderTenure(forceKey) {
       <div style="font-size:9.5px;color:var(--text-muted);text-align:center;margin-bottom:1px;">${r.val}</div>
       <div class="col-lbl">${r.label}</div>
     </div>`).join("");
-
   const high   = rows.filter(r=>r.risk==="high").reduce((s,r)=>s+r.val,0);
   const medium = rows.filter(r=>r.risk==="medium").reduce((s,r)=>s+r.val,0);
   const low    = rows.filter(r=>r.risk==="low").reduce((s,r)=>s+r.val,0);
   const safeTotal = total > 0 ? total : 1;
   const highP  = Math.round(high/safeTotal*100), medP=Math.round(medium/safeTotal*100), lowP=Math.round(low/safeTotal*100);
-
   document.getElementById("tenure-risk-bar").innerHTML =
     `<div class="trb-seg" style="width:${highP}%;background:var(--rose);"></div>
      <div class="trb-seg" style="width:${medP}%;background:var(--amber);"></div>
      <div class="trb-seg" style="width:${lowP}%;background:var(--green);"></div>`;
-
   document.getElementById("tenure-risk-labels").innerHTML =
     `<span class="chip rose">${high} (${highP}%) high risk &lt;1yr</span>
      <span class="chip amber">${medium} (${medP}%) medium</span>
      <span class="chip green">${low} (${lowP}%) stable</span>`;
-
   const label = (activeKey && activeKey !== "default") ? "Tenure · " + activeKey : "Employees grouped by time at company";
   document.getElementById("ten-subtitle").textContent = label;
 }
-
-
 // ─── DYNAMIC INSIGHTS ─────────────────────────────────────────────────────────
 function renderInsights() {
   const key = filters.depto || "default";
   const rows = DATA.insights[key] || DATA.insights.default;
   const label = filters.depto || filters.nivel;
-
   document.getElementById("insights-title").textContent = label ? label+" · Issues" : "Main Issues";
   document.getElementById("insights-scope").textContent = label ? "Filtered · "+label : "Global · all departments";
-
   const typeMap = {
     critical: { cls:"critical", dot:`<div class="insight-dot" style="background:var(--rose);"></div>` },
     warn:     { cls:"warn",     dot:`<div class="insight-diamond" style="background:var(--amber);"></div>` },
     good:     { cls:"good",     dot:`<div class="insight-dot" style="background:var(--green);"></div>` },
     info:     { cls:"info",     dot:`<div class="insight-dot" style="background:var(--blue);"></div>` },
   };
-
   document.getElementById("insights-content").innerHTML = rows.slice(0,3).map(r => {
     const t = typeMap[r.type];
     return `<div class="insight-row ${t.cls}">${t.dot}<div class="insight-text">${r.text}</div></div>`;
   }).join("");
 }
-
 // ─── FILTERS ──────────────────────────────────────────────────────────────────
 function applyFilters() {
   const d = document.getElementById("filter-depto").value;
@@ -2907,7 +2596,6 @@ function applyFilters() {
   try { renderTenure(); } catch(err) { console.error("renderTenure:", err); }
   try { renderInsights(); } catch(err) { console.error("renderInsights:", err); }
 }
-
 function updateFilterUI() {
   const active = [];
   if (filters.depto)   active.push({ key:"depto",   label:"Dept: "+filters.depto });
@@ -2920,7 +2608,6 @@ function updateFilterUI() {
   document.getElementById("active-filters-top").innerHTML = pills;
   document.getElementById("active-filters-bottom").innerHTML = pills;
 }
-
 function clearFilter(key) {
   document.getElementById("filter-"+key).value = "";
   filters[key] = "";
@@ -2928,13 +2615,11 @@ function clearFilter(key) {
   renderSection2(); renderGender(); renderTenure(); renderInsights();
   renderHCTrend(); updateKPIHC();
 }
-
 // ─── ANALYSIS TAB FILTERS ─────────────────────────────────────────────────────
 function applyAnalysisFilters() {
   analysisFilters.country = document.getElementById("af-country").value;
   analysisFilters.dept    = document.getElementById("af-dept").value;
   analysisFilters.level   = document.getElementById("af-level").value;
-
   // Determine the best matching key in DATA.gender / DATA.tenure
   // Priority: country > dept > level > "default"
   // Level only has "Intern" as a valid key
@@ -2942,7 +2627,6 @@ function applyAnalysisFilters() {
   if (analysisFilters.country) key = analysisFilters.country;
   else if (analysisFilters.dept) key = analysisFilters.dept;
   else if (analysisFilters.level === "Intern") key = "Intern";
-
   // Update label badge
   const labelEl = document.getElementById("af-label");
   const parts = [];
@@ -2955,11 +2639,9 @@ function applyAnalysisFilters() {
   } else {
     labelEl.style.display = "none";
   }
-
   renderGender(key);
   renderTenure(key);
 }
-
 function clearAnalysisFilters() {
   document.getElementById("af-country").value = "";
   document.getElementById("af-dept").value = "";
@@ -2969,7 +2651,6 @@ function clearAnalysisFilters() {
   renderGender("default");
   renderTenure("default");
 }
-
 function resetFilters() {
   ["depto","nivel","emptype"].forEach(k=>{ document.getElementById("filter-"+k).value=""; filters[k]=""; });
   document.getElementById("filter-quarter") && (document.getElementById("filter-quarter").value = "all");
@@ -2980,7 +2661,6 @@ function resetFilters() {
   updateKPIHC();
   renderGender(); renderTenure(); renderInsights();
 }
-
 // ─── ATTRITION DETAIL TABLE ───────────────────────────────────────────────────
 // Source: "2026 Employee Attrition Dashboard.xlsx" uploaded by user
 // Columns: Terminations (All/L2+), Regrettable (All/L2+), Non-Regrettable (All/L2+),
@@ -2995,16 +2675,13 @@ const ATTR_TABLE_DATA = [
   { period:"April 2026",    q:"Q2 2026", all:{tot:25,reg:6, nr:15,vol:12,inv:13,hc:1021.0}, l2:{tot:15,reg:6,nr:6, vol:9,inv:6, hc:701.0}, qVolL2:19, qHcL2:679.67,  qAttr:2.80, qRegAll:15, qHcRegAll:983,    qAttrReg:1.53, qRegL2:12, qHcRegL2:679.67, qAttrRegL2:1.77 },
 ];
 let attrView = 'all';
-
 function setAttrView(v) {
   attrView = v;
   document.getElementById('attr-btn-all').classList.toggle('active', v === 'all');
   document.getElementById('attr-btn-l2').classList.toggle('active', v === 'l2');
   renderAttrTable();
 }
-
 function pctBadgeClass(p) { return p >= 4 ? 'pct-high' : 'pct-low'; }
-
 function renderAttrTable() {
   const gBg = 'background:#f0fdf4;';
   const bBg = 'background:#eff6ff;';
@@ -3037,7 +2714,6 @@ function renderAttrTable() {
       <th style="text-align:center;font-size:10px;font-weight:600;${bBg}">Regrettable L2+</th>
     </tr>
   </thead>`;
-
   let prevQ = null;
   const tbody = `<tbody>${ATTR_TABLE_DATA.map(r => {
     const isNewQ = r.q !== prevQ;
@@ -3068,10 +2744,8 @@ function renderAttrTable() {
       <td style="text-align:center;background:#eff6ff;"><span class="abadge ${pctBadgeClass(r.qAttrRegL2)}">${r.qAttrRegL2}%</span></td>
     </tr>`;
   }).join('')}</tbody>`;
-
   document.getElementById('attr-detail-table').innerHTML = thead + tbody;
 }
-
 // ─── RAW ATTRITION TABLE (computed from Drive HC snapshots + master terminations file) ───
 const ATTRITION_RAW_DATA = [
   { period:"October 2025",  q:"Q4 2025", hidden:true,
@@ -3117,7 +2791,6 @@ const ATTRITION_RAW_DATA = [
     qRegL2:12, qHcRegL2:684.3, qAttrRegL2:1.75,
     qTotAll:63, qAttrTot:6.42 },
 ];
-
 // ─── ATTRITION BY DEPARTMENT (rolling 3M regrettable exits per parent dept) ───
 // Periods: [0]=Dec25, [1]=Jan26, [2]=Feb26, [3]=Mar26, [4]=Apr26
 // rate = rolling 3M regrettable exits / rolling avg HC × 100
@@ -3125,26 +2798,24 @@ const ATTRITION_RAW_DATA = [
 // Periods: [0]=Dec25, [1]=Jan26, [2]=Feb26, [3]=Mar26, [4]=Apr26
 // [count, rate%]  — null rate = dept renaming, HC denominator unreliable
 const MONTHLY_BY_DEPT = {
-  "Go To Market":        [[1,0.25],[1,0.24],[5,1.11],[2,0.43],[1,0.20],[4,0.78],[2,0.37], [1,0.18]],
-  "Finance":             [[1,1.47],[0,0.0], [0,0.0], [1,1.41],[2,2.72],[0,0.0],[0,0.0], [0,0.0]],
-  "Financial Products":  [[0,0.0], [0,0.0], [0,0.0], [1,2.0], [2,3.96],[0,0.0],[1,1.87], [0,0.0]],
-  "Product Development": [[2,null],[0,0.0], [0,0.0], [0,0.0], [0,0.0], [0,0.0],[1,0.62], [1,0.62]],
-  "Operations":          [[1,0.53],[1,0.53],[0,0.0], [0,0.0], [0,0.0], [0,0.0],[1,0.49], [1,0.48]],
-  "Counsel":             [[0,0.0], [1,null],[0,0.0], [0,0.0], [1,5.0], [0,0.0],[0,0.0], [0,0.0]],
-  "People":              [[1,3.45],[0,0.0], [0,0.0], [0,0.0], [0,0.0], [0,0.0],[0,0.0], [0,0.0]],
+  "Go To Market":        [[1,0.25],[1,0.24],[5,1.11],[2,0.43],[1,0.20],[4,0.78],[2,0.37], [1,0.18], [2,0.35]],
+  "Finance":             [[1,1.47],[0,0.0], [0,0.0], [1,1.41],[2,2.72],[0,0.0],[0,0.0], [0,0.0], [1,1.30]],
+  "Financial Products":  [[0,0.0], [0,0.0], [0,0.0], [1,2.0], [2,3.96],[0,0.0],[1,1.87], [0,0.0], [0,0.0]],
+  "Product Development": [[2,null],[0,0.0], [0,0.0], [0,0.0], [0,0.0], [0,0.0],[1,0.62], [1,0.62], [0,0.0]],
+  "Operations":          [[1,0.53],[1,0.53],[0,0.0], [0,0.0], [0,0.0], [0,0.0],[1,0.49], [1,0.48], [1,0.46]],
+  "Counsel":             [[0,0.0], [1,null],[0,0.0], [0,0.0], [1,5.0], [0,0.0],[0,0.0], [0,0.0], [0,0.0]],
+  "People":              [[1,3.45],[0,0.0], [0,0.0], [0,0.0], [0,0.0], [0,0.0],[0,0.0], [0,0.0], [1,2.22]],
 };
-
 // null rate = dept was renamed mid-year (Legal→Counsel, Engineering→ProdDev), denominator unreliable
 const ATTRITION_BY_DEPT = {
-  "Go To Market":        [{count:4,rate:0.97}, {count:5,rate:1.21}, {count:7,rate:1.65}, {count:8,rate:1.79}, {count:8,rate:1.70}, {count:7,rate:1.42}, {count:7,rate:1.36}, {count:7,rate:1.33}],
-  "Finance":             [{count:2,rate:2.94}, {count:1,rate:1.47}, {count:1,rate:1.46}, {count:1,rate:1.44}, {count:3,rate:4.21}, {count:3,rate:4.66}, {count:2,rate:2.86}, {count:0,rate:0.0}],
-  "Financial Products":  [{count:0,rate:0.0},  {count:0,rate:0.0},  {count:0,rate:0.0},  {count:1,rate:2.08}, {count:3,rate:6.04}, {count:3,rate:9.38}, {count:3,rate:7.38}, {count:1,rate:2.07}],
-  "Product Development": [{count:2,rate:null},  {count:2,rate:null},  {count:2,rate:null},  {count:0,rate:0.0},  {count:0,rate:0.0}, {count:0,rate:0.0}, {count:1,rate:0.71}, {count:2,rate:1.3}],
-  "Operations":          [{count:1,rate:0.53}, {count:2,rate:1.06}, {count:2,rate:1.05}, {count:1,rate:0.52}, {count:0,rate:0.0}, {count:0,rate:0.0}, {count:1,rate:0.54}, {count:2,rate:1.01}],
-  "Counsel":             [{count:0,rate:0.0},  {count:1,rate:null},  {count:1,rate:null},  {count:1,rate:null},  {count:1,rate:4.96}, {count:1,rate:5.26}, {count:1,rate:4.58}, {count:0,rate:0.0}],
-  "People":              [{count:1,rate:3.70}, {count:1,rate:3.47}, {count:1,rate:3.26}, {count:0,rate:0.0},  {count:0,rate:0.0}, {count:0,rate:0.0}, {count:0,rate:0.0}, {count:0,rate:0.0}],
+  "Go To Market":        [{count:4,rate:0.97}, {count:5,rate:1.21}, {count:7,rate:1.65}, {count:8,rate:1.79}, {count:8,rate:1.70}, {count:7,rate:1.42}, {count:7,rate:1.36}, {count:7,rate:1.33}, {count:5,rate:0.87}],
+  "Finance":             [{count:2,rate:2.94}, {count:1,rate:1.47}, {count:1,rate:1.46}, {count:1,rate:1.44}, {count:3,rate:4.21}, {count:3,rate:4.66}, {count:2,rate:2.86}, {count:0,rate:0.0}, {count:1,rate:1.30}],
+  "Financial Products":  [{count:0,rate:0.0},  {count:0,rate:0.0},  {count:0,rate:0.0},  {count:1,rate:2.08}, {count:3,rate:6.04}, {count:3,rate:9.38}, {count:3,rate:7.38}, {count:1,rate:2.07}, {count:1,rate:1.69}],
+  "Product Development": [{count:2,rate:null},  {count:2,rate:null},  {count:2,rate:null},  {count:0,rate:0.0},  {count:0,rate:0.0}, {count:0,rate:0.0}, {count:1,rate:0.71}, {count:2,rate:1.3}, {count:2,rate:1.18}],
+  "Operations":          [{count:1,rate:0.53}, {count:2,rate:1.06}, {count:2,rate:1.05}, {count:1,rate:0.52}, {count:0,rate:0.0}, {count:0,rate:0.0}, {count:1,rate:0.54}, {count:2,rate:1.01}, {count:3,rate:1.38}],
+  "Counsel":             [{count:0,rate:0.0},  {count:1,rate:null},  {count:1,rate:null},  {count:1,rate:null},  {count:1,rate:4.96}, {count:1,rate:5.26}, {count:1,rate:4.58}, {count:0,rate:0.0}, {count:0,rate:0.0}],
+  "People":              [{count:1,rate:3.70}, {count:1,rate:3.47}, {count:1,rate:3.26}, {count:0,rate:0.0},  {count:0,rate:0.0}, {count:0,rate:0.0}, {count:0,rate:0.0}, {count:0,rate:0.0}, {count:1,rate:2.22}],
 };
-
 // ─── ATTRITION BY COUNTRY (computed from Drive HC snapshots + master terminations) ───
 const ATTRITION_BY_COUNTRY = {
   "Brazil": [
@@ -3172,6 +2843,9 @@ const ATTRITION_BY_COUNTRY = {
     { period:"July 2026", q:"Q3 2026",
       all:{tot:7,reg:2,nr:5,vol:3,inv:4,hc:157.5}, l2:{tot:3,reg:1,nr:2,vol:1,inv:2,hc:94.5},
       qVolL2:1,qHcL2:96.5,qAttr:1.0, qRegAll:2,qHcRegAll:157.8,qAttrReg:1.3, qRegL2:1,qHcRegL2:96.5,qAttrRegL2:1.0 },
+    { period:"August 2026", q:"Q3 2026",
+      all:{tot:3,reg:0,nr:3,vol:1,inv:2,hc:160.0}, l2:{tot:1,reg:0,nr:1,vol:1,inv:0,hc:102.1},
+      qVolL2:1,qHcL2:102.1,qAttr:1.0, qRegAll:2,qHcRegAll:159.2,qAttrReg:1.3, qRegL2:0,qHcRegL2:102.1,qAttrRegL2:0.0 },
   ],
   "China": [
     { period:"December 2025", q:"Q4 2025",
@@ -3198,6 +2872,9 @@ const ATTRITION_BY_COUNTRY = {
     { period:"July 2026", q:"Q3 2026",
       all:{tot:1,reg:0,nr:1,vol:0,inv:1,hc:6.0}, l2:{tot:1,reg:0,nr:1,vol:0,inv:1,hc:6.0},
       qVolL2:0,qHcL2:6.5,qAttr:0.0, qRegAll:0,qHcRegAll:6.5,qAttrReg:0.0, qRegL2:0,qHcRegL2:6.5,qAttrRegL2:0.0 },
+    { period:"August 2026", q:"Q3 2026",
+      all:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:6.0}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:6.0},
+      qVolL2:0,qHcL2:6.0,qAttr:0.0, qRegAll:0,qHcRegAll:6.2,qAttrReg:0.0, qRegL2:0,qHcRegL2:6.0,qAttrRegL2:0.0 },
   ],
   "Colombia": [
     { period:"December 2025", q:"Q4 2025",
@@ -3224,6 +2901,9 @@ const ATTRITION_BY_COUNTRY = {
     { period:"July 2026", q:"Q3 2026",
       all:{tot:4,reg:0,nr:4,vol:3,inv:1,hc:164.0}, l2:{tot:1,reg:0,nr:1,vol:1,inv:0,hc:125.0},
       qVolL2:1,qHcL2:120.3,qAttr:0.8, qRegAll:3,qHcRegAll:161.3,qAttrReg:1.9, qRegL2:0,qHcRegL2:120.3,qAttrRegL2:0.0 },
+    { period:"August 2026", q:"Q3 2026",
+      all:{tot:3,reg:1,nr:2,vol:1,inv:2,hc:167.5}, l2:{tot:3,reg:1,nr:2,vol:1,inv:2,hc:130.3},
+      qVolL2:1,qHcL2:130.3,qAttr:0.8, qRegAll:3,qHcRegAll:165.0,qAttrReg:1.8, qRegL2:1,qHcRegL2:130.3,qAttrRegL2:0.8 },
   ],
   "Ecuador": [
     { period:"December 2025", q:"Q4 2025",
@@ -3250,6 +2930,9 @@ const ATTRITION_BY_COUNTRY = {
     { period:"July 2026", q:"Q3 2026",
       all:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:60.0}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:38.5},
       qVolL2:1,qHcL2:36.8,qAttr:2.7, qRegAll:0,qHcRegAll:59.2,qAttrReg:0.0, qRegL2:0,qHcRegL2:36.8,qAttrRegL2:0.0 },
+    { period:"August 2026", q:"Q3 2026",
+      all:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:63.0}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:40.7},
+      qVolL2:0,qHcL2:40.7,qAttr:0.0, qRegAll:0,qHcRegAll:60.7,qAttrReg:0.0, qRegL2:0,qHcRegL2:40.7,qAttrRegL2:0.0 },
   ],
   "India": [
     { period:"December 2025", q:"Q4 2025",
@@ -3276,6 +2959,9 @@ const ATTRITION_BY_COUNTRY = {
     { period:"July 2026", q:"Q3 2026",
       all:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:6.5}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:6.5},
       qVolL2:0,qHcL2:6.0,qAttr:0.0, qRegAll:0,qHcRegAll:6.0,qAttrReg:0.0, qRegL2:0,qHcRegL2:6.0,qAttrRegL2:0.0 },
+    { period:"August 2026", q:"Q3 2026",
+      all:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:8.0}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:8.0},
+      qVolL2:0,qHcL2:8.0,qAttr:0.0, qRegAll:0,qHcRegAll:6.8,qAttrReg:0.0, qRegL2:0,qHcRegL2:8.0,qAttrRegL2:0.0 },
   ],
   "Indonesia": [
     { period:"December 2025", q:"Q4 2025",
@@ -3302,6 +2988,9 @@ const ATTRITION_BY_COUNTRY = {
     { period:"July 2026", q:"Q3 2026",
       all:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:21.0}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:13.5},
       qVolL2:0,qHcL2:10.0,qAttr:0.0, qRegAll:0,qHcRegAll:16.7,qAttrReg:0.0, qRegL2:0,qHcRegL2:10.0,qAttrRegL2:0.0 },
+    { period:"August 2026", q:"Q3 2026",
+      all:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:26.5}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:19.4},
+      qVolL2:0,qHcL2:19.4,qAttr:0.0, qRegAll:0,qHcRegAll:21.5,qAttrReg:0.0, qRegL2:0,qHcRegL2:19.4,qAttrRegL2:0.0 },
   ],
   "Mexico": [
     { period:"December 2025", q:"Q4 2025",
@@ -3328,6 +3017,9 @@ const ATTRITION_BY_COUNTRY = {
     { period:"July 2026", q:"Q3 2026",
       all:{tot:3,reg:0,nr:3,vol:1,inv:2,hc:361.5}, l2:{tot:3,reg:0,nr:3,vol:1,inv:2,hc:276.0},
       qVolL2:6,qHcL2:264.5,qAttr:2.3, qRegAll:2,qHcRegAll:349.0,qAttrReg:0.6, qRegL2:2,qHcRegL2:264.5,qAttrRegL2:0.8 },
+    { period:"August 2026", q:"Q3 2026",
+      all:{tot:7,reg:3,nr:4,vol:3,inv:4,hc:372.5}, l2:{tot:6,reg:3,nr:3,vol:3,inv:3,hc:284.3},
+      qVolL2:3,qHcL2:284.3,qAttr:1.1, qRegAll:5,qHcRegAll:361.2,qAttrReg:1.4, qRegL2:3,qHcRegL2:284.3,qAttrRegL2:1.1 },
   ],
   "Panama": [
     { period:"December 2025", q:"Q4 2025",
@@ -3354,6 +3046,9 @@ const ATTRITION_BY_COUNTRY = {
     { period:"July 2026", q:"Q3 2026",
       all:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:27.0}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:15.0},
       qVolL2:1,qHcL2:15.5,qAttr:6.5, qRegAll:0,qHcRegAll:27.3,qAttrReg:0.0, qRegL2:0,qHcRegL2:15.5,qAttrRegL2:0.0 },
+    { period:"August 2026", q:"Q3 2026",
+      all:{tot:3,reg:1,nr:2,vol:1,inv:2,hc:26.5}, l2:{tot:2,reg:0,nr:2,vol:0,inv:2,hc:15.3},
+      qVolL2:0,qHcL2:15.3,qAttr:0.0, qRegAll:1,qHcRegAll:27.2,qAttrReg:3.7, qRegL2:0,qHcRegL2:15.3,qAttrRegL2:0.0 },
   ],
   "Peru": [
     { period:"December 2025", q:"Q4 2025",
@@ -3380,6 +3075,9 @@ const ATTRITION_BY_COUNTRY = {
     { period:"July 2026", q:"Q3 2026",
       all:{tot:4,reg:0,nr:4,vol:3,inv:1,hc:85.0}, l2:{tot:3,reg:0,nr:3,vol:2,inv:1,hc:52.5},
       qVolL2:3,qHcL2:49.3,qAttr:6.1, qRegAll:1,qHcRegAll:83.7,qAttrReg:1.2, qRegL2:1,qHcRegL2:49.3,qAttrRegL2:2.0 },
+    { period:"August 2026", q:"Q3 2026",
+      all:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:86.5}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:55.7},
+      qVolL2:0,qHcL2:55.7,qAttr:0.0, qRegAll:0,qHcRegAll:85.2,qAttrReg:0.0, qRegL2:0,qHcRegL2:55.7,qAttrRegL2:0.0 },
   ],
   "Philippines": [
     { period:"December 2025", q:"Q4 2025",
@@ -3406,6 +3104,9 @@ const ATTRITION_BY_COUNTRY = {
     { period:"July 2026", q:"Q3 2026",
       all:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:67.0}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:36.0},
       qVolL2:1,qHcL2:35.5,qAttr:2.8, qRegAll:1,qHcRegAll:64.2,qAttrReg:1.6, qRegL2:1,qHcRegL2:35.5,qAttrRegL2:2.8 },
+    { period:"August 2026", q:"Q3 2026",
+      all:{tot:2,reg:0,nr:2,vol:1,inv:1,hc:69.0}, l2:{tot:1,reg:0,nr:1,vol:1,inv:0,hc:39.0},
+      qVolL2:1,qHcL2:39.0,qAttr:2.6, qRegAll:0,qHcRegAll:66.8,qAttrReg:0.0, qRegL2:0,qHcRegL2:39.0,qAttrRegL2:0.0 },
   ],
   "South Africa": [
     { period:"December 2025", q:"Q4 2025",
@@ -3432,6 +3133,9 @@ const ATTRITION_BY_COUNTRY = {
     { period:"July 2026", q:"Q3 2026",
       all:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:65.5}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:45.0},
       qVolL2:0,qHcL2:44.3,qAttr:0.0, qRegAll:0,qHcRegAll:64.3,qAttrReg:0.0, qRegL2:0,qHcRegL2:44.3,qAttrRegL2:0.0 },
+    { period:"August 2026", q:"Q3 2026",
+      all:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:67.0}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:45.3},
+      qVolL2:0,qHcL2:45.3,qAttr:0.0, qRegAll:0,qHcRegAll:65.7,qAttrReg:0.0, qRegL2:0,qHcRegL2:45.3,qAttrRegL2:0.0 },
   ],
   "United States": [
     { period:"December 2025", q:"Q4 2025",
@@ -3458,9 +3162,11 @@ const ATTRITION_BY_COUNTRY = {
     { period:"July 2026", q:"Q3 2026",
       all:{tot:3,reg:1,nr:0,vol:3,inv:0,hc:97.0}, l2:{tot:2,reg:1,nr:0,vol:2,inv:0,hc:96.5},
       qVolL2:4,qHcL2:93.8,qAttr:4.3, qRegAll:3,qHcRegAll:94.0,qAttrReg:3.2, qRegL2:3,qHcRegL2:93.8,qAttrRegL2:3.2 },
+    { period:"August 2026", q:"Q3 2026",
+      all:{tot:3,reg:0,nr:2,vol:1,inv:2,hc:98.5}, l2:{tot:3,reg:0,nr:2,vol:1,inv:2,hc:98.5},
+      qVolL2:1,qHcL2:98.5,qAttr:1.0, qRegAll:2,qHcRegAll:97.0,qAttrReg:2.1, qRegL2:0,qHcRegL2:98.5,qAttrRegL2:0.0 },
   ],
 };
-
 function renderRawAttrTable() {
   const oBg = 'background:#fffbf5;';   // orange — voluntary
   const bBg = 'background:#f5f9ff;';   // blue   — regrettable all
@@ -3490,7 +3196,6 @@ function renderRawAttrTable() {
       <th style="text-align:center;font-size:10px;background:#fff7ed;">Exits</th><th style="text-align:center;font-size:10px;background:#fff7ed;">Avg HC</th><th style="text-align:center;font-size:10px;background:#fff7ed;">Rate</th>
       <th style="text-align:center;font-size:10px;background:#f0fdf4;">Exits</th><th style="text-align:center;font-size:10px;background:#f0fdf4;">Avg HC</th><th style="text-align:center;font-size:10px;background:#f0fdf4;">Rate</th>
     </tr></thead>`;
-
   let prevQ = null;
   const _rawRows = ATTRITION_RAW_DATA.filter(r => !r.hidden).slice().reverse();
   const tbody = `<tbody>${_rawRows.map((r, idx) => {
@@ -3521,8 +3226,6 @@ function renderRawAttrTable() {
   }).join('')}</tbody>`;
   document.getElementById('attr-raw-table').innerHTML = thead + tbody;
 }
-
-
 // ═══════════════════════════════════════════════════════════════════════════════
 // HOW TO ADD A NEW MONTH (e.g. June 2026)
 // ═══════════════════════════════════════════════════════════════════════════════
@@ -3557,7 +3260,6 @@ function renderRawAttrTable() {
 // 5. Add a new entry to ATTRITION_DRIVE_V2 array below (copy the April format).
 //    Change q to "Q2 2026" and hidden to false.
 // ═══════════════════════════════════════════════════════════════════════════════
-
 // ─── ATTRITION DATA V2 — FROM DRIVE (Oct 2025–Jul 2026) ──────────────────────
 const ATTRITION_DRIVE_V2 = [
   { period:"October 2025", q:"Q4 2025", hidden:true,
@@ -3610,8 +3312,12 @@ const ATTRITION_DRIVE_V2 = [
     qRegAll:12, qHcRegAll:1089.2, qAttrReg:1.10,
     qRegL2:8, qHcRegL2:784.2, qAttrRegL2:1.02,
     qNrAll:52, qAttrNr:4.77, qTotAll:70, qAttrTot:6.43 },
+  { period:"August 2026", q:"Q3 2026", hidden:false,
+    all:{tot:21, reg:5, nr:15, vol:8, hc:1151.0}, l2:{tot:16, reg:4, nr:11, vol:7, hc:835.5},
+    qRegAll:13, qHcRegAll:1122.3, qAttrReg:1.16,
+    qRegL2:9, qHcRegL2:813.7, qAttrRegL2:1.11,
+    qNrAll:53, qAttrNr:4.72, qTotAll:71, qAttrTot:6.33 },
 ];
-
 function renderDriveV2Table() {
   const el = document.getElementById('attr-raw-table');
   if (!el) return;
@@ -3674,15 +3380,12 @@ function renderDriveV2Table() {
   }).join('') + '</tbody>';
   el.innerHTML = thead + tbody;
 }
-
 // ─── COUNTRY ATTRITION CHART ──────────────────────────────────────────────────
 function renderCountryAttrChart() {
   const el = document.getElementById('country-attr-chart');
   if (!el) return;
-
   const periodIdx = parseInt(document.getElementById('country-attr-period').value || '4');
   const countries = Object.keys(ATTRITION_BY_COUNTRY);
-
   // Update rolling window note dynamically
   const windowLabels = [
     ['Oct 2025', 'Dec 2025'],
@@ -3697,7 +3400,6 @@ function renderCountryAttrChart() {
   const dNote = document.getElementById('dept-attr-note');
   if (cNote) cNote.textContent = noteText;
   if (dNote) dNote.textContent = noteText;
-
   // Get data for selected period + previous period for trend
   const rows = countries.map(c => {
     const r    = ATTRITION_BY_COUNTRY[c][periodIdx];
@@ -3708,28 +3410,22 @@ function renderCountryAttrChart() {
     const rate      = r.qAttrReg != null ? r.qAttrReg : (r.qHcRegAll > 0 ? +(count / r.qHcRegAll * 100).toFixed(2) : null);
     return { country: c, hc: r.all.hc, count, diff, rate };
   });
-
   // Only show countries with HC >= 50, top 4
   const visible = rows.filter(r => r.hc >= 50);
   visible.sort((a, b) => b.count - a.count || b.hc - a.hc);
   visible.splice(4);
-
   const flags = { Brazil:'🇧🇷', China:'🇨🇳', Colombia:'🇨🇴', Ecuador:'🇪🇨', India:'🇮🇳',
                   Indonesia:'🇮🇩', Mexico:'🇲🇽', Panama:'🇵🇦', Peru:'🇵🇪',
                   Philippines:'🇵🇭', 'South Africa':'🇿🇦', 'United States':'🇺🇸' };
-
   const prevLabels = ['—','Dec','Jan','Feb','Mar'];
   const prevLabel  = periodIdx > 0 ? prevLabels[periodIdx] : null;
-
   const trendHtml = (diff) => {
     if (diff === null || prevLabel === null) return `<span style="color:var(--text-muted);font-size:11px;">—</span>`;
     if (diff === 0) return `<span style="color:var(--text-muted);font-size:11px;">= igual que ${prevLabel}</span>`;
     if (diff > 0)   return `<span style="color:#dc2626;font-weight:600;font-size:11px;">↑ +${diff} vs ${prevLabel}</span>`;
                     return `<span style="color:#16a34a;font-weight:600;font-size:11px;">↓ ${diff} vs ${prevLabel}</span>`;
   };
-
   const maxCount = Math.max(1, ...visible.map(r => r.count));
-
   const rowsHtml = visible.map(r => {
     const barPct   = (r.count / maxCount * 100).toFixed(1);
     const flag     = flags[r.country] || '';
@@ -3750,15 +3446,12 @@ function renderCountryAttrChart() {
         </div>
       </div>`;
   }).join('');
-
   el.innerHTML = rowsHtml;
 }
-
 function renderDeptAttrChart() {
   const el = document.getElementById('dept-attr-chart');
   if (!el) return;
   const periodIdx = parseInt(document.getElementById('country-attr-period').value || '4');
-
   const rows = Object.entries(ATTRITION_BY_DEPT).map(([dept, arr]) => {
     const cur      = arr[periodIdx] || {count:0,rate:null};
     const prev     = periodIdx > 0 ? (arr[periodIdx - 1] || {count:0,rate:null}) : null;
@@ -3768,11 +3461,9 @@ function renderDeptAttrChart() {
     const diff      = prevCount !== null ? count - prevCount : null;
     return { dept, count, rate, diff };
   }).filter(r => r.count > 0 || (periodIdx > 0 && ((ATTRITION_BY_DEPT[r.dept][periodIdx-1]||{}).count||0) > 0));
-
   rows.sort((a, b) => b.count - a.count || a.dept.localeCompare(b.dept));
   rows.splice(4);
   const maxCount = Math.max(1, ...rows.map(r => r.count));
-
   const deptColors = {
     'Go To Market':       '#f97316',
     'Finance':            '#3b82f6',
@@ -3782,17 +3473,14 @@ function renderDeptAttrChart() {
     'Counsel':            '#f59e0b',
     'People':             '#ec4899',
   };
-
   const prevLabels = ['—','Dec','Jan','Feb','Mar'];
   const prevLabel  = periodIdx > 0 ? prevLabels[periodIdx] : null;
-
   const trendHtml = (diff) => {
     if (diff === null || prevLabel === null) return `<span style="color:var(--text-muted);font-size:11px;">—</span>`;
     if (diff === 0) return `<span style="color:var(--text-muted);font-size:11px;">= igual que ${prevLabel}</span>`;
     if (diff > 0)   return `<span style="color:#dc2626;font-weight:600;font-size:11px;">↑ +${diff} vs ${prevLabel}</span>`;
                     return `<span style="color:#16a34a;font-weight:600;font-size:11px;">↓ ${diff} vs ${prevLabel}</span>`;
   };
-
   el.innerHTML = rows.map(r => {
     const barPct  = (r.count / maxCount * 100).toFixed(1);
     const color   = deptColors[r.dept] || '#94a3b8';
@@ -3811,10 +3499,8 @@ function renderDeptAttrChart() {
         </div>
       </div>`;
   }).join('');
-
   if (!rows.length) el.innerHTML = `<p style="color:var(--text-muted);font-size:12px;text-align:center;padding:20px 0;">No regrettable exits in this period</p>`;
 }
-
 // ─── REGRETTABLE TERMINATION NAMES (from Drive terminations files) ────────────
 const REG_TERM_NAMES = {
   "December 2025": {
@@ -3912,13 +3598,24 @@ const REG_TERM_NAMES = {
       "Go To Market": ["Patricia Ribeiro"],
     }
   },
+  "August 2026": {
+    byCountry: {
+      "Colombia": ["Yorlady Zapata"],
+      "Mexico": ["Juan Pablo Díaz","Jose Luis Aquino Vega","Alejandro Arias"],
+      "Panama": ["Manuel Rosales"],
+    },
+    byDept: {
+      "Go To Market": ["Yorlady Zapata","Juan Pablo Díaz"],
+      "Finance": ["Jose Luis Aquino Vega"],
+      "Operations": ["Manuel Rosales"],
+      "People": ["Alejandro Arias"],
+    }
+  },
 };
-
 // ─── SHARED TABLE HELPERS ─────────────────────────────────────────────────────
-const _PERIODS = ['December 2025','January 2026','February 2026','March 2026','April 2026','May 2026','June 2026','July 2026'];
+const _PERIODS = ['December 2025','January 2026','February 2026','March 2026','April 2026','May 2026','June 2026','July 2026','August 2026'];
 // HC_BY_COUNTRY index that corresponds to each _PERIODS entry (Dec25=7 … May26=12)
-const _PERIOD_HC_IDX = [7, 8, 9, 10, 11, 12, 15, 19];
-
+const _PERIOD_HC_IDX = [7, 8, 9, 10, 11, 12, 15, 19, 20];
 function _countBadge(v, names, hc) {
   if (v == null || v === 0) return `<span style="color:#cbd5e1;">—</span>`;
   const s = v >= 5 ? 'background:#fff1f2;color:#be123c;font-weight:700;'
@@ -3930,31 +3627,25 @@ function _countBadge(v, names, hc) {
   const tipLines = names.map(n => `• ${n}`).join('<br>');
   return `<span class="term-tip">${badge}<span class="tip-box">${tipLines}</span></span>`;
 }
-
 function _rateBadge(r) {
   if (r == null) return `<span style="color:#cbd5e1;">—</span>`;
   const cls = r >= 4 ? 'pct-high' : r > 0 ? 'pct-low' : 'pct-neutral';
   return `<span class="abadge ${cls}" style="font-size:11px;padding:2px 7px;">${r.toFixed(1)}%</span>`;
 }
-
 // ─── SHARED COUNTRY LIST (same order for both tables) ─────────────────────────
 const _COUNTRIES     = ['Mexico','Brazil','Colombia','South Africa','Peru','United States','Ecuador','Philippines','Panama','Indonesia','China','India'];
 const _COUNTRY_CODE  = { Mexico:'MX', Brazil:'BR', Colombia:'CO', 'South Africa':'ZA',
                          Peru:'PE', 'United States':'US', Ecuador:'EC', Philippines:'PH',
                          Panama:'PA', Indonesia:'ID', China:'CN', India:'IN' };
-
 // ─── COUNTRY: TERMINATIONS TABLE (rows=months, cols=countries) ─────────────────
 function renderCountryTermsHcChart() {
   const el = document.getElementById('country-terms-hc-chart');
   if (!el) return;
-
   const th  = `style="font-size:11px;font-weight:700;padding:6px 10px;text-align:center;border-bottom:2px solid var(--border);white-space:nowrap;background:var(--surface);"`;
   const thL = `style="font-size:11px;font-weight:600;padding:6px 14px;text-align:left;border-bottom:2px solid var(--border);background:var(--surface);white-space:nowrap;position:sticky;left:0;z-index:2;min-width:130px;box-shadow:2px 0 4px rgba(0,0,0,0.06);"`;
-
   let thead = `<thead><tr><th ${thL}>Period</th>`;
   for (const c of _COUNTRIES) thead += `<th ${th}>${_COUNTRY_CODE[c]||c}</th>`;
   thead += `</tr></thead>`;
-
   let tbody = '<tbody>';
   for (let i = _PERIODS.length - 1; i >= 0; i--) {
     const isLatest = i === _PERIODS.length - 1;
@@ -3971,22 +3662,17 @@ function renderCountryTermsHcChart() {
     tbody += `</tr>`;
   }
   tbody += '</tbody>';
-
   el.innerHTML = `<table style="width:100%;border-collapse:collapse;font-size:12.5px;">${thead}${tbody}</table>`;
 }
-
 // ─── COUNTRY: ATTRITION RATE TABLE (rows=months, cols=countries) ───────────────
 function renderCountryRateChart() {
   const el = document.getElementById('country-rate-chart');
   if (!el) return;
-
   const th  = `style="font-size:11px;font-weight:700;padding:6px 10px;text-align:center;border-bottom:2px solid var(--border);white-space:nowrap;background:var(--surface);"`;
   const thL = `style="font-size:11px;font-weight:600;padding:6px 14px;text-align:left;border-bottom:2px solid var(--border);background:var(--surface);white-space:nowrap;position:sticky;left:0;z-index:2;min-width:130px;box-shadow:2px 0 4px rgba(0,0,0,0.06);"`;
-
   let thead = `<thead><tr><th ${thL}>Period</th>`;
   for (const c of _COUNTRIES) thead += `<th ${th}>${_COUNTRY_CODE[c]||c}</th>`;
   thead += `</tr></thead>`;
-
   let tbody = '<tbody>';
   for (let i = _PERIODS.length - 1; i >= 0; i--) {
     const isLatest = i === _PERIODS.length - 1;
@@ -4001,27 +3687,21 @@ function renderCountryRateChart() {
     tbody += `</tr>`;
   }
   tbody += '</tbody>';
-
   el.innerHTML = `<table style="width:100%;border-collapse:collapse;font-size:12.5px;">${thead}${tbody}</table>`;
 }
-
 // ─── SHARED DEPT LIST (same order for both tables) ────────────────────────────
 const _DEPTS      = ['Go To Market','Finance','Financial Products','Product Development','Operations','Counsel','People'];
 const _DEPT_SHORT = { 'Go To Market':'GTM','Finance':'Fin','Financial Products':'FinProd',
                       'Product Development':'ProdDev','Operations':'Ops','Counsel':'Counsel','People':'People' };
-
 // ─── DEPT: TERMINATIONS TABLE (rows=months, cols=departments) ─────────────────
 function renderDeptTermsHcChart() {
   const el = document.getElementById('dept-terms-hc-chart');
   if (!el) return;
-
   const th  = `style="font-size:11px;font-weight:700;padding:6px 8px;text-align:center;border-bottom:2px solid var(--border);white-space:nowrap;background:var(--surface);"`;
   const thL = `style="font-size:11px;font-weight:600;padding:6px 14px;text-align:left;border-bottom:2px solid var(--border);background:var(--surface);white-space:nowrap;position:sticky;left:0;z-index:2;min-width:130px;box-shadow:2px 0 4px rgba(0,0,0,0.06);"`;
-
   let thead = `<thead><tr><th ${thL}>Period</th>`;
   for (const d of _DEPTS) thead += `<th ${th}>${_DEPT_SHORT[d]}</th>`;
   thead += `</tr></thead>`;
-
   let tbody = '<tbody>';
   for (let i = _PERIODS.length - 1; i >= 0; i--) {
     const isLatest = i === _PERIODS.length - 1;
@@ -4037,22 +3717,17 @@ function renderDeptTermsHcChart() {
     tbody += `</tr>`;
   }
   tbody += '</tbody>';
-
   el.innerHTML = `<table style="width:100%;border-collapse:collapse;font-size:12.5px;">${thead}${tbody}</table>`;
 }
-
 // ─── DEPT: ATTRITION RATE TABLE (rows=months, cols=departments) ───────────────
 function renderDeptRateChart() {
   const el = document.getElementById('dept-rate-chart');
   if (!el) return;
-
   const th  = `style="font-size:11px;font-weight:700;padding:6px 8px;text-align:center;border-bottom:2px solid var(--border);white-space:nowrap;background:var(--surface);"`;
   const thL = `style="font-size:11px;font-weight:600;padding:6px 14px;text-align:left;border-bottom:2px solid var(--border);background:var(--surface);white-space:nowrap;position:sticky;left:0;z-index:2;min-width:130px;box-shadow:2px 0 4px rgba(0,0,0,0.06);"`;
-
   let thead = `<thead><tr><th ${thL}>Period</th>`;
   for (const d of _DEPTS) thead += `<th ${th}>${_DEPT_SHORT[d]}</th>`;
   thead += `</tr></thead>`;
-
   let tbody = '<tbody>';
   for (let i = _PERIODS.length - 1; i >= 0; i--) {
     const isLatest = i === _PERIODS.length - 1;
@@ -4067,13 +3742,10 @@ function renderDeptRateChart() {
     tbody += `</tr>`;
   }
   tbody += '</tbody>';
-
   el.innerHTML = `<table style="width:100%;border-collapse:collapse;font-size:12.5px;">${thead}${tbody}</table>`;
 }
-
 // ─── CHATBOT ──────────────────────────────────────────────────────────────────
 let chatOpen = false;
-
 function toggleChat() {
   chatOpen = !chatOpen;
   document.getElementById('chat-panel').classList.toggle('open', chatOpen);
@@ -4086,7 +3758,6 @@ function toggleChat() {
     document.getElementById('chat-input').focus();
   }
 }
-
 function getWelcomeMsg() {
   const dept = filters.depto ? ` focused on <b>${filters.depto}</b>` : '';
   return `Hi Estefanía! 👋 I'm your <b>People Insights assistant</b>. Ask me anything about the data on this dashboard${dept}.<div class="msg-chip-row">
@@ -4095,7 +3766,6 @@ function getWelcomeMsg() {
     <span class="msg-chip" onclick="askQ('Which department needs attention?')">🏢 By dept</span>
   </div>`;
 }
-
 function addBotMessage(html) {
   const msgs = document.getElementById('chat-messages');
   const typing = document.createElement('div');
@@ -4113,7 +3783,6 @@ function addBotMessage(html) {
     msgs.scrollTop = msgs.scrollHeight;
   }, 700);
 }
-
 function addUserMessage(text) {
   const msgs = document.getElementById('chat-messages');
   const msg = document.createElement('div');
@@ -4122,7 +3791,6 @@ function addUserMessage(text) {
   msgs.appendChild(msg);
   msgs.scrollTop = msgs.scrollHeight;
 }
-
 function sendChatMessage() {
   const input = document.getElementById('chat-input');
   const text = input.value.trim();
@@ -4130,20 +3798,17 @@ function sendChatMessage() {
   input.value = '';
   askQ(text);
 }
-
 function askQ(text) {
   if (!chatOpen) toggleChat();
   addUserMessage(text);
   addBotMessage(chatResponse(text));
 }
-
 function chatResponse(query) {
   const q = query.toLowerCase();
   const dept = filters.depto;
   const gKey = dept && DATA.gender[dept] ? dept : 'default';
   const tKey = dept && DATA.tenure[dept] ? dept : 'default';
   const dKey = dept && DATA.hcByDept[dept] ? dept : null;
-
   // ATTRITION / RISK
   if (q.match(/attrition|risk|retention|leaving|quit|exit|resign/)) {
     if (dKey) {
@@ -4158,7 +3823,6 @@ function chatResponse(query) {
     const worst = Object.entries(DATA.hcByDept).sort((a,b)=>b[1].attr-a[1].attr)[0];
     return `Highest attrition: <b>${worst[0]} at ${worst[1].attr}%</b> 🔴<br>Voluntary: ${worst[1].vol}% · Involuntary: ${worst[1].invol}%<br><br>Company Q1 2026 attrition: <b>5.8%</b> (55 exits / 955 avg HC). Early attrition (exits with tenure &lt;6m) is at <b>20%</b> of Q1 exits — above the ≤15% target.`;
   }
-
   // GENDER / DIVERSITY
   if (q.match(/gender|diversity|women|female|male|inclusion|non.binary/)) {
     const g = DATA.gender[gKey];
@@ -4167,7 +3831,6 @@ function chatResponse(query) {
     const status = fP >= 60 ? '🟢 On track' : fP >= 50 ? '🟡 Close to target' : '🔴 Below target';
     return `Gender distribution${label}:<br><br>👩 Women: <b>${fP}%</b> (${g.f})<br>👨 Men: <b>${mP}%</b> (${g.m})<br>⚧ Non-binary: <b>${nbP}%</b> (${g.nb})<br><br>Target: ≥60% women — ${status}${fP<60?` · gap: ${60-fP}pp`:''}`;
   }
-
   // TENURE / EARLY ATTRITION
   if (q.match(/tenure|seniority|early|new hire|onboard|experience|months/)) {
     const t = DATA.tenure[tKey];
@@ -4177,21 +3840,17 @@ function chatResponse(query) {
     const label = dept ? ` in <b>${dept}</b>` : '';
     return `Tenure risk profile${label}:<br><br><b>${highPct}% of employees are high-risk</b> (under 1 year of tenure). This group has the highest probability of attrition in the next 90 days.<br><br>219 employees are in the 0–6m bucket and 166 in 6m–1y. Early attrition (exits with tenure &lt;6m) is at <b>20%</b> of Q1 2026 exits — prioritize onboarding support.`;
   }
-
-
   // HEADCOUNT
   if (q.match(/headcount|hc|total|employees|how many|team size|size/)) {
     const period = DATA.kpiByPeriod[activePeriod];
     if (dKey) return `<b>${DATA.hcByDept[dKey].hc} active employees</b> in ${dept}.<br><br>Company total: <b>${period.hc}</b> (${period.hcDelta} vs Q4 2025).`;
     return `Total headcount: <b>${period.hc} employees</b> (${period.hcDelta} vs Q4 2025).<br><br>Largest departments: Go To Market (493), Operations (197), Product Development (149).`;
   }
-
   // PERIOD / QUARTER
   if (q.match(/q1|q4|quarter|period|compare|trend|history|vs/)) {
     const q1 = DATA.kpiByPeriod.q1, q4 = DATA.kpiByPeriod.q4;
     return `Q1 2026 vs Q4 2025:<br><br>📊 HC: <b>${q1.hc}</b> vs ${q4.hc} (${q1.hcDelta})<br>📉 Attrition: <b>${q1.attr}</b> vs ${q4.attr} (+${q1.attrDelta})`;
   }
-
   // DEPARTMENT COMPARISON
   if (q.match(/department|area|which|compare|worst|best|all dept/)) {
     const sorted = Object.entries(DATA.hcByDept).sort((a,b)=>b[1].attr-a[1].attr);
@@ -4200,10 +3859,8 @@ function chatResponse(query) {
       return `${icon} <b>${e[0]}</b>: ${e[1].attr}%`;
     }).join('<br>')}<br><br>Use the <b>Department filter</b> to drill into any area.`;
   }
-
   // GREETING
   if (q.match(/^(hi|hello|hey|hola|good morning|buenos|sup)\b/)) return getWelcomeMsg();
-
   // DEFAULT
   return `I can help you analyze your People data. Try asking about:<div class="msg-chip-row">
     <span class="msg-chip" onclick="askQ('What is the biggest attrition risk?')">Attrition risk</span>
@@ -4212,33 +3869,27 @@ function chatResponse(query) {
     <span class="msg-chip" onclick="askQ('What is the tenure risk?')">Tenure risk</span>
   </div>`;
 }
-
 // ─── MONTHLY BREAKDOWN TABLE — BY COUNTRY ────────────────────────────────────
 function renderCountryMonthlyTable() {
   const el = document.getElementById('country-monthly-table');
   if (!el) return;
-
   const periods   = ['December 2025','January 2026','February 2026','March 2026','April 2026'];
   const countries = ['Mexico','Brazil','Colombia','South Africa','Peru','United States','Ecuador','Philippines'];
   const countryCode = { Mexico:'MX', Brazil:'BR', Colombia:'CO', 'South Africa':'ZA',
                         Peru:'PE', 'United States':'US', Ecuador:'EC', Philippines:'PH' };
-
   // Only show countries with ≥1 regrettable exit (rolling) in any period
   const activeCols = countries.filter(c => {
     const arr = ATTRITION_BY_COUNTRY[c];
     return arr && arr.some(r => (r.qRegAll || 0) > 0);
   });
-
   const cellStyle = (count) => {
     if (count === 0) return 'background:#f8fafc;color:#cbd5e1;';
     if (count >= 5)  return 'background:#fff1f2;color:#be123c;font-weight:700;';
     if (count >= 2)  return 'background:#fffbeb;color:#b45309;font-weight:700;';
     return 'background:#f0fdf4;color:#166534;font-weight:700;';
   };
-
   const th = `style="font-size:11px;font-weight:700;padding:6px 10px;text-align:center;border-bottom:2px solid var(--border);white-space:nowrap;background:var(--surface);letter-spacing:0.5px;"`;
   const thL = `style="font-size:11px;font-weight:600;padding:6px 12px;text-align:left;border-bottom:2px solid var(--border);background:var(--surface);position:sticky;left:0;z-index:2;"`;
-
   let thead = `<thead><tr><th ${thL}>Period</th>`;
   for (const c of activeCols) {
     thead += `<th ${th} colspan="2">${countryCode[c]||c}</th>`;
@@ -4249,7 +3900,6 @@ function renderCountryMonthlyTable() {
     thead += `<th style="font-size:10px;font-weight:500;padding:4px 8px;text-align:center;color:var(--text-muted);border-bottom:1px solid var(--border);">Rate (3M)</th>`;
   }
   thead += `</tr></thead>`;
-
   let tbody = '<tbody>';
   for (let i = periods.length - 1; i >= 0; i--) {
     const isApr = i === 4;
@@ -4272,35 +3922,28 @@ function renderCountryMonthlyTable() {
     tbody += `</tr>`;
   }
   tbody += '</tbody>';
-
   el.innerHTML = `<table style="width:100%;border-collapse:collapse;font-size:12.5px;">${thead}${tbody}</table>`;
 }
-
 // ─── MONTHLY BREAKDOWN TABLE — BY DEPARTMENT ─────────────────────────────────
 function renderDeptMonthlyTable() {
   const el = document.getElementById('dept-monthly-table');
   if (!el) return;
-
   const periods = ['December 2025','January 2026','February 2026','March 2026','April 2026'];
   const depts   = ['Go To Market','Finance','Financial Products','Product Development','Operations','Counsel','People'];
   const deptShort = {
     'Go To Market':'GTM','Finance':'Fin','Financial Products':'FinProd',
     'Product Development':'ProdDev','Operations':'Ops','Counsel':'Counsel','People':'People'
   };
-
   const cellStyle = (count) => {
     if (count === 0) return 'background:#f8fafc;color:#cbd5e1;';
     if (count >= 5)  return 'background:#fff1f2;color:#be123c;font-weight:700;';
     if (count >= 2)  return 'background:#fffbeb;color:#b45309;font-weight:700;';
     return 'background:#f0fdf4;color:#166534;font-weight:700;';
   };
-
   const th = `style="font-size:11px;font-weight:700;padding:6px 8px;text-align:center;border-bottom:2px solid var(--border);white-space:nowrap;background:var(--surface);letter-spacing:0.5px;"`;
   const thL = `style="font-size:11px;font-weight:600;padding:6px 12px;text-align:left;border-bottom:2px solid var(--border);background:var(--surface);position:sticky;left:0;z-index:2;"`;
-
   // Rolling window end-month labels
   const windowEnd = ['Dec 2025','Jan 2026','Feb 2026','Mar 2026','Apr 2026'];
-
   let thead = `<thead><tr><th ${thL}>Period</th>`;
   for (const d of depts) thead += `<th ${th} colspan="2">${deptShort[d]}</th>`;
   thead += `</tr><tr><th ${thL}></th>`;
@@ -4309,7 +3952,6 @@ function renderDeptMonthlyTable() {
     thead += `<th style="font-size:10px;font-weight:500;padding:4px 6px;text-align:center;color:var(--text-muted);border-bottom:1px solid var(--border);">Rate (3M)</th>`;
   }
   thead += `</tr></thead>`;
-
   let tbody = '<tbody>';
   for (let i = periods.length - 1; i >= 0; i--) {
     const isApr = i === 4;
@@ -4330,10 +3972,8 @@ function renderDeptMonthlyTable() {
     tbody += `</tr>`;
   }
   tbody += '</tbody>';
-
   el.innerHTML = `<table style="width:100%;border-collapse:collapse;font-size:12.5px;">${thead}${tbody}</table>`;
 }
-
 const VACATION_DATA = [
   {n:"Eduardo Vinas",d:"Merchant Operations",c:"Peru",b:112.5,t:80.0},
   {n:"Gustavo De Gracia",d:"Lock",c:"Panama",b:88.5,t:20.0},
@@ -5416,7 +5056,6 @@ const VACATION_DATA = [
   {n:"Sara Sancliment",d:"Merchant Operations",c:"Mexico",b:-2.8,t:7.0},
   {n:"Dayanara Bagwasan",d:"Sales",c:"Philippines",b:-3.1,t:25.0}
 ];
-
 // ─── ONBOARDING DATA & RENDER ────────────────────────────────────────────────
 const ONBOARDING_DATA = [
   {name:"Abdul Alarcón", dept:"Sales", country:"PA", start:"2026-06-01", done:22, total:22, pct:100.0, pending:[]},
@@ -5534,15 +5173,12 @@ const ONBOARDING_DATA = [
   {name:"Sergio Padilla", dept:"Legal", country:"MX", start:"2026-06-01", done:0, total:0, pct:0.0, pending:[]},
   {name:"Valentina Serna", dept:"Merchant Operations", country:"CO", start:"2026-06-16", done:0, total:0, pct:0.0, pending:[]},
 ];
-
 const OB_FLAG = {BR:'🇧🇷',CO:'🇨🇴',EC:'🇪🇨',ID:'🇮🇩',IN:'🇮🇳',MX:'🇲🇽',PA:'🇵🇦',PE:'🇵🇪',PH:'🇵🇭',US:'🇺🇸',ZA:'🇿🇦'};
 const OB_COUNTRY_NAME = {BR:'Brazil',CO:'Colombia',EC:'Ecuador',ID:'Indonesia',IN:'India',MX:'Mexico',PA:'Panama',PE:'Peru',PH:'Philippines',US:'United States',ZA:'South Africa'};
-
 function renderOnboarding() {
   const statusF  = (document.getElementById('ob-filter-status')||{}).value  || '';
   const deptF    = (document.getElementById('ob-filter-dept')||{}).value    || '';
   const countryF = (document.getElementById('ob-filter-country')||{}).value || '';
-
   // Populate dept filter (idempotent)
   const deptSel = document.getElementById('ob-filter-dept');
   if (deptSel) {
@@ -5551,7 +5187,6 @@ function renderOnboarding() {
     deptSel.innerHTML = '<option value="">All departments</option>' +
       depts.map(d=>`<option value="${d}"${d===current?' selected':''}>${d}</option>`).join('');
   }
-
   // Populate country filter (idempotent)
   const countrySel = document.getElementById('ob-filter-country');
   if (countrySel) {
@@ -5560,7 +5195,6 @@ function renderOnboarding() {
     countrySel.innerHTML = '<option value="">All countries</option>' +
       countries.map(c=>`<option value="${c}"${c===current?' selected':''}>${OB_FLAG[c]||''} ${OB_COUNTRY_NAME[c]||c}</option>`).join('');
   }
-
   // Filter
   const rows = ONBOARDING_DATA.filter(r => {
     if (statusF === 'complete' && r.pct < 100) return false;
@@ -5570,15 +5204,12 @@ function renderOnboarding() {
     if (countryF && r.country !== countryF) return false;
     return true;
   });
-
   const tbody = document.getElementById('ob-tbody');
   if (!tbody) return;
-
   if (!rows.length) {
     tbody.innerHTML = `<tr><td colspan="8" style="text-align:center;color:var(--text-muted);padding:24px;">No records match the current filter.</td></tr>`;
     return;
   }
-
   tbody.innerHTML = rows.map((r) => {
     const pctColor = r.pct === 100 ? '#16a34a'
                    : r.pct >= 50  ? '#ca8a04'
@@ -5610,12 +5241,10 @@ function renderOnboarding() {
       <td style="padding:8px 10px;text-align:center;border-bottom:1px solid var(--border);">${statusPill}</td>
     </tr>`;
   }).join('');
-
   // Clear pending detail on filter change
   const detailEl = document.getElementById('ob-pending-detail');
   if (detailEl) detailEl.innerHTML = '';
 }
-
 function showObPending(idx) {
   const r = ONBOARDING_DATA[idx];
   const detail = document.getElementById('ob-pending-detail');
@@ -5637,7 +5266,6 @@ function showObPending(idx) {
   </div>`;
   detail.scrollIntoView({ behavior:'smooth', block:'nearest' });
 }
-
 // Update Onboarding KPI cards dynamically
 function renderOnboardingKPIs() {
   const total = ONBOARDING_DATA.length;
@@ -5648,7 +5276,6 @@ function renderOnboardingKPIs() {
   const vals = [total, avgPct+'%', atRisk, complete];
   ids.forEach((id,i)=>{ const el=document.getElementById(id); if(el) el.textContent=vals[i]; });
 }
-
 // Update distribution bars dynamically
 function renderOnboardingDist() {
   const buckets = [
@@ -5674,7 +5301,6 @@ function renderOnboardingDist() {
     </div>`;
   }).join('');
 }
-
 // Update top skipped tasks dynamically
 function renderTopSkipped() {
   const taskCount = {};
@@ -5694,13 +5320,11 @@ function renderTopSkipped() {
     </div>`;
   }).join('');
 }
-
 // ─── VACATIONS RENDER ────────────────────────────────────────────────────────
 function renderVacations() {
   const deptF    = (document.getElementById('vac-filter-dept')||{}).value    || '';
   const countryF = (document.getElementById('vac-filter-country')||{}).value || '';
   const statusF  = (document.getElementById('vac-filter-status')||{}).value  || '';
-
   const deptSel = document.getElementById('vac-filter-dept');
   if (deptSel && deptSel.options.length <= 1) {
     const depts = [...new Set(VACATION_DATA.map(r=>r.d))].sort();
@@ -5715,16 +5339,13 @@ function renderVacations() {
       countries.map(c=>`<option value="${c}">${c}</option>`).join('');
     if (countryF) ctrySel.value = countryF;
   }
-
   const _status = b => b >= 30 ? 'critical' : b >= 20 ? 'high' : 'healthy';
-
   const filtered = VACATION_DATA.filter(r => {
     if (deptF && r.d !== deptF) return false;
     if (countryF && r.c !== countryF) return false;
     if (statusF && _status(r.b) !== statusF) return false;
     return true;
   });
-
   // Distribution (full dataset)
   const distEl = document.getElementById('vac-dist');
   if (distEl) {
@@ -5750,7 +5371,6 @@ function renderVacations() {
       </div>`;
     }).join('');
   }
-
   // Dept avg (full dataset)
   const deptEl = document.getElementById('vac-dept');
   if (deptEl) {
@@ -5772,7 +5392,6 @@ function renderVacations() {
       </div>`;
     }).join('');
   }
-
   // Table
   const tbody = document.getElementById('vac-tbody');
   if (!tbody) return;
@@ -5805,47 +5424,37 @@ function renderVacations() {
       </tr>`;
     }).join('');
   }
-
   const countEl = document.getElementById('vac-row-count');
   if (countEl) countEl.textContent = filtered.length > 50
     ? `Showing 50 of ${filtered.length} employees — use filters to narrow down`
     : `${filtered.length} employee${filtered.length===1?'':'s'}`;
 }
-
 // ─── INIT ─────────────────────────────────────────────────────────────────────
 setPeriod('q1'); renderHCSparkline();
 renderSection2(); renderGender(); renderGenderByLevel(); renderGenderByDept(); renderGenderByCountry(); renderTenure(); renderInsights(); renderDriveV2Table();
 renderCountryAttrChart(); renderDeptAttrChart(); renderHCCountryBars(); renderMovements(); renderEarlyAttrBars();
 renderCountryTermsHcChart(); renderCountryRateChart(); renderDeptTermsHcChart(); renderDeptRateChart();
-renderOnboardingKPIs(); renderOnboardingDist(); renderTopSkipped(); renderOnboarding();
-renderVacations();
-
-
 document.querySelectorAll(".nav-item").forEach(item => {
   item.addEventListener("click", function() {
     document.querySelectorAll(".nav-item").forEach(n=>n.classList.remove("active"));
     this.classList.add("active");
   });
 });
-
 // ── TAB SWITCHING ─────────────────────────────────────────────────────────────
 function switchTab(tabId) {
   document.querySelectorAll('.tab-page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.page-tab').forEach(t => t.classList.remove('active'));
   document.getElementById(tabId).classList.add('active');
-  const tabOrder = ['tab-hc','tab-attrition','tab-analysis','tab-onboarding','tab-vacations'];
+  const tabOrder = ['tab-hc','tab-attrition','tab-analysis'];
   const idx = tabOrder.indexOf(tabId);
   if (idx >= 0) document.querySelectorAll('.page-tab')[idx].classList.add('active');
 }
-
 </script>
-
 <!-- ── CHATBOT WIDGET ──────────────────────────────────────────────────────── -->
 <button class="chat-toggle" onclick="toggleChat()" title="People Assistant">
   <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
   <span class="chat-notif">1</span>
 </button>
-
 <div class="chat-panel" id="chat-panel">
   <div class="chat-header">
     <div class="chat-header-avatar">🤖</div>
