@@ -585,39 +585,18 @@
       <div class="chart-card" style="overflow:hidden;">
         <div class="chart-card-header" style="margin-bottom:10px;">
           <div>
-            <h3>Terminations &amp; New Hires <span style="font-size:11px;font-weight:400;color:var(--text-muted);">· by week</span> <span style="font-size:10.5px;font-weight:400;color:var(--text-muted);">(This chart reflects the terminations and hires from the previous week)</span></h3>
+            <h3>Terminations &amp; New Hires <span style="font-size:11px;font-weight:400;color:var(--text-muted);">· by month</span></h3>
           </div>
           <select class="filter-select week-select" onchange="setWeek(this.value)" style="font-size:11px;padding:3px 10px;height:28px;">
-            <option value="1/5/26">Jan 5</option>
-            <option value="1/12/26">Jan 12</option>
-            <option value="1/19/26">Jan 19</option>
-            <option value="1/26/26">Jan 26</option>
-            <option value="2/2/26">Feb 2</option>
-            <option value="2/9/26">Feb 9</option>
-            <option value="2/16/26">Feb 16</option>
-            <option value="2/23/26">Feb 23</option>
-            <option value="3/2/26">Mar 2</option>
-            <option value="3/9/26">Mar 9</option>
-            <option value="3/16/26">Mar 16</option>
-            <option value="3/23/26">Mar 23</option>
-            <option value="3/30/26">Mar 30</option>
-            <option value="4/6/26">Apr 6</option>
-            <option value="4/13/26">Apr 13</option>
-            <option value="4/20/26">Apr 20</option>
-            <option value="4/27/26">Apr 27</option>
-            <option value="5/4/26">May 4</option>
-            <option value="5/11/26">May 11</option>
-            <option value="5/18/26">May 18</option>
-            <option value="5/25/26">May 25</option>
-            <option value="6/1/26">Jun 1</option>
-            <option value="6/8/26">Jun 8</option>
-            <option value="6/15/26">Jun 15</option>
-            <option value="6/22/26">Jun 22</option>
-            <option value="6/29/26">Jun 29</option>
-            <option value="7/6/26">Jul 6</option>
-            <option value="7/13/26">Jul 13</option>
-            <option value="7/20/26">Jul 20</option>
-            <option value="7/27/26" selected>Jul 27</option>
+            <option value="Jan 2026">Jan 2026</option>
+            <option value="Feb 2026">Feb 2026</option>
+            <option value="Mar 2026">Mar 2026</option>
+            <option value="Apr 2026">Apr 2026</option>
+            <option value="May 2026">May 2026</option>
+            <option value="Jun 2026">Jun 2026</option>
+            <option value="Jul 2026">Jul 2026</option>
+            <option value="Aug 2026">Aug 2026</option>
+            <option value="Sep 2026" selected>Sep 2026</option>
           </select>
         </div>
         <div id="movements-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;"></div>
@@ -1314,24 +1293,24 @@ function renderHCCountryBars() {
 // ─── WEEKLY MOVEMENTS (Bajas & Ingresos) ─────────────────────────────────────
 // reason keys: "Resignation" | "Performance" | "End of Contract"
 const WEEKLY_MOV = {
-  "1/5/26": {
+  "Jan 2026": {
     bajas: [
-      { country:"Brazil", title:"Collections Supervisor", dept:"Operations", termType:"", reason:"", regrettable:"" },
-      { country:"Mexico", title:"Customer Support Representative ", dept:"Operations", termType:"", reason:"", regrettable:"" },
-      { country:"Mexico", title:"Validation Support Representative", dept:"Operations", termType:"", reason:"", regrettable:"" },
-    ],
-    ingresos: [
-    ]
-  },
-  "1/12/26": {
-    bajas: [
-      { country:"Brazil", title:"Business Development Manager", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-      { country:"Brazil", title:"Business Development Manager", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-      { country:"Brazil", title:"Territory Manager", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-      { country:"Peru", title:"Sales Representative", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-      { country:"Peru", title:"Sales Representative", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-      { country:"Peru", title:"Territory Manager", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-      { country:"United States", title:"Senior Product Manager", dept:"Product Development", termType:"", reason:"", regrettable:"" },
+      { country:"Brazil", title:"Collections Supervisor", dept:"Operations", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Mexico", title:"Customer Support Representative ", dept:"Operations", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Mexico", title:"Validation Support Representative", dept:"Operations", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Brazil", title:"Business Development Manager", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Brazil", title:"Business Development Manager", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Brazil", title:"Territory Manager", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Peru", title:"Sales Representative", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Peru", title:"Sales Representative", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Peru", title:"Territory Manager", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"United States", title:"Senior Product Manager", dept:"Product Development", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Colombia", title:"ERP Systems Director", dept:"Product Development", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Colombia", title:"Sales Representative", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Mexico", title:"IT Specialist", dept:"Product Development", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Panama", title:"National Sales Manager", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Colombia", title:"Key Account Manager", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Philippines", title:"Customer Support Representative", dept:"Operations", level:"", termType:"", reason:"", regrettable:"" },
     ],
     ingresos: [
       { name:"Julia Arjonas", country:"Brazil", title:"Office Associate", dept:"People" },
@@ -1349,16 +1328,6 @@ const WEEKLY_MOV = {
       { name:"Ricardo Carro", country:"Mexico", title:"Senior Analytics Manager", dept:"Product Development" },
       { name:"Merrick Yap", country:"Philippines", title:"Key Account Manager ", dept:"Go To Market" },
       { name:"Khathu Manyuwa", country:"South Africa", title:"Clerk Support Supervisor", dept:"Operations" },
-    ]
-  },
-  "1/19/26": {
-    bajas: [
-      { country:"Colombia", title:"ERP Systems Director", dept:"Product Development", termType:"", reason:"", regrettable:"" },
-      { country:"Colombia", title:"Sales Representative", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-      { country:"Mexico", title:"IT Specialist", dept:"Product Development", termType:"", reason:"", regrettable:"" },
-      { country:"Panama", title:"National Sales Manager", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-    ],
-    ingresos: [
       { name:"Aline Patricio", country:"Brazil", title:"Accounting Manager", dept:"Finance" },
       { name:"Cecília Lima", country:"Brazil", title:"Sales Representative", dept:"Go To Market" },
       { name:"Evelyn Reimann", country:"Brazil", title:"Sales Representative ", dept:"Go To Market" },
@@ -1371,14 +1340,6 @@ const WEEKLY_MOV = {
       { name:"Ignacio Lizarraga", country:"Peru", title:"Legal and Compliance Analyst", dept:"Counsel" },
       { name:"Gian Chavez", country:"Philippines", title:"Territory Manager", dept:"Go To Market" },
       { name:"Jaeson Coronica", country:"Philippines", title:"Regional Sales Manager ", dept:"Go To Market" },
-    ]
-  },
-  "1/26/26": {
-    bajas: [
-      { country:"Colombia", title:"Key Account Manager", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-      { country:"Philippines", title:"Customer Support Representative", dept:"Operations", termType:"", reason:"", regrettable:"" },
-    ],
-    ingresos: [
       { name:"Martin Darmawan", country:"Indonesia", title:"Customer Support Supervisor", dept:"Operations" },
       { name:"Carmen Hernández Elvira", country:"Mexico", title:"Senior Tax Manager", dept:"Finance" },
       { name:"Edgar Barragán", country:"Mexico", title:"Merchant Operations Manager", dept:"Go To Market" },
@@ -1388,24 +1349,26 @@ const WEEKLY_MOV = {
       { name:"Yaz Bolaños", country:"Mexico", title:"Clerk Support Representative", dept:"Operations" },
     ]
   },
-  "2/2/26": {
+  "Feb 2026": {
     bajas: [
-      { country:"Brazil", title:"Tools Optimization Specialist", dept:"Operations", termType:"", reason:"", regrettable:"" },
-      { country:"Ecuador", title:"Sales Representative", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-      { country:"Mexico", title:"Compliance Analyst", dept:"Counsel", termType:"", reason:"", regrettable:"" },
-    ],
-    ingresos: [
-    ]
-  },
-  "2/9/26": {
-    bajas: [
-      { country:"Brazil", title:"Sales Representative", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-      { country:"Brazil", title:"Territory Manager", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-      { country:"Brazil", title:"Territory Manager", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-      { country:"Colombia", title:"Customer Support Representative", dept:"Operations", termType:"", reason:"", regrettable:"" },
-      { country:"Mexico", title:"Customer Support Representative", dept:"Operations", termType:"", reason:"", regrettable:"" },
-      { country:"Mexico", title:"Key Account Manager", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-      { country:"Mexico", title:"Senior HR Analytics & Compensation Manager", dept:"People", termType:"", reason:"", regrettable:"" },
+      { country:"Brazil", title:"Tools Optimization Specialist", dept:"Operations", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Ecuador", title:"Sales Representative", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Mexico", title:"Compliance Analyst", dept:"Counsel", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Brazil", title:"Sales Representative", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Brazil", title:"Territory Manager", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Brazil", title:"Territory Manager", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Colombia", title:"Customer Support Representative", dept:"Operations", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Mexico", title:"Customer Support Representative", dept:"Operations", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Mexico", title:"Key Account Manager", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Mexico", title:"Senior HR Analytics & Compensation Manager", dept:"People", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Brazil", title:"Sales Representative", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Brazil", title:"Sales Representative", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Ecuador", title:"Key Account Lead", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Mexico", title:"Chatbot Optimatizacion Manager", dept:"Operations", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"South Africa", title:"Sales Representative", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Colombia", title:"Head of Legal", dept:"Counsel", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Ecuador", title:"Promoter Manager", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"South Africa", title:"Business Development Representative", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
     ],
     ingresos: [
       { name:"Thifany Soares", country:"Brazil", title:"Customer Experience Payments Associate", dept:"Operations" },
@@ -1416,17 +1379,6 @@ const WEEKLY_MOV = {
       { name:"Carolina Ramirez Verastegui", country:"Peru", title:"Sales Manager - Retail", dept:"Go To Market" },
       { name:"Genaro Fernández", country:"Peru", title:"National Sales Manager", dept:"Go To Market" },
       { name:"Vuyo Tywabi", country:"South Africa", title:"Sales Representative", dept:"Go To Market" },
-    ]
-  },
-  "2/16/26": {
-    bajas: [
-      { country:"Brazil", title:"Sales Representative", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-      { country:"Brazil", title:"Sales Representative", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-      { country:"Ecuador", title:"Key Account Lead", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-      { country:"Mexico", title:"Chatbot Optimatizacion Manager", dept:"Operations", termType:"", reason:"", regrettable:"" },
-      { country:"South Africa", title:"Sales Representative", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-    ],
-    ingresos: [
       { name:"André Antunes", country:"Brazil", title:"Sales Representative", dept:"Go To Market" },
       { name:"JADER MOTA", country:"Brazil", title:"Sales Representative", dept:"Go To Market" },
       { name:"MAICON MERGEN", country:"Brazil", title:"Sales Representative", dept:"Go To Market" },
@@ -1435,15 +1387,6 @@ const WEEKLY_MOV = {
       { name:"Jeferson Ganchala", country:"Ecuador", title:"Sales Representative", dept:"Go To Market" },
       { name:"Ricardo Cortes", country:"Mexico", title:"Collections Team Lead", dept:"Operations" },
       { name:"Salma Yassin", country:"Mexico", title:"Regulatory and Strategic Contracts Manager", dept:"Counsel" },
-    ]
-  },
-  "2/23/26": {
-    bajas: [
-      { country:"Colombia", title:"Head of Legal", dept:"Counsel", termType:"", reason:"", regrettable:"" },
-      { country:"Ecuador", title:"Promoter Manager", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-      { country:"South Africa", title:"Business Development Representative", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-    ],
-    ingresos: [
       { name:"David Farias", country:"Colombia", title:"Sales Representative", dept:"Go To Market" },
       { name:"Claudio Cevallos", country:"Mexico", title:"Operations Manager - Credit Card/Credit Line", dept:"Go To Market" },
       { name:"Edgar Cruz", country:"Mexico", title:"Fraud Operations Representative -[Evening-hours] PayJoy Card", dept:"Financial Products" },
@@ -1452,10 +1395,28 @@ const WEEKLY_MOV = {
       { name:"Pats Patoc", country:"Philippines", title:"Sales Trainer", dept:"Go To Market" },
     ]
   },
-  "3/2/26": {
+  "Mar 2026": {
     bajas: [
-      { country:"Mexico", title:"Collections Representative", dept:"Operations", termType:"", reason:"", regrettable:"" },
-      { country:"Mexico", title:"Merchant Operations Senior Manager", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
+      { country:"Mexico", title:"Collections Representative", dept:"Operations", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Mexico", title:"Merchant Operations Senior Manager", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Mexico", title:"Fraud Strategy Director", dept:"Financial Products", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Peru", title:"Sales Representative", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Brazil", title:"Merchant Operations Analyst", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Colombia", title:"Sales Representative", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Mexico", title:"Controller", dept:"Finance", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Mexico", title:"Key Account Senior Manager", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Philippines", title:"Sales Representative", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Brazil", title:"Compliance Analyst", dept:"Counsel", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Colombia", title:"Partnership Insights Analyst", dept:"Product Development", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Colombia", title:"Sales Representative", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Mexico", title:"Customer Support Representative", dept:"Operations", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Mexico", title:"Senior IT Specialist", dept:"Product Development", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Mexico", title:"Validation Support Representative", dept:"Operations", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Philippines", title:"Merchant Operations Analyst", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"South Africa", title:"Promoter Manager", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"United States", title:"Senior Software Engineer", dept:"Product Development", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Mexico", title:"Senior Software Engineer", dept:"Product Development", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Panama", title:"Collections Supervisor", dept:"Operations", level:"", termType:"", reason:"", regrettable:"" },
     ],
     ingresos: [
       { name:"Martina Noviel", country:"Brazil", title:"Collections Supervisor", dept:"Operations" },
@@ -1466,14 +1427,6 @@ const WEEKLY_MOV = {
       { name:"Diego Tellez", country:"Mexico", title:"Fraud Operations Representative -[Evening-hours] PayJoy Card", dept:"Financial Products" },
       { name:"Ivonne Sánchez", country:"Mexico", title:"Merchant Operations Analyst", dept:"Go To Market" },
       { name:"Sarai Salinas", country:"Mexico", title:"Validation Support Representative", dept:"Operations" },
-    ]
-  },
-  "3/9/26": {
-    bajas: [
-      { country:"Mexico", title:"Fraud Strategy Director", dept:"Financial Products", termType:"", reason:"", regrettable:"" },
-      { country:"Peru", title:"Sales Representative", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-    ],
-    ingresos: [
       { name:"Bruna Magalhães", country:"Brazil", title:"Sales Representative", dept:"Go To Market" },
       { name:"Bruno Silva", country:"Brazil", title:"Sales Representative", dept:"Go To Market" },
       { name:"Daise Laura Santos", country:"Brazil", title:"Sales Representative", dept:"Go To Market" },
@@ -1497,17 +1450,6 @@ const WEEKLY_MOV = {
       { name:"Carl Pabustan", country:"Philippines", title:"Human Resources Associate - Global Operations", dept:"People" },
       { name:"Jen Orbillo", country:"Philippines", title:"Office Manager", dept:"People" },
       { name:"Suzanné Coetzer", country:"South Africa", title:"Merchant Operations Analyst", dept:"Go To Market" },
-    ]
-  },
-  "3/16/26": {
-    bajas: [
-      { country:"Brazil", title:"Merchant Operations Analyst", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-      { country:"Colombia", title:"Sales Representative", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-      { country:"Mexico", title:"Controller", dept:"Finance", termType:"", reason:"", regrettable:"" },
-      { country:"Mexico", title:"Key Account Senior Manager", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-      { country:"Philippines", title:"Sales Representative", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-    ],
-    ingresos: [
       { name:"Alin Ramírez", country:"Mexico", title:"Key Account Manager", dept:"Go To Market" },
       { name:"Humberto Peña", country:"Mexico", title:"Budgeting & Cost Control Analyst", dept:"Go To Market" },
       { name:"Julio Senteno", country:"Mexico", title:"Accounting Manager", dept:"Finance" },
@@ -1515,21 +1457,6 @@ const WEEKLY_MOV = {
       { name:"Ángel Martinez", country:"Mexico", title:"Customer Support Representative", dept:"Operations" },
       { name:"Daniel Urrego", country:"Panama", title:"Legal and Compliance Analyst", dept:"Counsel" },
       { name:"Mayte Salazar", country:"Peru", title:"Growth Manager", dept:"Go To Market" },
-    ]
-  },
-  "3/23/26": {
-    bajas: [
-      { country:"Brazil", title:"Compliance Analyst", dept:"Counsel", termType:"", reason:"", regrettable:"" },
-      { country:"Colombia", title:"Partnership Insights Analyst", dept:"Product Development", termType:"", reason:"", regrettable:"" },
-      { country:"Colombia", title:"Sales Representative", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-      { country:"Mexico", title:"Customer Support Representative", dept:"Operations", termType:"", reason:"", regrettable:"" },
-      { country:"Mexico", title:"Senior IT Specialist", dept:"Product Development", termType:"", reason:"", regrettable:"" },
-      { country:"Mexico", title:"Validation Support Representative", dept:"Operations", termType:"", reason:"", regrettable:"" },
-      { country:"Philippines", title:"Merchant Operations Analyst", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-      { country:"South Africa", title:"Promoter Manager", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-      { country:"United States", title:"Senior Software Engineer", dept:"Product Development", termType:"", reason:"", regrettable:"" },
-    ],
-    ingresos: [
       { name:"Andreia Rosa", country:"Brazil", title:"Sales Representative", dept:"Go To Market" },
       { name:"Elvis Lenz", country:"Brazil", title:"Sales Representative", dept:"Go To Market" },
       { name:"Leticia Oliveira", country:"Brazil", title:"Payroll Analyst", dept:"Finance" },
@@ -1547,14 +1474,6 @@ const WEEKLY_MOV = {
       { name:"Gab Bartolabac", country:"Philippines", title:"Sales Control Tower Intern (Field Execution & Compliance)", dept:"Go To Market" },
       { name:"Jeona Finella Abundo", country:"Philippines", title:"Sales Control Tower Intern (Field Execution & Compliance)", dept:"Go To Market" },
       { name:"David Pisoni", country:"United States", title:"Staff Software Engineer", dept:"Product Development" },
-    ]
-  },
-  "3/30/26": {
-    bajas: [
-      { country:"Mexico", title:"Senior Software Engineer", dept:"Product Development", termType:"", reason:"", regrettable:"" },
-      { country:"Panama", title:"Collections Supervisor", dept:"Operations", termType:"", reason:"", regrettable:"" },
-    ],
-    ingresos: [
       { name:"Yuri Zhao", country:"China", title:"Software Engineer - Security Test", dept:"Product Development" },
       { name:"Andrés Acosta", country:"Colombia", title:"Key Account Manager", dept:"Go To Market" },
       { name:"Michelle Gutierrez", country:"Colombia", title:"Sales Representative", dept:"Go To Market" },
@@ -1568,12 +1487,26 @@ const WEEKLY_MOV = {
       { name:"Leo Acid", country:"Philippines", title:"Sales Representative", dept:"Go To Market" },
     ]
   },
-  "4/6/26": {
+  "Apr 2026": {
     bajas: [
-      { country:"Mexico", title:"Senior product Manager - Card Partnerships & Market ExpansionExpansion)", dept:"Product Development", termType:"", reason:"", regrettable:"" },
-      { country:"Peru", title:"Legal & Compliance Manager", dept:"Counsel", termType:"", reason:"", regrettable:"" },
-      { country:"South Africa", title:"Collections Representative", dept:"Operations", termType:"", reason:"", regrettable:"" },
-      { country:"South Africa", title:"Merchant Operations Representative", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
+      { country:"Mexico", title:"Senior product Manager - Card Partnerships & Market ExpansionExpansion)", dept:"Product Development", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Peru", title:"Legal & Compliance Manager", dept:"Counsel", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"South Africa", title:"Collections Representative", dept:"Operations", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"South Africa", title:"Merchant Operations Representative", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Brazil", title:"Sales Representative", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Mexico", title:"Key Account Manager", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Mexico", title:"Senior Software Engineer", dept:"Product Development", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Brazil", title:"Sales Representative", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Brazil", title:"Sales Representative", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Indonesia", title:"Customer Support Supervisor", dept:"Operations", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Mexico", title:"Clerk Support Representative", dept:"Operations", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Mexico", title:"Fraud Analytics Analyst", dept:"Financial Products", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Panama", title:"Sales Representative", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Philippines", title:"Sales Representative", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"South Africa", title:"Sales Representative", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Ecuador", title:"Sales Representative", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Mexico", title:"Strategic Insights Senior Manager", dept:"Operations", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Panama", title:"Sales Representative", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
     ],
     ingresos: [
       { name:"Paola Moreno", country:"Colombia", title:"Talent Acquisition Specialist", dept:"People" },
@@ -1583,15 +1516,6 @@ const WEEKLY_MOV = {
       { name:"Talía Montero", country:"Peru", title:"Marketing Manager", dept:"Go To Market" },
       { name:"Minal Mehta", country:"United States", title:"Talent Acquisition Partner (Engineering & Product)", dept:"People" },
       { name:"Neal Reiter", country:"United States", title:"Principal Product Manager", dept:"Product Development" },
-    ]
-  },
-  "4/13/26": {
-    bajas: [
-      { country:"Brazil", title:"Sales Representative", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-      { country:"Mexico", title:"Key Account Manager", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-      { country:"Mexico", title:"Senior Software Engineer", dept:"Product Development", termType:"", reason:"", regrettable:"" },
-    ],
-    ingresos: [
       { name:"Mariana Aguiar", country:"Brazil", title:"Business Analyst ", dept:"Go To Market" },
       { name:"Pedro Silva", country:"Brazil", title:"Technical Support Analyst", dept:"Operations" },
       { name:"Jose Madera", country:"Colombia", title:"Director of Customer Growth", dept:"Go To Market" },
@@ -1600,20 +1524,6 @@ const WEEKLY_MOV = {
       { name:"Enrique Morales", country:"Mexico", title:"Commercial Processes Manager", dept:"Go To Market" },
       { name:"Iván Canales", country:"Mexico", title:"Chief Revenue Officer", dept:"Go To Market" },
       { name:"Mariana Ramirez", country:"Mexico", title:"Marketing CRM & Lifecycle Analyst", dept:"Go To Market" },
-    ]
-  },
-  "4/20/26": {
-    bajas: [
-      { country:"Brazil", title:"Sales Representative", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-      { country:"Brazil", title:"Sales Representative", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-      { country:"Indonesia", title:"Customer Support Supervisor", dept:"Operations", termType:"", reason:"", regrettable:"" },
-      { country:"Mexico", title:"Clerk Support Representative", dept:"Operations", termType:"", reason:"", regrettable:"" },
-      { country:"Mexico", title:"Fraud Analytics Analyst", dept:"Financial Products", termType:"", reason:"", regrettable:"" },
-      { country:"Panama", title:"Sales Representative", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-      { country:"Philippines", title:"Sales Representative", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-      { country:"South Africa", title:"Sales Representative", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-    ],
-    ingresos: [
       { name:"Jacques Lane", country:"Brazil", title:"Business Analyst", dept:"Go To Market" },
       { name:"Monise Ferreira", country:"Brazil", title:"Senior Tax Manager", dept:"Finance" },
       { name:"Rodrigo Milan", country:"Brazil", title:"Sales Representative", dept:"Go To Market" },
@@ -1642,15 +1552,6 @@ const WEEKLY_MOV = {
       { name:"jhanses Pascual", country:"Philippines", title:"Sales Representative", dept:"Go To Market" },
       { name:"Kwandiwe Jama", country:"South Africa", title:"Fraud Operations Representative", dept:"Financial Products" },
       { name:"David Navarro", country:"United States", title:"Corporate Finance Director", dept:"Finance" },
-    ]
-  },
-  "4/27/26": {
-    bajas: [
-      { country:"Ecuador", title:"Sales Representative", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-      { country:"Mexico", title:"Strategic Insights Senior Manager", dept:"Operations", termType:"", reason:"", regrettable:"" },
-      { country:"Panama", title:"Sales Representative", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-    ],
-    ingresos: [
       { name:"Julia Arantes", country:"Brazil", title:"Legal Intern", dept:"Counsel" },
       { name:"Nayara Santos", country:"Brazil", title:"Customer Support Supervisor ", dept:"Operations" },
       { name:"Carolina Gomez", country:"Colombia", title:"Senior Software Engineer - Onboarding (Origination)", dept:"Product Development" },
@@ -1666,18 +1567,32 @@ const WEEKLY_MOV = {
       { name:"Raemi Gross", country:"United States", title:"Corporate Finance Director", dept:"Finance" },
     ]
   },
-  "5/4/26": {
+  "May 2026": {
     bajas: [
-      { country:"Colombia", title:"Sales Enablement Analyst", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-      { country:"Mexico", title:"Commercial Counsel Senior Manager", dept:"Counsel", termType:"", reason:"", regrettable:"" },
-      { country:"Mexico", title:"Financial Analyst", dept:"Finance", termType:"", reason:"", regrettable:"" },
-      { country:"Mexico", title:"Fraud Operations Lead", dept:"Financial Products", termType:"", reason:"", regrettable:"" },
-      { country:"Mexico", title:"Growth Manager - New Initiatives", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-      { country:"Mexico", title:"Key Account Lead", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-      { country:"Mexico", title:"Operations Director", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-      { country:"Mexico", title:"Treasury Director", dept:"Finance", termType:"", reason:"", regrettable:"" },
-      { country:"Philippines", title:"Collections Representative", dept:"Operations", termType:"", reason:"", regrettable:"" },
-      { country:"Philippines", title:"Promoter Manager", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
+      { country:"Colombia", title:"Sales Enablement Analyst", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Mexico", title:"Commercial Counsel Senior Manager", dept:"Counsel", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Mexico", title:"Financial Analyst", dept:"Finance", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Mexico", title:"Fraud Operations Lead", dept:"Financial Products", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Mexico", title:"Growth Manager - New Initiatives", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Mexico", title:"Key Account Lead", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Mexico", title:"Operations Director", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Mexico", title:"Treasury Director", dept:"Finance", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Philippines", title:"Collections Representative", dept:"Operations", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Philippines", title:"Promoter Manager", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Brazil", title:"Graphic Designer Manager", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Ecuador", title:"Sales Representative", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Mexico", title:"Key Account Senior Manager", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Panama", title:"HR Coordinator", dept:"People", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Peru", title:"Key Account Lead", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Peru", title:"Marketing Analyst", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Philippines", title:"Sales Representative (Zamboanga)", dept:"Go To Market", level:"", termType:"", reason:"", regrettable:"" },
+      { country:"Brazil", title:"Product Design Director", dept:"Product Development", level:"", termType:"Involuntary", reason:"", regrettable:"Non-Regrettable" },
+      { country:"Brazil", title:"Sales Representative", dept:"Go To Market", level:"", termType:"Involuntary", reason:"", regrettable:"Non-Regrettable" },
+      { country:"Colombia", title:"Financial Analyst", dept:"Finance", level:"", termType:"Involuntary", reason:"", regrettable:"Non-Regrettable" },
+      { country:"Mexico", title:"Collections Representative", dept:"Operations", level:"", termType:"Involuntary", reason:"", regrettable:"Non-Regrettable" },
+      { country:"Peru", title:"Key Account Lead", dept:"Go To Market", level:"", termType:"Voluntary", reason:"", regrettable:"Regrettable" },
+      { country:"United States", title:"Total Rewards & People Operations Senior Director", dept:"People", level:"", termType:"Involuntary", reason:"", regrettable:"Non-Regrettable" },
+      { country:"Ecuador", title:"Territory Manager", dept:"Go To Market", level:"", termType:"Voluntary", reason:"", regrettable:"Non-Regrettable" },
     ],
     ingresos: [
       { name:"Kiran Kumar", country:"India", title:"Country Manager", dept:"Go To Market" },
@@ -1686,19 +1601,6 @@ const WEEKLY_MOV = {
       { name:"Anie Adames", country:"Panama", title:"Collection Representative", dept:"Operations" },
       { name:"Ray Asghaei", country:"United States", title:"Senior Director of Total Rewards & People Operations", dept:"People" },
       { name:"Zaviear Lue", country:"United States", title:"Global Head of Talent Acquisition", dept:"People" },
-    ]
-  },
-  "5/11/26": {
-    bajas: [
-      { country:"Brazil", title:"Graphic Designer Manager", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-      { country:"Ecuador", title:"Sales Representative", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-      { country:"Mexico", title:"Key Account Senior Manager", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-      { country:"Panama", title:"HR Coordinator", dept:"People", termType:"", reason:"", regrettable:"" },
-      { country:"Peru", title:"Key Account Lead", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-      { country:"Peru", title:"Marketing Analyst", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-      { country:"Philippines", title:"Sales Representative (Zamboanga)", dept:"Go To Market", termType:"", reason:"", regrettable:"" },
-    ],
-    ingresos: [
       { name:"Raquel Queiroz", country:"Brazil", title:"Territory Manager", dept:"Go To Market" },
       { name:"Stephanye Gonçalves", country:"Brazil", title:"Merchant Operations Analyst ", dept:"Go To Market" },
       { name:"Hector Zapata", country:"Colombia", title:"Sales Representative - Medellín", dept:"Go To Market" },
@@ -1712,18 +1614,6 @@ const WEEKLY_MOV = {
       { name:"Lino Quispe", country:"Peru", title:"Sales Representative", dept:"Go To Market" },
       { name:"Anna San Pablo", country:"Philippines", title:"Growth Representative", dept:"Go To Market" },
       { name:"Sanjay Patil", country:"United States", title:"Engineering Director- Lock Platform", dept:"Product Development" },
-    ]
-  },
-  "5/18/26": {
-    bajas: [
-      { country:"Brazil", title:"Product Design Director", dept:"Product Development", termType:"Involuntary", reason:"", regrettable:"Non-Regrettable" },
-      { country:"Brazil", title:"Sales Representative", dept:"Go To Market", termType:"Involuntary", reason:"", regrettable:"Non-Regrettable" },
-      { country:"Colombia", title:"Financial Analyst", dept:"Finance", termType:"Involuntary", reason:"", regrettable:"Non-Regrettable" },
-      { country:"Mexico", title:"Collections Representative", dept:"Operations", termType:"Involuntary", reason:"", regrettable:"Non-Regrettable" },
-      { country:"Peru", title:"Key Account Lead", dept:"Go To Market", termType:"Voluntary", reason:"", regrettable:"Regrettable" },
-      { country:"United States", title:"Total Rewards & People Operations Senior Director", dept:"People", termType:"Involuntary", reason:"", regrettable:"Non-Regrettable" },
-    ],
-    ingresos: [
       { name:"Adriana Monteiro", country:"Brazil", title:"Sales Representative", dept:"Go To Market" },
       { name:"Juan Manuel Prada", country:"Colombia", title:"Senior Software Engineer", dept:"Product Development" },
       { name:"Alejandro Galicia", country:"Mexico", title:"Support Tools Analyst", dept:"Operations" },
@@ -1736,52 +1626,127 @@ const WEEKLY_MOV = {
       { name:"Sebastian Montoya", country:"Peru", title:"Growth Analyst", dept:"Go To Market" },
       { name:"Animesh Kondiparthy", country:"United States", title:"Senior Product Manager", dept:"Product Development" },
       { name:"Wesley Robinson", country:"United States", title:"Sr. Software Engineer - Customer Data Platform", dept:"Product Development" },
+      { name:"Arantxa Mejia", country:"Mexico", title:"Product Designer", dept:"Product Development" },
+      { name:"Melisa Sifuentes", country:"Peru", title:"Key Account Lead", dept:"Go To Market" },
+      { name:"Luísa Teixeira", country:"Brazil", title:"Estagiário(a) Jurídico(a)", dept:"Counsel" },
+      { name:"Shreya Sharma", country:"India", title:"Legal and Compliance Manager", dept:"Counsel" },
+      { name:"Abby Wakefield", country:"United States", title:"Compliance Director", dept:"Counsel" },
+      { name:"David Bonilla", country:"Mexico", title:"Clerk Support Representative", dept:"Operations" },
+      { name:"Juan Pablo Díaz", country:"Mexico", title:"Head of Top Accounts", dept:"Go To Market" },
+      { name:"Rozak Ismail", country:"Indonesia", title:"Sales Representative", dept:"Go To Market" },
+      { name:"Angie Sabarre", country:"Philippines", title:"Sales Representative (Puerto Princesa)", dept:"Go To Market" },
+      { name:"Claudia Trujillo", country:"Mexico", title:"Brand Marketing Director", dept:"Go To Market" },
+      { name:"Vivek Balaguru", country:"United States", title:"Cloud Infrastructure Staff Engineer", dept:"Product Development" },
+      { name:"Charlie de Belloy", country:"United States", title:"Portfolio Management Intern", dept:"Financial Products" },
     ]
   },
-  "5/25/26": {
+  "Jun 2026": {
     bajas: [
-      { country:"Ecuador", title:"Territory Manager", dept:"Go To Market", termType:"Voluntary", reason:"", regrettable:"Non-Regrettable" },
+      { country:"Ecuador", title:"Clerk Support Supervisor", dept:"Operations", level:"", termType:"Involuntary", reason:"", regrettable:"Non-Regrettable" },
+      { country:"Ecuador", title:"Sales Representative", dept:"Go To Market", level:"", termType:"Involuntary", reason:"", regrettable:"Non-Regrettable" },
+      { country:"United States", title:"President, Go to Market", dept:"Go To Market", level:"", termType:"Voluntary", reason:"", regrettable:"Regrettable" },
+      { country:"Colombia", title:"Sales Representative", dept:"Go To Market", level:"", termType:"Voluntary", reason:"", regrettable:"Regrettable" },
+      { country:"United States", title:"Engineering Director", dept:"Product Development", level:"5c", termType:"Voluntary", reason:"Other Employment", regrettable:"Regrettable" },
+      { country:"Mexico", title:"Head of Legal", dept:"Counsel", level:"5a", termType:"Involuntary", reason:"Performance Issues", regrettable:"Non-Regrettable" },
+      { country:"Mexico", title:"Key Account Lead", dept:"Go To Market", level:"2a", termType:"Voluntary", reason:"Other Employment", regrettable:"Regrettable" },
+      { country:"Mexico", title:"Treasury Analyst - Back Office", dept:"Finance", level:"2b", termType:"Involuntary", reason:"Did Not Pass Probation", regrettable:"Non-Regrettable" },
+      { country:"Panama", title:"Sales Representative", dept:"Go To Market", level:"1b", termType:"Involuntary", reason:"Did Not Pass Probation", regrettable:"Non-Regrettable" },
+      { country:"South Africa", title:"Clerk Support Representative", dept:"Operations", level:"1a", termType:"Involuntary", reason:"Dismissal", regrettable:"Non-Regrettable" },
+      { country:"Colombia", title:"Customer Support Representative", dept:"Operations", level:"1b", termType:"Voluntary", reason:"Received a Job Offer", regrettable:"Regrettable" },
+      { country:"Brazil", title:"Talent Acquisition Partner", dept:"People", level:"3a", termType:"Involuntary", reason:"Performance", regrettable:"Non-Regrettable" },
+      { country:"Brazil", title:"Sales Representative", dept:"Go To Market", level:"1a", termType:"Involuntary", reason:"Performance", regrettable:"Non-Regrettable" },
+      { country:"Mexico", title:"Commercial Senior Manager", dept:"Go To Market", level:"4c", termType:"Voluntary", reason:"Personal Reasons", regrettable:"Regrettable" },
+      { country:"Colombia", title:"Fraud Operations Representative", dept:"Financial Products", level:"1b", termType:"Voluntary", reason:"Received a Job Offer", regrettable:"Regrettable" },
+      { country:"Philippines", title:"Sales Representative (Puerto Princesa)", dept:"Go To Market", level:"1a", termType:"Voluntary", reason:"Personal Reasons", regrettable:"Non-Regrettable" },
+      { country:"Peru", title:"Sales Representative", dept:"Go To Market", level:"1c", termType:"Voluntary", reason:"Bad Practices", regrettable:"Non-Regrettable" },
+      { country:"Panama", title:"Merchant Operations Supervisor", dept:"Go To Market", level:"2b", termType:"Voluntary", reason:"Received a Job Offer", regrettable:"Non-Regrettable" },
+      { country:"Brazil", title:"Sales Representative", dept:"Go To Market", level:"1a", termType:"Involuntary", reason:"Did Not Pass Probation", regrettable:"Non-Regrettable" },
+      { country:"Colombia", title:"Senior Partnership Development Manager", dept:"Product Development", level:"4a", termType:"Involuntary", reason:"Performance Issues", regrettable:"Non-Regrettable" },
+      { country:"Mexico", title:"Accounting Manager", dept:"Finance", level:"3b", termType:"Voluntary", reason:"Other Employment", regrettable:"Non-Regrettable" },
+      { country:"Ecuador", title:"Merchant Operations Analyst", dept:"Go To Market", level:"", termType:"Involuntary", reason:"Performance Issues", regrettable:"Non-Regrettable" },
+      { country:"Brazil", title:"Sales Representative", dept:"Go To Market", level:"", termType:"Involuntary", reason:"Did Not Pass Probation", regrettable:"Non-Regrettable" },
+      { country:"Colombia", title:"Validation Support Representative", dept:"Operations", level:"", termType:"Voluntary", reason:"Resignation", regrettable:"Non-Regrettable" },
+      { country:"Brazil", title:"Sales Representative", dept:"Go To Market", level:"", termType:"Voluntary", reason:"Resignation", regrettable:"Non-Regrettable" },
+      { country:"United States", title:"VP, Finance Systems", dept:"Finance", level:"", termType:"Involuntary", reason:"Dismissal", regrettable:"Non-Regrettable" },
     ],
     ingresos: [
-      { name:"Arantxa Mejia",      country:"Mexico",        title:"Product Designer",                              dept:"Product Development" },
-      { name:"Melisa Sifuentes",   country:"Peru",          title:"Key Account Lead",                              dept:"Go To Market" },
-      { name:"Luísa Teixeira",     country:"Brazil",        title:"Estagiário(a) Jurídico(a)",                     dept:"Counsel" },
-      { name:"Shreya Sharma",      country:"India",         title:"Legal and Compliance Manager",                  dept:"Counsel" },
-      { name:"Abby Wakefield",     country:"United States", title:"Compliance Director",                           dept:"Counsel" },
-      { name:"David Bonilla",      country:"Mexico",        title:"Clerk Support Representative",                  dept:"Operations" },
-      { name:"Juan Pablo Díaz",    country:"Mexico",        title:"Head of Top Accounts",                          dept:"Go To Market" },
-      { name:"Rozak Ismail",       country:"Indonesia",     title:"Sales Representative",                          dept:"Go To Market" },
-      { name:"Angie Sabarre",      country:"Philippines",   title:"Sales Representative (Puerto Princesa)",        dept:"Go To Market" },
-      { name:"Claudia Trujillo",   country:"Mexico",        title:"Brand Marketing Director",                      dept:"Go To Market" },
-      { name:"Vivek Balaguru",     country:"United States", title:"Cloud Infrastructure Staff Engineer",           dept:"Product Development" },
-      { name:"Charlie de Belloy",  country:"United States", title:"Portfolio Management Intern",                   dept:"Financial Products" },
+      { name:"Luisa Melo", country:"Colombia", title:"Quality Associate", dept:"Operations" },
+      { name:"Pablo Onzaga", country:"Colombia", title:"Coupa System Administrator", dept:"Finance" },
+      { name:"MAGDA MORENO", country:"Colombia", title:"Sales Enablement Lead - Credit Line", dept:"Go To Market" },
+      { name:"Pilar Sanchez Cateriano", country:"Peru", title:"Legal & Compliance Senior Manager", dept:"Counsel" },
+      { name:"Erika Avila", country:"Colombia", title:"Growth Senior Manager", dept:"Go To Market" },
+      { name:"Daniel Lopez", country:"Mexico", title:"Senior Analytics Engineer", dept:"Product Development" },
+      { name:"Adan Hernández", country:"Mexico", title:"Key Account Lead", dept:"Go To Market" },
+      { name:"Deysireth Pilozo", country:"Panama", title:"Representante de Ventas", dept:"Go To Market" },
+      { name:"Javier Maya", country:"Mexico", title:"Customer Support Representative", dept:"Operations" },
+      { name:"Ferdinand Marpaung", country:"Indonesia", title:"Merchant Operations Supervisor", dept:"Go To Market" },
+      { name:"Joaquin Castañon", country:"Peru", title:"Key Account Lead", dept:"Go To Market" },
+      { name:"Moises Carrasco Palomeque", country:"Mexico", title:"Clerk Support Representative", dept:"Operations" },
+      { name:"César Jiménez", country:"Mexico", title:"Fraud Analytics Analyst", dept:"Financial Products" },
+      { name:"Norman Argueta", country:"Mexico", title:"Customer Support Representative", dept:"Operations" },
+      { name:"Camilo Garcia", country:"Colombia", title:"CX Support Supervisor", dept:"Operations" },
+      { name:"Marco Montiel", country:"Mexico", title:"Customer Support Representative", dept:"Operations" },
+      { name:"Andrea Ibarra", country:"Ecuador", title:"Clerk Support Supervisor", dept:"Operations" },
+      { name:"Cesar Martinez", country:"Colombia", title:"CX Support Supervisor", dept:"Operations" },
+      { name:"Andrés Meré", country:"Mexico", title:"Merchant Operations Partner Success Analyst", dept:"Go To Market" },
+      { name:"Tania Natasha", country:"Indonesia", title:"Business Development Lead", dept:"Go To Market" },
+      { name:"Ágata Marquezini", country:"Brazil", title:"Merchant Operations Analyst", dept:"Go To Market" },
+      { name:"Shayara Castro", country:"Brazil", title:"Promoter Coordinator", dept:"Go To Market" },
+      { name:"Yad Calderón", country:"Mexico", title:"Strategy and Operations Manager", dept:"Operations" },
+      { name:"Catharina Jesus", country:"Brazil", title:"Legal Analyst", dept:"Counsel" },
+      { name:"Michelle Guzmán", country:"Mexico", title:"Merchant Operations Representative", dept:"Go To Market" },
+      { name:"Lore Reyes", country:"Mexico", title:"Collection Representative", dept:"Operations" },
+      { name:"Paco Rosales", country:"Mexico", title:"Senior Disputes & Complaints Manager", dept:"Operations" },
+      { name:"Andrea Reggio", country:"Colombia", title:"Tech Operations Director", dept:"Operations" },
+      { name:"Norman Argueta", country:"Mexico", title:"Customer Support Representative", dept:"Operations" },
+      { name:"Karim Garcia", country:"Mexico", title:"Senior IT Specialist", dept:"Product Development" },
+      { name:"Hannia Nuñez Guzmán", country:"Mexico", title:"Market Expansion Manager", dept:"Go To Market" },
+      { name:"Jesus Flores", country:"Mexico", title:"Market Expansion Manager", dept:"Go To Market" },
+      { name:"Ika Rahmawati", country:"Indonesia", title:"Merchant Operations Representative", dept:"Go To Market" },
+      { name:"Pol Uy", country:"Philippines", title:"Product Lock Analyst", dept:"Product Development" },
+      { name:"Henry Mantilla", country:"Mexico", title:"Financial Operations Analyst", dept:"Operations" },
+      { name:"Riki Risdianto", country:"Indonesia", title:"Customer Support Supervisor", dept:"Operations" },
+      { name:"Diego Bernabe", country:"Mexico", title:"Director of Product Design", dept:"Product Development" },
+      { name:"Mariel Sada", country:"Mexico", title:"Senior Manager Business Development", dept:"Go To Market" },
+      { name:"Adriana Ruiz", country:"Colombia", title:"Sales Representative", dept:"Go To Market" },
+      { name:"Margarita Corona", country:"Mexico", title:"Commercial Excellence Analyst", dept:"Go To Market" },
+      { name:"Rendani Ramunenyiwa", country:"South Africa", title:"Merchant Operations Representative", dept:"Go To Market" },
+      { name:"Pietra Iecker", country:"Brazil", title:"Sales Enablement Supervisor", dept:"Go To Market" },
+      { name:"Ryan Pon", country:"United States", title:"Staff Software Engineer - Finance Engine", dept:"Product Development" },
+      { name:"Pedro Aufieri", country:"Brazil", title:"Ecommerce Operations Analyst", dept:"Go To Market" },
+      { name:"Ricardo Castillo", country:"Mexico", title:"Senior Software Engineer - Android", dept:"Product Development" },
+      { name:"Gelo Avelino", country:"Philippines", title:"Promoter Manager", dept:"Go To Market" },
+      { name:"Rox Mijangos", country:"Mexico", title:"Executive Assistant", dept:"Corporate Admin" },
+      { name:"Vivian Goncalves", country:"Panama", title:"HR Business Partner", dept:"People" },
+      { name:"Artie Lee", country:"United States", title:"Senior Engineering Director - Consumer & Lock", dept:"Product Development" },
+      { name:"Emilia Garcés", country:"Ecuador", title:"Promoter Coordinator", dept:"Go To Market" },
+      { name:"Abdul Alarcón", country:"Panama", title:"Representante de Ventas", dept:"Go To Market" },
+      { name:"Tomaz Sant'Anna", country:"Brazil", title:"Estagiário Juridíco", dept:"Counsel" },
+      { name:"Karla Lima", country:"Brazil", title:"Territory Manager", dept:"Go To Market" },
+      { name:"Alexandra Torres", country:"Colombia", title:"Merchant Operations Representative", dept:"Go To Market" },
+      { name:"Fernando Martínez", country:"Colombia", title:"Representante de Ventas", dept:"Go To Market" },
+      { name:"Gabriela Buitrago", country:"Colombia", title:"Financial Analyst", dept:"Finance" },
+      { name:"Ivan Piramide", country:"Philippines", title:"Digital Growth Manager", dept:"Go To Market" },
+      { name:"Alejandra Mancipe", country:"Colombia", title:"Risk Manager", dept:"Financial Products" },
+      { name:"Ana Luísa Quintino", country:"Brazil", title:"Sales Representative", dept:"Go To Market" },
+      { name:"Carlos Torres", country:"Mexico", title:"Senior Portfolio Manager", dept:"Financial Products" },
+      { name:"Dario Velez", country:"Ecuador", title:"Merchant Operations Representative", dept:"Go To Market" },
+      { name:"Anvee Naik", country:"United States", title:"PM Builder Intern, Sales Enablement", dept:"Product Development" },
+      { name:"Nico Nicolas", country:"Indonesia", title:"Sales Trainer", dept:"Go To Market" },
     ]
   },
-  "6/1/26": {
-    bajas: [
-      { country:"Ecuador",       title:"Clerk Support Supervisor",  dept:"Operations",  termType:"Involuntary", reason:"", regrettable:"Non-Regrettable" },
-      { country:"Ecuador",       title:"Sales Representative",      dept:"Go To Market", termType:"Involuntary", reason:"", regrettable:"Non-Regrettable" },
-      { country:"United States", title:"President, Go to Market",   dept:"Go To Market", termType:"Voluntary",   reason:"", regrettable:"Regrettable" },
-      { country:"Colombia",      title:"Sales Representative",      dept:"Go To Market", termType:"Voluntary",   reason:"", regrettable:"Regrettable" },
-    ],
-    ingresos: [
-      { name:"Luisa Melo",             country:"Colombia",   title:"Quality Associate",                       dept:"Operations" },
-      { name:"Pablo Onzaga",           country:"Colombia",   title:"Coupa System Administrator",              dept:"Finance" },
-      { name:"MAGDA MORENO",           country:"Colombia",   title:"Sales Enablement Lead - Credit Line",     dept:"Go To Market" },
-      { name:"Pilar Sanchez Cateriano",country:"Peru",       title:"Legal & Compliance Senior Manager",       dept:"Counsel" },
-      { name:"Erika Avila",            country:"Colombia",   title:"Growth Senior Manager",                   dept:"Go To Market" },
-      { name:"Daniel Lopez",           country:"Mexico",     title:"Senior Analytics Engineer",               dept:"Product Development" },
-      { name:"Adan Hernández",         country:"Mexico",     title:"Key Account Lead",                        dept:"Go To Market" },
-      { name:"Deysireth Pilozo",       country:"Panama",     title:"Representante de Ventas",                 dept:"Go To Market" },
-      { name:"Javier Maya",            country:"Mexico",     title:"Customer Support Representative",         dept:"Operations" },
-      { name:"Ferdinand Marpaung",     country:"Indonesia",  title:"Merchant Operations Supervisor",          dept:"Go To Market" },
-    ]
-  },
-  "7/27/26": {
+  "Jul 2026": {
     bajas: [
       { country:"Mexico", title:"Asset Valuation Analyst", dept:"Financial Products", level:"2a", termType:"Involuntary", reason:"Performance", regrettable:"Non-Regrettable" },
       { country:"Colombia", title:"Sales Representative", dept:"Go To Market", level:"1b", termType:"Involuntary", reason:"Performance Issues", regrettable:"Non-Regrettable" },
       { country:"Colombia", title:"Software Engineer", dept:"Product Development", level:"3c", termType:"Voluntary", reason:"Resignation", regrettable:"Non-Regrettable" },
+      { country:"China", title:"Software Engineer - Security Test", dept:"Product Development", level:"3a", termType:"Involuntary", reason:"Performance Issues", regrettable:"Non-Regrettable" },
+      { country:"United States", title:"Staff Software Engineer", dept:"Product Development", level:"5a", termType:"Involuntary", reason:"Performance", regrettable:"Non-Regrettable" },
+      { country:"Mexico", title:"Senior Software Engineer - Android", dept:"Product Development", level:"4a", termType:"Voluntary", reason:"Other Employment", regrettable:"" },
+      { country:"Mexico", title:"Fraud Operations Lead", dept:"Financial Products", level:"2a", termType:"Voluntary", reason:"Other Employment", regrettable:"" },
+      { country:"Mexico", title:"Key Account Representative", dept:"Go To Market", level:"1b", termType:"Involuntary", reason:"Performance Issues", regrettable:"Non-Regrettable" },
+      { country:"Mexico", title:"Sales Representative", dept:"Go To Market", level:"1b", termType:"Involuntary", reason:"Bad Practices", regrettable:"Non-Regrettable" },
+      { country:"Mexico", title:"Validation Support Supervisor", dept:"Operations", level:"2b", termType:"Involuntary", reason:"Performance Issues", regrettable:"Non-Regrettable" },
     ],
     ingresos: [
       { name:"JERONIMO FONSECA FONSECA", country:"Brazil", title:"Sales Representative", dept:"" },
@@ -1798,13 +1763,6 @@ const WEEKLY_MOV = {
       { name:"Diego Rodríguez", country:"Peru", title:"Key Account Lead", dept:"" },
       { name:"Kat Llaque", country:"Peru", title:"Marketing Analyst", dept:"Go To Market" },
       { name:"Paul Jones Segura", country:"Colombia", title:"Fraud Analytics Analyst Credit Card/ Credit Line", dept:"" },
-    ]
-  },
-  "7/20/26": {
-    bajas: [
-      { country:"China", title:"Software Engineer - Security Test", dept:"Product Development", level:"3a", termType:"Involuntary", reason:"Performance Issues", regrettable:"Non-Regrettable" },
-    ],
-    ingresos: [
       { name:"Johnson Cyriac", country:"United States", title:"Staff Data Engineer", dept:"Product Development" },
       { name:"Cesar Aguirre", country:"Mexico", title:"Senior Software Engineer - Android", dept:"Product Development" },
       { name:"Anton Guerrero", country:"Mexico", title:"Key Account Manager (SMB's)", dept:"Go To Market" },
@@ -1819,12 +1777,6 @@ const WEEKLY_MOV = {
       { name:"Sebastian Aldaz", country:"Ecuador", title:"Business Operations Supervisor", dept:"Go To Market" },
       { name:"Ricardo Illescas", country:"Mexico", title:"Data Marketing Analyst", dept:"Go To Market" },
       { name:"Dushyanth Chikkarangaiah", country:"India", title:"Staff Program Manager", dept:"Product Development" },
-    ]
-  },
-  "7/13/26": {
-    bajas: [
-    ],
-    ingresos: [
       { name:"Mariana Naranjo", country:"Colombia", title:"Senior Counsel", dept:"Counsel" },
       { name:"Jose Lujan", country:"Colombia", title:"Sales Representative", dept:"Go To Market" },
       { name:"Benelli Tuazon", country:"Philippines", title:"Junior Financial Operations Analyst", dept:"Operations" },
@@ -1839,18 +1791,6 @@ const WEEKLY_MOV = {
       { name:"Jonathan Cerna Valverde", country:"Peru", title:"Territory Manager", dept:"Go To Market" },
       { name:"Surya Iskandar", country:"Indonesia", title:"Regional Sales Manager", dept:"Go To Market" },
       { name:"Agatha Sanabria", country:"Brazil", title:"Brand Design Manager", dept:"Go To Market" },
-    ]
-  },
-  "7/6/26": {
-    bajas: [
-      { country:"United States", title:"Staff Software Engineer", dept:"Product Development", level:"5a", termType:"Involuntary", reason:"Performance", regrettable:"Non-Regrettable" },
-      { country:"Mexico", title:"Senior Software Engineer - Android", dept:"Product Development", level:"4a", termType:"Voluntary", reason:"Other Employment", regrettable:"" },
-      { country:"Mexico", title:"Fraud Operations Lead", dept:"Financial Products", level:"2a", termType:"Voluntary", reason:"Other Employment", regrettable:"" },
-      { country:"Mexico", title:"Key Account Representative", dept:"Go To Market", level:"1b", termType:"Involuntary", reason:"Performance Issues", regrettable:"Non-Regrettable" },
-      { country:"Mexico", title:"Sales Representative", dept:"Go To Market", level:"1b", termType:"Involuntary", reason:"Bad Practices", regrettable:"Non-Regrettable" },
-      { country:"Mexico", title:"Validation Support Supervisor", dept:"Operations", level:"2b", termType:"Involuntary", reason:"Performance Issues", regrettable:"Non-Regrettable" },
-    ],
-    ingresos: [
       { name:"Rizaldy Rahman", country:"Indonesia", title:"Regional Sales Manager", dept:"Go To Market" },
       { name:"Carlos Romero", country:"Mexico", title:"Growth Marketing Partner", dept:"Go To Market" },
       { name:"Eduardo Fiorenzano", country:"Mexico", title:"Growth Senior Manager", dept:"Go To Market" },
@@ -1862,107 +1802,155 @@ const WEEKLY_MOV = {
       { name:"Sinead Cheung", country:"United States", title:"Principal Data & Communications Platform PM", dept:"Product Development" },
     ]
   },
-  "6/29/26": {
+  "Aug 2026": {
     bajas: [
-      { country:"United States", title:"Engineering Director",             dept:"Product Development", level:"5c", termType:"Voluntary",   reason:"Other Employment",       regrettable:"Regrettable" },
-      { country:"Mexico",        title:"Head of Legal",                    dept:"Counsel",            level:"5a",  termType:"Involuntary", reason:"Performance Issues",     regrettable:"Non-Regrettable" },
-      { country:"Mexico",        title:"Key Account Lead",                 dept:"Go To Market",       level:"2a",  termType:"Voluntary",   reason:"Other Employment",       regrettable:"Regrettable" },
-      { country:"Mexico",        title:"Treasury Analyst - Back Office",   dept:"Finance",            level:"2b",  termType:"Involuntary", reason:"Did Not Pass Probation", regrettable:"Non-Regrettable" },
+      { country:"Colombia", title:"Territory Manager", dept:"Go To Market", level:"2c", termType:"Voluntary", reason:"Personal", regrettable:"Regrettable" },
+      { country:"Mexico", title:"Head of Top Accounts", dept:"Go To Market", level:"4b", termType:"Voluntary", reason:"Other employment", regrettable:"Regrettable" },
+      { country:"Colombia", title:"Territory Manager", dept:"Go To Market", level:"2c", termType:"Involuntary", reason:"PERFORMANCE_ISSUES", regrettable:"Non-Regrettable" },
+      { country:"Mexico", title:"Key Account Manager", dept:"Go To Market", level:"3a", termType:"Involuntary", reason:"PERFORMANCE_ISSUES", regrettable:"Non-Regrettable" },
+      { country:"United States", title:"PM Builder Intern, Sales Enablement", dept:"Product Development", level:"3a", termType:"Voluntary", reason:"Internship end", regrettable:"" },
+      { country:"Philippines", title:"Sales Representative", dept:"Go To Market", level:"1b", termType:"Involuntary", reason:"PERFORMANCE_ISSUES", regrettable:"Non-Regrettable" },
+      { country:"Mexico", title:"Capital Markets Senior Manager", dept:"Finance", level:"4b", termType:"Voluntary", reason:"OTHER", regrettable:"Regrettable" },
+      { country:"Mexico", title:"Clerk Support Representative", dept:"Operations", level:"1c", termType:"Involuntary", reason:"MISCONDUCT", regrettable:"Non-Regrettable" },
+      { country:"Panama", title:"Legal and Compliance Analyst", dept:"Counsel", level:"2a", termType:"Involuntary", reason:"PERFORMANCE_ISSUES", regrettable:"Non-Regrettable" },
+      { country:"Brazil", title:"Sales Representative", dept:"Go To Market", level:"1a", termType:"Involuntary", reason:"Performance", regrettable:"Non-Regrettable" },
+      { country:"Mexico", title:"Risk Analyst", dept:"Financial Products", level:"2a", termType:"Involuntary", reason:"PERFORMANCE_ISSUES", regrettable:"Non-Regrettable" },
+      { country:"Panama", title:"Clerk Support Representative", dept:"Operations", level:"1a", termType:"Voluntary", reason:"Renuncia", regrettable:"Regrettable" },
+      { country:"United States", title:"Product Manager", dept:"Product Development", level:"3a", termType:"Involuntary", reason:"Performance", regrettable:"Non-Regrettable" },
+      { country:"Mexico", title:"Sr Compensation and People Ops Analyst", dept:"People", level:"4a", termType:"Voluntary", reason:"Other employment", regrettable:"Regrettable" },
+      { country:"Brazil", title:"Business Development Senior Manager", dept:"Go To Market", level:"4a", termType:"Voluntary", reason:"Personal", regrettable:"Non-Regrettable" },
+      { country:"Panama", title:"Territory Manager", dept:"Go To Market", level:"2c", termType:"Involuntary", reason:"Performance", regrettable:"Non-Regrettable" },
+      { country:"Philippines", title:"Collections Supervisor", dept:"Operations", level:"2a", termType:"Voluntary", reason:"Personal", regrettable:"Non-Regrettable" },
+      { country:"Colombia", title:"Risk Manager", dept:"Financial Products", level:"3b", termType:"Involuntary", reason:"PERFORMANCE_ISSUES", regrettable:"Non-Regrettable" },
+      { country:"Brazil", title:"Sales Representative", dept:"Go To Market", level:"1a", termType:"Involuntary", reason:"Performance", regrettable:"Non-Regrettable" },
+      { country:"Mexico", title:"Key Account Manager (SMB's)", dept:"Go To Market", level:"3a", termType:"Involuntary", reason:"No pasa Periodo de Prueba", regrettable:"Non-Regrettable" },
+      { country:"United States", title:"Fraud Analytics Director", dept:"Financial Products", level:"6a", termType:"Involuntary", reason:"Unknown", regrettable:"Non-Regrettable" },
     ],
     ingresos: [
-      { name:"Joaquin Castañon",          country:"Peru",     title:"Key Account Lead",                            dept:"Go To Market" },
-      { name:"Moises Carrasco Palomeque", country:"Mexico",   title:"Clerk Support Representative",                 dept:"Operations" },
-      { name:"César Jiménez",             country:"Mexico",   title:"Fraud Analytics Analyst",                     dept:"Financial Products" },
-      { name:"Norman Argueta",            country:"Mexico",   title:"Customer Support Representative",              dept:"Operations" },
-      { name:"Camilo Garcia",             country:"Colombia", title:"CX Support Supervisor",                       dept:"Operations" },
-      { name:"Marco Montiel",             country:"Mexico",   title:"Customer Support Representative",              dept:"Operations" },
-      { name:"Andrea Ibarra",             country:"Ecuador",  title:"Clerk Support Supervisor",                    dept:"Operations" },
-      { name:"Cesar Martinez",            country:"Colombia", title:"CX Support Supervisor",                       dept:"Operations" },
-      { name:"Andrés Meré",               country:"Mexico",   title:"Merchant Operations Partner Success Analyst", dept:"Go To Market" },
+      { name:"Carlos Bardi", country:"Colombia", title:"Optimization Project Manager", dept:"Operations" },
+      { name:"Diathé de la Vega", country:"Mexico", title:"Treasury Analyst", dept:"Finance" },
+      { name:"Roberto Lopez", country:"Mexico", title:"Machine Learning Engineer - Data Science", dept:"Financial Products" },
+      { name:"Edricko Nathalim", country:"Indonesia", title:"Talent Acquisition Partner", dept:"People" },
+      { name:"Ayanda Mntambo", country:"South Africa", title:"Clerk Support Representative", dept:"Operations" },
+      { name:"Dylan Datoy", country:"Philippines", title:"Sales Enablement Analyst", dept:"Go To Market" },
+      { name:"María Restrepo Jimeno", country:"Colombia", title:"Strategic Insights Sr Manager", dept:"Operations" },
+      { name:"Franz Madayag", country:"Philippines", title:"Retail Insights Analyst - Researcher", dept:"Product Development" },
+      { name:"Fabiane Garcia", country:"Brazil", title:"Sales Executive - Campo Grande", dept:"Go To Market" },
+      { name:"Alina Duran", country:"Mexico", title:"Promoter Operations Manager", dept:"Go To Market" },
+      { name:"Hayden Mans", country:"United States", title:"Senior Software Engineer iOS", dept:"Product Development" },
+      { name:"Gustavo Amaya", country:"Colombia", title:"Web Manager", dept:"Go To Market" },
+      { name:"Gary Tumbaco", country:"Ecuador", title:"Sales Representative", dept:"Go To Market" },
+      { name:"Camilo Avila", country:"Colombia", title:"Software Development Engineer in Test", dept:"Product Development" },
+      { name:"Dayana Rojkind", country:"Mexico", title:"Sr. Content Strategy Manager", dept:"Go To Market" },
+      { name:"Gabriela Aguilar", country:"Mexico", title:"Validation Support Representative", dept:"Operations" },
+      { name:"Jeflin Boy Roy Tampubolon Tampubolon", country:"Indonesia", title:"Business Development Representative", dept:"Go To Market" },
+      { name:"Nicolas Muñoz", country:"Colombia", title:"D2C Analytics and Insights Manager", dept:"Go To Market" },
+      { name:"Rodrigo Alencar", country:"Brazil", title:"Sales Representative", dept:"Go To Market" },
+      { name:"juan sanchez", country:"Colombia", title:"Senior Software Engineer - Onboarding", dept:"Product Development" },
+      { name:"Natalia Janeiro", country:"Mexico", title:"Strategy & Performance Analyst", dept:"Go To Market" },
+      { name:"ervin castellanos", country:"Colombia", title:"Senior Software Engineer", dept:"Product Development" },
+      { name:"Ana Rico", country:"Mexico", title:"Public Relations Director", dept:"Go To Market" },
+      { name:"Jose Lopez", country:"Colombia", title:"Sales Representative", dept:"Go To Market" },
+      { name:"Ivette Alvarado", country:"Ecuador", title:"Sales Representative", dept:"Go To Market" },
+      { name:"Audra Hanlon", country:"United States", title:"Strategic Initiatives Analyst", dept:"Financial Products" },
+      { name:"April Wong", country:"Philippines", title:"Promoter Coordinator", dept:"Go To Market" },
+      { name:"Fabián Naula", country:"Ecuador", title:"Territory Manager", dept:"Go To Market" },
+      { name:"Santiago Gil", country:"Mexico", title:"Strategy & Performance Analyst", dept:"Go To Market" },
+      { name:"Pragya Sinha", country:"India", title:"Senior Human Resources Business Partner", dept:"People" },
+      { name:"Weslley De Souza Rodrigues", country:"Brazil", title:"Technical Support Specialist", dept:"Operations" },
+      { name:"Sherly Christina", country:"Indonesia", title:"Customer Support Representative", dept:"Operations" },
+      { name:"Mindo Erikson Batubara", country:"Indonesia", title:"Business Development Representative", dept:"Go To Market" },
+      { name:"Sebastian Rodríguez", country:"Colombia", title:"Senior Software Engineer", dept:"Product Development" },
+      { name:"Lizandra Herrerias", country:"Brazil", title:"Retail Marketing Senior Manager", dept:"Go To Market" },
+      { name:"Arif Azhari", country:"Indonesia", title:"Collections Supervisor", dept:"Operations" },
+      { name:"Maureen Gómez", country:"Panama", title:"Merchant Operations Supervisor", dept:"Go To Market" },
+      { name:"Bilal Rizvi", country:"United States", title:"Senior Director Anti Fraud", dept:"Financial Products" },
+      { name:"André Carvalho", country:"Brazil", title:"Sales Representative", dept:"Go To Market" },
+      { name:"Yahir Vivero", country:"Mexico", title:"Key Account Manager (SMB's)", dept:"Go To Market" },
+      { name:"Laura Soto", country:"Mexico", title:"Strategy & Performance Analyst", dept:"Go To Market" },
+      { name:"Sabrina Vieira", country:"Brazil", title:"Territory Manager", dept:"Go To Market" },
+      { name:"Kirill Odintsov", country:"Indonesia", title:"Credit Risk Director", dept:"Financial Products" },
+      { name:"Manas J U", country:"India", title:"Talent Acquisition Senior Manager", dept:"People" },
+      { name:"Fernando Salgado", country:"Mexico", title:"Clerk Support Representative", dept:"Operations" },
+      { name:"Rafaella França", country:"Brazil", title:"Talent Acquisition Partner (BR)", dept:"People" },
+      { name:"Sungbin Kim", country:"United States", title:"Software Engineer - New Grad", dept:"Product Development" },
+      { name:"Amira Trujillo", country:"Peru", title:"Legal and Compliance Analyst", dept:"Counsel" },
+      { name:"Irwina Annisa", country:"Indonesia", title:"Legal & Compliance Sr Counsel", dept:"Counsel" },
+      { name:"Ro Valadez", country:"Mexico", title:"Marketing Coordinator", dept:"Go To Market" },
+      { name:"Dafne Gonzalez", country:"Mexico", title:"Workplace Senior Manager", dept:"People" },
+      { name:"Rodolfo Mendes Barbosa Sakai", country:"Brazil", title:"Growth Marketing Partner", dept:"Go To Market" },
+      { name:"Jason Schmidt", country:"United States", title:"Head of Investor Relations", dept:"Finance" },
+      { name:"Luis Tsuzuki", country:"Mexico", title:"Key Account Manager", dept:"Go To Market" },
+      { name:"Diego Salazar", country:"Colombia", title:"Senior Software Engineer - Onboarding", dept:"Product Development" },
+      { name:"Kiabel Navas", country:"Panama", title:"Sales Manager", dept:"Go To Market" },
     ]
   },
-  "6/22/26": {
+  "Sep 2026": {
     bajas: [
-      { country:"Panama",       title:"Sales Representative",              dept:"Go To Market", level:"1b", termType:"Involuntary", reason:"Did Not Pass Probation", regrettable:"Non-Regrettable" },
-      { country:"South Africa", title:"Clerk Support Representative",      dept:"Operations",   level:"1a", termType:"Involuntary", reason:"Dismissal",              regrettable:"Non-Regrettable" },
-      { country:"Colombia",     title:"Customer Support Representative",   dept:"Operations",   level:"1b", termType:"Voluntary",   reason:"Received a Job Offer",   regrettable:"Regrettable" },
-      { country:"Brazil",       title:"Talent Acquisition Partner",        dept:"People",       level:"3a", termType:"Involuntary", reason:"Performance",            regrettable:"Non-Regrettable" },
-      { country:"Brazil",       title:"Sales Representative",              dept:"Go To Market", level:"1a", termType:"Involuntary", reason:"Performance",            regrettable:"Non-Regrettable" },
+      { country:"Philippines", title:"Sales Representative (General Santos)", dept:"Go To Market", level:"1b", termType:"Involuntary", reason:"Performance", regrettable:"Non-Regrettable" },
+      { country:"Philippines", title:"Sales Representative", dept:"Go To Market", level:"1b", termType:"Involuntary", reason:"Performance", regrettable:"Non-Regrettable" },
+      { country:"United States", title:"Software Engineer", dept:"Product Development", level:"2a", termType:"Voluntary", reason:"Personal", regrettable:"Non-Regrettable" },
+      { country:"Mexico", title:"Business Development Analyst", dept:"Go To Market", level:"2b", termType:"Voluntary", reason:"Unknown", regrettable:"" },
+      { country:"Ecuador", title:"Accounting Analyst", dept:"Finance", level:"2c", termType:"Involuntary", reason:"PERFORMANCE_ISSUES", regrettable:"Non-Regrettable" },
+      { country:"Brazil", title:"Merchant Operations Analyst", dept:"Go To Market", level:"2a", termType:"Voluntary", reason:"Personal", regrettable:"Non-Regrettable" },
+      { country:"Ecuador", title:"Territory Manager", dept:"Go To Market", level:"2b", termType:"Involuntary", reason:"PERFORMANCE_ISSUES", regrettable:"Non-Regrettable" },
+      { country:"Mexico", title:"Key Account Lead", dept:"Go To Market", level:"2c", termType:"Involuntary", reason:"PERFORMANCE_ISSUES", regrettable:"Non-Regrettable" },
+      { country:"Brazil", title:"Inside Sales Representative", dept:"Go To Market", level:"1b", termType:"Involuntary", reason:"Performance", regrettable:"Non-Regrettable" },
+      { country:"Mexico", title:"Validation Support Representative", dept:"Operations", level:"1a", termType:"Involuntary", reason:"PERFORMANCE_ISSUES", regrettable:"Non-Regrettable" },
+      { country:"Mexico", title:"Strategy & Corporate Development Senior Manager", dept:"Finance", level:"4b", termType:"Voluntary", reason:"OTHER", regrettable:"Regrettable" },
+      { country:"Mexico", title:"Retail Manager", dept:"Go To Market", level:"3b", termType:"Involuntary", reason:"PERFORMANCE_ISSUES", regrettable:"Non-Regrettable" },
+      { country:"Panama", title:"Senior Engineering Manager - Consumer Team", dept:"Product Development", level:"5a", termType:"Voluntary", reason:"Personal", regrettable:"" },
+      { country:"Peru", title:"Financial Analyst", dept:"Finance", level:"2c", termType:"Involuntary", reason:"PERFORMANCE_ISSUES", regrettable:"Non-Regrettable" },
+      { country:"Philippines", title:"Process Associate", dept:"Operations", level:"1a", termType:"Voluntary", reason:"Other employment", regrettable:"" },
+      { country:"Mexico", title:"Business Analyst", dept:"Operations", level:"2a", termType:"Involuntary", reason:"PERFORMANCE_ISSUES", regrettable:"Non-Regrettable" },
+      { country:"United States", title:"Senior Corporate Counsel", dept:"Counsel", level:"4b", termType:"Involuntary", reason:"Performance", regrettable:"Non-Regrettable" },
+      { country:"Philippines", title:"Growth Representative", dept:"Go To Market", level:"3b", termType:"Voluntary", reason:"OTHER", regrettable:"Non-Regrettable" },
+      { country:"Mexico", title:"Key Account Manager", dept:"Go To Market", level:"3a", termType:"Voluntary", reason:"Received a job offer", regrettable:"Non-Regrettable" },
     ],
     ingresos: [
-      { name:"Tania Natasha",    country:"Indonesia",     title:"Business Development Lead",            dept:"Go To Market" },
-      { name:"Ágata Marquezini", country:"Brazil",        title:"Merchant Operations Analyst",          dept:"Go To Market" },
-      { name:"Shayara Castro",   country:"Brazil",        title:"Promoter Coordinator",                 dept:"Go To Market" },
-      { name:"Yad Calderón",     country:"Mexico",        title:"Strategy and Operations Manager",      dept:"Operations" },
-      { name:"Catharina Jesus",  country:"Brazil",        title:"Legal Analyst",                        dept:"Counsel" },
-      { name:"Michelle Guzmán",  country:"Mexico",        title:"Merchant Operations Representative",   dept:"Go To Market" },
-      { name:"Lore Reyes",       country:"Mexico",        title:"Collection Representative",            dept:"Operations" },
-      { name:"Paco Rosales",     country:"Mexico",        title:"Senior Disputes & Complaints Manager", dept:"Operations" },
-      { name:"Andrea Reggio",    country:"Colombia",      title:"Tech Operations Director",             dept:"Operations" },
-      { name:"Norman Argueta",   country:"Mexico",        title:"Customer Support Representative",      dept:"Operations" },
-    ]
-  },
-  "6/15/26": {
-    bajas: [
-      { country:"Mexico",      title:"Commercial Senior Manager",                 dept:"Go To Market",       level:"4c", termType:"Voluntary",   reason:"Personal Reasons",       regrettable:"Regrettable" },
-      { country:"Colombia",    title:"Fraud Operations Representative",           dept:"Financial Products", level:"1b", termType:"Voluntary",   reason:"Received a Job Offer",   regrettable:"Regrettable" },
-      { country:"Philippines", title:"Sales Representative (Puerto Princesa)",    dept:"Go To Market",       level:"1a", termType:"Voluntary",   reason:"Personal Reasons",       regrettable:"Non-Regrettable" },
-      { country:"Peru",        title:"Sales Representative",                      dept:"Go To Market",       level:"1c", termType:"Voluntary",   reason:"Bad Practices",          regrettable:"Non-Regrettable" },
-      { country:"Panama",      title:"Merchant Operations Supervisor",            dept:"Go To Market",       level:"2b", termType:"Voluntary",   reason:"Received a Job Offer",   regrettable:"Non-Regrettable" },
-      { country:"Brazil",      title:"Sales Representative",                      dept:"Go To Market",       level:"1a", termType:"Involuntary", reason:"Did Not Pass Probation", regrettable:"Non-Regrettable" },
-      { country:"Colombia",    title:"Senior Partnership Development Manager",    dept:"Product Development",level:"4a", termType:"Involuntary", reason:"Performance Issues",     regrettable:"Non-Regrettable" },
-      { country:"Mexico",      title:"Accounting Manager",                        dept:"Finance",            level:"3b", termType:"Voluntary",   reason:"Other Employment",       regrettable:"Non-Regrettable" },
-    ],
-    ingresos: [
-      { name:"Karim Garcia",        country:"Mexico",      title:"Senior IT Specialist",                 dept:"Product Development" },
-      { name:"Hannia Nuñez Guzmán", country:"Mexico",      title:"Market Expansion Manager",             dept:"Go To Market" },
-      { name:"Jesus Flores",        country:"Mexico",      title:"Market Expansion Manager",             dept:"Go To Market" },
-      { name:"Ika Rahmawati",       country:"Indonesia",   title:"Merchant Operations Representative",   dept:"Go To Market" },
-      { name:"Pol Uy",              country:"Philippines", title:"Product Lock Analyst",                 dept:"Product Development" },
-      { name:"Henry Mantilla",      country:"Mexico",      title:"Financial Operations Analyst",         dept:"Operations" },
-      { name:"Riki Risdianto",      country:"Indonesia",   title:"Customer Support Supervisor",          dept:"Operations" },
-      { name:"Diego Bernabe",       country:"Mexico",      title:"Director of Product Design",           dept:"Product Development" },
-      { name:"Mariel Sada",         country:"Mexico",      title:"Senior Manager Business Development",  dept:"Go To Market" },
-      { name:"Adriana Ruiz",        country:"Colombia",    title:"Sales Representative",                 dept:"Go To Market" },
-    ]
-  },
-  "6/8/26": {
-    bajas: [
-      { country:"Ecuador",       title:"Merchant Operations Analyst",   dept:"Go To Market", termType:"Involuntary", reason:"Performance Issues", regrettable:"Non-Regrettable" },
-      { country:"Brazil",        title:"Sales Representative",          dept:"Go To Market", termType:"Involuntary", reason:"Did Not Pass Probation", regrettable:"Non-Regrettable" },
-      { country:"Colombia",      title:"Validation Support Representative", dept:"Operations", termType:"Voluntary", reason:"Resignation", regrettable:"Non-Regrettable" },
-      { country:"Brazil",        title:"Sales Representative",          dept:"Go To Market", termType:"Voluntary",   reason:"Resignation", regrettable:"Non-Regrettable" },
-      { country:"United States", title:"VP, Finance Systems",           dept:"Finance",      termType:"Involuntary", reason:"Dismissal",    regrettable:"Non-Regrettable" },
-    ],
-    ingresos: [
-      { name:"Margarita Corona",    country:"Mexico",        title:"Commercial Excellence Analyst",               dept:"Go To Market" },
-      { name:"Rendani Ramunenyiwa", country:"South Africa",  title:"Merchant Operations Representative",          dept:"Go To Market" },
-      { name:"Pietra Iecker",       country:"Brazil",        title:"Sales Enablement Supervisor",                 dept:"Go To Market" },
-      { name:"Ryan Pon",            country:"United States", title:"Staff Software Engineer - Finance Engine",    dept:"Product Development" },
-      { name:"Pedro Aufieri",       country:"Brazil",        title:"Ecommerce Operations Analyst",                dept:"Go To Market" },
-      { name:"Ricardo Castillo",    country:"Mexico",        title:"Senior Software Engineer - Android",          dept:"Product Development" },
-      { name:"Gelo Avelino",        country:"Philippines",   title:"Promoter Manager",                            dept:"Go To Market" },
-      { name:"Rox Mijangos",        country:"Mexico",        title:"Executive Assistant",                         dept:"Corporate Admin" },
-      { name:"Vivian Goncalves",    country:"Panama",        title:"HR Business Partner",                         dept:"People" },
-      { name:"Artie Lee",           country:"United States", title:"Senior Engineering Director - Consumer & Lock",dept:"Product Development" },
-      { name:"Emilia Garcés",       country:"Ecuador",       title:"Promoter Coordinator",                        dept:"Go To Market" },
-      { name:"Abdul Alarcón",       country:"Panama",        title:"Representante de Ventas",                     dept:"Go To Market" },
-      { name:"Tomaz Sant'Anna",     country:"Brazil",        title:"Estagiário Juridíco",                         dept:"Counsel" },
-      { name:"Karla Lima",          country:"Brazil",        title:"Territory Manager",                           dept:"Go To Market" },
-      { name:"Alexandra Torres",    country:"Colombia",      title:"Merchant Operations Representative",          dept:"Go To Market" },
-      { name:"Fernando Martínez",   country:"Colombia",      title:"Representante de Ventas",                     dept:"Go To Market" },
-      { name:"Gabriela Buitrago",   country:"Colombia",      title:"Financial Analyst",                           dept:"Finance" },
-      { name:"Ivan Piramide",       country:"Philippines",   title:"Digital Growth Manager",                      dept:"Go To Market" },
-      { name:"Alejandra Mancipe",   country:"Colombia",      title:"Risk Manager",                                dept:"Financial Products" },
-      { name:"Ana Luísa Quintino",  country:"Brazil",        title:"Sales Representative",                        dept:"Go To Market" },
-      { name:"Carlos Torres",       country:"Mexico",        title:"Senior Portfolio Manager",                    dept:"Financial Products" },
-      { name:"Dario Velez",         country:"Ecuador",       title:"Merchant Operations Representative",          dept:"Go To Market" },
-      { name:"Anvee Naik",           country:"United States", title:"PM Builder Intern, Sales Enablement",          dept:"Product Development" },
-      { name:"Nico Nicolas",        country:"Indonesia",     title:"Sales Trainer",                               dept:"Go To Market" },
+      { name:"Adriano Fernandes", country:"Brazil", title:"Sales Representative", dept:"Go To Market" },
+      { name:"Kaity Loran", country:"United States", title:"Global Benefits Program Manager", dept:"People" },
+      { name:"Karoline Silva", country:"Mexico", title:"Retail Development Kiosk", dept:"Go To Market" },
+      { name:"Pablo Vázquez", country:"Mexico", title:"Data Analyst Customer Experience", dept:"Operations" },
+      { name:"Alan Morlett", country:"Mexico", title:"Key Account Manager (SMB's)", dept:"Go To Market" },
+      { name:"Rodrigo Ruiz", country:"Mexico", title:"Agente de garantías", dept:"Operations" },
+      { name:"Marisa Permata Hati", country:"Indonesia", title:"Business Development Representative", dept:"Go To Market" },
+      { name:"Montse Urrutia", country:"Mexico", title:"Sales Enablement Analyst", dept:"Go To Market" },
+      { name:"Ari Priyatna", country:"Indonesia", title:"Business Development Representative", dept:"Go To Market" },
+      { name:"Caren Variani", country:"Brazil", title:"Sales Representative", dept:"Go To Market" },
+      { name:"Victor Asiwe", country:"United States", title:"Portfolio Manager", dept:"Financial Products" },
+      { name:"Juan Torres", country:"Colombia", title:"Senior Software Engineer", dept:"Product Development" },
+      { name:"Vin Baker", country:"United States", title:"Software Engineer", dept:"Product Development" },
+      { name:"Federico Carreno", country:"Colombia", title:"Director of Global Treasury", dept:"Finance" },
+      { name:"Rodrigo Orenday Serratos", country:"Mexico", title:"Head Of Legal", dept:"Counsel" },
+      { name:"Igor Nishiyama", country:"Brazil", title:"Sales Representative", dept:"Go To Market" },
+      { name:"Gustavo Lozada", country:"Mexico", title:"Validation Support Representative", dept:"Operations" },
+      { name:"Lez Reyes", country:"Mexico", title:"Technical Support Specialist", dept:"Operations" },
+      { name:"Alonso Ramirez Voorduin", country:"Mexico", title:"Strategy & Corporate Development Analyst", dept:"Finance" },
+      { name:"Henry Wu", country:"China", title:"Software Engineer - Security Test", dept:"Product Development" },
+      { name:"Luis Andrade", country:"Colombia", title:"Sales Representative", dept:"Go To Market" },
+      { name:"Rahmineysa Achmad", country:"Indonesia", title:"Customer Support Representative", dept:"Operations" },
+      { name:"Carlos Alvarado", country:"Mexico", title:"Agente de garantías", dept:"Operations" },
+      { name:"Alexssomer Romanowski", country:"Brazil", title:"Sales Representative", dept:"Go To Market" },
+      { name:"Gaby Martínez", country:"Mexico", title:"Clerk Support Representative", dept:"Operations" },
+      { name:"Gerwin Garcia", country:"Philippines", title:"Zoho CRM Analyst", dept:"Operations" },
+      { name:"María Paz Coronel Barrera", country:"Ecuador", title:"Legal Intern", dept:"Counsel" },
+      { name:"Talita Lopes Tereza", country:"Brazil", title:"Sales Representative", dept:"Go To Market" },
+      { name:"Jose Carlos Pineda", country:"Mexico", title:"Risk Manager", dept:"Financial Products" },
+      { name:"Fernando Cíntora", country:"Mexico", title:"Portfolio Partner - Asset Valuation", dept:"Financial Products" },
+      { name:"Ivan Ponce", country:"Colombia", title:"Senior Software Engineer - Payments", dept:"Product Development" },
+      { name:"Margareth Pasaribu", country:"Indonesia", title:"Operation Strategic Projects Manager", dept:"Go To Market" },
+      { name:"Anahí Limón", country:"Mexico", title:"Strategy & Corporate Development Senior Manager", dept:"Finance" },
+      { name:"Brandon Walker", country:"United States", title:"Senior Product Manager, Credit Line Platform", dept:"Product Development" },
+      { name:"Carlos Rincon", country:"Colombia", title:"Senior Software Engineer", dept:"Product Development" },
+      { name:"Gabriel Ortiz", country:"Mexico", title:"Device Security Analyst", dept:"Product Development" },
+      { name:"Ricky Ronald", country:"Indonesia", title:"Key Account Manager", dept:"Go To Market" },
+      { name:"Carlo Praditya", country:"Indonesia", title:"Promoter Manager", dept:"Go To Market" },
+      { name:"Daniel Cantillo", country:"Colombia", title:"Support Tools analyst", dept:"Operations" },
     ]
   },
 };
-let activeWeek = "7/27/26";
+let activeWeek = "Sep 2026";
 function setWeek(w) {
   activeWeek = w;
   document.querySelectorAll(".week-select").forEach(s => { s.value = w; });
@@ -2056,11 +2044,11 @@ function renderMovements() {
     ? `<div style="margin-top:10px;padding:10px 14px;background:#fff1f2;border:1px solid #fecdd3;border-radius:8px;display:flex;align-items:flex-start;gap:10px;">
         <span style="font-size:16px;line-height:1;">⚠️</span>
         <div>
-          <div style="font-size:11px;font-weight:700;color:#be123c;margin-bottom:3px;">${regrettables.length} Regrettable termination${regrettables.length > 1 ? 's' : ''} this week</div>
+          <div style="font-size:11px;font-weight:700;color:#be123c;margin-bottom:3px;">${regrettables.length} Regrettable termination${regrettables.length > 1 ? 's' : ''} this month</div>
           ${regrettables.map(r => `<div style="font-size:10.5px;color:#9f1239;">• ${r.title} · ${r.country} · ${r.dept}</div>`).join('')}
         </div>
       </div>`
-    : `<div style="margin-top:10px;padding:8px 14px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;font-size:11px;font-weight:600;color:#166534;">✅ No regrettable terminations this week</div>`;
+    : `<div style="margin-top:10px;padding:8px 14px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;font-size:11px;font-weight:600;color:#166534;">✅ No regrettable terminations this month</div>`;
   grid.innerHTML = `
     <div>
       <div class="mov-col-header">
