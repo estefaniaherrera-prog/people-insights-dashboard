@@ -504,10 +504,10 @@
     <div class="active-filters" id="active-filters-top"></div>
     <!-- HC TOTAL BANNER -->
     <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:14px;">
-      <span style="font-size:38px;font-weight:900;color:var(--text-primary);letter-spacing:-1px;" id="hc-banner-num">1,195</span>
+      <span style="font-size:38px;font-weight:900;color:var(--text-primary);letter-spacing:-1px;" id="hc-banner-num">1,210</span>
       <span style="font-size:14px;font-weight:700;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.4px;">HC Total</span>
-      <span style="font-size:13px;font-weight:600;color:var(--green);background:var(--green-light);padding:2px 10px;border-radius:99px;" id="hc-banner-delta">+26 vs Aug · +2.2%</span>
-      <span style="font-size:12px;color:var(--text-muted);margin-left:4px;" id="hc-banner-period">Sep 30, 2026</span>
+      <span style="font-size:13px;font-weight:600;color:var(--green);background:var(--green-light);padding:2px 10px;border-radius:99px;" id="hc-banner-delta">+15 vs Sep · +1.3%</span>
+      <span style="font-size:12px;color:var(--text-muted);margin-left:4px;" id="hc-banner-period">Oct 31, 2026</span>
     </div>
     <div class="filter-bar">
       <span class="filter-label">
@@ -576,7 +576,8 @@
             <option value="18">Jul 20</option>
             <option value="19">Jul 27</option>
             <option value="20">Aug 31</option>
-            <option value="21" selected>Sep 30</option>
+            <option value="21">Sep 30</option>
+            <option value="22" selected>Oct 31</option>
           </select>
         </div>
         <div id="hc-country-bars"></div>
@@ -596,7 +597,8 @@
             <option value="Jun 2026">Jun 2026</option>
             <option value="Jul 2026">Jul 2026</option>
             <option value="Aug 2026">Aug 2026</option>
-            <option value="Sep 2026" selected>Sep 2026</option>
+            <option value="Sep 2026">Sep 2026</option>
+            <option value="Oct 2026" selected>Oct 2026</option>
           </select>
         </div>
         <div id="movements-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;"></div>
@@ -711,134 +713,134 @@
 <script>
 // ─── GENDER BY LEVEL (Jun 22, 2026, from HC snapshot) ────────────────────────
 const GENDER_BY_LEVEL_MAY26 = [
-  { label:"1a",    total:114, f:47, m:66, nb:0, ns:1 },
-  { label:"1b",    total:109, f:52, m:57, nb:0, ns:0 },
-  { label:"1c",    total:102, f:51, m:51, nb:0, ns:0 },
-  { label:"2a",    total:125, f:57, m:67, nb:1, ns:0 },
-  { label:"2b",    total:118, f:68, m:50, nb:0, ns:0 },
-  { label:"2c",    total:77, f:36, m:41, nb:0, ns:0 },
-  { label:"3a",    total:106, f:47, m:58, nb:0, ns:1 },
-  { label:"3b",    total:104, f:51, m:53, nb:0, ns:0 },
-  { label:"3c",    total:53, f:25, m:28, nb:0, ns:0 },
-  { label:"4a",    total:75, f:32, m:43, nb:0, ns:0 },
-  { label:"4b",    total:58, f:19, m:39, nb:0, ns:0 },
-  { label:"4c",    total:37, f:7, m:30, nb:0, ns:0 },
-  { label:"5a",    total:34, f:12, m:22, nb:0, ns:0 },
+  { label:"1a",    total:116, f:48, m:67, nb:0, ns:1 },
+  { label:"1b",    total:109, f:53, m:56, nb:0, ns:0 },
+  { label:"1c",    total:101, f:50, m:51, nb:0, ns:0 },
+  { label:"2a",    total:131, f:59, m:71, nb:1, ns:0 },
+  { label:"2b",    total:122, f:69, m:53, nb:0, ns:0 },
+  { label:"2c",    total:76, f:36, m:40, nb:0, ns:0 },
+  { label:"3a",    total:110, f:49, m:60, nb:0, ns:1 },
+  { label:"3b",    total:109, f:52, m:57, nb:0, ns:0 },
+  { label:"3c",    total:52, f:25, m:27, nb:0, ns:0 },
+  { label:"4a",    total:73, f:30, m:43, nb:0, ns:0 },
+  { label:"4b",    total:59, f:19, m:40, nb:0, ns:0 },
+  { label:"4c",    total:35, f:7, m:28, nb:0, ns:0 },
+  { label:"5a",    total:35, f:12, m:23, nb:0, ns:0 },
   { label:"5b",    total:23, f:8, m:15, nb:0, ns:0 },
   { label:"5c",    total:15, f:5, m:10, nb:0, ns:0 },
   { label:"6a",    total:14, f:2, m:12, nb:0, ns:0 },
   { label:"6b",    total:4, f:0, m:4, nb:0, ns:0 },
   { label:"E",     total:20, f:3, m:16, nb:1, ns:0 },
-  { label:"Intern",total:7, f:7, m:0, nb:0, ns:0 },
+  { label:"Intern",total:6, f:6, m:0, nb:0, ns:0 },
 ];
 // ─── DATA ─────────────────────────────────────────────────────────────────────
 const DATA = {
   hcByDept: {
-    "Go To Market":         { hc:580, attr:1.72, vol:0.69, invol:1.03 },
-    "Operations":           { hc:226, attr:1.33, vol:0.44, invol:0.88 },
-    "Product Development":  { hc:174, attr:1.15, vol:1.15, invol:0.0 },
-    "Finance":              { hc:77,  attr:3.9, vol:1.3, invol:2.6 },
-    "Financial Products":   { hc:62,  attr:0.0, vol:0.0, invol:0.0 },
-    "People":               { hc:46,  attr:0.0, vol:0.0, invol:0.0 },
+    "Go To Market":         { hc:589, attr:1.19, vol:0.0, invol:1.19 },
+    "Operations":           { hc:233, attr:2.15, vol:0.86, invol:1.29 },
+    "Product Development":  { hc:173, attr:2.89, vol:1.16, invol:1.73 },
+    "Finance":              { hc:78,  attr:1.28, vol:1.28, invol:0.0 },
+    "Financial Products":   { hc:62,  attr:3.23, vol:1.61, invol:1.61 },
+    "People":               { hc:45,  attr:2.22, vol:0.0, invol:2.22 },
     "Counsel":              { hc:28,  attr:3.57, vol:0.0, invol:3.57 },
     "Corporate Admin":      { hc:2,   attr:0.0, vol:0.0, invol:0.0 },
   },
   hcByLevel: {
-    "1a": { hc:114}, "1b": { hc:109}, "1c": { hc:102},
-    "2a": { hc:125}, "2b": { hc:118}, "2c": { hc:77 },
-    "3a": { hc:106}, "3b": { hc:104}, "3c": { hc:53 },
-    "4a": { hc:75 }, "4b": { hc:58 }, "4c": { hc:37 },
-    "5a": { hc:34 }, "5b": { hc:23 }, "5c": { hc:15 },
+    "1a": { hc:116}, "1b": { hc:109}, "1c": { hc:101},
+    "2a": { hc:131}, "2b": { hc:122}, "2c": { hc:76 },
+    "3a": { hc:110}, "3b": { hc:109}, "3c": { hc:52 },
+    "4a": { hc:73 }, "4b": { hc:59 }, "4c": { hc:35 },
+    "5a": { hc:35 }, "5b": { hc:23 }, "5c": { hc:15 },
     "6a": { hc:14 }, "6b": { hc:4  }, "E": { hc:20 },
-    "Intern":         { hc:7   },
+    "Intern":         { hc:6   },
   },
-  hcByPais: { "Mexico":385,"Colombia":178,"Brazil":166,"United States":102,"Peru":86,"South Africa":68 },
+  hcByPais: { "Mexico":388,"Colombia":181,"Brazil":169,"United States":103,"Peru":84,"South Africa":68 },
   gender: {
-    default: { f:529, m:662, nb:2, ns:2, total:1195 },
+    default: { f:533, m:673, nb:2, ns:2, total:1210 },
     // By Department (parent)
     "Corporate Admin":         { f:1, m:0, nb:1, ns:0, total:2 },
-    "Counsel":                 { f:20, m:8, nb:0, ns:0, total:28 },
-    "Finance":                 { f:41, m:36, nb:0, ns:0, total:77 },
-    "Financial Products":      { f:23, m:39, nb:0, ns:0, total:62 },
-    "Go To Market":            { f:267, m:310, nb:1, ns:2, total:580 },
-    "Operations":              { f:109, m:117, nb:0, ns:0, total:226 },
-    "People":                  { f:38, m:8, nb:0, ns:0, total:46 },
-    "Product Development":     { f:30, m:144, nb:0, ns:0, total:174 },
+    "Counsel":                 { f:19, m:9, nb:0, ns:0, total:28 },
+    "Finance":                 { f:41, m:37, nb:0, ns:0, total:78 },
+    "Financial Products":      { f:22, m:40, nb:0, ns:0, total:62 },
+    "Go To Market":            { f:272, m:314, nb:1, ns:2, total:589 },
+    "Operations":              { f:112, m:121, nb:0, ns:0, total:233 },
+    "People":                  { f:37, m:8, nb:0, ns:0, total:45 },
+    "Product Development":     { f:29, m:144, nb:0, ns:0, total:173 },
     // By Level
-    "Intern":                  { f:7, m:0, nb:0, ns:0, total:7 },
+    "Intern":                  { f:6, m:0, nb:0, ns:0, total:6 },
     // By Country
-    "Brazil":                  { f:86, m:79, nb:0, ns:1, total:166 },
+    "Brazil":                  { f:88, m:80, nb:0, ns:1, total:169 },
     "China":                   { f:2, m:5, nb:0, ns:0, total:7 },
-    "Colombia":                { f:79, m:99, nb:0, ns:0, total:178 },
-    "Ecuador":                 { f:30, m:34, nb:0, ns:0, total:64 },
+    "Colombia":                { f:80, m:101, nb:0, ns:0, total:181 },
+    "Ecuador":                 { f:30, m:35, nb:0, ns:0, total:65 },
     "India":                   { f:3, m:6, nb:0, ns:0, total:9 },
-    "Indonesia":               { f:13, m:24, nb:0, ns:1, total:38 },
-    "Mexico":                  { f:165, m:220, nb:0, ns:0, total:385 },
-    "Panama":                  { f:16, m:9, nb:0, ns:0, total:25 },
-    "Peru":                    { f:35, m:51, nb:0, ns:0, total:86 },
-    "Philippines":             { f:30, m:36, nb:1, ns:0, total:67 },
+    "Indonesia":               { f:14, m:26, nb:0, ns:1, total:41 },
+    "Mexico":                  { f:164, m:224, nb:0, ns:0, total:388 },
+    "Panama":                  { f:15, m:9, nb:0, ns:0, total:24 },
+    "Peru":                    { f:35, m:49, nb:0, ns:0, total:84 },
+    "Philippines":             { f:31, m:39, nb:1, ns:0, total:71 },
     "South Africa":            { f:42, m:26, nb:0, ns:0, total:68 },
-    "United States":           { f:28, m:73, nb:1, ns:0, total:102 },
+    "United States":           { f:29, m:73, nb:1, ns:0, total:103 },
     // By Employment Type
-    "Salaried, full-time":     { f:522, m:662, nb:2, ns:2, total:1188 },
+    "Salaried, full-time":     { f:527, m:673, nb:2, ns:2, total:1204 },
     "Salaried, part-time":     { f:1, m:0, nb:0, ns:0, total:1 },
   },
   tenure: {
     default: [
-      { label:"0–6m",  val:278, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"6m–1y", val:177, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"1–2y",  val:268, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
-      { label:"2–5y",  val:383, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
-      { label:"5y+",   val:89, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"0–6m",  val:258, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"6m–1y", val:197, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"1–2y",  val:271, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
+      { label:"2–5y",  val:385, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"5y+",   val:99, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
     ],
     // By Department
     "Go To Market": [
-      { label:"0–6m",  val:139, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"6m–1y", val:97, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"1–2y",  val:135, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
-      { label:"2–5y",  val:183, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
-      { label:"5y+",   val:26, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"0–6m",  val:125, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"6m–1y", val:105, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"1–2y",  val:146, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
+      { label:"2–5y",  val:184, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"5y+",   val:29, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
     ],
     "Operations": [
-      { label:"0–6m",  val:49, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"6m–1y", val:21, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"1–2y",  val:51, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
-      { label:"2–5y",  val:84, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"0–6m",  val:54, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"6m–1y", val:22, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"1–2y",  val:50, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
+      { label:"2–5y",  val:86, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
       { label:"5y+",   val:21, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
     ],
     "Product Development": [
-      { label:"0–6m",  val:38, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"6m–1y", val:17, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"1–2y",  val:33, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
-      { label:"2–5y",  val:56, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
-      { label:"5y+",   val:30, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"0–6m",  val:36, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"6m–1y", val:20, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"1–2y",  val:30, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
+      { label:"2–5y",  val:54, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"5y+",   val:33, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
     ],
     "Finance": [
-      { label:"0–6m",  val:14, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"6m–1y", val:9, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"1–2y",  val:24, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
-      { label:"2–5y",  val:28, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
-      { label:"5y+",   val:2, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"0–6m",  val:11, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"6m–1y", val:13, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"1–2y",  val:20, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
+      { label:"2–5y",  val:30, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"5y+",   val:4, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
     ],
     "Financial Products": [
-      { label:"0–6m",  val:17, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"6m–1y", val:12, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"0–6m",  val:16, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"6m–1y", val:13, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
       { label:"1–2y",  val:11, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
       { label:"2–5y",  val:15, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
       { label:"5y+",   val:7, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
     ],
     "People": [
-      { label:"0–6m",  val:9, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"6m–1y", val:15, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"0–6m",  val:6, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"6m–1y", val:17, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
       { label:"1–2y",  val:8, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
-      { label:"2–5y",  val:13, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
-      { label:"5y+",   val:1, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"2–5y",  val:11, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"5y+",   val:3, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
     ],
     "Counsel": [
-      { label:"0–6m",  val:12, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"6m–1y", val:6, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"0–6m",  val:10, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"6m–1y", val:7, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
       { label:"1–2y",  val:6, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
-      { label:"2–5y",  val:3, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"2–5y",  val:4, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
       { label:"5y+",   val:1, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
     ],
     "Corporate Admin": [
@@ -850,63 +852,63 @@ const DATA = {
     ],
     // By Country
     "Mexico": [
-      { label:"0–6m",  val:88, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"6m–1y", val:73, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"1–2y",  val:76, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
+      { label:"0–6m",  val:84, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"6m–1y", val:72, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"1–2y",  val:80, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
       { label:"2–5y",  val:116, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
-      { label:"5y+",   val:32, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"5y+",   val:36, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
     ],
     "Brazil": [
-      { label:"0–6m",  val:35, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"6m–1y", val:30, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"0–6m",  val:31, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"6m–1y", val:36, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
       { label:"1–2y",  val:51, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
-      { label:"2–5y",  val:46, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"2–5y",  val:47, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
       { label:"5y+",   val:4, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
     ],
     "Colombia": [
       { label:"0–6m",  val:38, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"6m–1y", val:16, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"1–2y",  val:49, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
-      { label:"2–5y",  val:65, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"6m–1y", val:20, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"1–2y",  val:44, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
+      { label:"2–5y",  val:69, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
       { label:"5y+",   val:10, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
     ],
     "United States": [
-      { label:"0–6m",  val:23, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"6m–1y", val:9, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"1–2y",  val:9, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
-      { label:"2–5y",  val:33, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
-      { label:"5y+",   val:28, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"0–6m",  val:20, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"6m–1y", val:13, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"1–2y",  val:7, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
+      { label:"2–5y",  val:34, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"5y+",   val:29, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
     ],
     "Peru": [
-      { label:"0–6m",  val:16, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"0–6m",  val:13, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
       { label:"6m–1y", val:13, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"1–2y",  val:13, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
+      { label:"1–2y",  val:14, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
       { label:"2–5y",  val:43, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
       { label:"5y+",   val:1, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
     ],
     "South Africa": [
-      { label:"0–6m",  val:7, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"0–6m",  val:6, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
       { label:"6m–1y", val:5, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
       { label:"1–2y",  val:27, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
-      { label:"2–5y",  val:22, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
-      { label:"5y+",   val:7, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"2–5y",  val:18, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"5y+",   val:12, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
     ],
     "Ecuador": [
-      { label:"0–6m",  val:12, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"6m–1y", val:7, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"1–2y",  val:7, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
+      { label:"0–6m",  val:11, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"6m–1y", val:8, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"1–2y",  val:8, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
       { label:"2–5y",  val:35, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
       { label:"5y+",   val:3, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
     ],
     "Philippines": [
-      { label:"0–6m",  val:20, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"6m–1y", val:14, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"1–2y",  val:30, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
+      { label:"0–6m",  val:17, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"6m–1y", val:19, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"1–2y",  val:32, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
       { label:"2–5y",  val:3, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
       { label:"5y+",   val:0, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
     ],
     "Panama": [
-      { label:"0–6m",  val:5, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"0–6m",  val:4, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
       { label:"6m–1y", val:1, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
       { label:"1–2y",  val:2, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
       { label:"2–5y",  val:17, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
@@ -914,8 +916,8 @@ const DATA = {
     ],
     "Indonesia": [
       { label:"0–6m",  val:29, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"6m–1y", val:7, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"1–2y",  val:1, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
+      { label:"6m–1y", val:8, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"1–2y",  val:3, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
       { label:"2–5y",  val:1, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
       { label:"5y+",   val:0, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
     ],
@@ -935,11 +937,11 @@ const DATA = {
     ],
     // By Employment Type
     "Salaried, full-time": [
-      { label:"0–6m",  val:275, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"6m–1y", val:177, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"1–2y",  val:265, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
-      { label:"2–5y",  val:382, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
-      { label:"5y+",   val:89, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"0–6m",  val:257, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"6m–1y", val:196, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"1–2y",  val:268, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
+      { label:"2–5y",  val:384, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
+      { label:"5y+",   val:99, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
     ],
     "Salaried, part-time": [
       { label:"0–6m",  val:0, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
@@ -949,8 +951,8 @@ const DATA = {
       { label:"5y+",   val:0, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
     ],
     "Intern": [
-      { label:"0–6m",  val:3, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
-      { label:"6m–1y", val:0, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"0–6m",  val:1, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
+      { label:"6m–1y", val:1, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"high" },
       { label:"1–2y",  val:4, color:"linear-gradient(180deg,#7d8ad9,#4e60c6)", risk:"medium" },
       { label:"2–5y",  val:0, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
       { label:"5y+",   val:0, color:"linear-gradient(180deg,#a3cc6a,#85b846)", risk:"low" },
@@ -1010,42 +1012,43 @@ const DATA = {
     { m:"Apr  26",  exits:25, vol:12, invol:13, avgHC:1021, pct:2.45, early:8  },
     { m:"Jun  26",  exits:18, vol:9,  invol:9,  avgHC:1086, pct:1.66, early:5  },
     { m:"Aug  26",  exits:21, vol:8,  invol:13, avgHC:1150, pct:1.83, early:2  },
-    { m:"Sep  26",  exits:19, vol:8,  invol:11, avgHC:1183.0, pct:1.61, early:5  }
+    { m:"Sep  26",  exits:19, vol:8,  invol:11, avgHC:1183.0, pct:1.61, early:5  },
+    { m:"Oct  26",  exits:22, vol:6,  invol:16, avgHC:1200.5, pct:1.83, early:5  }
   ]
 };
 // ─── HC MONTHLY BREAKDOWNS ────────────────────────────────────────────────────
 const HC_BY_DEPT = {
   // Parent departments (May 25 – Jun 22 '26), index 0=May25 … 12=May26, 13=Jun22'26
-  "Go To Market": [351,367,385,398,416,435,434,438,445,455,484,504,519,534,548,574,580],
-  "Operations": [151,154,161,160,162,164,166,161,165,167,164,167,199,207,212,217,226],
-  "Product Development": [8,10,8,7,7,9,115,114,119,117,119,124,156,160,163,169,174],
-  "Finance": [63,66,62,61,61,60,62,60,62,59,61,64,77,77,76,77,77],
-  "Financial Products": [20,21,24,27,28,28,29,27,26,27,28,29,51,54,52,59,62],
-  "People": [17,17,17,19,20,21,21,20,21,21,22,22,40,41,41,45,46],
-  "Counsel": [14,13,13,15,15,16,17,19,21,17,18,18,25,27,26,26,28],
+  "Go To Market": [351,367,385,398,416,435,434,438,445,455,484,504,519,534,548,574,580,589],
+  "Operations": [151,154,161,160,162,164,166,161,165,167,164,167,199,207,212,217,226,233],
+  "Product Development": [8,10,8,7,7,9,115,114,119,117,119,124,156,160,163,169,174,173],
+  "Finance": [63,66,62,61,61,60,62,60,62,59,61,64,77,77,76,77,77,78],
+  "Financial Products": [20,21,24,27,28,28,29,27,26,27,28,29,51,54,52,59,62,62],
+  "People": [17,17,17,19,20,21,21,20,21,21,22,22,40,41,41,45,46,45],
+  "Counsel": [14,13,13,15,15,16,17,19,21,17,18,18,25,27,26,26,28,28],
   // Sub-departments
-  "Sales": [249,260,270,280,292,301,297,298,297,299,320,335,338,341,348,349,352],
-  "Merchant Operations": [74,77,80,82,90,99,105,107,114,117,121,122,122,147,156,164,170],
-  "Core Engineering": [1,3,1,0,0,0,92,92,92,93,94,98,100,108,111,118,121],
-  "Global Clerk Support": [66,66,69,68,67,67,66,66,69,71,71,73,73,75,72,70,70],
-  "Marketing": [28,30,35,36,34,35,32,33,34,39,43,47,47,46,52,61,58],
-  "Global General Support": [39,40,44,42,42,42,43,41,44,43,42,43,43,50,57,58,62],
-  "FPA and Treasury": [23,25,27,28,31,36,36,35,36,33,34,35,35,36,35,36,37],
-  "Global Tools and Metrics": [27,27,27,28,29,31,31,30,29,29,31,30,30,32,31,35,38],
-  "Accounting": [40,41,35,33,30,24,26,25,26,26,27,29,31,31,30,30,29],
-  "Product and UX": [7,7,7,7,7,8,23,22,24,24,25,26,27,28,29,28,28],
-  "Global Collections": [19,21,21,25,25,25,26,24,23,24,20,21,21,21,22,22,22],
-  "Legal": [14,13,13,15,15,16,17,19,21,17,18,18,17,24,23,23,25],
+  "Sales": [249,260,270,280,292,301,297,298,297,299,320,335,338,341,348,349,352,354],
+  "Merchant Operations": [74,77,80,82,90,99,105,107,114,117,121,122,122,147,156,164,170,175],
+  "Core Engineering": [1,3,1,0,0,0,92,92,92,93,94,98,100,108,111,118,121,123],
+  "Global Clerk Support": [66,66,69,68,67,67,66,66,69,71,71,73,73,75,72,70,70,73],
+  "Marketing": [28,30,35,36,34,35,32,33,34,39,43,47,47,46,52,61,58,0],
+  "Global General Support": [39,40,44,42,42,42,43,41,44,43,42,43,43,50,57,58,62,63],
+  "FPA and Treasury": [23,25,27,28,31,36,36,35,36,33,34,35,35,36,35,36,37,38],
+  "Global Tools and Metrics": [27,27,27,28,29,31,31,30,29,29,31,30,30,32,31,35,38,40],
+  "Accounting": [40,41,35,33,30,24,26,25,26,26,27,29,31,31,30,30,29,30],
+  "Product and UX": [7,7,7,7,7,8,23,22,24,24,25,26,27,28,29,28,28,26],
+  "Global Collections": [19,21,21,25,25,25,26,24,23,24,20,21,21,21,22,22,22,20],
+  "Legal": [14,13,13,15,15,16,17,19,21,17,18,18,17,24,23,23,25,24],
 };
 // Real exits per dept per month (index 0=May25 … 11=Apr26, 12=Jun26), from Rippling data
 const EXITS_BY_DEPT = {
-  "Go To Market":        [10,13,10,8,5,7,11,7,10,11,9,9,10,10,10],
-  "Operations":          [5,6,4,3,5,2,2,5,3,4,4,4,3,3,3],
-  "Product Development": [2,1,1,0,0,1,0,2,3,0,5,1,1,2,2],
-  "Finance":             [0,2,2,3,3,2,1,2,0,0,1,2,2,1,3],
-  "Financial Products":  [1,1,3,3,1,0,1,0,0,0,1,1,1,3,0],
-  "People":              [0,0,1,0,0,3,0,1,0,1,0,0,1,1,0],
-  "Counsel":             [0,1,0,0,1,0,1,0,1,1,1,1,0,1,1],
+  "Go To Market":        [10,13,10,8,5,7,11,7,10,11,9,9,10,10,10,7],
+  "Operations":          [5,6,4,3,5,2,2,5,3,4,4,4,3,3,3,5],
+  "Product Development": [2,1,1,0,0,1,0,2,3,0,5,1,1,2,2,5],
+  "Finance":             [0,2,2,3,3,2,1,2,0,0,1,2,2,1,3,1],
+  "Financial Products":  [1,1,3,3,1,0,1,0,0,0,1,1,1,3,0,2],
+  "People":              [0,0,1,0,0,3,0,1,0,1,0,0,1,1,0,1],
+  "Counsel":             [0,1,0,0,1,0,1,0,1,1,1,1,0,1,1,1],
 };
 // Attrition % per dept per month = exits / ((HC_start+HC_end)/2) * 100
 // Calculated from real Rippling HC inicio/final + terminations files
@@ -1064,7 +1067,7 @@ const ATTR_BY_DEPT_MONTHLY = {
   "Core Engineering":      [ null, null, null, null, null, null,  0.0,  1.09, 1.09, 0.0,  3.21, 1.04],
   "FPA and Treasury":      [ 0.0,  0.0,  0.0,  3.64, 0.0,  0.0,  2.78, 2.78, 0.0,  0.0,  0.0,  2.9 ],
 };
-const ATTR_MON_LABELS = ["May  25","Jun  25","Jul  25","Aug  25","Sep  25","Oct  25","Nov  25","Dec  25","Jan  26","Feb  26","Mar  26","Apr  26","Jun  26","Aug  26","Sep  26"];
+const ATTR_MON_LABELS = ["May  25","Jun  25","Jul  25","Aug  25","Sep  25","Oct  25","Nov  25","Dec  25","Jan  26","Feb  26","Mar  26","Apr  26","Jun  26","Aug  26","Sep  26","Oct  26"];
 let attrMonthIdx = null; // kept for legacy; use attrQuarterIdx for quarterly filtering
 let attrQuarterIdx = null; // null = all quarters
 // Voluntary-only monthly rates by department (vol exits / dept HC × 100)
@@ -1089,7 +1092,9 @@ const QUARTERLY_ATTR = [
   { q:"Q3 '25", label:"Q3 2025", monthIdxs:[2,3,4],  exits:53, volExits:35, avgHC:850.3, pct:6.23, volPct:4.12, partial:false },
   { q:"Q4 '25", label:"Q4 2025", monthIdxs:[5,6,7],  exits:48, volExits:25, avgHC:910.3, pct:5.27, volPct:2.75, partial:false },
   { q:"Q1 '26", label:"Q1 2026", monthIdxs:[8,9,10], exits:55, volExits:19, avgHC:954.7, pct:5.76, volPct:1.99, partial:false },
-  { q:"Q2 '26", label:"Q2 2026 (partial)", monthIdxs:[11,12], exits:43, volExits:21, avgHC:1054, pct:4.08, volPct:1.99, partial:true },
+  { q:"Q2 '26", label:"Q2 2026", monthIdxs:[11,12], exits:43, volExits:21, avgHC:1054, pct:4.08, volPct:1.99, partial:false },
+  { q:"Q3 '26", label:"Q3 2026", monthIdxs:[], exits:62, volExits:29, avgHC:1150.3, pct:5.39, volPct:2.52, partial:false },
+  { q:"Q4 '26", label:"Q4 2026 (partial)", monthIdxs:[], exits:22, volExits:6, avgHC:1200.5, pct:1.83, volPct:0.50, partial:true },
 ];
 // Early attrition (90 days) by cohort — quarterly view
 const EARLY_ATTR_BY_Q = [
@@ -1102,31 +1107,31 @@ const EARLY_ATTR_BY_Q = [
 const EARLY_ATTR_OVERALL = 7.4; // 34 early exits / 458 hires (Jun25–Apr26)
 const HC_BY_LEVEL = {
   // Individual levels from Rippling HC Final de mes files (May 25 – May 26 May 11)
-  "1a":     [95,105,111,108,113,114,111,110,114,119,130,88,89,96,102,114],
-  "1b":     [61,67,67,73,74,75,76,78,80,82,86,108,113,110,110,109],
-  "1c":     [89,89,87,87,87,91,90,88,88,88,89,105,104,102,99,102],
-  "2a":     [73,79,81,91,92,98,104,103,106,107,112,85,87,114,117,125],
-  "2b":     [66,74,73,73,73,74,73,73,71,74,77,94,96,106,117,118],
-  "2c":     [59,60,60,56,60,65,66,67,66,67,66,87,85,83,81,77],
-  "3a":     [68,76,80,83,85,85,84,86,97,98,110,85,88,99,97,106],
-  "3b":     [52,55,54,54,57,60,61,63,62,64,67,87,91,97,103,104],
-  "3c":     [48,50,47,48,49,51,49,49,48,49,48,57,55,53,52,53],
-  "4a":     [36,36,36,39,41,41,44,46,49,51,54,56,56,66,70,75],
-  "4b":     [30,31,34,38,39,40,42,38,39,38,39,48,50,54,56,58],
-  "4c":     [31,31,31,32,31,31,32,32,32,32,34,36,36,37,37,37],
-  "5a":     [19,21,23,23,24,25,28,29,29,28,26,29,30,35,35,34],
-  "5b":     [15,15,14,16,16,16,16,16,17,17,18,16,16,21,21,23],
-  "5c":     [13,16,15,15,15,15,15,15,15,15,15,17,17,15,14,15],
-  "6a":     [1,1,1,1,1,1,5,5,5,5,5,13,12,12,14,14],
-  "6b":     [1,1,1,1,1,1,1,1,1,1,1,2,3,4,4,4],
-  "E":      [21,21,21,22,22,22,23,21,21,21,21,22,22,20,20,20],
-  "Intern": [0,0,0,0,0,0,0,1,1,1,5,4,5,8,6,7],
+  "1a":     [95,105,111,108,113,114,111,110,114,119,130,88,89,96,102,114,116],
+  "1b":     [61,67,67,73,74,75,76,78,80,82,86,108,113,110,110,109,109],
+  "1c":     [89,89,87,87,87,91,90,88,88,88,89,105,104,102,99,102,101],
+  "2a":     [73,79,81,91,92,98,104,103,106,107,112,85,87,114,117,125,131],
+  "2b":     [66,74,73,73,73,74,73,73,71,74,77,94,96,106,117,118,122],
+  "2c":     [59,60,60,56,60,65,66,67,66,67,66,87,85,83,81,77,76],
+  "3a":     [68,76,80,83,85,85,84,86,97,98,110,85,88,99,97,106,110],
+  "3b":     [52,55,54,54,57,60,61,63,62,64,67,87,91,97,103,104,109],
+  "3c":     [48,50,47,48,49,51,49,49,48,49,48,57,55,53,52,53,52],
+  "4a":     [36,36,36,39,41,41,44,46,49,51,54,56,56,66,70,75,73],
+  "4b":     [30,31,34,38,39,40,42,38,39,38,39,48,50,54,56,58,59],
+  "4c":     [31,31,31,32,31,31,32,32,32,32,34,36,36,37,37,37,35],
+  "5a":     [19,21,23,23,24,25,28,29,29,28,26,29,30,35,35,34,35],
+  "5b":     [15,15,14,16,16,16,16,16,17,17,18,16,16,21,21,23,23],
+  "5c":     [13,16,15,15,15,15,15,15,15,15,15,17,17,15,14,15,15],
+  "6a":     [1,1,1,1,1,1,5,5,5,5,5,13,12,12,14,14,14],
+  "6b":     [1,1,1,1,1,1,1,1,1,1,1,2,3,4,4,4,4],
+  "E":      [21,21,21,22,22,22,23,21,21,21,21,22,22,20,20,20,20],
+  "Intern": [0,0,0,0,0,0,0,1,1,1,5,4,5,8,6,7,6],
 };
 const HC_BY_EMP_TYPE = {
   // Corrected from Rippling files (May 25 – May 26)
-  "Salaried, full-time": [779,830,836,859,879,904,920,919,939,955,998,1033,1039,1124,1163,1188],
-  "Salaried, part-time": [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-  "Intern":              [0,0,0,0,0,0,0,5,4,4,4,5,5,7,5,6],
+  "Salaried, full-time": [779,830,836,859,879,904,920,919,939,955,998,1033,1039,1124,1163,1188,1204],
+  "Salaried, part-time": [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+  "Intern":              [0,0,0,0,0,0,0,5,4,4,4,5,5,7,5,6,5],
 };
 // ─── MAY 2026 COUNTRY BREAKDOWN BY FILTER (from HC Final de mes May 2026) ─────
 const HC_MAY26_BY_DEPT = {
@@ -1169,18 +1174,18 @@ const HC_BY_COUNTRY = {
   // Jun 22 (index 14): from HC active employees June 22, 2026
   // Jun 29 (index 15): from HC active employees June 29, 2026 (total 1,106)
   // Jul 6/13/20 (index 16/17/18): from HC active employees weekly, July 2026
-  "Mexico":         [246,247,245,255,266,284,289,289,302,308,323,331,341,345,355,354,357,363,365,369,376,385],
-  "Brazil":         [108,120,120,121,122,125,124,129,132,136,149,156,156,160,160,160,156,157,158,157,163,166],
-  "Colombia":       [122,133,133,135,141,142,140,143,141,142,148,154,159,163,164,164,166,166,166,164,171,178],
-  "United States":  [77,78,77,79,78,77,84,83,83,84,85,87,92,94,96,97,96,99,99,98,99,102],
-  "Peru":           [63,69,72,73,73,72,73,75,73,75,78,80,84,84,84,84,86,85,87,86,87,86],
-  "South Africa":   [48,55,55,58,60,61,62,62,63,62,61,62,64,64,64,65,66,66,66,66,68,68],
-  "Ecuador":        [56,57,60,61,59,59,60,59,59,58,60,60,57,58,59,59,59,61,61,61,65,64],
-  "Philippines":    [19,31,34,36,40,42,45,44,47,50,51,60,62,65,64,65,66,67,67,69,69,67],
-  "Panama":         [34,33,32,32,31,31,31,28,27,27,28,27,27,29,27,27,27,27,27,27,26,25],
-  "Indonesia":      [0,0,1,1,1,3,4,4,8,8,8,10,14,17,18,19,22,22,23,23,30,38],
-  "China":          [4,5,5,6,6,6,6,6,6,6,7,7,7,7,6,6,6,6,6,6,6,7],
-  "India":          [3,3,3,3,3,3,3,3,3,4,5,5,6,6,6,6,6,7,7,7,9,9],
+  "Mexico":         [246,247,245,255,266,284,289,289,302,308,323,331,341,345,355,354,357,363,365,369,376,385,388],
+  "Brazil":         [108,120,120,121,122,125,124,129,132,136,149,156,156,160,160,160,156,157,158,157,163,166,169],
+  "Colombia":       [122,133,133,135,141,142,140,143,141,142,148,154,159,163,164,164,166,166,166,164,171,178,181],
+  "United States":  [77,78,77,79,78,77,84,83,83,84,85,87,92,94,96,97,96,99,99,98,99,102,103],
+  "Peru":           [63,69,72,73,73,72,73,75,73,75,78,80,84,84,84,84,86,85,87,86,87,86,84],
+  "South Africa":   [48,55,55,58,60,61,62,62,63,62,61,62,64,64,64,65,66,66,66,66,68,68,68],
+  "Ecuador":        [56,57,60,61,59,59,60,59,59,58,60,60,57,58,59,59,59,61,61,61,65,64,65],
+  "Philippines":    [19,31,34,36,40,42,45,44,47,50,51,60,62,65,64,65,66,67,67,69,69,67,71],
+  "Panama":         [34,33,32,32,31,31,31,28,27,27,28,27,27,29,27,27,27,27,27,27,26,25,24],
+  "Indonesia":      [0,0,1,1,1,3,4,4,8,8,8,10,14,17,18,19,22,22,23,23,30,38,41],
+  "China":          [4,5,5,6,6,6,6,6,6,6,7,7,7,7,6,6,6,6,6,6,6,7,7],
+  "India":          [3,3,3,3,3,3,3,3,3,4,5,5,6,6,6,6,6,7,7,7,9,9,9],
 };
 // ─── WEEKLY HC BY COUNTRY ────────────────────────────────────────────────────
 const HC_WEEKLY_COUNTRY = {
@@ -1949,8 +1954,67 @@ const WEEKLY_MOV = {
       { name:"Daniel Cantillo", country:"Colombia", title:"Support Tools analyst", dept:"Operations" },
     ]
   },
+  "Oct 2026": {
+    bajas: [
+      { country:"Colombia", title:"Senior Software Engineer", dept:"Product Development", level:"4a", termType:"Voluntary", reason:"Received a job offer", regrettable:"Regrettable" },
+      { country:"Mexico", title:"Senior Product Manager", dept:"Product Development", level:"4c", termType:"Voluntary", reason:"Personal", regrettable:"Regrettable" },
+      { country:"Brazil", title:"Sales Representative", dept:"Go To Market", level:"1a", termType:"Involuntary", reason:"TERM_OF_PROBATIONARY_CONTRACT", regrettable:"Non-Regrettable" },
+      { country:"Mexico", title:"Business Analyst", dept:"Operations", level:"2a", termType:"Involuntary", reason:"PERFORMANCE_ISSUES", regrettable:"Non-Regrettable" },
+      { country:"Mexico", title:"Clerk Support Representative", dept:"Operations", level:"1a", termType:"Voluntary", reason:"Attendance", regrettable:"Non-Regrettable" },
+      { country:"Mexico", title:"Risk Director", dept:"Financial Products", level:"5a", termType:"Voluntary", reason:"OTHER", regrettable:"" },
+      { country:"Mexico", title:"Treasury Senior Manager", dept:"Finance", level:"4a", termType:"Voluntary", reason:"Other employment", regrettable:"Regrettable" },
+      { country:"Brazil", title:"Estagiário(a) Juridíco(a)", dept:"Counsel", level:"Intern", termType:"Involuntary", reason:"DISMISSAL_WITHOUT_CAUSE", regrettable:"Non-Regrettable" },
+      { country:"Mexico", title:"Clerk Support Representative", dept:"Operations", level:"1b", termType:"Involuntary", reason:"PERFORMANCE_ISSUES", regrettable:"Non-Regrettable" },
+      { country:"Mexico", title:"Workplace Senior Manager", dept:"People", level:"4a", termType:"Involuntary", reason:"No pasa Periodo de Prueba", regrettable:"Non-Regrettable" },
+      { country:"Brazil", title:"Sales Representative", dept:"Go To Market", level:"1a", termType:"Involuntary", reason:"No pasa Periodo de Prueba", regrettable:"" },
+      { country:"Mexico", title:"Customer Insights Manager", dept:"Product Development", level:"3a", termType:"Involuntary", reason:"PERFORMANCE_ISSUES", regrettable:"Non-Regrettable" },
+      { country:"Brazil", title:"Lead Development Operations Analyst", dept:"Operations", level:"2b", termType:"Voluntary", reason:"Other employment", regrettable:"Non-Regrettable" },
+      { country:"Ecuador", title:"Sales Representative", dept:"Go To Market", level:"1a", termType:"Involuntary", reason:"No pasa Periodo de Prueba", regrettable:"Non-Regrettable" },
+      { country:"Colombia", title:"Risk Analyst", dept:"Financial Products", level:"2b", termType:"Involuntary", reason:"PERFORMANCE_ISSUES", regrettable:"Non-Regrettable" },
+      { country:"Mexico", title:"Senior Product Manager", dept:"Product Development", level:"4a", termType:"Involuntary", reason:"PERFORMANCE_ISSUES", regrettable:"Non-Regrettable" },
+      { country:"Colombia", title:"Representante de Ventas", dept:"Go To Market", level:"1b", termType:"Involuntary", reason:"PERFORMANCE_ISSUES", regrettable:"Non-Regrettable" },
+      { country:"United States", title:"Principal Data & Communications Platform PM", dept:"Product Development", level:"5a", termType:"Involuntary", reason:"Performance", regrettable:"Non-Regrettable" },
+      { country:"Peru", title:"National Sales Manager", dept:"Go To Market", level:"3c", termType:"Involuntary", reason:"Performance", regrettable:"Non-Regrettable" },
+      { country:"Philippines", title:"Sales Representative", dept:"Go To Market", level:"1b", termType:"Involuntary", reason:"Performance", regrettable:"Non-Regrettable" },
+      { country:"Peru", title:"Commercial Senior Manager", dept:"Go To Market", level:"4c", termType:"Involuntary", reason:"Performance", regrettable:"Non-Regrettable" },
+      { country:"Panama", title:"Collection Representative", dept:"Operations", level:"1a", termType:"Involuntary", reason:"PERFORMANCE_ISSUES", regrettable:"Non-Regrettable" },
+    ],
+    ingresos: [
+      { name:"Adam Kusdwityo", country:"Indonesia", title:"Customer Support Representative", dept:"Operations" },
+      { name:"John Lopez", country:"Colombia", title:"Accounting Manager", dept:"Finance" },
+      { name:"Paula Scozziero", country:"Brazil", title:"Key Account Manager", dept:"Go To Market" },
+      { name:"Maria Villa", country:"Colombia", title:"Business Analytics Specialist", dept:"Operations" },
+      { name:"Frecy Daswaty", country:"Indonesia", title:"Marketing Manager", dept:"Go To Market" },
+      { name:"Carlos Del Valle", country:"Mexico", title:"Machine Learning Engineer - Fraud Data Science", dept:"Financial Products" },
+      { name:"John Michael Robles", country:"Philippines", title:"Key Account Lead", dept:"Go To Market" },
+      { name:"Charlie Vera", country:"Mexico", title:"Marketing Data & Technology Senior Manager", dept:"Go To Market" },
+      { name:"Manuel Tapia", country:"Mexico", title:"General Support Senior Manager", dept:"Operations" },
+      { name:"Paulina Martínez", country:"Mexico", title:"Project Manager", dept:"Go To Market" },
+      { name:"Diego Alvarado", country:"Ecuador", title:"Technical Support Specialist", dept:"Operations" },
+      { name:"Dicky Mardianto", country:"Indonesia", title:"Sales Representative", dept:"Go To Market" },
+      { name:"Erick García", country:"Mexico", title:"Validation Support Representative", dept:"Operations" },
+      { name:"Diego Molina", country:"Mexico", title:"Sales Enablement Analyst", dept:"Go To Market" },
+      { name:"Genny Londoño", country:"Colombia", title:"Key Account Representative", dept:"Go To Market" },
+      { name:"Mateus Almeida", country:"Brazil", title:"Validation Support Representative", dept:"Operations" },
+      { name:"Santiago Ruiz", country:"Colombia", title:"Key Account Manager", dept:"Go To Market" },
+      { name:"Clara Meaney", country:"Brazil", title:"Validation Support Supervisor", dept:"Operations" },
+      { name:"Larissa Silva", country:"Brazil", title:"Validation Support Representative", dept:"Operations" },
+      { name:"Luis Chitiva", country:"Colombia", title:"Software Development Engineer", dept:"Product Development" },
+      { name:"Thiago Feliciano", country:"Brazil", title:"Financial Operations Analyst", dept:"Operations" },
+      { name:"Pablo Soto", country:"Mexico", title:"Business Development - Growth Manager", dept:"Go To Market" },
+      { name:"Joco Abriol", country:"Philippines", title:"Finance Director", dept:"Finance" },
+      { name:"Eduardo Lopez", country:"Mexico", title:"Compliance Analyst", dept:"Counsel" },
+      { name:"Danielle Abtibol", country:"Brazil", title:"Sales Representative", dept:"Go To Market" },
+      { name:"Gaby Lozada", country:"Ecuador", title:"Clerk Support Representative", dept:"Operations" },
+      { name:"Lucas Ricardo", country:"Brazil", title:"Sales Representative", dept:"Go To Market" },
+      { name:"Alejandra Cejudo", country:"Mexico", title:"Merchant Operations Analyst", dept:"Go To Market" },
+      { name:"Daniel Galvis", country:"Colombia", title:"Senior Software Engineer - Payments", dept:"Product Development" },
+      { name:"Mary Joy Caminse", country:"Philippines", title:"Process Associate", dept:"Operations" },
+      { name:"Aljon Malicdem", country:"Philippines", title:"Senior IT Specialist", dept:"Product Development" },
+    ]
+  },
 };
-let activeWeek = "Sep 2026";
+let activeWeek = "Oct 2026";
 function setWeek(w) {
   activeWeek = w;
   document.querySelectorAll(".week-select").forEach(s => { s.value = w; });
@@ -2118,6 +2182,7 @@ const HC_MONTHLY = [
   { label:"Jul 26",  hc:1131, q:"Q3-2026" },
   { label:"Aug 26",  hc:1169, q:"Q3-2026" },
   { label:"Sep 26",  hc:1195, q:"Q3-2026" },
+  { label:"Oct 26",  hc:1210, q:"Q4-2026" },
 ];
 let activeHCQ = 'all';
 function renderHCSparkline() {
@@ -2223,12 +2288,12 @@ function updateKPIHC() {
   }
   // update visible banner
   if (!depto && !nivel && !emptype) {
-    document.getElementById("kpi-hc").textContent = "1,195";
-    document.getElementById("kpi-hc-delta-val").textContent = "+29.2%";
-    document.getElementById("kpi-hc-note").textContent = "+270 vs Dec 2025";
-    document.getElementById("hc-banner-num").textContent = "1,195";
-    document.getElementById("hc-banner-delta").textContent = "+26 vs Aug · +2.2%";
-    document.getElementById("hc-banner-period").textContent = "Sep 30, 2026";
+    document.getElementById("kpi-hc").textContent = "1,210";
+    document.getElementById("kpi-hc-delta-val").textContent = "+30.8%";
+    document.getElementById("kpi-hc-note").textContent = "+285 vs Dec 2025";
+    document.getElementById("hc-banner-num").textContent = "1,210";
+    document.getElementById("hc-banner-delta").textContent = "+15 vs Sep · +1.3%";
+    document.getElementById("hc-banner-period").textContent = "Oct 31, 2026";
   } else {
     const prevLabel = prev ? prev.label : "";
     const absDelta = prev ? hc - prev.hc : 0;
@@ -2789,23 +2854,23 @@ const ATTRITION_RAW_DATA = [
 // Periods: [0]=Dec25, [1]=Jan26, [2]=Feb26, [3]=Mar26, [4]=Apr26
 // [count, rate%]  — null rate = dept renaming, HC denominator unreliable
 const MONTHLY_BY_DEPT = {
-  "Go To Market":        [[1,0.25],[1,0.24],[5,1.11],[2,0.43],[1,0.20],[4,0.78],[2,0.37], [1,0.18], [2,0.35], [0,0.0]],
-  "Finance":             [[1,1.47],[0,0.0], [0,0.0], [1,1.41],[2,2.72],[0,0.0],[0,0.0], [0,0.0], [1,1.30], [1,1.3]],
-  "Financial Products":  [[0,0.0], [0,0.0], [0,0.0], [1,2.0], [2,3.96],[0,0.0],[1,1.87], [0,0.0], [0,0.0], [0,0.0]],
-  "Product Development": [[2,null],[0,0.0], [0,0.0], [0,0.0], [0,0.0], [0,0.0],[1,0.62], [1,0.62], [0,0.0], [0,0.0]],
-  "Operations":          [[1,0.53],[1,0.53],[0,0.0], [0,0.0], [0,0.0], [0,0.0],[1,0.49], [1,0.48], [1,0.46], [0,0.0]],
-  "Counsel":             [[0,0.0], [1,null],[0,0.0], [0,0.0], [1,5.0], [0,0.0],[0,0.0], [0,0.0], [0,0.0], [0,0.0]],
-  "People":              [[1,3.45],[0,0.0], [0,0.0], [0,0.0], [0,0.0], [0,0.0],[0,0.0], [0,0.0], [1,2.22], [0,0.0]],
+  "Go To Market":        [[1,0.25],[1,0.24],[5,1.11],[2,0.43],[1,0.20],[4,0.78],[2,0.37], [1,0.18], [2,0.35], [0,0.0], [0,0.0]],
+  "Finance":             [[1,1.47],[0,0.0], [0,0.0], [1,1.41],[2,2.72],[0,0.0],[0,0.0], [0,0.0], [1,1.30], [1,1.3], [1,1.28]],
+  "Financial Products":  [[0,0.0], [0,0.0], [0,0.0], [1,2.0], [2,3.96],[0,0.0],[1,1.87], [0,0.0], [0,0.0], [0,0.0], [0,0.0]],
+  "Product Development": [[2,null],[0,0.0], [0,0.0], [0,0.0], [0,0.0], [0,0.0],[1,0.62], [1,0.62], [0,0.0], [0,0.0], [2,1.16]],
+  "Operations":          [[1,0.53],[1,0.53],[0,0.0], [0,0.0], [0,0.0], [0,0.0],[1,0.49], [1,0.48], [1,0.46], [0,0.0], [0,0.0]],
+  "Counsel":             [[0,0.0], [1,null],[0,0.0], [0,0.0], [1,5.0], [0,0.0],[0,0.0], [0,0.0], [0,0.0], [0,0.0], [0,0.0]],
+  "People":              [[1,3.45],[0,0.0], [0,0.0], [0,0.0], [0,0.0], [0,0.0],[0,0.0], [0,0.0], [1,2.22], [0,0.0], [0,0.0]],
 };
 // null rate = dept was renamed mid-year (Legal→Counsel, Engineering→ProdDev), denominator unreliable
 const ATTRITION_BY_DEPT = {
-  "Go To Market":        [{count:4,rate:0.97}, {count:5,rate:1.21}, {count:7,rate:1.65}, {count:8,rate:1.79}, {count:8,rate:1.70}, {count:7,rate:1.42}, {count:7,rate:1.36}, {count:7,rate:1.33}, {count:5,rate:0.87}, {count:3,rate:0.52}],
-  "Finance":             [{count:2,rate:2.94}, {count:1,rate:1.47}, {count:1,rate:1.46}, {count:1,rate:1.44}, {count:3,rate:4.21}, {count:3,rate:4.66}, {count:2,rate:2.86}, {count:0,rate:0.0}, {count:1,rate:1.30}, {count:2,rate:2.6}],
-  "Financial Products":  [{count:0,rate:0.0},  {count:0,rate:0.0},  {count:0,rate:0.0},  {count:1,rate:2.08}, {count:3,rate:6.04}, {count:3,rate:9.38}, {count:3,rate:7.38}, {count:1,rate:2.07}, {count:1,rate:1.69}, {count:0,rate:0.0}],
-  "Product Development": [{count:2,rate:null},  {count:2,rate:null},  {count:2,rate:null},  {count:0,rate:0.0},  {count:0,rate:0.0}, {count:0,rate:0.0}, {count:1,rate:0.71}, {count:2,rate:1.3}, {count:2,rate:1.18}, {count:1,rate:0.57}],
-  "Operations":          [{count:1,rate:0.53}, {count:2,rate:1.06}, {count:2,rate:1.05}, {count:1,rate:0.52}, {count:0,rate:0.0}, {count:0,rate:0.0}, {count:1,rate:0.54}, {count:2,rate:1.01}, {count:3,rate:1.38}, {count:2,rate:0.88}],
-  "Counsel":             [{count:0,rate:0.0},  {count:1,rate:null},  {count:1,rate:null},  {count:1,rate:null},  {count:1,rate:4.96}, {count:1,rate:5.26}, {count:1,rate:4.58}, {count:0,rate:0.0}, {count:0,rate:0.0}, {count:0,rate:0.0}],
-  "People":              [{count:1,rate:3.70}, {count:1,rate:3.47}, {count:1,rate:3.26}, {count:0,rate:0.0},  {count:0,rate:0.0}, {count:0,rate:0.0}, {count:0,rate:0.0}, {count:0,rate:0.0}, {count:1,rate:2.22}, {count:1,rate:2.17}],
+  "Go To Market":        [{count:4,rate:0.97}, {count:5,rate:1.21}, {count:7,rate:1.65}, {count:8,rate:1.79}, {count:8,rate:1.70}, {count:7,rate:1.42}, {count:7,rate:1.36}, {count:7,rate:1.33}, {count:5,rate:0.87}, {count:3,rate:0.52}, {count:2,rate:0.34}],
+  "Finance":             [{count:2,rate:2.94}, {count:1,rate:1.47}, {count:1,rate:1.46}, {count:1,rate:1.44}, {count:3,rate:4.21}, {count:3,rate:4.66}, {count:2,rate:2.86}, {count:0,rate:0.0}, {count:1,rate:1.30}, {count:2,rate:2.6}, {count:3,rate:3.85}],
+  "Financial Products":  [{count:0,rate:0.0},  {count:0,rate:0.0},  {count:0,rate:0.0},  {count:1,rate:2.08}, {count:3,rate:6.04}, {count:3,rate:9.38}, {count:3,rate:7.38}, {count:1,rate:2.07}, {count:1,rate:1.69}, {count:0,rate:0.0}, {count:0,rate:0.0}],
+  "Product Development": [{count:2,rate:null},  {count:2,rate:null},  {count:2,rate:null},  {count:0,rate:0.0},  {count:0,rate:0.0}, {count:0,rate:0.0}, {count:1,rate:0.71}, {count:2,rate:1.3}, {count:2,rate:1.18}, {count:1,rate:0.57}, {count:2,rate:1.16}],
+  "Operations":          [{count:1,rate:0.53}, {count:2,rate:1.06}, {count:2,rate:1.05}, {count:1,rate:0.52}, {count:0,rate:0.0}, {count:0,rate:0.0}, {count:1,rate:0.54}, {count:2,rate:1.01}, {count:3,rate:1.38}, {count:2,rate:0.88}, {count:1,rate:0.43}],
+  "Counsel":             [{count:0,rate:0.0},  {count:1,rate:null},  {count:1,rate:null},  {count:1,rate:null},  {count:1,rate:4.96}, {count:1,rate:5.26}, {count:1,rate:4.58}, {count:0,rate:0.0}, {count:0,rate:0.0}, {count:0,rate:0.0}, {count:0,rate:0.0}],
+  "People":              [{count:1,rate:3.70}, {count:1,rate:3.47}, {count:1,rate:3.26}, {count:0,rate:0.0},  {count:0,rate:0.0}, {count:0,rate:0.0}, {count:0,rate:0.0}, {count:0,rate:0.0}, {count:1,rate:2.22}, {count:1,rate:2.17}, {count:1,rate:2.22}],
 };
 // ─── ATTRITION BY COUNTRY (computed from Drive HC snapshots + master terminations) ───
 const ATTRITION_BY_COUNTRY = {
@@ -2840,6 +2905,9 @@ const ATTRITION_BY_COUNTRY = {
     { period:"September 2026", q:"Q3 2026",
       all:{tot:2,reg:0,nr:2,vol:1,inv:1,hc:164.5}, l2:{tot:1,reg:0,nr:1,vol:1,inv:0,hc:103.5},
       qVolL2:3,qHcL2:99.8,qAttr:3.01, qRegAll:2,qHcRegAll:160.7,qAttrReg:1.24, qRegL2:1,qHcRegL2:99.8,qAttrRegL2:1.0 },
+    { period:"October 2026", q:"Q4 2026",
+      all:{tot:4,reg:0,nr:3,vol:1,inv:3,hc:167.5}, l2:{tot:2,reg:0,nr:2,vol:1,inv:1,hc:104.5},
+      qVolL2:1,qHcL2:103.2,qAttr:0.97, qRegAll:0,qHcRegAll:164.0,qAttrReg:0.0, qRegL2:0,qHcRegL2:103.2,qAttrRegL2:0.0 },
   ],
   "China": [
     { period:"December 2025", q:"Q4 2025",
@@ -2872,6 +2940,9 @@ const ATTRITION_BY_COUNTRY = {
     { period:"September 2026", q:"Q3 2026",
       all:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:6.5}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:6.5},
       qVolL2:1,qHcL2:6.2,qAttr:16.13, qRegAll:0,qHcRegAll:6.2,qAttrReg:0.0, qRegL2:0,qHcRegL2:6.2,qAttrRegL2:0.0 },
+    { period:"October 2026", q:"Q4 2026",
+      all:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:7.0}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:7.0},
+      qVolL2:0,qHcL2:6.5,qAttr:0.0, qRegAll:0,qHcRegAll:6.5,qAttrReg:0.0, qRegL2:0,qHcRegL2:6.5,qAttrRegL2:0.0 },
   ],
   "Colombia": [
     { period:"December 2025", q:"Q4 2025",
@@ -2904,6 +2975,9 @@ const ATTRITION_BY_COUNTRY = {
     { period:"September 2026", q:"Q3 2026",
       all:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:174.5}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:136.0},
       qVolL2:2,qHcL2:130.3,qAttr:1.53, qRegAll:1,qHcRegAll:168.7,qAttrReg:0.59, qRegL2:1,qHcRegL2:130.3,qAttrRegL2:0.77 },
+    { period:"October 2026", q:"Q4 2026",
+      all:{tot:3,reg:1,nr:2,vol:1,inv:2,hc:179.0}, l2:{tot:2,reg:1,nr:1,vol:1,inv:1,hc:140.5},
+      qVolL2:3,qHcL2:135.5,qAttr:2.21, qRegAll:2,qHcRegAll:173.7,qAttrReg:1.15, qRegL2:2,qHcRegL2:135.5,qAttrRegL2:1.48 },
   ],
   "Ecuador": [
     { period:"December 2025", q:"Q4 2025",
@@ -2936,6 +3010,9 @@ const ATTRITION_BY_COUNTRY = {
     { period:"September 2026", q:"Q3 2026",
       all:{tot:2,reg:0,nr:2,vol:0,inv:2,hc:64.5}, l2:{tot:2,reg:0,nr:2,vol:0,inv:2,hc:40.5},
       qVolL2:0,qHcL2:39.8,qAttr:0.0, qRegAll:0,qHcRegAll:62.5,qAttrReg:0.0, qRegL2:0,qHcRegL2:39.8,qAttrRegL2:0.0 },
+    { period:"October 2026", q:"Q4 2026",
+      all:{tot:1,reg:0,nr:1,vol:0,inv:1,hc:64.5}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:40.5},
+      qVolL2:2,qHcL2:40.5,qAttr:4.94, qRegAll:0,qHcRegAll:64.0,qAttrReg:0.0, qRegL2:0,qHcRegL2:40.5,qAttrRegL2:0.0 },
   ],
   "India": [
     { period:"December 2025", q:"Q4 2025",
@@ -2968,6 +3045,9 @@ const ATTRITION_BY_COUNTRY = {
     { period:"September 2026", q:"Q3 2026",
       all:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:9.0}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:9.0},
       qVolL2:0,qHcL2:8.0,qAttr:0.0, qRegAll:0,qHcRegAll:8.0,qAttrReg:0.0, qRegL2:0,qHcRegL2:8.0,qAttrRegL2:0.0 },
+    { period:"October 2026", q:"Q4 2026",
+      all:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:9.0}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:9.0},
+      qVolL2:0,qHcL2:8.8,qAttr:0.0, qRegAll:0,qHcRegAll:8.8,qAttrReg:0.0, qRegL2:0,qHcRegL2:8.8,qAttrRegL2:0.0 },
   ],
   "Indonesia": [
     { period:"December 2025", q:"Q4 2025",
@@ -3000,6 +3080,9 @@ const ATTRITION_BY_COUNTRY = {
     { period:"September 2026", q:"Q3 2026",
       all:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:35.0}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:20.5},
       qVolL2:0,qHcL2:17.5,qAttr:0.0, qRegAll:0,qHcRegAll:27.5,qAttrReg:0.0, qRegL2:0,qHcRegL2:17.5,qAttrRegL2:0.0 },
+    { period:"October 2026", q:"Q4 2026",
+      all:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:39.5}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:23.0},
+      qVolL2:0,qHcL2:20.7,qAttr:0.0, qRegAll:0,qHcRegAll:33.7,qAttrReg:0.0, qRegL2:0,qHcRegL2:20.7,qAttrRegL2:0.0 },
   ],
   "Mexico": [
     { period:"December 2025", q:"Q4 2025",
@@ -3032,6 +3115,9 @@ const ATTRITION_BY_COUNTRY = {
     { period:"September 2026", q:"Q3 2026",
       all:{tot:7,reg:1,nr:5,vol:3,inv:4,hc:380.5}, l2:{tot:6,reg:1,nr:4,vol:3,inv:3,hc:290.0},
       qVolL2:8,qHcL2:283.3,qAttr:2.82, qRegAll:4,qHcRegAll:371.5,qAttrReg:1.08, qRegL2:4,qHcRegL2:283.3,qAttrRegL2:1.41 },
+    { period:"October 2026", q:"Q4 2026",
+      all:{tot:9,reg:2,nr:6,vol:4,inv:5,hc:386.5}, l2:{tot:7,reg:2,nr:4,vol:3,inv:4,hc:295.0},
+      qVolL2:9,qHcL2:289.7,qAttr:3.11, qRegAll:6,qHcRegAll:379.8,qAttrReg:1.58, qRegL2:6,qHcRegL2:289.7,qAttrRegL2:2.07 },
   ],
   "Panama": [
     { period:"December 2025", q:"Q4 2025",
@@ -3064,6 +3150,9 @@ const ATTRITION_BY_COUNTRY = {
     { period:"September 2026", q:"Q3 2026",
       all:{tot:1,reg:0,nr:0,vol:1,inv:0,hc:25.5}, l2:{tot:1,reg:0,nr:0,vol:1,inv:0,hc:14.5},
       qVolL2:3,qHcL2:14.8,qAttr:20.27, qRegAll:1,qHcRegAll:26.3,qAttrReg:3.8, qRegL2:0,qHcRegL2:14.8,qAttrRegL2:0.0 },
+    { period:"October 2026", q:"Q4 2026",
+      all:{tot:1,reg:0,nr:1,vol:0,inv:1,hc:24.0}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:14.0},
+      qVolL2:2,qHcL2:14.5,qAttr:13.79, qRegAll:1,qHcRegAll:25.3,qAttrReg:3.95, qRegL2:0,qHcRegL2:14.5,qAttrRegL2:0.0 },
   ],
   "Peru": [
     { period:"December 2025", q:"Q4 2025",
@@ -3096,6 +3185,9 @@ const ATTRITION_BY_COUNTRY = {
     { period:"September 2026", q:"Q3 2026",
       all:{tot:1,reg:0,nr:1,vol:0,inv:1,hc:86.5}, l2:{tot:1,reg:0,nr:1,vol:0,inv:1,hc:55.5},
       qVolL2:1,qHcL2:54.5,qAttr:1.83, qRegAll:0,qHcRegAll:86.0,qAttrReg:0.0, qRegL2:0,qHcRegL2:54.5,qAttrRegL2:0.0 },
+    { period:"October 2026", q:"Q4 2026",
+      all:{tot:2,reg:0,nr:2,vol:0,inv:2,hc:84.0}, l2:{tot:2,reg:0,nr:2,vol:0,inv:2,hc:53.0},
+      qVolL2:1,qHcL2:54.7,qAttr:1.83, qRegAll:0,qHcRegAll:85.7,qAttrReg:0.0, qRegL2:0,qHcRegL2:54.7,qAttrRegL2:0.0 },
   ],
   "Philippines": [
     { period:"December 2025", q:"Q4 2025",
@@ -3128,6 +3220,9 @@ const ATTRITION_BY_COUNTRY = {
     { period:"September 2026", q:"Q3 2026",
       all:{tot:4,reg:0,nr:3,vol:2,inv:2,hc:68.0}, l2:{tot:1,reg:0,nr:1,vol:1,inv:0,hc:39.0},
       qVolL2:1,qHcL2:37.8,qAttr:2.65, qRegAll:0,qHcRegAll:67.8,qAttrReg:0.0, qRegL2:0,qHcRegL2:37.8,qAttrRegL2:0.0 },
+    { period:"October 2026", q:"Q4 2026",
+      all:{tot:1,reg:0,nr:1,vol:0,inv:1,hc:69.0}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:40.5},
+      qVolL2:0,qHcL2:39.3,qAttr:0.0, qRegAll:0,qHcRegAll:68.5,qAttrReg:0.0, qRegL2:0,qHcRegL2:39.3,qAttrRegL2:0.0 },
   ],
   "South Africa": [
     { period:"December 2025", q:"Q4 2025",
@@ -3160,6 +3255,9 @@ const ATTRITION_BY_COUNTRY = {
     { period:"September 2026", q:"Q3 2026",
       all:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:68.0}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:47.0},
       qVolL2:0,qHcL2:45.8,qAttr:0.0, qRegAll:0,qHcRegAll:66.7,qAttrReg:0.0, qRegL2:0,qHcRegL2:45.8,qAttrRegL2:0.0 },
+    { period:"October 2026", q:"Q4 2026",
+      all:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:68.0}, l2:{tot:0,reg:0,nr:0,vol:0,inv:0,hc:47.0},
+      qVolL2:0,qHcL2:46.5,qAttr:0.0, qRegAll:0,qHcRegAll:67.5,qAttrReg:0.0, qRegL2:0,qHcRegL2:46.5,qAttrRegL2:0.0 },
   ],
   "United States": [
     { period:"December 2025", q:"Q4 2025",
@@ -3192,6 +3290,9 @@ const ATTRITION_BY_COUNTRY = {
     { period:"September 2026", q:"Q3 2026",
       all:{tot:2,reg:0,nr:2,vol:1,inv:1,hc:100.5}, l2:{tot:2,reg:0,nr:2,vol:1,inv:1,hc:100.5},
       qVolL2:3,qHcL2:98.3,qAttr:3.05, qRegAll:1,qHcRegAll:98.5,qAttrReg:1.02, qRegL2:1,qHcRegL2:98.3,qAttrRegL2:1.02 },
+    { period:"October 2026", q:"Q4 2026",
+      all:{tot:1,reg:0,nr:1,vol:0,inv:1,hc:102.5}, l2:{tot:1,reg:0,nr:1,vol:0,inv:1,hc:102.5},
+      qVolL2:3,qHcL2:100.3,qAttr:2.99, qRegAll:0,qHcRegAll:100.3,qAttrReg:0.0, qRegL2:0,qHcRegL2:100.3,qAttrRegL2:0.0 },
   ],
 };
 function renderRawAttrTable() {
@@ -3349,6 +3450,11 @@ const ATTRITION_DRIVE_V2 = [
     qRegAll:9, qHcRegAll:1150.3, qAttrReg:0.78,
     qRegL2:7, qHcRegL2:839.0, qAttrRegL2:0.83,
     qNrAll:47, qAttrNr:4.09, qTotAll:62, qAttrTot:5.39 },
+  { period:"October 2026", q:"Q4 2026", hidden:false,
+    all:{tot:22, reg:3, nr:17, vol:6, hc:1200.5}, l2:{tot:14, reg:3, nr:10, vol:5, hc:876.5},
+    qRegAll:9, qHcRegAll:1177.8, qAttrReg:0.76,
+    qRegL2:8, qHcRegL2:860.2, qAttrRegL2:0.93,
+    qNrAll:47, qAttrNr:3.99, qTotAll:62, qAttrTot:5.26 },
 ];
 function renderDriveV2Table() {
   const el = document.getElementById('attr-raw-table');
@@ -3651,11 +3757,21 @@ const REG_TERM_NAMES = {
       "Finance": ["Juan Pablo Telleria"],
     }
   },
+  "October 2026": {
+    byCountry: {
+      "Colombia": ["Diego Rodriguez"],
+      "Mexico": ["Paco Reyes","Ernesto Merchant"],
+    },
+    byDept: {
+      "Product Development": ["Diego Rodriguez","Paco Reyes"],
+      "Finance": ["Ernesto Merchant"],
+    }
+  },
 };
 // ─── SHARED TABLE HELPERS ─────────────────────────────────────────────────────
-const _PERIODS = ['December 2025','January 2026','February 2026','March 2026','April 2026','May 2026','June 2026','July 2026','August 2026','September 2026'];
+const _PERIODS = ['December 2025','January 2026','February 2026','March 2026','April 2026','May 2026','June 2026','July 2026','August 2026','September 2026','October 2026'];
 // HC_BY_COUNTRY index that corresponds to each _PERIODS entry (Dec25=7 … May26=12)
-const _PERIOD_HC_IDX = [7, 8, 9, 10, 11, 12, 15, 19, 20, 21];
+const _PERIOD_HC_IDX = [7, 8, 9, 10, 11, 12, 15, 19, 20, 21, 22];
 function _countBadge(v, names, hc) {
   if (v == null || v === 0) return `<span style="color:#cbd5e1;">—</span>`;
   const s = v >= 5 ? 'background:#fff1f2;color:#be123c;font-weight:700;'
